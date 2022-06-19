@@ -5,6 +5,7 @@ import { FlatList, GestureResponderEvent, Image } from 'react-native';
 
 import { Text, View } from '../Themed';
 import Card from '../Card';
+import CardConsulta from '../CardConsulta';
 
 const BackgroundContainer = styled.View`
     height: 100%;
@@ -93,7 +94,7 @@ const Item = ({item, onPress}:{
     onPress: (event: GestureResponderEvent) => void
     }) => (  
             <ButtonCustom onPress={onPress}>
-                <ImageFlatLinks source={require('../../assets/images/meusPontos.png')} />
+                <ImageFlatLinks source={require('../../assets/images/cursos.png')} />
                 
                 <TextFlatLinks>{item.text}</TextFlatLinks>
                 
@@ -133,6 +134,8 @@ export default function HomeItemsComponents (){
 
                         <IconsItems>
                             <Card />
+                            <CardConsulta />
+
                         </IconsItems>
                         
                 </ContentItems>

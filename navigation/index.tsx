@@ -122,7 +122,7 @@ function BottomTabNavigator() {
         name="User"
         component={UserScreen}
         options={({ navigation}: RootTabScreenProps<'User'>) => ({
-          title: 'Usuário',
+          header: (props)=> <Header />,
           tabBarIcon: ({ color }) => <TabBarIcon name="user" color={color} />,
           headerRight:() =>(
             <Pressable 
