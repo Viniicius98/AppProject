@@ -87,7 +87,7 @@ function BottomTabNavigator() {
         name="Login"
         component={LoginScreen}
         options={({ navigation }: RootTabScreenProps<'Login'>) => ({
-          title: 'Login',
+          header: (props)=> <Header />,
           tabBarIcon: ({ color }) => <TabBarIcon name="sign-in" color={color} />,
         })}
       />  
