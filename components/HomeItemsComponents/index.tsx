@@ -6,6 +6,7 @@ import { FlatList, GestureResponderEvent, Image } from 'react-native';
 import { Text, View } from '../Themed';
 import Card from '../Card';
 import CardConsulta from '../CardConsulta';
+import CardVerificar from '../CardVerificar';
 
 const BackgroundContainer = styled.View`
     height: 100%;
@@ -57,7 +58,7 @@ const FlatLinks = [
 
 const ImageFlatLinks = styled.Image`
     width: 65px;
-    height: 64px;
+    height: 80px;
     margin-left: 3%;
 `
 
@@ -135,6 +136,7 @@ export default function HomeItemsComponents (){
                         <IconsItems>
                             <Card />
                             <CardConsulta />
+                            <CardVerificar />
 
                         </IconsItems>
                         
