@@ -44,10 +44,10 @@ const AvatarContainer = styled.View`
 const SubmitButton = styled.Button`
   width: 200px;
   height: 10px;
-  margin-top: 80%
+  
 `
 
-export default function Card() {
+export default function CardPerfil() {
   return (
     <Container>
         <Title>
