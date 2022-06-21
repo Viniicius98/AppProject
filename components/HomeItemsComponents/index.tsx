@@ -20,7 +20,7 @@ const ImageBackground = styled.Image`
     align-items: center;
     justify-content: center;
     opacity: 0.1;
-    position: absolute;
+    //position: absolute;
     z-index: 0;
 `
 

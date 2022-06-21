@@ -5,6 +5,7 @@ import { useEffect, useState } from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import api from '../services/api';
 import { ActivityIndicator } from 'react-native';
+import fundo  from "../assets/images/login.jpeg";
 
 
 
@@ -21,6 +22,7 @@ const Container = styled.View`
   align-items: center;
   justify-content: center;
   background-color: #ffffff;
+  
 `
 const ContainerTextt = styled.Text`
   color:#8492A6;
@@ -54,6 +56,7 @@ const Input = styled.TextInput`
 const SubmitButton = styled.Button`
   width: 200px;
   height: 10px;
+
 `
 
 const Loading = styled.View`
@@ -65,7 +68,21 @@ justify-content: center;
 z-index: 30;
 top: 60%;
 `
+const BackgroundContainer = styled.View`
+    height: 100%;
+    width: 100%;
+    background: #1e2d3eee;
+`
 
+const ImageBackground = styled.Image`
+    height: 24%;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    opacity: 0.1;
+    position: absolute;
+    z-index: 0;
+`
 
 
 
@@ -140,15 +157,12 @@ export default function LoginScreen({ navigation }: RootTabScreenProps<'Login'>)
 
   return (
     
+    <BackgroundContainer>
+    <Container> 
+            
+       
+       
     
-    <Container>
-
-      
-            
-            
-       
-       
- 
    
 
       {isLoading && <Loading> 
@@ -178,6 +192,9 @@ export default function LoginScreen({ navigation }: RootTabScreenProps<'Login'>)
       <ContainerText>{success}</ContainerText>
       
     </Container>
+
+    <img src={fundo} alt="login" />
+</BackgroundContainer>
 
     
   );

@@ -5,7 +5,7 @@ import styled from 'styled-components/native';
 
 const Containerr = styled.View`
     background: #fff;
-    margin-top: 25px;
+    margin-top: 20px;
 `
 const Title = styled.View`
     background: #b8977e;
