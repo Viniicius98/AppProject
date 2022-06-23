@@ -39,7 +39,7 @@ export default function CardConsulta() {
     <Containerr>
         
         <Title>
-            <TitleText>/</TitleText>
+            <TitleText>.</TitleText>
         </Title>
         
         <AvatarContainerr>

@@ -34,7 +34,7 @@ const AvatarContainer = styled.View`
     position: relative;
     width: 100%;
     align-items: center;
-    margin-bottom: 40px;
+    margin-bottom: 25px;
 `
 export default function Card() {
   return (

@@ -38,9 +38,9 @@ background-color: rgba(255,255,255,0.5);
 `
 
 const IconsItems = styled.View`
-width: 35%;
+width: 38%;
 height: 450px;
-background-color: rgba(255,255,255,0.4);
+background-color: #1b2939;
 margin-left: 2%;
 `
 const FlatLinks = [

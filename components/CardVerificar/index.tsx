@@ -5,7 +5,7 @@ import styled from 'styled-components/native';
 
 const Containerr = styled.View`
     background: #fff;
-    margin-top: 20px;
+    margin-top: 15px;
 `
 const Title = styled.View`
     background: #b8977e;
@@ -19,7 +19,7 @@ const TitleText = styled.Text`
     text-align: center;
     font-size: 12px;
 `
-const Avatarr = styled.Image`
+const Avatar = styled.Image`
     width: 50px;
     height: 50px;
     border-radius: 50;
@@ -39,11 +39,11 @@ export default function CardVerificar() {
     <Containerr>
         
         <Title>
-            <TitleText>/</TitleText>
+            <TitleText>.</TitleText>
         </Title>
         
         <AvatarContainerr>
-            <Avatarr source={require("../../assets/images/notificacaoed.jpg")} />
+            <Avatar source={require("../../assets/images/notificacaoed.jpg")} />
         </AvatarContainerr>
         
         <Text style={{fontSize: 12, fontWeight: "bold", textAlign:"center", marginBottom: 25}}>VERIFICAR NOTIFICAÇÕES</Text>

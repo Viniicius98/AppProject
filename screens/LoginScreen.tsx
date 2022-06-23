@@ -5,13 +5,9 @@ import { useEffect, useState } from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import api from '../services/api';
 import { ActivityIndicator } from 'react-native';
-import fundo  from "../assets/images/login.jpeg";
-
-
-
-
-
-
+//import { StyleSheet, Image } from 'react-native';
+//import  fundo   from '../assets/images/fundo.jpeg';
+//import { ImageBackgroundBase } from 'react-native';
 
 
 
@@ -74,15 +70,7 @@ const BackgroundContainer = styled.View`
     background: #1e2d3eee;
 `
 
-const ImageBackground = styled.Image`
-    height: 24%;
-    width: 100%;
-    align-items: center;
-    justify-content: center;
-    opacity: 0.1;
-    position: absolute;
-    z-index: 0;
-`
+
 
 
 
@@ -155,15 +143,11 @@ export default function LoginScreen({ navigation }: RootTabScreenProps<'Login'>)
     }
   }
 
-  return (
+  return (   
     
-    <BackgroundContainer>
-    <Container> 
-            
-       
-       
-    
-   
+    <Container>    
+          
+           
 
       {isLoading && <Loading> 
         
@@ -171,19 +155,19 @@ export default function LoginScreen({ navigation }: RootTabScreenProps<'Login'>)
         </Loading>}
         
         
-      <ContainerTextt>Login</ContainerTextt>
+           <ContainerTextt>Login</ContainerTextt>
       
-      <Input
-      placeholder="E-mail"
-      defaultValue={email}
-      onChangeText={(newEmail)=> setEmail(newEmail)}
-      />
-      <Input
-      placeholder="Senha"
-      defaultValue={password}
-      onChangeText={(newPassword)=> setPassword(newPassword)}
-      secureTextEntry
-      />
+          <Input
+           placeholder="E-mail"
+           defaultValue={email}
+           onChangeText={(newEmail)=> setEmail(newEmail)}
+           />
+           <Input
+           placeholder="Senha"
+          defaultValue={password}
+          onChangeText={(newPassword)=> setPassword(newPassword)}
+          secureTextEntry
+          />    
       
       <SubmitButton title="Enviar" color="#B8977E"  onPress={handleSignInPress}/>
       <ContainerTexte>Esqueceu sua senha ? </ContainerTexte>
@@ -193,9 +177,10 @@ export default function LoginScreen({ navigation }: RootTabScreenProps<'Login'>)
       
     </Container>
 
-    <img src={fundo} alt="login" />
-</BackgroundContainer>
+   
+    
 
     
   );
 }
+/*<img src={fundo} alt="login" />*/
