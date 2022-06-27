@@ -6,11 +6,13 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import api from '../services/api';
 import { ActivityIndicator } from 'react-native';
 //import { StyleSheet, Image } from 'react-native';
-//import  fundo   from '../assets/images/fundo.jpeg';
+import  fundo   from '../assets/images/fundo.jpeg';
 //import { ImageBackgroundBase } from 'react-native';
 
 
-
+const img = styled.Image `
+  
+`
 
 
 const Container = styled.View`
@@ -173,8 +175,8 @@ export default function LoginScreen({ navigation }: RootTabScreenProps<'Login'>)
       <ContainerTexte>Esqueceu sua senha ? </ContainerTexte>
       
       <ContainerText>{error}</ContainerText>
-      <ContainerText>{success}</ContainerText>
-      
+      <ContainerText>{success} </ContainerText>
+      <img src={fundo} alt="login" />
     </Container>
 
    
