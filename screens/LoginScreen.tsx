@@ -4,7 +4,7 @@ import styled from 'styled-components/native';
 import { useEffect, useState } from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import api from '../services/api';
-import { ActivityIndicator } from 'react-native';
+import { ActivityIndicator, ImageBackgroundBase } from 'react-native';
 //import { StyleSheet, Image } from 'react-native';
 //import  fundo   from '../assets/images/fundo.jpeg';
 //import { ImageBackgroundBase } from 'react-native';
@@ -176,9 +176,8 @@ export default function LoginScreen({ navigation }: RootTabScreenProps<'Login'>)
       <ContainerText>{success}</ContainerText>
       
     </Container>
-
-   
     
+   
 
     
   );

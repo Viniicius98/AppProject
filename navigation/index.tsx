@@ -115,6 +115,14 @@ function BottomTabNavigator() {
         })}
       />
       
+      <BottomTab.Screen
+        name="Chat"
+        component={Chat}
+        options={({ navigation }: RootTabScreenProps<'Chat'>) => ({
+          title: 'Ações Educacionais',
+          tabBarIcon: ({ color }) => <TabBarIcon name="anchor" color={color} />,
+        })}
+      />
       
       
 
