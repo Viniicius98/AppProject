@@ -30,6 +30,11 @@ const linking: LinkingOptions<RootStackParamList> = {
               UserScreen: "user",
             },
           },
+          Chat: {
+            screens: {
+              UserScreen: "Chat",
+            },
+          },
         },
       },
       Modal: "modal",

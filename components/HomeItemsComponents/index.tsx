@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
 import styled from 'styled-components/native';
 import { Link } from '@react-navigation/native';
-import { FlatList, GestureResponderEvent, Image } from 'react-native';
+import { FlatList, GestureResponderEvent, Image, Pressable } from 'react-native';
 
 import { Text, View } from '../Themed';
 import Card from '../Card';
 import CardConsulta from '../CardConsulta';
 import CardVerificar from '../CardVerificar';
+import { preventAutoHideAsync } from 'expo-splash-screen';
+import navigation from '../../navigation';
 
 const BackgroundContainer = styled.View`
     height: 100%;
@@ -44,7 +46,7 @@ background-color: #1b2939;
 margin-left: 2%;
 `
 const FlatLinks = [
-    {id:"0", text: "PONTOS", icon: "meusPonto.png", screen:"PointsScreen"},
+    {id:"0", text: "PONTOS", icon: "meusPonto.png", screen:"PointsScreen" },
     {id:"1", text: "CURSOS", icon: "cursos.png", screen:"CoursesScreen"},
     {id:"2", text: "AÇÕES EDUCACIONAIS", icon: "acoesEducacionais.png", screen:"EducationalActionsScreen"},
     {id:"3", text: "Virtual EMERJ", icon: "virtualEmerj.png", screen:"VirtualEmerjScreen"},
@@ -137,11 +139,12 @@ export default function HomeItemsComponents (){
                             <Card />
                             <CardConsulta />
                             <CardVerificar />
+                            
 
                         </IconsItems>
                         
                 </ContentItems>
-                {<ImageBackground source={require('../../assets/images/background.jpg')}/>}
+                <ImageBackground source={require('../../assets/images/background.jpg')}/>
             </BackgroundContainer>
         </>
     )
