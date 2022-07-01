@@ -4,17 +4,30 @@ import styled from 'styled-components/native';
 import { useEffect, useState } from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import api from '../services/api';
-import { ActivityIndicator } from 'react-native';
+import { ActivityIndicator, ImageBackground} from 'react-native';
 //import { StyleSheet, Image } from 'react-native';
-import  fundo   from '../assets/images/fundo.jpeg';
+//import  fundo   from '../assets/images/fundo.jpeg';
 //import { ImageBackgroundBase } from 'react-native';
 
 
 const img = styled.Image `
   
 `
-
-
+const BackgroundContainer = styled.View`
+    flex:1;
+    align-items: center;
+    justify-content: center;
+    background: #1e2d3eee;
+`
+const ImageBackgrounds = styled.Image`
+    height: 50%;
+    width: 50%;
+    align-items: center;
+    justify-content: center;
+    opacity: 0.1;
+    //position: absolute;
+    z-index: 0;
+`
 const Container = styled.View`
   flex:1;
   align-items: center;
@@ -40,8 +53,6 @@ const ContainerTexte = styled.Text`
 
 `
 
-
-
 const Input = styled.TextInput`
   height: 50px;
   width: 300px;
@@ -66,14 +77,6 @@ justify-content: center;
 z-index: 30;
 top: 60%;
 `
-const BackgroundContainer = styled.View`
-    height: 100%;
-    width: 100%;
-    background: #1e2d3eee;
-`
-
-
-
 
 
 export default function LoginScreen({ navigation }: RootTabScreenProps<'Login'>) {
@@ -146,18 +149,17 @@ export default function LoginScreen({ navigation }: RootTabScreenProps<'Login'>)
   }
 
   return (   
-    
-    <Container>    
-          
-           
 
-      {isLoading && <Loading> 
+    <Container>    
+      {/*<BackgroundContainer>*/}
+
+        {isLoading && <Loading> 
         
         <ActivityIndicator size="large"  color="#8492A6"/>
         </Loading>}
         
         
-           <ContainerTextt>Login</ContainerTextt>
+        <ContainerTextt>Login</ContainerTextt>
       
           <Input
            placeholder="E-mail"
@@ -171,18 +173,27 @@ export default function LoginScreen({ navigation }: RootTabScreenProps<'Login'>)
           secureTextEntry
           />    
       
-      <SubmitButton title="Enviar" color="#B8977E"  onPress={handleSignInPress}/>
-      <ContainerTexte>Esqueceu sua senha ? </ContainerTexte>
+        <SubmitButton title="Enviar" color="#B8977E"  onPress={handleSignInPress}/>
+        <ContainerTexte>Esqueceu sua senha ? </ContainerTexte>
       
-      <ContainerText>{error}</ContainerText>
-      <ContainerText>{success} </ContainerText>
-      <img src={fundo} alt="login" />
+        <ContainerText>{error}</ContainerText>
+        <ContainerText>{success} </ContainerText>
+
+      
+        {/*<img src={fundo} alt="login" />*/ }
+
+       {/* {<ImageBackgrounds source={require('../assets/images/fundo.jpeg')}/>} */}
+       
+    {/*</BackgroundContainer>*/}
+
     </Container>
 
+    
+  
    
     
 
     
-  );
+   );
 }
 /*<img src={fundo} alt="login" />*/

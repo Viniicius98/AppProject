@@ -18,6 +18,8 @@ const Container = styled.View`
   border-bottom-color: #b8977e;
 `
 
+
+
 export default function HomeScreen({ navigation }: RootTabScreenProps<'Home'>) {
 const {state, dispatch} = useContext(InputValueContext);
   
@@ -31,8 +33,6 @@ const {state, dispatch} = useContext(InputValueContext);
     
     
     <Container>
-     
-
       <HomeItemsComponents />
     </Container>
   );
