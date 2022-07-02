@@ -31,6 +31,7 @@ const {state, dispatch} = useContext(InputValueContext);
     
     
     <Container>
+     
 
       <HomeItemsComponents />
     </Container>
@@ -39,17 +40,17 @@ const {state, dispatch} = useContext(InputValueContext);
 
 //terirado de dentro do Container 
 /*<View>
-        <Text>Valor: {state.inputValue}</Text>
-      </View>
-      <Button
-       title="Login"
-       color="#1e2d3e"
+<Text>Valor: {state.inputValue}</Text>
+</View>
+<Button
+title="Login"
+color="#1e2d3e"
 
-       onPress={authLocal}
-       />
+onPress={authLocal}
+/>
 
-      <Button
-       title="Mudar valor"
-       color="#1e2d3e"
-       onPress={()=> dispatch({type:"SET_INPUT_VALUE_TO_200"}) }
-       />*/
+<Button
+title="Mudar valor"
+color="#1e2d3e"
+onPress={()=> dispatch({type:"SET_INPUT_VALUE_TO_200"}) }
+/>*/

@@ -87,7 +87,6 @@ function BottomTabNavigator() {
         name="Login"
         component={LoginScreen}
         options={({ navigation }: RootTabScreenProps<'Login'>) => ({
-          title: 'Login',
           header: (props)=> <Header />,
           tabBarIcon: ({ color }) => <TabBarIcon name="sign-in" color={color} />,
         })}
@@ -115,9 +114,6 @@ function BottomTabNavigator() {
           ),
         })}
       />
-
-
-
       
       <BottomTab.Screen
         name="Chat"
@@ -125,10 +121,10 @@ function BottomTabNavigator() {
         options={({ navigation }: RootTabScreenProps<'Chat'>) => ({
           title: 'Ações Educacionais',
           header: (props)=> <Header />,
-          tabBarIcon: ({ color }) => <TabBarIcon name="book" color={color} />,
-          
+          tabBarIcon: ({ color }) => <TabBarIcon name="anchor" color={color} />,
         })}
       />
+      
       
 
       <BottomTab.Screen

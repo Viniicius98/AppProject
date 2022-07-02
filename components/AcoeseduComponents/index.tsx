@@ -3,16 +3,13 @@ import styled from 'styled-components/native';
 import { Link } from '@react-navigation/native';
 import { FlatList, GestureResponderEvent, Image } from 'react-native';
 
-import Card from '../../components/Card';
-import CardConsulta from '../../components/CardConsulta';
-import CardVerificar from '../../components/CardVerificar';
 
 
 
 const BackgroundContainer = styled.View`
     height: 100%;
     width: 100%;
-    background: #1e2d3eee;
+    background: #343F4B;
     position: relative;
 `
 
@@ -34,52 +31,40 @@ flex-direction: row;
 align-items: flex-end;
 `
 const FlatListItems = styled.View`
-width: 60%;
-height: 450px;
-background-color: rgba(255,255,255,0.5);
+width: 100%;
+height: 100%;
 `
 
-const IconsItems = styled.View`
-width: 38%;
-height: 450px;
-background-color: rgba(255,255,255,0.4);
-margin-left: 2%;
-`
+
 const FlatLinks = [
-    {id:"0", text: "PONTOS", icon: "meusPonto.png", screen:"PointsScreen"},
-    {id:"1", text: "CURSOS", icon: "cursos.png", screen:"CoursesScreen"},
+    
     {id:"2", text: "AÇÕES EDUCACIONAIS", icon: "acoesEducacionais.png", screen:"EducationalActionsScreen"},
-    {id:"3", text: "Virtual EMERJ", icon: "virtualEmerj.png", screen:"VirtualEmerjScreen"},
-    {id:"4", text: "ATENDIMENTO", icon: "atendimento.png", screen:"AttendanceScreen"}
+    /*{id:"3", text: "Virtual EMERJ", icon: "virtualEmerj.png", screen:"VirtualEmerjScreen"},*/
+    /*{id:"4", text: "ATENDIMENTO", icon: "atendimento.png", screen:"AttendanceScreen"}*/
 ]
 
 
 
 
 const ImageFlatLinks = styled.Image`
-    width: 65px;
+    width: 50px;
     height: 80px;
-    margin-left: 3%;
-    max-width: 60%;
-    max-height: 90%;
+    margin-left: 25%;
+    max-width: 20%;
+    max-height: 80%;
     
 `
 
 const TextFlatLinks = styled.Text`
     font-size: 12;
     color: #333;
-    margin-left: 8%;
+    margin-left: 3%;
 `
-const LinkFlat = styled.Button`
-    display: flex;
-    flex-direction: row;
 
-`
 
 const ButtonCustom = styled.TouchableOpacity`
 background: #c0ccda;
-border-bottom-width: 10px;
-border-bottom-color: #b8977e;
+border-bottom-color: #c0ccda;
 flex-direction: row;
 width: 100%;
 align-items: center;
@@ -97,7 +82,7 @@ const Item = ({item, onPress}:{
     onPress: (event: GestureResponderEvent) => void
     }) => ( 
             <ButtonCustom onPress={onPress}>
-                <ImageFlatLinks source={require('../../assets/images/meusPontos.png')} />
+                <ImageFlatLinks source={require('../../assets/images/acoesEducacionais.png')} />
                
                 
                 
@@ -138,14 +123,9 @@ export default function HomeItemsComponents (){
                              />
                         </FlatListItems>
 
-                        <IconsItems>
-                            <Card />
-                            <CardConsulta />
-                            <CardVerificar />
-                        </IconsItems>
                         
                 </ContentItems>
-                <ImageBackground source={require('../../assets/images/background.jpg')}/>
+                <ImageBackground source={require("../../assets/images/background.png")}/>
                 </BackgroundContainer>
         </>
     )

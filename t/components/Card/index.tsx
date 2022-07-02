@@ -21,7 +21,7 @@ const TitleText = styled.Text`
 
 const CardBanner = styled.Image`
     width: 100%;
-    height: 60px;
+    height: 90px;
 `
 const Avatar = styled.Image`
     width: 50px;
@@ -34,7 +34,7 @@ const AvatarContainer = styled.View`
     position: relative;
     width: 100%;
     align-items: center;
-    margin-bottom: 30px;
+    margin-bottom: 25px;
 `
 export default function Card() {
   return (

@@ -3,8 +3,9 @@ import { Image } from 'react-native';
 import { Text, View } from '../Themed';
 import styled from 'styled-components/native';
 
-const Container = styled.View`
+const Containerr = styled.View`
     background: #fff;
+    margin-top: 15px;
 `
 const Title = styled.View`
     background: #b8977e;
@@ -18,11 +19,6 @@ const TitleText = styled.Text`
     text-align: center;
     font-size: 12px;
 `
-
-const CardBanner = styled.Image`
-    width: 100%;
-    height: 60px;
-`
 const Avatar = styled.Image`
     width: 50px;
     height: 50px;
@@ -30,26 +26,27 @@ const Avatar = styled.Image`
     position: absolute;
     margin-top: -25px;
 `
-const AvatarContainer = styled.View`
+
+
+const AvatarContainerr = styled.View`
     position: relative;
     width: 100%;
     align-items: center;
     margin-bottom: 30px;
 `
-export default function Card() {
+export default function CardVerificar() {
   return (
-    <Container>
+    <Containerr>
+        
         <Title>
-            <TitleText>PERFIL DO MAGISTRADO</TitleText>
+            <TitleText>.</TitleText>
         </Title>
         
-        <CardBanner source={require("../../assets/images/background.png")} />
-        <AvatarContainer>
-            <Avatar source={require("../../assets/images/avatar.jpg")} />
-        </AvatarContainer>
+        <AvatarContainerr>
+            <Avatar source={require("../../assets/images/notificacaoed.jpg")} />
+        </AvatarContainerr>
         
-        <Text style={{fontWeight: "bold", textAlign:"center"}}>Dra. Helena Herth</Text>
-        <Text style={{fontSize: 9, textAlign:"center", marginBottom: 5 }}>Diretora do Departamento de Aperfeiçoamento de Magistrados</Text>
-    </Container>
+        <Text style={{fontSize: 12, fontWeight: "bold", textAlign:"center", marginBottom: 25}}>VERIFICAR NOTIFICAÇÕES</Text>
+    </Containerr>
   )
 }

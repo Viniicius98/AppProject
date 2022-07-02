@@ -4,41 +4,50 @@ import styled from 'styled-components/native';
 import { useEffect, useState } from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import api from '../services/api';
-import { ActivityIndicator } from 'react-native';
-import React from 'react';
-
-
-
-
+import { ActivityIndicator, ImageBackgroundBase } from 'react-native';
+import React from 'react';                                           // adicionei o react q nao tinha  source={require  parou de dar erro !
+//import { StyleSheet, Image } from 'react-native';
+//import  fundo   from '../assets/images/fundo.jpeg';
+//import { ImageBackgroundBase } from 'react-native';
 
 const BackgroundContainer = styled.View`
-    
+    height: 100%;
+    width: 100%;
     background: #021831ed;
     
 `
 
-const ImageBackground = styled.Image`
-   
-    
-    
-    
-    
-    
-    
-`
 
+
+
+const ImageBackground = styled.Image`
+    height: 50%;  // tamanho
+    width: 100%;
+    margin-top: 20%;   //para ciam ou para baixo
+    align-items: center;
+    justify-content: center;
+    opacity: 0.1;         //traparencia
+    position: relative;  //fica sobre um objeto
+    z-index: 0;
+`
 
 
 
 const Container = styled.View`
+  height: 94%;
+  width: 100%;
   flex:1;
   align-items: center;
   justify-content: center;
-  background-color: #ffffff;
+  position: absolute; //nao fica sobre um objeto
+  
+  
+  
 `
 const ContainerTextt = styled.Text`
-  color:#8492A6;
+  color:#a6848e;
   padding-right: 55%;
+  
 
 `
 const ContainerText = styled.Text`
@@ -63,11 +72,13 @@ const Input = styled.TextInput`
   border-radius: 5px;
   padding-left: 20px;
   margin-bottom: 1px;
+  
 `
 
 const SubmitButton = styled.Button`
   width: 200px;
   height: 10px;
+
 `
 
 const Loading = styled.View`
@@ -79,6 +90,8 @@ justify-content: center;
 z-index: 30;
 top: 60%;
 `
+
+
 
 
 
@@ -152,34 +165,33 @@ export default function LoginScreen({ navigation }: RootTabScreenProps<'Login'>)
     }
   }
 
-  return (
-    
-    
-    
-    
-    <Container>
+  return (   
 
-<BackgroundContainer>
-  
+    
+    <BackgroundContainer>
+    <Container>    
+          
+           
+
       {isLoading && <Loading> 
         
         <ActivityIndicator size="large"  color="#8492A6"/>
         </Loading>}
-        <ImageBackground source={require('../assets/images/background.png')}/>
         
-      <ContainerTextt>Login</ContainerTextt>
+        
+           <ContainerTextt>Login</ContainerTextt>
       
-      <Input
-      placeholder="E-mail"
-      defaultValue={email}
-      onChangeText={(newEmail)=> setEmail(newEmail)}
-      />
-      <Input
-      placeholder="Senha"
-      defaultValue={password}
-      onChangeText={(newPassword)=> setPassword(newPassword)}
-      secureTextEntry
-      />
+          <Input
+           placeholder="E-mail"
+           defaultValue={email}
+           onChangeText={(newEmail)=> setEmail(newEmail)}
+           />
+           <Input
+           placeholder="Senha"
+          defaultValue={password}
+          onChangeText={(newPassword)=> setPassword(newPassword)}
+          secureTextEntry
+          />    
       
       <SubmitButton title="Enviar" color="#B8977E"  onPress={handleSignInPress}/>
       <ContainerTexte>Esqueceu sua senha ? </ContainerTexte>
@@ -187,9 +199,15 @@ export default function LoginScreen({ navigation }: RootTabScreenProps<'Login'>)
       <ContainerText>{error}</ContainerText>
       <ContainerText>{success}</ContainerText>
       
-      </BackgroundContainer>
+      
     </Container>
-
+    <ImageBackground source={require('../assets/images/background.png')}/>  
+    
+    </BackgroundContainer>
+    
     
   );
 }
+/*<img src={fundo} alt="login" />*/
+
+/*<img src={fundo} alt="login" />*/
