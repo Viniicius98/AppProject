@@ -7,6 +7,7 @@ import Card from '../Card';
 import CardConsulta from '../CardConsulta';
 import CardVerificar from '../CardVerificar';
 
+
 const BackgroundContainer = styled.View`
     height: 100%;
     width: 100%;
@@ -43,11 +44,11 @@ background-color: #1b2939;
 margin-left: 2%;
 `
 const FlatLinks = [
-    {id:"0", text: "PONTOS", icon: "meusPontos.png", screen:"PointsScreen"},
-    {id:"1", text: "CURSOS", icon: "cursos.png", screen:"CoursesScreen"},
-    {id:"2", text: "AÇÕES EDUCACIONAIS", icon: "acoesEducacionais.png", screen:"EducationalActionsScreen"},
-    {id:"3", text: "Virtual EMERJ", icon: "virtualEmerj.png", screen:"VirtualEmerjScreen"},
-    {id:"4", text: "ATENDIMENTO", icon: "atendimento.png", screen:"AttendanceScreen"}
+    {id:"000", text: "PONTOS", icon: "meusPontos.png", screen:"PointsScreen"},
+    {id:"001", text: "CURSOS", icon: "cursos.png", screen:"CoursesScreen"},
+    {id:"002", text: "AÇÕES EDUCACIONAIS", icon: "acoesEducacionais.png", screen:"EducationalActionsScreen"},
+    {id:"003", text: "Virtual EMERJ", icon: "virtualEmerj.png", screen:"VirtualEmerjScreen"},
+    {id:"004", text: "ATENDIMENTO", icon: "atendimento.png", screen:"AttendanceScreen"}
 ]
 
 const ImageFlatLinks = styled.Image`
@@ -76,6 +77,7 @@ flex-direction: row;
 width: 100%;
 align-items: center;
 `
+
 interface IFlatItems {
     id: string;
     text: string;
@@ -92,7 +94,7 @@ const Item = ({item, onPress}:{
                 
                  {/*<ImageFlatLinks source={require('../../assets/images/meusPontos.png')} />*/}
                  
-                <ImageFlatLinks source={{uri:require(`../../assets/images/${item.icon}`)}} />
+                <ImageFlatLinks source={require('../../assets/images/' + String(item.icon))}/>
 
                 <TextFlatLinks>{item.text}</TextFlatLinks>
             </ButtonCustom>
@@ -122,10 +124,10 @@ export default function HomeItemsComponents (){
                        
                         <FlatListItems>
                             <FlatList
-                            data={FlatLinks}
-                            renderItem={renderItem}
-                            keyExtractor={(item) => item.id}
-                            extraData={selectedId}
+                                data={FlatLinks}
+                                renderItem={(renderItem)}
+                                keyExtractor={item => item.id}
+                                extraData={selectedId}
                              />
                         </FlatListItems>
 
