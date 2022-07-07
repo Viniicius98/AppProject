@@ -2,6 +2,12 @@ import React, { useState } from 'react';
 import styled from 'styled-components/native';
 import { Link } from '@react-navigation/native';
 import { FlatList, GestureResponderEvent, Image } from 'react-native';
+import CardAcao from '../CardAcao';
+
+
+
+
+
 
 
 
@@ -9,7 +15,7 @@ import { FlatList, GestureResponderEvent, Image } from 'react-native';
 const BackgroundContainer = styled.View`
     height: 100%;
     width: 100%;
-    background: #343F4B;
+    background: #1e2d3eee;
     position: relative;
 `
 
@@ -29,20 +35,27 @@ width: 100%;
 height: 100%;
 flex-direction: row;
 align-items: flex-end;
+
 `
 const FlatListItems = styled.View`
 width: 100%;
-height: 100%;
+height: 450px;
+
+`
+
+const IconsItems = styled.View`
+width: 100%;
+height: 575px;
+margin-left: -60%;
 `
 
 
 const FlatLinks = [
     
-    {id:"2", text: "AÇÕES EDUCACIONAIS", icon: "acoesEducacionais.png", screen:"EducationalActionsScreen"},
-    /*{id:"3", text: "Virtual EMERJ", icon: "virtualEmerj.png", screen:"VirtualEmerjScreen"},*/
-    /*{id:"4", text: "ATENDIMENTO", icon: "atendimento.png", screen:"AttendanceScreen"}*/
+    
+    {id:"3", text: "DIPLOMAS E TÍTULOS", icon: "virtualEmerj.png", screen:"VirtualEmerjScreen"},
+    {id:"4", text: "ATUAÇÃO NA DOCÊNCIA", icon: "atendimento.png", screen:"AttendanceScreen"}
 ]
-
 
 
 
@@ -55,18 +68,32 @@ const ImageFlatLinks = styled.Image`
     
 `
 
+
+const IdImage = styled.Image`
+    width: 50px;
+    height: 80px;
+    margin-left: 25%;
+    max-width: 20%;
+    max-height: 80%;
+    
+`
+
 const TextFlatLinks = styled.Text`
-    font-size: 12;
-    color: #333;
-    margin-left: 3%;
+    font-size: 15px;
+    color: #343F4B;
+    margin-left: 4%;
+    font-weight: bold;
 `
 
 
 const ButtonCustom = styled.TouchableOpacity`
-background: #c0ccda;
-border-bottom-color: #c0ccda;
+background: #FFFFFF;
+border-bottom-width: 10px;
+border-bottom-color: #B8977E;
 flex-direction: row;
 width: 100%;
+height: 50px;
+margin-top: 2%;
 align-items: center;
 `
 interface IFlatItems {
@@ -82,8 +109,7 @@ const Item = ({item, onPress}:{
     onPress: (event: GestureResponderEvent) => void
     }) => ( 
             <ButtonCustom onPress={onPress}>
-                <ImageFlatLinks source={require('../../assets/images/acoesEducacionais.png')} />
-               
+                   
                 
                 
                 
@@ -96,7 +122,7 @@ const Item = ({item, onPress}:{
 
 
 
-export default function HomeItemsComponents (){
+export default function AcoeseduComponents (){
     const [selectedId, setSelectedId] = useState<number|null>(null);
 
  const renderItem = ({item}:{item:IFlatItems})=>{
@@ -121,10 +147,17 @@ export default function HomeItemsComponents (){
                             keyExtractor={(item) => item.id}
                             extraData={selectedId}
                              />
-                        </FlatListItems>
+                        </FlatListItems> 
 
+                        <IconsItems>
+                            
+                            <CardAcao />
+                            
+                        </IconsItems>
                         
-                </ContentItems>
+                        
+                            
+             </ContentItems>
                 <ImageBackground source={require("../../assets/images/background.png")}/>
                 </BackgroundContainer>
         </>

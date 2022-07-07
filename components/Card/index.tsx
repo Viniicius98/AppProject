@@ -10,7 +10,7 @@ const Title = styled.View`
     background: #b8977e;
     align-items: center;
     justify-content: center;
-    font-size: 20;
+    font-size: 20px;
 `
 const TitleText = styled.Text`
     font-weight: bold;
@@ -26,7 +26,7 @@ const CardBanner = styled.Image`
 const Avatar = styled.Image`
     width: 50px;
     height: 50px;
-    border-radius: 50;
+    border-radius: 50px;
     position: absolute;
     margin-top: -25px;
 `
