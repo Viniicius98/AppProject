@@ -15,7 +15,7 @@ const BackgroundContainer = styled.View`
     position: relative;
 `
 const ImageBackground = styled.Image`
-    height: 24%;
+    height: 22%;
     width: 100%;
     align-items: center;
     justify-content: center;
@@ -44,15 +44,15 @@ background-color: #1b2939;
 margin-left: 2%;
 `
 const FlatLinks = [
-    {id:"000", text: "PONTOS", icon:require('../../assets/images/meusPontos.png'), screen:"PointsScreen"},
-    {id:"001", text: "CURSOS", icon:require('../../assets/images/cursos.png'), screen:"CoursesScreen"},
-    {id:"002", text: "AÇÕES EDUCACIONAIS", icon:require('../../assets/images/acoesEducacionais.png'), screen:"EducationalActionsScreen"},
+    {id:"000", text: "RELATÓRIO DE PONTOS", icon:require('../../assets/images/meusPontos.png'), screen:"PointsScreen"},
+    {id:"001", text: "CURSOS EMERJ", icon:require('../../assets/images/cursos.png'), screen:"CoursesScreen"},
+    {id:"002", text: "INSERIR TÍTULOS", icon:require('../../assets/images/inserirTitulos.png'), screen:"EducationalActionsScreen"},
     {id:"003", text: "Virtual EMERJ", icon:require('../../assets/images/virtualEmerj.png') , screen:"VirtualEmerjScreen"},
     {id:"004", text: "ATENDIMENTO", icon: require('../../assets/images/atendimento.png'), screen:"AttendanceScreen"}
 ]
 
 const ImageFlatLinks = styled.Image`
-    width: 65px;
+    width: 70px;
     height: 80px;
     margin-left: 3%;
 `
@@ -60,8 +60,9 @@ const ImageFlatLinks = styled.Image`
 
 const TextFlatLinks = styled.Text`
     font-size: 12;
+    font-weight: bold;
     color: #333;
-    margin-left: 8%;
+    margin-left: 3%;
 `
 const LinkFlat = styled.Button`
     display: flex;
