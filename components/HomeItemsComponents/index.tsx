@@ -48,9 +48,9 @@ background-color: rgba(255,255,255,0.4);
 margin-left: 2%;
 `
 const FlatLinks = [
-    {id:"0", text: "PONTOS", icon:require('../../assets/images/meusPontos.png'), screen:"PointsScreen"},
-    {id:"1", text: "CURSOS", icon:require('../../assets/images/cursos.png'), screen:"CoursesScreen"},
-    {id:"2", text: "AÇÕES EDUCACIONAIS", icon:require('../../assets/images/acoesEducacionais.png'), screen:"EducationalActionsScreen"},
+    {id:"0", text: "RELATÓRIO DE PONTOS", icon:require('../../assets/images/meusPontos.png'), screen:"PointsScreen"},
+    {id:"1", text: "CURSOS EMERJ", icon:require('../../assets/images/cursos.png'), screen:"CoursesScreen"},
+    {id:"2", text: "INSERIR TÍTULOS", icon:require('../../assets/images/acoesEducacionais.png'), screen:"EducationalActionsScreen"},
     {id:"3", text: "Virtual EMERJ", icon:require('../../assets/images/virtualEmerj.png') , screen:"VirtualEmerjScreen"},
     {id:"4", text: "ATENDIMENTO", icon: require('../../assets/images/atendimento.png'), screen:"AttendanceScreen"}
 ]
