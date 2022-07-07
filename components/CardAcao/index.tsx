@@ -7,13 +7,14 @@ const Container = styled.View`
     background: #c0ccda;
     margin-left: -45%;
     width: 150%;
+    height: 70px;
     display: flex;
 
     
 `
 
 const Avatar = styled.Image`
-    width: 70px;
+    width: 60px;
     height: 70px;
     margin-left: 3%;
     max-width: 70%;
@@ -33,7 +34,7 @@ const TextUm = styled.Text`
 text-align: center;
 font-weight: bold;
 margin-left: -20%;
-margin-top: -19%;
+margin-top: -18%;
 `
 
 const TextDois = styled.Text`
@@ -52,7 +53,7 @@ export default function Card() {
             <Avatar source={require("../../assets/images/acoesEducacionais.png")} />
         </AvatarContainer>
     
-        <TextUm >AÇÕES</TextUm>
+        <TextUm>AÇÕES</TextUm>
         
         <TextDois>EDUCACIONAIS</TextDois>
         

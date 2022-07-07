@@ -79,9 +79,10 @@ const IdImage = styled.Image`
 `
 
 const TextFlatLinks = styled.Text`
-    font-size: 15;
+    font-size: 15px;
     color: #343F4B;
     margin-left: 4%;
+    font-weight: bold;
 `
 
 

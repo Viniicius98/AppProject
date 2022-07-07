@@ -21,7 +21,7 @@ const HeaderContainer = styled.View`
 const TextCustom = styled.Text`
     color: #fff;
     font-weight: bold;
-    font-size: 20;
+    font-size: 20px;
     margin-right: 5%;
     letter-spacing: -1px;
 `

@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import styled from 'styled-components/native';
 import { Link } from '@react-navigation/native';
-import { FlatList, GestureResponderEvent, Image } from 'react-native';
+import { FlatList, GestureResponderEvent, ImageProps } from 'react-native';
+import { Text, View } from '../Themed';
+
 
 import Card from '../../components/Card';
 import CardConsulta from '../../components/CardConsulta';
@@ -46,12 +48,13 @@ background-color: rgba(255,255,255,0.4);
 margin-left: 2%;
 `
 const FlatLinks = [
-    {id:"0", text: "PONTOS", icon: "meusPonto.png", screen:"PointsScreen"},
-    {id:"1", text: "CURSOS", icon: "cursos.png", screen:"CoursesScreen"},
-    {id:"2", text: "AÇÕES EDUCACIONAIS", icon: "acoesEducacionais.png", screen:"EducationalActionsScreen"},
-    {id:"3", text: "Virtual EMERJ", icon: "virtualEmerj.png", screen:"VirtualEmerjScreen"},
-    {id:"4", text: "ATENDIMENTO", icon: "atendimento.png", screen:"AttendanceScreen"}
+    {id:"0", text: "PONTOS", icon:require('../../assets/images/meusPontos.png'), screen:"PointsScreen"},
+    {id:"1", text: "CURSOS", icon:require('../../assets/images/cursos.png'), screen:"CoursesScreen"},
+    {id:"2", text: "AÇÕES EDUCACIONAIS", icon:require('../../assets/images/acoesEducacionais.png'), screen:"EducationalActionsScreen"},
+    {id:"3", text: "Virtual EMERJ", icon:require('../../assets/images/virtualEmerj.png') , screen:"VirtualEmerjScreen"},
+    {id:"4", text: "ATENDIMENTO", icon: require('../../assets/images/atendimento.png'), screen:"AttendanceScreen"}
 ]
+
 
 
 
@@ -66,7 +69,7 @@ const ImageFlatLinks = styled.Image`
 `
 
 const TextFlatLinks = styled.Text`
-    font-size: 12;
+    font-size: 12px;
     color: #333;
     margin-left: 8%;
 `
@@ -84,10 +87,18 @@ flex-direction: row;
 width: 100%;
 align-items: center;
 `
+
+const ImageIcon = styled.Image`
+width: 100px;
+    height: 100px;
+    margin-left: 70%;
+    max-width: 70%;
+    max-height: 30%;
+`
 interface IFlatItems {
     id: string;
     text: string;
-    icon: string;
+    icon: ImageProps["source"];
     screen: string;
 }
 
@@ -95,15 +106,16 @@ interface IFlatItems {
 const Item = ({item, onPress}:{
     item: IFlatItems,
     onPress: (event: GestureResponderEvent) => void
-    }) => ( 
+    }) => (  
             <ButtonCustom onPress={onPress}>
-                <ImageFlatLinks source={require('../../assets/images/meusPontos.png')} />
-               
                 
-                
-                
+                 {/*<ImageFlatLinks source={require('../../assets/images/meusPontos.png')} />*/}
+                 
+                <ImageFlatLinks  source={item.icon}
+
+                />
+
                 <TextFlatLinks>{item.text}</TextFlatLinks>
-                
             </ButtonCustom>
 
 
@@ -143,8 +155,9 @@ export default function HomeItemsComponents (){
                             <CardConsulta />
                             <CardVerificar />
                         </IconsItems>
-                        
                 </ContentItems>
+                <ImageIcon source={require('../../assets/images/logoapp.png')}/>
+
                 <ImageBackground source={require('../../assets/images/background.jpg')}/>
                 </BackgroundContainer>
         </>
