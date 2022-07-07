@@ -11,6 +11,7 @@ import CardVerificar from '../../components/CardVerificar';
 
 
 
+
 const BackgroundContainer = styled.View`
     height: 100%;
     width: 100%;
@@ -19,7 +20,7 @@ const BackgroundContainer = styled.View`
 `
 
 const ImageBackground = styled.Image`
-    height: 24%;
+    height: 22%;
     width: 100%;
     align-items: center;
     justify-content: center;
@@ -48,19 +49,15 @@ background-color: rgba(255,255,255,0.4);
 margin-left: 2%;
 `
 const FlatLinks = [
-    {id:"0", text: "PONTOS", icon:require('../../assets/images/meusPontos.png'), screen:"PointsScreen"},
-    {id:"1", text: "CURSOS", icon:require('../../assets/images/cursos.png'), screen:"CoursesScreen"},
-    {id:"2", text: "AÇÕES EDUCACIONAIS", icon:require('../../assets/images/acoesEducacionais.png'), screen:"EducationalActionsScreen"},
-    {id:"3", text: "Virtual EMERJ", icon:require('../../assets/images/virtualEmerj.png') , screen:"VirtualEmerjScreen"},
-    {id:"4", text: "ATENDIMENTO", icon: require('../../assets/images/atendimento.png'), screen:"AttendanceScreen"}
+    {id:"000", text: "RELATÓRIO DE PONTOS", icon:require('../../assets/images/meusPontos.png'), screen:"PointsScreen"},
+    {id:"001", text: "CURSOS EMERJ", icon:require('../../assets/images/cursos.png'), screen:"CoursesScreen"},
+    {id:"002", text: "INSERIR TÍTULOS", icon:require('../../assets/images/inserirTitulos.png'), screen:"EducationalActionsScreen"},
+    {id:"003", text: "Virtual EMERJ", icon:require('../../assets/images/virtualEmerj.png') , screen:"VirtualEmerjScreen"},
+    {id:"004", text: "ATENDIMENTO", icon: require('../../assets/images/atendimento.png'), screen:"AttendanceScreen"}
 ]
 
-
-
-
-
 const ImageFlatLinks = styled.Image`
-    width: 65px;
+    width: 70px;
     height: 80px;
     margin-left: 3%;
     max-width: 60%;
@@ -70,8 +67,9 @@ const ImageFlatLinks = styled.Image`
 
 const TextFlatLinks = styled.Text`
     font-size: 12px;
+    font-weight: bold;
     color: #333;
-    margin-left: 8%;
+    margin-left: 3%;
 `
 const LinkFlat = styled.Button`
     display: flex;
@@ -143,10 +141,10 @@ export default function HomeItemsComponents (){
                        
                         <FlatListItems>
                             <FlatList
-                            data={FlatLinks}
-                            renderItem={renderItem}
-                            keyExtractor={(item) => item.id}
-                            extraData={selectedId}
+                                data={FlatLinks}
+                                renderItem={(renderItem)}
+                                keyExtractor={item => item.id}
+                                extraData={selectedId}
                              />
                         </FlatListItems>
 

@@ -54,8 +54,6 @@ const ContainerTexte = styled.Text`
 
 `
 
-
-
 const Input = styled.TextInput`
   height: 50px;
   width: 300px;
@@ -181,15 +179,16 @@ export default function LoginScreen({ navigation }: RootTabScreenProps<'Login'>)
       secureTextEntry
       />
       
-      <SubmitButton title="Enviar" color="#B8977E"  onPress={handleSignInPress}/>
-      <ContainerTexte>Esqueceu sua senha ? </ContainerTexte>
+        <SubmitButton title="Enviar" color="#B8977E"  onPress={handleSignInPress}/>
+        <ContainerTexte>Esqueceu sua senha ? </ContainerTexte>
       
-      <ContainerText>{error}</ContainerText>
-      <ContainerText>{success}</ContainerText>
+        <ContainerText>{error}</ContainerText>
+        <ContainerText>{success} </ContainerText>
+
       
       </BackgroundContainer>
     </Container>
 
     
-  );
+   );
 }
