@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components/native';
 import { Link } from '@react-navigation/native';
-import { FlatList, GestureResponderEvent, Image } from 'react-native';
+import { FlatList, GestureResponderEvent, ImageProps } from 'react-native';
 import { Text, View } from '../Themed';
 import Card from '../Card';
 import CardConsulta from '../CardConsulta';
@@ -20,7 +20,7 @@ const ImageBackground = styled.Image`
     align-items: center;
     justify-content: center;
     opacity: 0.1;
-    //position: absolute;
+    position: absolute;
     z-index: 0;
 `
 
@@ -44,11 +44,11 @@ background-color: #1b2939;
 margin-left: 2%;
 `
 const FlatLinks = [
-    {id:"000", text: "PONTOS", icon: "meusPontos.png", screen:"PointsScreen"},
-    {id:"001", text: "CURSOS", icon: "cursos.png", screen:"CoursesScreen"},
-    {id:"002", text: "AÇÕES EDUCACIONAIS", icon: "acoesEducacionais.png", screen:"EducationalActionsScreen"},
-    {id:"003", text: "Virtual EMERJ", icon: "virtualEmerj.png", screen:"VirtualEmerjScreen"},
-    {id:"004", text: "ATENDIMENTO", icon: "atendimento.png", screen:"AttendanceScreen"}
+    {id:"000", text: "PONTOS", icon:require('../../assets/images/meusPontos.png'), screen:"PointsScreen"},
+    {id:"001", text: "CURSOS", icon:require('../../assets/images/cursos.png'), screen:"CoursesScreen"},
+    {id:"002", text: "AÇÕES EDUCACIONAIS", icon:require('../../assets/images/acoesEducacionais.png'), screen:"EducationalActionsScreen"},
+    {id:"003", text: "Virtual EMERJ", icon:require('../../assets/images/virtualEmerj.png') , screen:"VirtualEmerjScreen"},
+    {id:"004", text: "ATENDIMENTO", icon: require('../../assets/images/atendimento.png'), screen:"AttendanceScreen"}
 ]
 
 const ImageFlatLinks = styled.Image`
@@ -81,7 +81,7 @@ align-items: center;
 interface IFlatItems {
     id: string;
     text: string;
-    icon: string;
+    icon: ImageProps["source"];
     screen: string;
 }
 
@@ -94,7 +94,9 @@ const Item = ({item, onPress}:{
                 
                  {/*<ImageFlatLinks source={require('../../assets/images/meusPontos.png')} />*/}
                  
-                <ImageFlatLinks source={require('../../assets/images/' + String(item.icon))}/>
+                <ImageFlatLinks  source={item.icon}
+
+                />
 
                 <TextFlatLinks>{item.text}</TextFlatLinks>
             </ButtonCustom>
