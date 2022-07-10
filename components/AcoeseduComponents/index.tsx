@@ -17,6 +17,7 @@ const BackgroundContainer = styled.View`
     width: 100%;
     background: #1e2d3eee;
     position: relative;
+   
 `
 
 const ImageBackground = styled.Image`
@@ -24,9 +25,9 @@ const ImageBackground = styled.Image`
     width: 100%;
     align-items: center;
     justify-content: center;
-    opacity: 0.1;
     position: absolute;
     z-index: 0;
+    opacity: 0.3;
 `
 
 const ContentItems = styled.View`
@@ -46,15 +47,16 @@ height: 450px;
 const IconsItems = styled.View`
 width: 100%;
 height: 575px;
-margin-left: -60%;
+margin-left: -68%;
 `
 
 
 const FlatLinks = [
     
     
-    {id:"3", text: "DIPLOMAS E TÍTULOS", icon: "virtualEmerj.png", screen:"VirtualEmerjScreen"},
-    {id:"4", text: "ATUAÇÃO NA DOCÊNCIA", icon: "atendimento.png", screen:"AttendanceScreen"}
+    {id:"3", text: "AÇÕES EDUCACIONAIS", icon: "virtualEmerj.png", screen:"VirtualEmerjScreen"},
+    {id:"4", text: "DIPLOMAS E TÍTULOS", icon: "atendimento.png", screen:"AttendanceScreen"},
+    {id:"5", text: "ATUAÇÃO NA DOCÊNCIA", icon: "atendimento.png", screen:"AttendanceScreen"}
 ]
 
 
@@ -96,6 +98,8 @@ height: 50px;
 margin-top: 2%;
 align-items: center;
 `
+
+
 interface IFlatItems {
     id: string;
     text: string;
@@ -138,8 +142,9 @@ export default function AcoeseduComponents (){
     return (
         <>
             <BackgroundContainer>
+            <ImageBackground source={require("../../assets/images/background.png")}/>
                 <ContentItems>
-                       
+                
                         <FlatListItems>
                             <FlatList
                             data={FlatLinks}
@@ -158,7 +163,8 @@ export default function AcoeseduComponents (){
                         
                             
              </ContentItems>
-                <ImageBackground source={require("../../assets/images/background.png")}/>
+            
+                
                 </BackgroundContainer>
         </>
     )

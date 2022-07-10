@@ -25,13 +25,32 @@ const TextCustom = styled.Text`
     margin-right: 5%;
     letter-spacing: -1px;
 `
+
+const ImageIcon = styled.Image`
+    width: 100px;
+    height: 100px;
+    margin-left: 70%;
+
+    position: absolute;
+    margin-top: 100%;
+    margin-bottom: 10%;
+  
+`
+const IconsItems = styled.View`
+width: 100%;
+height: 820%;
+margin-left: -60%;
+`
 export default function Header(props:any){
 
     return (
         <HeaderContainer>
             <ImageLogo />
+            <IconsItems>
+
+            <ImageIcon source={require('../../assets/images/logoapp.png')}/>
+            </IconsItems>
             
-                <TextCustom>Aplicativo para Magistrados</TextCustom>
             
         </HeaderContainer>
     )

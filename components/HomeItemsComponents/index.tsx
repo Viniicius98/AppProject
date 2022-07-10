@@ -23,7 +23,7 @@ const ImageBackground = styled.Image`
     width: 100%;
     align-items: center;
     justify-content: center;
-    opacity: 0.1;
+    opacity: 0.3;
     position: absolute;
     z-index: 0;
 `
@@ -88,13 +88,17 @@ width: 100%;
 align-items: center;
 `
 
-const ImageIcon = styled.Image`
-width: 100px;
-    height: 100px;
-    margin-left: 70%;
-    max-width: 70%;
-    max-height: 30%;
+
+const Menu = styled.Image`
+    width: 20px;
+    height: 20px;
+    border-radius: 50px;
+    margin-left: 0%;
+    position: absolute;
+    margin-top: 110px;
+    background-color: white;
 `
+
 interface IFlatItems {
     id: string;
     text: string;
@@ -139,8 +143,12 @@ export default function HomeItemsComponents (){
     return (
         <>
             <BackgroundContainer>
+            <ImageBackground source={require('../../assets/images/background.png')}/>
+
+             <Menu source={require("../../assets/images/menu.png")} />
+           
                 <ContentItems>
-                       
+                
                         <FlatListItems>
                             <FlatList
                             data={FlatLinks}
@@ -149,16 +157,21 @@ export default function HomeItemsComponents (){
                             extraData={selectedId}
                              />
                         </FlatListItems>
-
+                        
+                        
+                        
+                        
+                        
                         <IconsItems>
                             <Card />
                             <CardConsulta />
                             <CardVerificar />
                         </IconsItems>
+                        
                 </ContentItems>
-                <ImageIcon source={require('../../assets/images/logoapp.png')}/>
+                
 
-                <ImageBackground source={require('../../assets/images/background.jpg')}/>
+                
                 </BackgroundContainer>
         </>
     )
