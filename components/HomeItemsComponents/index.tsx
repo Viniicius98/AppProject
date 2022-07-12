@@ -56,9 +56,6 @@ const FlatLinks = [
 ]
 
 
-
-
-
 const ImageFlatLinks = styled.Image`
     width: 65px;
     height: 80px;

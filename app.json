@@ -27,7 +27,7 @@
       "package": "br.com.emerj",
       "versionCode": 1,
       "adaptiveIcon": {
-        "foregroundImage": "./assets/images/ic_launcher_round.png",
+        "foregroundImage": "./assets/images/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       }
     },
