@@ -20,6 +20,8 @@ import NotFoundScreen from '../screens/NotFoundScreen';
 import SettingsScreen from '../screens/SettingsScreen';
 import UserScreen from '../screens/UserScreen';
 
+
+
 //components
 import Header from '../components/Header';
 //constants
@@ -31,6 +33,7 @@ import LinkingConfiguration from './LinkingConfiguration';
 
 
 import { RootStackParamList, RootTabParamList, RootTabScreenProps } from '../types';
+import AcoeseduComponents from '../components/AcoeseduComponents';
 
 
 
@@ -56,12 +59,14 @@ function RootNavigator() {
     <Stack.Navigator>
       <Stack.Screen name="Root" component={BottomTabNavigator} options={{ headerShown: false }} />
       <Stack.Screen name="NotFound" component={NotFoundScreen} options={{ title: 'Oops!' }} />
+      
       <Stack.Group screenOptions={{ presentation: 'modal' }}>
         <Stack.Screen name="Modal" component={ModalScreen} />
       </Stack.Group>
       <Stack.Group screenOptions={{ presentation: 'modal' }}>
         <Stack.Screen name="Settings" component={SettingsScreen} />
       </Stack.Group>
+      
     </Stack.Navigator>
   );
 }
@@ -101,7 +106,7 @@ function BottomTabNavigator() {
           tabBarIcon: ({ color }) => <TabBarIcon name="home" color={color} />,
           headerRight: () => (
             <Pressable
-              onPress={() => navigation.navigate('Modal')}
+              onPress={() => navigation.navigate('Chat')}
               style={({ pressed }) => ({
                 opacity: pressed ? 0.5 : 1,
               })}>

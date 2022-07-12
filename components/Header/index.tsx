@@ -4,6 +4,7 @@ import { Image } from 'react-native';
 import styled from 'styled-components/native';
 import { Text, View } from '../Themed';
 import ImageLogo from './ImageLogo';
+import ImageIcon from './Applogo'
 
 const HeaderContainer = styled.View`
     width: 100%;
@@ -25,13 +26,16 @@ const TextCustom = styled.Text`
     margin-right: 5%;
     letter-spacing: -1px;
 `
+
 export default function Header(props:any){
 
     return (
         <HeaderContainer>
             <ImageLogo />
+
+            <ImageIcon />
             
-                <TextCustom>Aplicativo para Magistrados</TextCustom>
+                {/*<TextCustom>Aplicativo para Magistrados</TextCustom>*/}
             
         </HeaderContainer>
     )

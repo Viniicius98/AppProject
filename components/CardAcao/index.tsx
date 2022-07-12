@@ -16,7 +16,8 @@ const Container = styled.View`
 const Avatar = styled.Image`
     width: 60px;
     height: 70px;
-    margin-left: 3%;
+    margin-right: 30%;
+    margin-top: 4px; 
     max-width: 70%;
     max-height: 90%;
 
@@ -31,18 +32,23 @@ const AvatarContainer = styled.View`
   
 `
 const TextUm = styled.Text`
-text-align: center;
-font-weight: bold;
-margin-left: -20%;
-margin-top: -18%;
+    position: absolute;
+    text-align: center;
+    font-weight: bold;
+    margin-top:5%;
+    margin-bottom:5%;
+    margin-left:15%;
+
+
+
 `
 
-const TextDois = styled.Text`
-text-align: center;
-font-weight: bold;
-margin-left: -12%;
-margin-top: 0%;
-`
+//*const TextDois = styled.Text`
+//*text-align: center;
+//*font-weight: bold;
+//*margin-left: -12%;
+//*margin-top: 0%;`
+
 export default function Card() {
   return (
     <Container>
@@ -50,12 +56,12 @@ export default function Card() {
         
         
         <AvatarContainer>
-            <Avatar source={require("../../assets/images/acoesEducacionais.png")} />
+            <Avatar source={require("../../assets/images/inserirTitulos.png")} />
         </AvatarContainer>
     
-        <TextUm>AÇÕES</TextUm>
+        <TextUm>INSERIR TÍTULOS</TextUm>
         
-        <TextDois>EDUCACIONAIS</TextDois>
+     
         
     </Container>
   )

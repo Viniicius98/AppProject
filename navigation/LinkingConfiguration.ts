@@ -27,7 +27,7 @@ const linking: LinkingOptions<RootStackParamList> = {
           },
           Chat: {
             screens: {
-              UserScreen: "Chat",
+              ChatScreen: "Chat",
             },
             
           },
@@ -43,6 +43,7 @@ const linking: LinkingOptions<RootStackParamList> = {
       Modal: "modal",
       Settings: "settings",
       NotFound: "*",
+      
     },
   },
 };

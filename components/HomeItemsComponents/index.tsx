@@ -1,13 +1,18 @@
 import React, { useState } from 'react';
 import styled from 'styled-components/native';
-import { Link } from '@react-navigation/native';
 import { FlatList, GestureResponderEvent, ImageProps } from 'react-native';
-import { Text, View } from '../Themed';
-
-
 import Card from '../../components/Card';
 import CardConsulta from '../../components/CardConsulta';
 import CardVerificar from '../../components/CardVerificar';
+import { ScreenProps } from 'react-native-screens';
+import LoginScreen from '../../screens/LoginScreen';
+import { Link, useLinkProps, useNavigation } from '@react-navigation/native';
+import Navigation from '../../navigation';
+import { RootStackParamList, RootTabParamList, RootTabScreenProps } from '../../types';
+
+
+
+
 
 
 
@@ -49,11 +54,35 @@ background-color: rgba(255,255,255,0.4);
 margin-left: 2%;
 `
 const FlatLinks = [
-    {id:"000", text: "RELATÓRIO DE PONTOS", icon:require('../../assets/images/meusPontos.png'), screen:"PointsScreen"},
-    {id:"001", text: "CURSOS EMERJ", icon:require('../../assets/images/cursos.png'), screen:"CoursesScreen"},
-    {id:"002", text: "INSERIR TÍTULOS", icon:require('../../assets/images/inserirTitulos.png'), screen:"EducationalActionsScreen"},
-    {id:"003", text: "Virtual EMERJ", icon:require('../../assets/images/virtualEmerj.png') , screen:"VirtualEmerjScreen"},
-    {id:"004", text: "ATENDIMENTO", icon: require('../../assets/images/atendimento.png'), screen:"AttendanceScreen"}
+    {   id:"00",
+        text: "RELATÓRIO DE PONTOS",
+        icon:require('../../assets/images/meusPontos.png'),
+        screen: ('/Chat'),
+
+    },
+    {   id:"01", 
+        text: "CURSOS EMERJ", 
+        icon:require('../../assets/images/cursos.png'),
+        screen: ('/Chat'),
+
+    },
+    {   id:"02", 
+        text: "INSERIR ATIVIDADES",
+        icon:require('../../assets/images/inserirTitulos.png'),
+        screen: ('/Chat'),
+    },
+    {   id:"03",
+        text: "Virtual EMERJ",
+        icon:require('../../assets/images/virtualEmerj.png') ,
+        screen: ('/Chat'),
+    },
+    {
+        id:"04", 
+        text: "ATENDIMENTO", 
+        icon: require('../../assets/images/atendimento.png'),
+        screen: ('./Modal'),
+
+    }
 ]
 
 const ImageFlatLinks = styled.Image`
@@ -86,19 +115,19 @@ width: 100%;
 align-items: center;
 `
 
-const ImageIcon = styled.Image`
+/*const ImageIcon = styled.Image`
 width: 100px;
     height: 100px;
     margin-left: 70%;
     max-width: 70%;
     max-height: 30%;
-`
+`*/
 interface IFlatItems {
     id: string;
     text: string;
     icon: ImageProps["source"];
     screen: string;
-}
+};
 
 
 const Item = ({item, onPress}:{
@@ -107,10 +136,12 @@ const Item = ({item, onPress}:{
     }) => (  
             <ButtonCustom onPress={onPress}>
                 
-                 {/*<ImageFlatLinks source={require('../../assets/images/meusPontos.png')} />*/}
-                 
-                <ImageFlatLinks  source={item.icon}
 
+              <Link to={{screen:'Chat'}}>
+                
+              </Link>
+                
+              <ImageFlatLinks  source={item.icon}
                 />
 
                 <TextFlatLinks>{item.text}</TextFlatLinks>
@@ -154,7 +185,7 @@ export default function HomeItemsComponents (){
                             <CardVerificar />
                         </IconsItems>
                 </ContentItems>
-                <ImageIcon source={require('../../assets/images/logoapp.png')}/>
+                {/*<ImageIcon source={require('../../assets/images/logoapp.png')}/>*/}
 
                 <ImageBackground source={require('../../assets/images/background.jpg')}/>
                 </BackgroundContainer>

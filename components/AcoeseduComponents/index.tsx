@@ -4,14 +4,6 @@ import { Link } from '@react-navigation/native';
 import { FlatList, GestureResponderEvent, Image } from 'react-native';
 import CardAcao from '../CardAcao';
 
-
-
-
-
-
-
-
-
 const BackgroundContainer = styled.View`
     height: 100%;
     width: 100%;
@@ -20,7 +12,7 @@ const BackgroundContainer = styled.View`
 `
 
 const ImageBackground = styled.Image`
-    height: 24%;
+    height: 23%;
     width: 100%;
     align-items: center;
     justify-content: center;
@@ -52,9 +44,23 @@ margin-left: -60%;
 
 const FlatLinks = [
     
+    {   
+        id:"0", 
+        text: "AÇÕES EDUCACIONAIS", 
+        icon: "atendimento.png", 
+        screen:"AttendanceScreen"},
+    {
+
+        id:"1", 
+        text: "DIPLOMAS E TÍTULOS",
+        icon: "virtualEmerj.png", 
+        screen:"VirtualEmerjScreen"},
+    {   
+        id:"2", 
+        text: "ATUAÇÃO NA DOCÊNCIA", 
+        icon: "atendimento.png", 
+        screen:"AttendanceScreen"},
     
-    {id:"3", text: "DIPLOMAS E TÍTULOS", icon: "virtualEmerj.png", screen:"VirtualEmerjScreen"},
-    {id:"4", text: "ATUAÇÃO NA DOCÊNCIA", icon: "atendimento.png", screen:"AttendanceScreen"}
 ]
 
 
@@ -87,14 +93,23 @@ const TextFlatLinks = styled.Text`
 
 
 const ButtonCustom = styled.TouchableOpacity`
-background: #FFFFFF;
-border-bottom-width: 10px;
-border-bottom-color: #B8977E;
-flex-direction: row;
-width: 100%;
-height: 50px;
-margin-top: 2%;
-align-items: center;
+    background: #FFFFFF;
+    border-bottom-width: 10px;
+    border-bottom-color: #B8977E;
+    flex-direction: row;
+    width: 95%;
+    height: 50px;
+    margin-top: 2%;
+    margin-left: 2%;
+    align-items: center;
+    `
+const ImageIcon = styled.Image`
+    width: 100px;
+    height: 100px;
+    margin-left: 70%;
+    bottom:50px;
+    max-width: 70%;
+    max-height: 30%;
 `
 interface IFlatItems {
     id: string;
@@ -110,9 +125,8 @@ const Item = ({item, onPress}:{
     }) => ( 
             <ButtonCustom onPress={onPress}>
                    
-                
-                
-                
+
+                   
                 <TextFlatLinks>{item.text}</TextFlatLinks>
                 
             </ButtonCustom>
@@ -158,6 +172,7 @@ export default function AcoeseduComponents (){
                         
                             
              </ContentItems>
+                
                 <ImageBackground source={require("../../assets/images/background.png")}/>
                 </BackgroundContainer>
         </>
