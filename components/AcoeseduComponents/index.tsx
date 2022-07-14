@@ -158,7 +158,7 @@ export default function AcoeseduComponents (){
                             
                             <CardAcao />
                             
-                        </IconsItems>
+                         </IconsItems>
                         
                         
                             

@@ -6,6 +6,7 @@ import { RootTabScreenProps } from '../types';
 import AcoeseduComponents from '../components/AcoeseduComponents';
 import { useContext, useEffect } from 'react';
 import { InputValueContext } from '../context/InputValueContext';
+import Accordion from '../components/Accordion';
 
 
 
@@ -39,7 +40,9 @@ export default function Chat({ navigation }: RootTabScreenProps<'Chat'>) {
 
 return (
 	<Container>
-		<AcoeseduComponents />
+		
+    <Accordion />
+    
     
 	</Container>
 	)

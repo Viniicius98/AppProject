@@ -22,9 +22,7 @@ const ImageBackground = styled.Image`
     
     
     
-    
-    
-    
+        
 `
 
 
