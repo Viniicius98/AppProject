@@ -3,12 +3,7 @@ import styled from 'styled-components/native';
 import { Link } from '@react-navigation/native';
 import { FlatList, GestureResponderEvent, Image } from 'react-native';
 import CardAcao from '../CardAcao';
-
-
-
-
-
-
+import Accordion from '../Accordion/Accordion';
 
 
 
@@ -143,29 +138,19 @@ export default function AcoeseduComponents (){
         <>
             <BackgroundContainer>
             <ImageBackground source={require("../../assets/images/background.png")}/>
-                <ContentItems>
-                
+                <ContentItems>    
+
                         <FlatListItems>
-                            <FlatList
-                            data={FlatLinks}
-                            renderItem={renderItem}
-                            keyExtractor={(item) => item.id}
-                            extraData={selectedId}
-                             />
+                            <Accordion />
                         </FlatListItems> 
 
-                        <IconsItems>
-                            
-                            <CardAcao />
-                            
-                         </IconsItems>
-                        
-                        
-                            
-             </ContentItems>
-            
+                        <IconsItems>                            
+                            <CardAcao />                        
+                        </IconsItems>  
+
+                </ContentItems>            
                 
-                </BackgroundContainer>
+            </BackgroundContainer>
         </>
     )
 }

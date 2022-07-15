@@ -17,11 +17,11 @@ const styles = StyleSheet.create({
   name: {
     fontSize: 16
   },
-  pointsContainer: {
+  pointsContainer: {/*
     borderRadius: 8,
     backgroundColor: "#44c282",
     padding: 8
-  },
+*/},
   points: {
     color: "white",
     fontWeight: "bold"
@@ -30,7 +30,7 @@ const styles = StyleSheet.create({
 
 export interface ListItem {
   name: string;
-  points: string;
+  
 }
 
 interface ListItemProps {
@@ -52,7 +52,7 @@ export default ({ item, isLast }: ListItemProps) => {
     >
       <Text style={styles.name}>{item.name}</Text>
       <View style={styles.pointsContainer}>
-        <Text style={styles.points}>{item.points}</Text>
+        {/*<Text style={styles.points}>{item.points}</Text>*/}
       </View>
     </View>
   );
