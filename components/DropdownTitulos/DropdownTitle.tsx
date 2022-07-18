@@ -1,18 +1,18 @@
 import React from "react";
 import { StyleSheet, Text, View } from "react-native";
-
-import List, { List as ListModel } from "./List";
-
+import List, { List as ListModel } from "./ListDiplomasTitles";
 const list: ListModel = {
   name: "Total Points",
   items: [
-    { name: "CURSOS OFICIAIS REALIZADOS" },
-    { name: "CURSO CREDENCIADOS PELO ENFAM" },
+    { name: "DIPLOMA DE ESPECIALIZAÇÃO" },
+    { name: "DIPLOMA DE ESPECIALIZAÇÃO ENFAM " },
+    { name: "DIPLOMA DE MESTRADO" },
+    { name: "DIPLOMA DE MESTRADO PROFISSIONAL" },
+    { name: "DIPLOMA DE DOUTORADO" },
+    { name: "DIPLOMA DE PÓS DOUTORADO" },
    
   ]
 };
-
-
 
 
 
@@ -33,8 +33,7 @@ export default () => {
     <View style={styles.container}>
       {/*<Text style={styles.title}>Markets</Text>*/}
       <List {...{ list }} />
-      <List {...{ list }} />
-      <List {...{ list }} />
+      
       
     </View>
   );

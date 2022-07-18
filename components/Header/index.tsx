@@ -4,7 +4,7 @@ import { Image } from 'react-native';
 import styled from 'styled-components/native';
 import { Text, View } from '../Themed';
 import ImageLogo from './ImageLogo';
-import ImageIcon from './Applogo'
+
 
 const HeaderContainer = styled.View`
     width: 100%;

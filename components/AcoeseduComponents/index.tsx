@@ -3,7 +3,8 @@ import styled from 'styled-components/native';
 import { Link } from '@react-navigation/native';
 import { FlatList, GestureResponderEvent, Image } from 'react-native';
 import CardAcao from '../CardAcao';
-import Accordion from '../Accordion/Accordion';
+import Accordion from '../DropdownAcoes/DropdownAcoes';
+import Accordion1 from '../DropdownTitulos/DropdownTitle';
 
 
 
@@ -26,16 +27,16 @@ const ImageBackground = styled.Image`
 `
 
 const ContentItems = styled.View`
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  flex-direction: row;
-  align-items: flex-end;
-`;
+position: absolute;
+width: 100%;
+height: 100%;
+flex-direction: row;
+align-items: flex-end;
+`
 const FlatListItems = styled.View`
-  width: 100%;
-  height: 450px;
-`;
+width: 100%;
+height: 450px;
+`
 
 const IconsItems = styled.View`
 width: 100%;
@@ -55,27 +56,31 @@ const FlatLinks = [
 
 
 const ImageFlatLinks = styled.Image`
-  width: 50px;
-  height: 80px;
-  margin-left: 25%;
-  max-width: 20%;
-  max-height: 80%;
-`;
+    width: 50px;
+    height: 80px;
+    margin-left: 25%;
+    max-width: 20%;
+    max-height: 80%;
+    
+`
+
 
 const IdImage = styled.Image`
-  width: 50px;
-  height: 80px;
-  margin-left: 25%;
-  max-width: 20%;
-  max-height: 80%;
-`;
+    width: 50px;
+    height: 80px;
+    margin-left: 25%;
+    max-width: 20%;
+    max-height: 80%;
+    
+`
 
 const TextFlatLinks = styled.Text`
-  font-size: 15px;
-  color: #343f4b;
-  margin-left: 4%;
-  font-weight: bold;
-`;
+    font-size: 15px;
+    color: #343F4B;
+    margin-left: 4%;
+    font-weight: bold;
+`
+
 
 const ButtonCustom = styled.TouchableOpacity`
 background: #FFFFFF;
@@ -90,51 +95,39 @@ align-items: center;
 
 
 interface IFlatItems {
-  id: string;
-  text: string;
-  icon: string;
-  screen: string;
+    id: string;
+    text: string;
+    icon: string;
+    screen: string;
 }
 
-const Item = ({
-  item,
-  onPress,
-}: {
-  item: IFlatItems;
-  onPress: (event: GestureResponderEvent) => void;
-}) => (
-  <ButtonCustom onPress={onPress}>
-    <TextFlatLinks>{item.text}</TextFlatLinks>
-  </ButtonCustom>
+
+const Item = ({item, onPress}:{
+    item: IFlatItems,
+    onPress: (event: GestureResponderEvent) => void
+    }) => ( 
+            <ButtonCustom onPress={onPress}>
+                   
+                
+                
+                
+                <TextFlatLinks>{item.text}</TextFlatLinks>
+                
+            </ButtonCustom>
+
+
 );
 
-export default function AcoeseduComponents() {
-  const [selectedId, setSelectedId] = useState<number | null>(null);
 
-  const renderItem = ({ item }: { item: IFlatItems }) => {
-    return <Item item={item} onPress={() => setSelectedId(Number(item.id))} />;
-  };
 
-  return (
-    <>
-      <BackgroundContainer>
-        <ContentItems>
-          <FlatListItems>
-            <FlatList
-              data={FlatLinks}
-              renderItem={renderItem}
-              keyExtractor={(item) => item.id}
-              extraData={selectedId}
-            />
-          </FlatListItems>
+export default function AcoeseduComponents (){
+    const [selectedId, setSelectedId] = useState<number|null>(null);
 
-          <IconsItems>
-            <CardAcao />
-          </IconsItems>
-        </ContentItems>
-
-        <ImageBackground
-          source={require("../../assets/images/background.png")}
+ const renderItem = ({item}:{item:IFlatItems})=>{
+     return(
+         <Item
+         item={item}
+         onPress={() => setSelectedId(Number(item.id))}
         />
      )
      
@@ -148,6 +141,7 @@ export default function AcoeseduComponents() {
 
                         <FlatListItems>
                             <Accordion />
+                            <Accordion1 />
                         </FlatListItems> 
 
                         <IconsItems>                            

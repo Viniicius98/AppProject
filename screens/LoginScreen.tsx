@@ -13,13 +13,7 @@ const BackgroundContainer = styled.View`
     
 `
 
-const ImageBackground = styled.Image`
-   
-    
-    
-    
-        
-`
+
 
 
 
