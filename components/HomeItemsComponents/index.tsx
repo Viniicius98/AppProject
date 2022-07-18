@@ -22,14 +22,14 @@ const BackgroundContainer = styled.View`
 `;
 
 const ImageBackground = styled.Image`
-  height: 22%;
-  width: 100%;
-  align-items: center;
-  justify-content: center;
-  opacity: 0.1;
-  position: absolute;
-  z-index: 0;
-`;
+    height: 24%;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    opacity: 0.3;
+    position: absolute;
+    z-index: 0;
+`
 
 const ContentItems = styled.View`
   position: absolute;
@@ -51,37 +51,13 @@ const IconsItems = styled.View`
   margin-left: 2%;
 `;
 const FlatLinks = [
-  {
-    id: "00",
-    text: "RELATÓRIO DE PONTOS",
-    icon: require("../../assets/images/meusPontos.png"),
-    screen: "/Chat",
-  },
-  {
-    id: "01",
-    text: "CURSOS EMERJ",
-    icon: require("../../assets/images/cursos.png"),
-    screen: "/Chat",
-  },
-  {
-    id: "02",
-    text: "INSERIR ATIVIDADES",
-    icon: require("../../assets/images/inserirTitulos.png"),
-    screen: "/Chat",
-  },
-  {
-    id: "03",
-    text: "Virtual EMERJ",
-    icon: require("../../assets/images/virtualEmerj.png"),
-    screen: "/Chat",
-  },
-  {
-    id: "04",
-    text: "ATENDIMENTO",
-    icon: require("../../assets/images/atendimento.png"),
-    screen: "./Modal",
-  },
-];
+    {id:"0", text: "RELATÓRIO DE PONTOS", icon:require('../../assets/images/meusPontos.png'), screen:"PointsScreen"},
+    {id:"1", text: "CURSOS EMERJ", icon:require('../../assets/images/cursos.png'), screen:"CoursesScreen"},
+    {id:"2", text: "INSERIR TÍTULOS", icon:require('../../assets/images/acoesEducacionais.png'), screen:"EducationalActionsScreen"},
+    {id:"3", text: "Virtual EMERJ", icon:require('../../assets/images/virtualEmerj.png') , screen:"VirtualEmerjScreen"},
+    {id:"4", text: "ATENDIMENTO", icon: require('../../assets/images/atendimento.png'), screen:"AttendanceScreen"}
+]
+
 
 const ImageFlatLinks = styled.Image`
   width: 70px;
@@ -111,13 +87,17 @@ const ButtonCustom = styled.TouchableOpacity`
   align-items: center;
 `;
 
-/*const ImageIcon = styled.Image`
-width: 100px;
-    height: 100px;
-    margin-left: 70%;
-    max-width: 70%;
-    max-height: 30%;
-`*/
+
+const Menu = styled.Image`
+    width: 20px;
+    height: 20px;
+    border-radius: 50px;
+    margin-left: 0%;
+    position: absolute;
+    margin-top: 110px;
+    background-color: white;
+`
+
 interface IFlatItems {
   id: string;
   text: string;
@@ -170,9 +150,45 @@ export default function HomeItemsComponents() {
         <ImageBackground
           source={require("../../assets/images/background.jpg")}
         />
-      </BackgroundContainer>
-    </>
-  );
+     )
+     
+ }
+    
+    return (
+        <>
+            <BackgroundContainer>
+            <ImageBackground source={require('../../assets/images/background.png')}/>
+
+             <Menu source={require("../../assets/images/menu.png")} />
+           
+                <ContentItems>
+                
+                        <FlatListItems>
+                            <FlatList
+                            data={FlatLinks}
+                            renderItem={renderItem}
+                            keyExtractor={(item) => item.id}
+                            extraData={selectedId}
+                             />
+                        </FlatListItems>
+                        
+                        
+                        
+                        
+                        
+                        <IconsItems>
+                            <Card />
+                            <CardConsulta />
+                            <CardVerificar />
+                        </IconsItems>
+                        
+                </ContentItems>
+                
+
+                
+                </BackgroundContainer>
+        </>
+    )
 }
 
 /*{<ImageBackground source={require('../../assets/images/background.jpg')}/>}*/

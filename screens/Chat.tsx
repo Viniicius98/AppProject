@@ -1,12 +1,14 @@
 import { Text } from "react-native";
 import React from "react";
 import io from "socket.io-client";
-import styled from "styled-components/native";
-import { RootTabScreenProps } from "../types";
-import AcoeseduComponents from "../components/AcoeseduComponents";
-import { useContext, useEffect } from "react";
-import { InputValueContext } from "../context/InputValueContext";
-import Accordion from "../components/Accordion";
+import styled from 'styled-components/native';
+import { RootTabScreenProps } from '../types';
+import AcoeseduComponents from '../components/AcoeseduComponents';
+import { useContext, useEffect } from 'react';
+import { InputValueContext } from '../context/InputValueContext';
+import Accordion from '../components/Accordion/Accordion';
+
+
 
 const Container = styled.View`
   height: 100%;
@@ -31,9 +33,17 @@ const TextInput = styled.TextInput`
 export default function Chat({ navigation }: RootTabScreenProps<"Chat">) {
   const { state, dispatch } = useContext(InputValueContext);
 
-  return (
-    <Container>
-      <Accordion />
-    </Container>
-  );
+export default function Chat({ navigation }: RootTabScreenProps<'Chat'>) {
+  const {state, dispatch} = useContext(InputValueContext)
+
+
+
+
+return (
+	<Container>
+
+		<AcoeseduComponents /> 
+    
+  </Container>
+	)
 }

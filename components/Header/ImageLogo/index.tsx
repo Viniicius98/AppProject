@@ -15,11 +15,14 @@ const ImageSource = styled.Image`
     height: 65px;
     border-width: 1px;
 `
+
+
 export default function ImageLogo(props:any){
 
     return (
         <ImageContainer>
             <ImageSource source={require("../../../assets/images/logo_emerj_principal.png")}/>
+            
         </ImageContainer>
     )
 }

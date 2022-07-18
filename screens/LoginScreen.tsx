@@ -8,8 +8,20 @@ import { ActivityIndicator } from "react-native";
 import React from "react";
 
 const BackgroundContainer = styled.View`
-  background: #021831ed;
-`;
+    
+    background: #021831ed;
+    
+`
+
+const ImageBackground = styled.Image`
+   
+    
+    
+    
+        
+`
+
+
 
 const ImageBackground = styled.Image``;
 

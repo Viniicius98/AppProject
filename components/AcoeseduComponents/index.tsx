@@ -1,24 +1,29 @@
-import React, { useState } from "react";
-import styled from "styled-components/native";
-import { FlatList, GestureResponderEvent, Image } from "react-native";
-import CardAcao from "../CardAcao";
+import React, { useState } from 'react';
+import styled from 'styled-components/native';
+import { Link } from '@react-navigation/native';
+import { FlatList, GestureResponderEvent, Image } from 'react-native';
+import CardAcao from '../CardAcao';
+import Accordion from '../Accordion/Accordion';
+
+
 
 const BackgroundContainer = styled.View`
-  height: 100%;
-  width: 100%;
-  background: #1e2d3eee;
-  position: relative;
-`;
+    height: 100%;
+    width: 100%;
+    background: #1e2d3eee;
+    position: relative;
+   
+`
 
 const ImageBackground = styled.Image`
-  height: 23%;
-  width: 100%;
-  align-items: center;
-  justify-content: center;
-  opacity: 0.1;
-  position: absolute;
-  z-index: 0;
-`;
+    height: 24%;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    z-index: 0;
+    opacity: 0.3;
+`
 
 const ContentItems = styled.View`
   position: absolute;
@@ -33,31 +38,21 @@ const FlatListItems = styled.View`
 `;
 
 const IconsItems = styled.View`
-  width: 100%;
-  height: 575px;
-  margin-left: -60%;
-`;
+width: 100%;
+height: 575px;
+margin-left: -68%;
+`
+
 
 const FlatLinks = [
-  {
-    id: "0",
-    text: "AÇÕES EDUCACIONAIS",
-    icon: "atendimento.png",
-    screen: "AttendanceScreen",
-  },
-  {
-    id: "1",
-    text: "DIPLOMAS E TÍTULOS",
-    icon: "virtualEmerj.png",
-    screen: "VirtualEmerjScreen",
-  },
-  {
-    id: "2",
-    text: "ATUAÇÃO NA DOCÊNCIA",
-    icon: "atendimento.png",
-    screen: "AttendanceScreen",
-  },
-];
+    
+    
+    {id:"3", text: "AÇÕES EDUCACIONAIS", icon: "virtualEmerj.png", screen:"VirtualEmerjScreen"},
+    {id:"4", text: "DIPLOMAS E TÍTULOS", icon: "atendimento.png", screen:"AttendanceScreen"},
+    {id:"5", text: "ATUAÇÃO NA DOCÊNCIA", icon: "atendimento.png", screen:"AttendanceScreen"}
+]
+
+
 
 const ImageFlatLinks = styled.Image`
   width: 50px;
@@ -83,24 +78,17 @@ const TextFlatLinks = styled.Text`
 `;
 
 const ButtonCustom = styled.TouchableOpacity`
-  background: #ffffff;
-  border-bottom-width: 10px;
-  border-bottom-color: #b8977e;
-  flex-direction: row;
-  width: 95%;
-  height: 50px;
-  margin-top: 2%;
-  margin-left: 2%;
-  align-items: center;
-`;
-const ImageIcon = styled.Image`
-  width: 100px;
-  height: 100px;
-  margin-left: 70%;
-  bottom: 50px;
-  max-width: 70%;
-  max-height: 30%;
-`;
+background: #FFFFFF;
+border-bottom-width: 10px;
+border-bottom-color: #B8977E;
+flex-direction: row;
+width: 100%;
+height: 50px;
+margin-top: 2%;
+align-items: center;
+`
+
+
 interface IFlatItems {
   id: string;
   text: string;
@@ -148,9 +136,29 @@ export default function AcoeseduComponents() {
         <ImageBackground
           source={require("../../assets/images/background.png")}
         />
-      </BackgroundContainer>
-    </>
-  );
+     )
+     
+ }
+    
+    return (
+        <>
+            <BackgroundContainer>
+            <ImageBackground source={require("../../assets/images/background.png")}/>
+                <ContentItems>    
+
+                        <FlatListItems>
+                            <Accordion />
+                        </FlatListItems> 
+
+                        <IconsItems>                            
+                            <CardAcao />                        
+                        </IconsItems>  
+
+                </ContentItems>            
+                
+            </BackgroundContainer>
+        </>
+    )
 }
 
 /*{<ImageBackground source={require('../../assets/images/background.jpg')}/>}*/
