@@ -1,5 +1,5 @@
 import React from "react";
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, View } from "react-native";
 
 import List, { List as ListModel } from "./List";
 
@@ -12,15 +12,11 @@ const list: ListModel = {
   ]
 };
 
-
-
-
-
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#343F4B",
-    padding: 9
+    padding: 8
   },
   title: {
     fontSize: 32,
@@ -31,7 +27,7 @@ const styles = StyleSheet.create({
 export default () => {
   return (
     <View style={styles.container}>
-      {/*<Text style={styles.title}>Markets</Text>*/}
+      
       <List {...{ list }} />
       <List {...{ list }} />
       <List {...{ list }} />
