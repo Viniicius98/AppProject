@@ -1,25 +1,22 @@
 import React, { useState } from "react";
 import { StyleSheet, Text, TouchableWithoutFeedback, View } from "react-native";
-
-//import Animated, { Easing } from "react-native-reanimated";
-//import { bInterpolate, bin, useTransition } from "react-native-redash";
-
-//import Chevron from "./Chevron";
+import Animated, { Easing } from "react-native-reanimated";
+import { bInterpolate, bin, useTransition } from "react-native-redash";
+import Chevron from "./ChevronAcoes";
 import Item, { ListItem } from "./ListItemAcoes";
 
-const bit = ( b: boolean ) => (b ? 1 : 0) ;
+const bit = (b: boolean) => (b ? 1 : 0);
 const styles = StyleSheet.create({
   container: {
-    marginTop: 15,
+    marginTop: 0,
     padding: 4,
     backgroundColor: "white",
     borderBottomWidth: 10,
     borderBottomColor: "#B8977E",
     flexDirection: "row",
     borderTopLeftRadius: 1,
-    borderTopRightRadius: 1,    
-    alignItems: "center"
-
+    borderTopRightRadius: 1,
+    alignItems: "center",
 
     /*marginTop: 16,
     backgroundColor: "white",
@@ -32,11 +29,11 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: 16,
-    fontWeight: "bold"
+    fontWeight: "bold",
   },
   items: {
-    overflow: "hidden"
-  }
+    overflow: "hidden",
+  },
 });
 
 export interface List {
@@ -50,23 +47,22 @@ interface ListProps {
 
 export default ({ list }: ListProps) => {
   const [open, setOpen] = useState(false);
-  
+
   const height = open ? "auto" : 0;
   const bottomRadius = open ? 0 : 8;
   return (
     <>
-      <TouchableWithoutFeedback onPress={() => setOpen(prev => !prev)}>
+      <TouchableWithoutFeedback onPress={() => setOpen((prev) => !prev)}>
         <View
           style={[
             styles.container,
             {
               /*borderBottomLeftRadius: bottomRadius,
               borderBottomRightRadius: bottomRadius*/
-            }
+            },
           ]}
         >
           <Text style={styles.title}>AÇÕES EDUCACIONAIS</Text>
-          
         </View>
       </TouchableWithoutFeedback>
       <View style={[styles.items, { height }]}>
