@@ -50,7 +50,7 @@ margin-left: 2%;
 const FlatLinks = [
     {id:"0", text: "RELATÓRIO DE PONTOS", icon:require('../../assets/images/meusPontos.png'), screen:"PointsScreen"},
     {id:"1", text: "CURSOS EMERJ", icon:require('../../assets/images/cursos.png'), screen:"CoursesScreen"},
-    {id:"2", text: "INSERIR TÍTULOS", icon:require('../../assets/images/acoesEducacionais.png'), screen:"EducationalActionsScreen"},
+    {id:"2", text: "INSERIR ATIVIDADE", icon:require('../../assets/images/acoesEducacionais.png'), screen:"EducationalActionsScreen"},
     {id:"3", text: "Virtual EMERJ", icon:require('../../assets/images/virtualEmerj.png') , screen:"VirtualEmerjScreen"},
     {id:"4", text: "ATENDIMENTO", icon: require('../../assets/images/atendimento.png'), screen:"AttendanceScreen"}
 ]
@@ -59,8 +59,7 @@ const FlatLinks = [
 const ImageFlatLinks = styled.Image`
     width: 65px;
     height: 80px;
-    margin-left: 3%;
-    max-width: 60%;
+    margin-left: 3%;    max-width: 60%;
     max-height: 90%;
     
 `
