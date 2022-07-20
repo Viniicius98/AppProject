@@ -5,12 +5,12 @@ import { StyleSheet, Text, TouchableWithoutFeedback, View } from "react-native";
 //import { bInterpolate, bin, useTransition } from "react-native-redash";
 
 //import Chevron from "./Chevron";
-import Item, { ListItem } from "../DropdownDocencia/ListItemDocencia";
+import Item, { ListItem } from "../DropdownTitulos/ListItemDiplomas";
 
 const bit = (b: boolean) => (b ? 1 : 0);
 const styles = StyleSheet.create({
   container: {
-    marginTop: -10,
+    marginTop: 10,
     padding: 4,
     backgroundColor: "white",
     borderBottomWidth: 10,
@@ -38,16 +38,16 @@ const styles = StyleSheet.create({
   },
 });
 
-export interface List3 {
+export interface List2 {
   name: string;
   items: ListItem[];
 }
 
 interface ListProps {
-  list3: List3;
+  list2: List2;
 }
 
-export default ({ list3 }: ListProps) => {
+export default ({ list2 }: ListProps) => {
   const [open, setOpen] = useState(false);
 
   const height = open ? "auto" : 0;
@@ -64,12 +64,12 @@ export default ({ list3 }: ListProps) => {
             },
           ]}
         >
-          <Text style={styles.title}>ATUAÇÃO NA DOCÊNCIA</Text>
+          <Text style={styles.title}>DIPLOMAS E TÍTULOS</Text>
         </View>
       </TouchableWithoutFeedback>
       <View style={[styles.items, { height }]}>
-        {list3.items.map((item, key) => (
-          <Item {...{ item, key }} isLast={key === list3.items.length - 1} />
+        {list2.items.map((item, key) => (
+          <Item {...{ item, key }} isLast={key === list2.items.length - 1} />
         ))}
       </View>
     </>

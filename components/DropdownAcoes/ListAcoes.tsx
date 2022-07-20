@@ -1,8 +1,5 @@
 import React, { useState } from "react";
 import { StyleSheet, Text, TouchableWithoutFeedback, View } from "react-native";
-import Animated, { Easing } from "react-native-reanimated";
-import { bInterpolate, bin, useTransition } from "react-native-redash";
-import Chevron from "./ChevronAcoes";
 import Item, { ListItem } from "./ListItemAcoes";
 
 const bit = (b: boolean) => (b ? 1 : 0);
@@ -18,14 +15,6 @@ const styles = StyleSheet.create({
     borderTopRightRadius: 1,
     alignItems: "center",
 
-    /*marginTop: 16,
-    backgroundColor: "white",
-    padding: 16,
-    borderTopLeftRadius: 8,
-    borderTopRightRadius: 8,
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "space-between"*/
   },
   title: {
     fontSize: 16,
@@ -57,8 +46,8 @@ export default ({ list }: ListProps) => {
           style={[
             styles.container,
             {
-              /*borderBottomLeftRadius: bottomRadius,
-              borderBottomRightRadius: bottomRadius*/
+              borderBottomLeftRadius: bottomRadius,
+              borderBottomRightRadius: bottomRadius
             },
           ]}
         >

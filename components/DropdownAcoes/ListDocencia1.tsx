@@ -10,7 +10,7 @@ import Item, { ListItem } from "../DropdownDocencia/ListItemDocencia";
 const bit = (b: boolean) => (b ? 1 : 0);
 const styles = StyleSheet.create({
   container: {
-    marginTop: -10,
+    marginTop: 10,
     padding: 4,
     backgroundColor: "white",
     borderBottomWidth: 10,

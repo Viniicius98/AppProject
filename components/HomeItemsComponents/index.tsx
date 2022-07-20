@@ -56,7 +56,7 @@ const FlatLinks = [
   },
   {
     id: "2",
-    text: "INSERIR TÍTULOS",
+    text: "INSERIR ATIVIDADES",
     icon: require("../../assets/images/acoesEducacionais.png"),
     screen: "EducationalActionsScreen",
   },
@@ -88,10 +88,7 @@ const TextFlatLinks = styled.Text`
   color: #333;
   margin-left: 3%;
 `;
-const LinkFlat = styled.Button`
-  display: flex;
-  flex-direction: row;
-`;
+
 
 const ButtonCustom = styled.TouchableOpacity`
   background: #c0ccda;
@@ -102,15 +99,6 @@ const ButtonCustom = styled.TouchableOpacity`
   align-items: center;
 `;
 
-const Menu = styled.Image`
-  width: 20px;
-  height: 20px;
-  border-radius: 50px;
-  margin-left: 0%;
-  position: absolute;
-  margin-top: 110px;
-  background-color: white;
-`;
 
 interface IFlatItems {
   id: string;
@@ -146,9 +134,6 @@ export default function HomeItemsComponents() {
         <ImageBackground
           source={require("../../assets/images/background.png")}
         />
-
-        <Menu source={require("../../assets/images/menu.png")} />
-
         <ContentItems>
           <FlatListItems>
             <FlatList

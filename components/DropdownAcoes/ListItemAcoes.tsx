@@ -17,15 +17,7 @@ const styles = StyleSheet.create({
   name: {
     fontSize: 16
   },
-  pointsContainer: {/*
-    borderRadius: 8,
-    backgroundColor: "#44c282",
-    padding: 8
-*/},
-  points: {
-    color: "white",
-    fontWeight: "bold"
-  }
+
 });
 
 export interface ListItem {
@@ -39,7 +31,7 @@ interface ListItemProps {
 }
 
 export default ({ item, isLast }: ListItemProps) => {
-  const bottomRadius = isLast ? 8 : 0;
+  const bottomRadius = isLast ? 0 : 0;
   return (
     <View
       style={[
@@ -51,9 +43,7 @@ export default ({ item, isLast }: ListItemProps) => {
       ]}
     >
       <Text style={styles.name}>{item.name}</Text>
-      <View style={styles.pointsContainer}>
-        {/*<Text style={styles.points}>{item.points}</Text>*/}
-      </View>
+      
     </View>
   );
 };

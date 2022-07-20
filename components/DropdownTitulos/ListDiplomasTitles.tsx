@@ -10,7 +10,7 @@ import Item, { ListItem } from "../DropdownTitulos/ListItemDiplomas";
 const bit = (b: boolean) => (b ? 1 : 0);
 const styles = StyleSheet.create({
   container: {
-    marginTop: 15,
+    marginTop: -80,
     padding: 4,
     backgroundColor: "white",
     borderBottomWidth: 10,

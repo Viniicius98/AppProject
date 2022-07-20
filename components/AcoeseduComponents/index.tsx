@@ -132,8 +132,8 @@ export default function AcoeseduComponents() {
         <ContentItems>
           <FlatListItems>
             <AcoesEdu />
-            <DiplomaTitulo />
-            <Docencia />
+            {/*<DiplomaTitulo />
+            <Docencia />*/}
           </FlatListItems>
 
           <IconsItems>

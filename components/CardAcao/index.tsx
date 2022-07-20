@@ -19,10 +19,10 @@ const Container = styled.View`
 const Avatar = styled.Image`
     width: 60px;
     height: 70px;
-    margin-left: 3%;
+    margin-left: -10%;
     max-width: 80%;
     max-height: 80%;
-    margin-top: 0.9%;
+    margin-top: 4%;
     display: flex;
 
 
@@ -38,8 +38,8 @@ const AvatarContainer = styled.View`
 const TextUm = styled.Text`
 text-align: center;
 font-weight: bold;
-margin-left: -10%;
-margin-top: -18%;
+margin-left: -18%;
+margin-top: -17%;
 `
 
 
@@ -53,7 +53,7 @@ export default function CardAcao() {
             <Avatar source={require("../../assets/images/inserirTitulos.png")} />
         </AvatarContainer>
     
-        <TextUm>INSERIR TÍTULOS</TextUm>
+        <TextUm>INSERIR ATIVIDADES</TextUm>
         
         
         
