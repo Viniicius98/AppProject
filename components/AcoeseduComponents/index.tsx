@@ -3,9 +3,7 @@ import styled from "styled-components/native";
 import { Link } from "@react-navigation/native";
 import { FlatList, GestureResponderEvent, Image } from "react-native";
 import CardAcao from "../CardAcao";
-import AcoesEdu from "../DropdownAcoes/DropdownAcoes";
-import DiplomaTitulo from "../DropdownTitulos/DropdownTitle";
-import Docencia from "../DropdownDocencia/DropdownDocencia";
+import AcoesEdu from "../Dropdown/Dropdown";
 
 const BackgroundContainer = styled.View`
   height: 100%;
@@ -132,8 +130,6 @@ export default function AcoeseduComponents() {
         <ContentItems>
           <FlatListItems>
             <AcoesEdu />
-            {/*<DiplomaTitulo />
-            <Docencia />*/}
           </FlatListItems>
 
           <IconsItems>

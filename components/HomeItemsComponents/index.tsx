@@ -4,6 +4,15 @@ import { FlatList, GestureResponderEvent, ImageProps } from "react-native";
 import Card from "../../components/Card";
 import CardConsulta from "../../components/CardConsulta";
 import CardVerificar from "../../components/CardVerificar";
+import {
+  NavigationContainer,
+  StackActions,
+  useNavigation,
+} from "@react-navigation/native";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import Chat from "../../screens/Chat";
+import Navigation from "../../navigation";
+import HomeScreen from "../../screens/HomeScreen";
 
 const BackgroundContainer = styled.View`
   height: 100%;
@@ -46,31 +55,31 @@ const FlatLinks = [
     id: "0",
     text: "RELATÓRIO DE PONTOS",
     icon: require("../../assets/images/meusPontos.png"),
-    screen: "PointsScreen",
+    screen: "Chat",
   },
   {
     id: "1",
     text: "CURSOS EMERJ",
     icon: require("../../assets/images/cursos.png"),
-    screen: "CoursesScreen",
+    screen: "Chat",
   },
   {
     id: "2",
     text: "INSERIR ATIVIDADES",
     icon: require("../../assets/images/acoesEducacionais.png"),
-    screen: "EducationalActionsScreen",
+    screen: "Chat",
   },
   {
     id: "3",
     text: "Virtual EMERJ",
     icon: require("../../assets/images/virtualEmerj.png"),
-    screen: "VirtualEmerjScreen",
+    screen: "Chat",
   },
   {
     id: "4",
     text: "ATENDIMENTO",
     icon: require("../../assets/images/atendimento.png"),
-    screen: "AttendanceScreen",
+    screen: "Chat",
   },
 ];
 
@@ -89,7 +98,6 @@ const TextFlatLinks = styled.Text`
   margin-left: 3%;
 `;
 
-
 const ButtonCustom = styled.TouchableOpacity`
   background: #c0ccda;
   border-bottom-width: 10px;
@@ -98,7 +106,17 @@ const ButtonCustom = styled.TouchableOpacity`
   width: 100%;
   align-items: center;
 `;
+const Stack = createNativeStackNavigator();
 
+const MyStack = () => {
+  return (
+    <NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen name="Home" component={Chat} />
+      </Stack.Navigator>
+    </NavigationContainer>
+  );
+};
 
 interface IFlatItems {
   id: string;
@@ -116,7 +134,6 @@ const Item = ({
 }) => (
   <ButtonCustom onPress={onPress}>
     <ImageFlatLinks source={item.icon} />
-
     <TextFlatLinks>{item.text}</TextFlatLinks>
   </ButtonCustom>
 );

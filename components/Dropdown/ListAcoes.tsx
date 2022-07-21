@@ -14,7 +14,6 @@ const styles = StyleSheet.create({
     borderTopLeftRadius: 1,
     borderTopRightRadius: 1,
     alignItems: "center",
-
   },
   title: {
     fontSize: 16,
@@ -46,8 +45,8 @@ export default ({ list }: ListProps) => {
           style={[
             styles.container,
             {
-              borderBottomLeftRadius: bottomRadius,
-              borderBottomRightRadius: bottomRadius
+              /*borderBottomLeftRadius: bottomRadius,
+              borderBottomRightRadius: bottomRadius*/
             },
           ]}
         >

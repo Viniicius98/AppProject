@@ -5,7 +5,7 @@ import { StyleSheet, Text, TouchableWithoutFeedback, View } from "react-native";
 //import { bInterpolate, bin, useTransition } from "react-native-redash";
 
 //import Chevron from "./Chevron";
-import Item, { ListItem } from "../DropdownDocencia/ListItemDocencia";
+import Item, { ListItem } from "./ListItemDocencia";
 
 const bit = (b: boolean) => (b ? 1 : 0);
 const styles = StyleSheet.create({
