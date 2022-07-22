@@ -6,7 +6,6 @@ import { RootTabScreenProps } from "../types";
 import AcoeseduComponents from "../components/AcoeseduComponents";
 import { useContext, useEffect } from "react";
 import { InputValueContext } from "../context/InputValueContext";
-import Accordion from "../components/Dropdown/Dropdown";
 
 export default function Chat({ navigation }: RootTabScreenProps<"Chat">) {
   const { state, dispatch } = useContext(InputValueContext);
@@ -16,21 +15,6 @@ export default function Chat({ navigation }: RootTabScreenProps<"Chat">) {
     border-bottom-width: 10px;
     border-bottom-color: #b8977e;
   `;
-
-  /*const Container = styled.View`
-  width: 100%;
-  height: 100%;
-`
-
-const TextInput = styled.TextInput`
-  width: 100%;
-  height: 50px;
-  position: absolute;
-  bottom: 100px;
-`*/
-
-  /*export default function Chat({ navigation }: RootTabScreenProps<'Chat'>)*/
-
   return (
     <Container>
       <AcoeseduComponents />

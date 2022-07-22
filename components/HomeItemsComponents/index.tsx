@@ -5,14 +5,11 @@ import Card from "../../components/Card";
 import CardConsulta from "../../components/CardConsulta";
 import CardVerificar from "../../components/CardVerificar";
 import {
-  NavigationContainer,
-  StackActions,
-  useNavigation,
+  Link,
+ 
 } from "@react-navigation/native";
-import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import Chat from "../../screens/Chat";
-import Navigation from "../../navigation";
-import HomeScreen from "../../screens/HomeScreen";
+
+
 
 const BackgroundContainer = styled.View`
   height: 100%;
@@ -88,7 +85,7 @@ const ImageFlatLinks = styled.Image`
   height: 80px;
   margin-left: 3%;
   max-width: 60%;
-  max-height: 90%;
+  max-height: 70%;
 `;
 
 const TextFlatLinks = styled.Text`
@@ -106,23 +103,12 @@ const ButtonCustom = styled.TouchableOpacity`
   width: 100%;
   align-items: center;
 `;
-const Stack = createNativeStackNavigator();
-
-const MyStack = () => {
-  return (
-    <NavigationContainer>
-      <Stack.Navigator>
-        <Stack.Screen name="Home" component={Chat} />
-      </Stack.Navigator>
-    </NavigationContainer>
-  );
-};
 
 interface IFlatItems {
   id: string;
   text: string;
   icon: ImageProps["source"];
-  screen: string;
+  screen: any;
 }
 
 const Item = ({
@@ -133,8 +119,11 @@ const Item = ({
   onPress: (event: GestureResponderEvent) => void;
 }) => (
   <ButtonCustom onPress={onPress}>
-    <ImageFlatLinks source={item.icon} />
-    <TextFlatLinks>{item.text}</TextFlatLinks>
+    <Link to={{screen:item.screen}} key ={item.id}>
+
+      <ImageFlatLinks source={item.icon} />
+      <TextFlatLinks>{item.text}</TextFlatLinks>
+    </Link>
   </ButtonCustom>
 );
 
@@ -145,13 +134,16 @@ export default function HomeItemsComponents() {
     return <Item item={item} onPress={() => setSelectedId(Number(item.id))} />;
   };
 
+  
   return (
     <>
+  
       <BackgroundContainer>
         <ImageBackground
           source={require("../../assets/images/background.png")}
         />
         <ContentItems>
+          
           <FlatListItems>
             <FlatList
               data={FlatLinks}
