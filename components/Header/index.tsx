@@ -5,6 +5,7 @@ import styled from 'styled-components/native';
 import { Text, View } from '../Themed';
 import ImageLogo from './ImageLogo';
 
+
 const HeaderContainer = styled.View`
     width: 100%;
     justify-content: space-between;
