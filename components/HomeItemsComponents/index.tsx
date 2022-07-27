@@ -1,15 +1,10 @@
 import React, { useState } from "react";
 import styled from "styled-components/native";
 import { FlatList, GestureResponderEvent, ImageProps } from "react-native";
-import Card from "../../components/Card";
-import CardConsulta from "../../components/CardConsulta";
-import CardVerificar from "../../components/CardVerificar";
-import {
-  Link,
- 
-} from "@react-navigation/native";
-
-
+import CardPerfilMagistrado from "../CardMagistrado";
+import CardConsultaEnfam from "../CardConsultaEnfam";
+import CardNotificacoes from "../../components/CardNotificacoes";
+import { Link } from "@react-navigation/native";
 
 const BackgroundContainer = styled.View`
   height: 100%;
@@ -64,7 +59,7 @@ const FlatLinks = [
     id: "2",
     text: "INSERIR ATIVIDADES",
     icon: require("../../assets/images/acoesEducacionais.png"),
-    screen: "Chat",
+    screen: "Activites",
   },
   {
     id: "3",
@@ -119,8 +114,7 @@ const Item = ({
   onPress: (event: GestureResponderEvent) => void;
 }) => (
   <ButtonCustom onPress={onPress}>
-    <Link to={{screen:item.screen}} key ={item.id}>
-
+    <Link to={{ screen: item.screen }} key={item.id}>
       <ImageFlatLinks source={item.icon} />
       <TextFlatLinks>{item.text}</TextFlatLinks>
     </Link>
@@ -134,16 +128,13 @@ export default function HomeItemsComponents() {
     return <Item item={item} onPress={() => setSelectedId(Number(item.id))} />;
   };
 
-  
   return (
     <>
-  
       <BackgroundContainer>
         <ImageBackground
           source={require("../../assets/images/background.png")}
         />
         <ContentItems>
-          
           <FlatListItems>
             <FlatList
               data={FlatLinks}
@@ -154,9 +145,9 @@ export default function HomeItemsComponents() {
           </FlatListItems>
 
           <IconsItems>
-            <Card />
-            <CardConsulta />
-            <CardVerificar />
+            <CardPerfilMagistrado />
+            <CardConsultaEnfam />
+            <CardNotificacoes />
           </IconsItems>
         </ContentItems>
       </BackgroundContainer>

@@ -12,25 +12,15 @@ const styles = StyleSheet.create({
     paddingHorizontal: 16,
     borderBottomWidth: 1,
     borderColor: "#f4f4f6",
-    height: LIST_ITEM_HEIGHT
+    height: LIST_ITEM_HEIGHT,
   },
   name: {
-    fontSize: 16
+    fontSize: 16,
   },
-  pointsContainer: {/*
-    borderRadius: 8,
-    backgroundColor: "#44c282",
-    padding: 8
-*/},
-  points: {
-    color: "white",
-    fontWeight: "bold"
-  }
 });
 
 export interface ListItem {
   name: string;
-  
 }
 
 interface ListItemProps {
@@ -46,14 +36,11 @@ export default ({ item, isLast }: ListItemProps) => {
         styles.container,
         {
           borderBottomLeftRadius: bottomRadius,
-          borderBottomRightRadius: bottomRadius
-        }
+          borderBottomRightRadius: bottomRadius,
+        },
       ]}
     >
       <Text style={styles.name}>{item.name}</Text>
-      <View style={styles.pointsContainer}>
-        {/*<Text style={styles.points}>{item.points}</Text>*/}
-      </View>
     </View>
   );
 };

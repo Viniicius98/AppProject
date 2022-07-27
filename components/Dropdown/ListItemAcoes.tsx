@@ -31,15 +31,7 @@ interface ListItemProps {
 export default ({ item, isLast }: ListItemProps) => {
   const bottomRadius = isLast ? 8 : 0;
   return (
-    <View
-      style={[
-        styles.container,
-        {
-          borderBottomLeftRadius: bottomRadius,
-          borderBottomRightRadius: bottomRadius,
-        },
-      ]}
-    >
+    <View style={[styles.container, {}]}>
       <Text style={styles.name}>{item.name}</Text>
     </View>
   );

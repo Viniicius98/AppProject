@@ -1,9 +1,7 @@
-import * as WebBrowser from 'expo-web-browser';
-import { StyleSheet, TouchableOpacity } from 'react-native';
-
-import Colors from '../../constants/Colors';
-import { MonoText } from '../StyledText';
-import { Text, View } from '../Themed';
+import * as WebBrowser from "expo-web-browser";
+import { StyleSheet, TouchableOpacity } from "react-native";
+import Colors from "../../constants/Colors";
+import { Text, View } from "../Themed";
 
 export default function UserInfo({ path }: { path: string }) {
   return (
@@ -12,16 +10,15 @@ export default function UserInfo({ path }: { path: string }) {
         <Text
           style={styles.getStartedText}
           lightColor="rgba(0,0,0,0.8)"
-          darkColor="rgba(255,255,255,0.8)">
-         Dra. Helena Hertha
+          darkColor="rgba(255,255,255,0.8)"
+        >
+          Dra. Helena Hertha
         </Text>
       </View>
 
       <View style={styles.helpContainer}>
         <TouchableOpacity onPress={handleHelpPress}>
-          <Text lightColor={Colors.light.tint}>
-            Acesse o nosso site
-          </Text>
+          <Text lightColor={Colors.light.tint}>Acesse o nosso site</Text>
         </TouchableOpacity>
       </View>
     </View>
@@ -29,14 +26,12 @@ export default function UserInfo({ path }: { path: string }) {
 }
 
 function handleHelpPress() {
-  WebBrowser.openBrowserAsync(
-    'https://www.emerj.com.br/site'
-  );
+  WebBrowser.openBrowserAsync("https://www.emerj.com.br/site");
 }
 
 const styles = StyleSheet.create({
   getStartedContainer: {
-    alignItems: 'center',
+    alignItems: "center",
     marginHorizontal: 50,
   },
   homeScreenFilename: {
@@ -49,17 +44,17 @@ const styles = StyleSheet.create({
   getStartedText: {
     fontSize: 17,
     lineHeight: 24,
-    textAlign: 'center',
+    textAlign: "center",
   },
   helpContainer: {
     marginTop: 15,
     marginHorizontal: 20,
-    alignItems: 'center',
+    alignItems: "center",
   },
   helpLink: {
     paddingVertical: 15,
   },
   helpLinkText: {
-    textAlign: 'center',
+    textAlign: "center",
   },
 });

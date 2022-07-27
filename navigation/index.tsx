@@ -4,45 +4,51 @@
  *
  */
 //dependencias
-import { FontAwesome } from '@expo/vector-icons';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { NavigationContainer, DefaultTheme, DarkTheme } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import * as React from 'react';
-import { ColorSchemeName, Pressable } from 'react-native';
+import { FontAwesome } from "@expo/vector-icons";
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import {
+  NavigationContainer,
+  DefaultTheme,
+  DarkTheme,
+} from "@react-navigation/native";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import * as React from "react";
+import { ColorSchemeName, Pressable } from "react-native";
 
 //screens
-import Chat from '../screens/Chat';
-import HomeScreen from '../screens/HomeScreen';
-import LoginScreen from '../screens/LoginScreen';
-import ModalScreen from '../screens/ModalScreen';
-import NotFoundScreen from '../screens/NotFoundScreen';
-import SettingsScreen from '../screens/SettingsScreen';
-import UserScreen from '../screens/UserScreen';
-
-
+import Activites from "../screens/ActivitiesScreen";
+import HomeScreen from "../screens/HomeScreen";
+import LoginScreen from "../screens/LoginScreen";
+import ModalScreen from "../screens/ModalScreen";
+import NotFoundScreen from "../screens/NotFoundScreen";
+import SettingsScreen from "../screens/SettingsScreen";
+import UserScreen from "../screens/UserScreen";
 
 //components
-import Header from '../components/Header';
+import Header from "../components/Header";
 //constants
-import Colors from '../constants/Colors';
+import Colors from "../constants/Colors";
 //hooks
-import useColorScheme from '../hooks/useColorScheme';
-//navigation 
-import LinkingConfiguration from './LinkingConfiguration';
+import useColorScheme from "../hooks/useColorScheme";
+//navigation
+import LinkingConfiguration from "./LinkingConfiguration";
 
+import {
+  RootStackParamList,
+  RootTabParamList,
+  RootTabScreenProps,
+} from "../types";
 
-import { RootStackParamList, RootTabParamList, RootTabScreenProps } from '../types';
-import AcoeseduComponents from '../components/AcoeseduComponents';
-
-
-
-
-export default function Navigation({ colorScheme }: { colorScheme: ColorSchemeName }) {
+export default function Navigation({
+  colorScheme,
+}: {
+  colorScheme: ColorSchemeName;
+}) {
   return (
     <NavigationContainer
       linking={LinkingConfiguration}
-      theme={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
+      theme={colorScheme === "dark" ? DarkTheme : DefaultTheme}
+    >
       <RootNavigator />
     </NavigationContainer>
   );
@@ -57,16 +63,23 @@ const Stack = createNativeStackNavigator<RootStackParamList>();
 function RootNavigator() {
   return (
     <Stack.Navigator>
-      <Stack.Screen name="Root" component={BottomTabNavigator} options={{ headerShown: false }} />
-      <Stack.Screen name="NotFound" component={NotFoundScreen} options={{ title: 'Oops!' }} />
-      
-      <Stack.Group screenOptions={{ presentation: 'modal' }}>
+      <Stack.Screen
+        name="Root"
+        component={BottomTabNavigator}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="NotFound"
+        component={NotFoundScreen}
+        options={{ title: "Oops!" }}
+      />
+
+      <Stack.Group screenOptions={{ presentation: "modal" }}>
         <Stack.Screen name="Modal" component={ModalScreen} />
       </Stack.Group>
-      <Stack.Group screenOptions={{ presentation: 'modal' }}>
+      <Stack.Group screenOptions={{ presentation: "modal" }}>
         <Stack.Screen name="Settings" component={SettingsScreen} />
       </Stack.Group>
-      
     </Stack.Navigator>
   );
 }
@@ -86,30 +99,33 @@ function BottomTabNavigator() {
       screenOptions={{
         tabBarActiveTintColor: Colors[colorScheme].tint,
         headerShown: true,
-      }}>
-
-<BottomTab.Screen
+      }}
+    >
+      <BottomTab.Screen
         name="Login"
         component={LoginScreen}
-        options={({ navigation }: RootTabScreenProps<'Login'>) => ({
-          title: 'Login',
-          header: (props)=> <Header />,
-          tabBarIcon: ({ color }) => <TabBarIcon name="sign-in" color={color} />,
+        options={({ navigation }: RootTabScreenProps<"Login">) => ({
+          title: "Login",
+          header: (props) => <Header />,
+          tabBarIcon: ({ color }) => (
+            <TabBarIcon name="sign-in" color={color} />
+          ),
         })}
-      />  
+      />
 
       <BottomTab.Screen
         name="Home"
         component={HomeScreen}
-        options={({ navigation }: RootTabScreenProps<'Home'>) => ({
-          header: (props)=> <Header />,
+        options={({ navigation }: RootTabScreenProps<"Home">) => ({
+          header: (props) => <Header />,
           tabBarIcon: ({ color }) => <TabBarIcon name="home" color={color} />,
           headerRight: () => (
             <Pressable
-              onPress={() => navigation.navigate('Chat')}
+              onPress={() => navigation.navigate("Chat")}
               style={({ pressed }) => ({
                 opacity: pressed ? 0.5 : 1,
-              })}>
+              })}
+            >
               <FontAwesome
                 name="info-circle"
                 size={25}
@@ -121,47 +137,39 @@ function BottomTabNavigator() {
         })}
       />
 
-
-
-      
       <BottomTab.Screen
-        name="Chat"
-        component={Chat}
-        options={({ navigation }: RootTabScreenProps<'Chat'>) => ({
-          title: 'Ações Educacionais',
-          header: (props)=> <Header />,
+        name="Activites"
+        component={Activites}
+        options={({ navigation }: RootTabScreenProps<"Activites">) => ({
+          title: "Ações Educacionais",
+          header: (props) => <Header />,
           tabBarIcon: ({ color }) => <TabBarIcon name="book" color={color} />,
-          
         })}
       />
-      
 
       <BottomTab.Screen
         name="User"
         component={UserScreen}
-        options={({ navigation}: RootTabScreenProps<'User'>) => ({
-          title: 'Usuário',
+        options={({ navigation }: RootTabScreenProps<"User">) => ({
+          title: "Usuário",
           tabBarIcon: ({ color }) => <TabBarIcon name="user" color={color} />,
-          headerRight:() =>(
-            <Pressable 
-            onPress={ () => navigation.navigate('Settings')}
-            style={({pressed}) => ({
-              opacity: pressed ? 0.5 : 1,
-            })}
+          headerRight: () => (
+            <Pressable
+              onPress={() => navigation.navigate("Settings")}
+              style={({ pressed }) => ({
+                opacity: pressed ? 0.5 : 1,
+              })}
             >
-             <FontAwesome
+              <FontAwesome
                 name="cog"
                 size={25}
                 color={Colors[colorScheme].text}
                 style={{ marginRight: 15 }}
               />
-
             </Pressable>
           ),
-        })}    
-
+        })}
       />
-      
     </BottomTab.Navigator>
   );
 }
@@ -170,12 +178,11 @@ function BottomTabNavigator() {
  * You can explore the built-in icon families and icons on the web at https://icons.expo.fyi/
  */
 function TabBarIcon(props: {
-  name: React.ComponentProps<typeof FontAwesome>['name'];
+  name: React.ComponentProps<typeof FontAwesome>["name"];
   color: string;
 }) {
   return <FontAwesome size={30} style={{ marginBottom: -3 }} {...props} />;
 }
-
 
 /*<BottomTab.Screen
         name="Chat"
