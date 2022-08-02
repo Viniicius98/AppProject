@@ -1,5 +1,6 @@
 import React from "react";
 import { StyleSheet, Text, View } from "react-native";
+import { LIST_ITEM_HEIGHT } from "./ListItemAcoes";
 
 const styles = StyleSheet.create({
   container: {
@@ -32,10 +33,10 @@ export default ({ item, isLast }: ListItemProps) => {
     <View
       style={[
         styles.container,
-        {
+        /*{
           borderBottomLeftRadius: bottomRadius,
           borderBottomRightRadius: bottomRadius,
-        },
+        },*/
       ]}
     >
       <Text style={styles.name}>{item.name}</Text>
