@@ -55,15 +55,7 @@ export default ({ list3 }: ListProps) => {
   return (
     <>
       <TouchableWithoutFeedback onPress={() => setOpen((prev) => !prev)}>
-        <View
-          style={[
-            styles.container,
-            {
-              /*borderBottomLeftRadius: bottomRadius,
-              borderBottomRightRadius: bottomRadius*/
-            },
-          ]}
-        >
+        <View style={[styles.container, {}]}>
           <Text style={styles.title}>ATUAÇÃO NA DOCÊNCIA</Text>
         </View>
       </TouchableWithoutFeedback>

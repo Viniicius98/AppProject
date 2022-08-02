@@ -1,13 +1,13 @@
-import { Text } from "react-native";
 import React from "react";
-import io from "socket.io-client";
 import styled from "styled-components/native";
 import { RootTabScreenProps } from "../types";
-import AcoeseduComponents from "../components/AcoeseduComponents";
-import { useContext, useEffect } from "react";
+import InserirAtividadeComponents from "../components/InserirTitulosComponents";
+import { useContext } from "react";
 import { InputValueContext } from "../context/InputValueContext";
 
-export default function Chat({ navigation }: RootTabScreenProps<"Chat">) {
+export default function Activites({
+  navigation,
+}: RootTabScreenProps<"Activites">) {
   const { state, dispatch } = useContext(InputValueContext);
 
   const Container = styled.View`
@@ -17,7 +17,7 @@ export default function Chat({ navigation }: RootTabScreenProps<"Chat">) {
   `;
   return (
     <Container>
-      <AcoeseduComponents />
+      <InserirAtividadeComponents />
     </Container>
   );
 }

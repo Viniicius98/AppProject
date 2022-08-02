@@ -1,10 +1,5 @@
 import React, { useState } from "react";
 import { StyleSheet, Text, TouchableWithoutFeedback, View } from "react-native";
-
-//import Animated, { Easing } from "react-native-reanimated";
-//import { bInterpolate, bin, useTransition } from "react-native-redash";
-
-//import Chevron from "./Chevron";
 import Item, { ListItem } from "./ListItemDiplomas";
 
 const bit = (b: boolean) => (b ? 1 : 0);
@@ -19,16 +14,6 @@ const styles = StyleSheet.create({
     borderTopLeftRadius: 1,
     borderTopRightRadius: 1,
     alignItems: "center",
-
-    /*marginTop: 16,
-    backgroundColor: "white",
-    padding: 16,
-    borderTopLeftRadius: 8,
-    borderTopLeftRadius: 8,
-    borderTopRightRadius: 8,
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "space-between"*/
   },
   title: {
     fontSize: 16,
@@ -56,15 +41,7 @@ export default ({ list2 }: ListProps) => {
   return (
     <>
       <TouchableWithoutFeedback onPress={() => setOpen((prev) => !prev)}>
-        <View
-          style={[
-            styles.container,
-            {
-              /*borderBottomLeftRadius: bottomRadius,
-              borderBottomRightRadius: bottomRadius*/
-            },
-          ]}
-        >
+        <View style={[styles.container]}>
           <Text style={styles.title}>DIPLOMAS E TÍTULOS</Text>
         </View>
       </TouchableWithoutFeedback>

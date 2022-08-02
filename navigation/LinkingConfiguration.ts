@@ -25,25 +25,21 @@ const linking: LinkingOptions<RootStackParamList> = {
               HomeScreen: "home",
             },
           },
-          Chat: {
+          Activites: {
             screens: {
-              ChatScreen: "Chat",
+              ActivitesScreen: "Activites",
             },
-            
           },
           User: {
             screens: {
               UserScreen: "user",
             },
-            
           },
-          
         },
       },
       Modal: "modal",
       Settings: "settings",
       NotFound: "*",
-      
     },
   },
 };
