@@ -24,6 +24,7 @@ const styles = StyleSheet.create({
     backgroundColor: "white",
     padding: 16,
     borderTopLeftRadius: 8,
+    borderTopLeftRadius: 8,
     borderTopRightRadius: 8,
     flexDirection: "row",
     alignItems: "center",
@@ -51,7 +52,7 @@ export default ({ list2 }: ListProps) => {
   const [open, setOpen] = useState(false);
 
   const height = open ? "auto" : 0;
-  
+
   return (
     <>
       <TouchableWithoutFeedback onPress={() => setOpen((prev) => !prev)}>
@@ -67,13 +68,12 @@ export default ({ list2 }: ListProps) => {
           <Text style={styles.title}>DIPLOMAS E TÍTULOS</Text>
         </View>
       </TouchableWithoutFeedback>
-      
+
       <View style={[styles.items, { height }]}>
         {list2.items.map((item, key) => (
           <Item {...{ item, key }} isLast={key === list2.items.length - 1} />
         ))}
       </View>
-
     </>
   );
 };
