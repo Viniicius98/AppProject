@@ -13,6 +13,8 @@ const styles = StyleSheet.create({
     borderBottomWidth: 1,
     borderColor: "#f4f4f6",
     height: LIST_ITEM_HEIGHT,
+    
+    
   },
   name: {
     fontSize: 16,
@@ -26,6 +28,8 @@ export interface ListItem {
 interface ListItemProps {
   item: ListItem;
   isLast: boolean;
+  isOpen: boolean;
+  btnOnClick: () => void;
 }
 
 export default ({ item, isLast }: ListItemProps) => {

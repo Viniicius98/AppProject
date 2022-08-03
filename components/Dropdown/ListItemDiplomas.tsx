@@ -26,7 +26,10 @@ export interface ListItem {
 interface ListItemProps {
   item: ListItem;
   isLast: boolean;
+  isOpen: boolean;
+  btnOnClick: () => void;
 }
+
 
 export default ({ item, isLast }: ListItemProps) => {
   const bottomRadius = isLast ? 8 : 0;

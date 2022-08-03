@@ -49,9 +49,8 @@ const styles = StyleSheet.create({
 export default () => {
   return (
     <View style={styles.container}>
-      <List {...{ list }} />
-      <List2 {...{ list2 }} />
-      <List3 {...{ list3 }} />
+      <List {...{ list,list2 }} />
+      
     </View>
   );
 };
