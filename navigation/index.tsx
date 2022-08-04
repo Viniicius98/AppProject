@@ -121,7 +121,7 @@ function BottomTabNavigator() {
           tabBarIcon: ({ color }) => <TabBarIcon name="home" color={color} />,
           headerRight: () => (
             <Pressable
-              onPress={() => navigation.navigate("Chat")}
+              onPress={() => navigation.navigate("Home")}
               style={({ pressed }) => ({
                 opacity: pressed ? 0.5 : 1,
               })}
