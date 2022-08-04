@@ -1,5 +1,6 @@
 import React from "react";
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { Link } from "@react-navigation/native";
 
 export const LIST_ITEM_HEIGHT = 54;
 const styles = StyleSheet.create({
@@ -23,6 +24,7 @@ const styles = StyleSheet.create({
 
 export interface ListItem {
   name: string;
+  screen: any;
 }
 
 interface ListItemProps {
@@ -36,7 +38,12 @@ export default ({ item, isLast }: ListItemProps) => {
   const bottomRadius = isLast ? 8 : 0;
   return (
     <View style={[styles.container, {}]}>
-      <Text style={styles.name}>{item.name}</Text>
+      <TouchableOpacity>
+        <Link to={{screen: item.screen }}>
+             <Text style={styles.name}>{item.name}</Text>
+        </Link>
+      </TouchableOpacity>
+      
     </View>
   );
 };

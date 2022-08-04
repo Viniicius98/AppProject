@@ -26,7 +26,7 @@ const styles = StyleSheet.create({
 
 interface ListProps {
   list: List;
-  list2: List2;
+  /*list2: List2;*/
 }
 
 export interface List {
@@ -38,7 +38,7 @@ export interface List2 {
   items: ListItem[];
 }
 
-export default ({ list, list2 }: ListProps) => {
+export default ({ list, /*list2*/ }: ListProps) => {
   const [open, setOpen] = useState(false);
   const [open2, setOpen2] = useState(false);
   const height = open ? "auto" : open2 ? "auto" : 0;
@@ -67,7 +67,7 @@ export default ({ list, list2 }: ListProps) => {
         ))}
       </View>
 
-      <TouchableWithoutFeedback onPress={() => setOpen2((open2) => !open2)}>
+     {/*} <TouchableWithoutFeedback onPress={() => setOpen2((open2) => !open2)}>
         <View style={[styles.container]}>
           <Text style={styles.title}>DIPLOMAS E TITULOS</Text>
         </View>
@@ -83,7 +83,7 @@ export default ({ list, list2 }: ListProps) => {
             btnOnClick={() => btnOnClick(idx)}
           />
         ))}
-      </View>
+        </View>*/}
     </>
   );
 };
