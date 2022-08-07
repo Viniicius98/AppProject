@@ -16,7 +16,8 @@ import * as React from "react";
 import { ColorSchemeName, Pressable } from "react-native";
 
 //screens
-import Activites from "../screens/ActivitiesScreen";
+import Record from "../screens/RecordScreen";
+import Activites from "../screens/ActivitesScreen"
 import HomeScreen from "../screens/HomeScreen";
 import LoginScreen from "../screens/LoginScreen";
 import ModalScreen from "../screens/ModalScreen";
@@ -73,6 +74,28 @@ function RootNavigator() {
         component={NotFoundScreen}
         options={{ title: "Oops!" }}
       />
+      <Stack.Screen
+        name="Record"
+        component={Record}
+        options={({ navigation }: RootTabScreenProps<"Record">) => ({
+
+          header: (props) => <Header />,
+
+        })}
+        
+       
+        
+      />
+      <Stack.Screen
+        name="Activites"
+        component={Activites}
+        options={({ navigation }: RootTabScreenProps<"Activites">) => ({
+
+          header: (props) => <Header />,
+
+        })}
+        
+      />
 
       <Stack.Group screenOptions={{ presentation: "modal" }}>
         <Stack.Screen name="Modal" component={ModalScreen} />
@@ -121,7 +144,7 @@ function BottomTabNavigator() {
           tabBarIcon: ({ color }) => <TabBarIcon name="home" color={color} />,
           headerRight: () => (
             <Pressable
-              onPress={() => navigation.navigate("Home")}
+              onPress={() => navigation.navigate("Activites")}
               style={({ pressed }) => ({
                 opacity: pressed ? 0.5 : 1,
               })}
@@ -137,7 +160,7 @@ function BottomTabNavigator() {
         })}
       />
 
-      <BottomTab.Screen
+      {/*BottomTab.Screen
         name="Activites"
         component={Activites}
         options={({ navigation }: RootTabScreenProps<"Activites">) => ({
@@ -145,7 +168,7 @@ function BottomTabNavigator() {
           header: (props) => <Header />,
           tabBarIcon: ({ color }) => <TabBarIcon name="book" color={color} />,
         })}
-      />
+      />*/}
 
       <BottomTab.Screen
         name="User"

@@ -75,19 +75,20 @@ const FlatLinks = [
   },
 ];
 
-const ImageFlatLinks = styled.Image`
-  width: 70px;
-  height: 80px;
-  margin-left: 3%;
+const ImageFlat = styled.Image`
+  width: 50px;
+  height: 50px;
+  margin-left: 5%;
   max-width: 60%;
   max-height: 70%;
 `;
 
-const TextFlatLinks = styled.Text`
+const TextFlat = styled.Text`
   font-size: 12px;
   font-weight: bold;
   color: #333;
-  margin-left: 3%;
+  padding-left: 5%;
+  
 `;
 
 const ButtonCustom = styled.TouchableOpacity`
@@ -96,6 +97,7 @@ const ButtonCustom = styled.TouchableOpacity`
   border-bottom-color: #b8977e;
   flex-direction: row;
   width: 100%;
+  height: 90px;
   align-items: center;
 `;
 
@@ -106,7 +108,9 @@ interface IFlatItems {
   screen: any;
 }
 
-const Item = ({
+
+
+const Item = ({   //refatorar a const Item Link to modificando css da ImageFlat
   item,
   onPress,
 }: {
@@ -114,10 +118,12 @@ const Item = ({
   onPress: (event: GestureResponderEvent) => void;
 }) => (
   <ButtonCustom onPress={onPress}>
+    
+    <ImageFlat source={item.icon} />
     <Link to={{ screen: item.screen }} key={item.id}>
-      <ImageFlatLinks source={item.icon} />
-      <TextFlatLinks>{item.text}</TextFlatLinks>
-    </Link>
+      
+      <TextFlat>{item.text}</TextFlat>
+      </Link>
   </ButtonCustom>
 );
 

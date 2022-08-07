@@ -35,20 +35,31 @@ interface ListProps {
 
 export default ({ list2 }: ListProps) => {
   const [open, setOpen] = useState(false);
-
+  const [currentIdx, setCurrentIdx] = useState(-1);
+  const btnOnClick = (idx:number) =>{
+    setCurrentIdx((currentValue) => (currentValue !== idx ? idx:-1));
+  };
   const height = open ? "auto" : 0;
-
+  const bottomRadius = open ? 0 : 8;
   return (
     <>
-      <TouchableWithoutFeedback onPress={() => setOpen((prev) => !prev)}>
+      <TouchableWithoutFeedback onPress={() => setOpen((open =>!open))}>
         <View style={[styles.container]}>
           <Text style={styles.title}>DIPLOMAS E TÍTULOS</Text>
         </View>
       </TouchableWithoutFeedback>
-
-      <View style={[styles.items, { height }]}>
-        {list2.items.map((item, key) => (
-          <Item {...{ item, key }} isLast={key === list2.items.length - 1} />
+      <View style={[styles.items, { height}]}>
+        {list2.items.map((item,idx) => (
+          <Item 
+            key={idx}
+            item={item}
+            isOpen={idx === currentIdx}
+            isLast={idx === list2.items.length - 1}
+            btnOnClick ={()=> btnOnClick(idx)}
+          
+          
+          />
+          
         ))}
       </View>
     </>

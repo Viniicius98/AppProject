@@ -7,8 +7,8 @@ import List3, { List3 as ListModel3 } from "./ListDocencia";
 const list: ListModel = {
   name: "Ações Educacionais",
   items: [
-    { name: "CURSOS OFICIAIS REALIZADOS" },
-    { name: "CURSO CREDENCIADOS PELO ENFAM" },
+    { name: "CURSOS OFICIAIS REALIZADOS", screen:"Record" },
+    { name: "CURSO CREDENCIADOS PELO ENFAM", screen:"Record" },
   ],
 };
 
@@ -39,6 +39,7 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "#343F4B",
     padding: 9,
+    marginTop: -70,
   },
   title: {
     fontSize: 32,
@@ -49,9 +50,10 @@ const styles = StyleSheet.create({
 export default () => {
   return (
     <View style={styles.container}>
-      <List {...{ list }} />
-      <List2 {...{ list2 }} />
-      <List3 {...{ list3 }} />
+      <List {...{ list/*list2*/ }} />
+      <List2 {...{ list2}} />
+      <List3 {...{ list3}} />
+      
     </View>
   );
 };
