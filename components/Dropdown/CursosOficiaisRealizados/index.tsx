@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import styled from "styled-components/native";
-import CardAtividade from "../CardInserirAtividade";
+
 import Dropdown from "../Dropdown";
 
 
@@ -40,7 +40,7 @@ const IconsItems = styled.View`
   
 `;
 
-export default function InserirAtividadeComponents() {
+export default function CursoOficias() {
   return (
     <>
     
@@ -56,7 +56,7 @@ export default function InserirAtividadeComponents() {
           </DropdownItems>
 
           <IconsItems>
-            <CardAtividade />            
+                     
           </IconsItems>
         </ContentItems>
         

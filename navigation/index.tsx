@@ -77,11 +77,23 @@ function RootNavigator() {
       <Stack.Screen
         name="Record"
         component={Record}
+        options={({ navigation }: RootTabScreenProps<"Record">) => ({
+
+          header: (props) => <Header />,
+
+        })}
+        
+       
         
       />
       <Stack.Screen
         name="Activites"
         component={Activites}
+        options={({ navigation }: RootTabScreenProps<"Activites">) => ({
+
+          header: (props) => <Header />,
+
+        })}
         
       />
 

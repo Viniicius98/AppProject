@@ -5,6 +5,9 @@ import InserirAtividadeComponents from "../components/InserirTitulosComponents";
 import { useContext } from "react";
 import { InputValueContext } from "../context/InputValueContext";
 
+
+
+
 export default function Activites({
   navigation,
 }: RootTabScreenProps<"Activites">) {
@@ -17,6 +20,7 @@ export default function Activites({
   `;
   return (
     <Container>
+     
       <InserirAtividadeComponents />
     </Container>
   );

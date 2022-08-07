@@ -37,10 +37,10 @@ export default ({ item, isLast }: ListItemProps) => {
     <View
       style={[
         styles.container,
-        {
+        /*{
           borderBottomLeftRadius: bottomRadius,
           borderBottomRightRadius: bottomRadius,
-        },
+        },*/
       ]}
     >
       <Text style={styles.name}>{item.name}</Text>
