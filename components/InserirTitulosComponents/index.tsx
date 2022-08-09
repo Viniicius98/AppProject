@@ -2,13 +2,12 @@ import React, { useState } from "react";
 import styled from "styled-components/native";
 import CardAtividade from "../CardInserirAtividade";
 import Dropdown from "../Dropdown";
-
+import HomeIcon from "../HomeIcon";
 
 const BackgroundContainer = styled.View`
   height: 100%;
   width: 100%;
   background: #1e2d3eee;
-  
 `;
 
 const ImageBackground = styled.Image`
@@ -22,7 +21,6 @@ const ImageBackground = styled.Image`
 `;
 
 const ContentItems = styled.View`
- 
   width: 100%;
   height: 100%;
   flex-direction: row;
@@ -37,29 +35,27 @@ const IconsItems = styled.View`
   width: 100%;
   height: 575px;
   margin-left: -68%;
-  
 `;
 
 export default function InserirAtividadeComponents() {
   return (
     <>
-    
       <BackgroundContainer>
-        
         <ImageBackground
           source={require("../../assets/images/background.png")}
         />
-        
+
+        <HomeIcon />
+
         <ContentItems>
           <DropdownItems>
-            <Dropdown />            
+            <Dropdown />
           </DropdownItems>
 
           <IconsItems>
-            <CardAtividade />            
+            <CardAtividade />
           </IconsItems>
         </ContentItems>
-        
       </BackgroundContainer>
     </>
   );
