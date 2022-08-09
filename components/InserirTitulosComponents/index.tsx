@@ -3,6 +3,7 @@ import styled from "styled-components/native";
 import CardAtividade from "../CardInserirAtividade";
 import Dropdown from "../Dropdown";
 import HomeIcon from "../HomeIcon";
+import Modalteste from "../Modalteste";
 
 const BackgroundContainer = styled.View`
   height: 100%;
