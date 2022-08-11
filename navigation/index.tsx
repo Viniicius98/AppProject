@@ -78,7 +78,7 @@ function RootNavigator() {
         name="Record"
         component={Record}
         options={({ navigation }: RootTabScreenProps<"Record">) => ({
-          headerShown: true,
+          headerShown: false,
         })}
       />
       <Stack.Screen
@@ -120,8 +120,8 @@ function BottomTabNavigator() {
         name="Login"
         component={LoginScreen}
         options={({ navigation }: RootTabScreenProps<"Login">) => ({
-          title: "Login",
-          header: (props) => <Header />,
+          headerShown: false,
+
           tabBarIcon: ({ color }) => (
             <TabBarIcon name="sign-in" color={color} />
           ),
@@ -132,8 +132,8 @@ function BottomTabNavigator() {
         name="Home"
         component={HomeScreen}
         options={({ navigation }: RootTabScreenProps<"Home">) => ({
-          header: (props) => <Header />,
           tabBarIcon: ({ color }) => <TabBarIcon name="home" color={color} />,
+          headerShown: false,
           headerRight: () => (
             <Pressable
               onPress={() => navigation.navigate("Activites")}

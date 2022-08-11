@@ -5,6 +5,7 @@ import CardPerfilMagistrado from "../CardMagistrado";
 import CardConsultaEnfam from "../CardConsultaEnfam";
 import CardNotificacoes from "../../components/CardNotificacoes";
 import { Link } from "@react-navigation/native";
+import AppLogo from "../Header/Applogo";
 
 const BackgroundContainer = styled.View`
   height: 100%;
@@ -26,7 +27,7 @@ const ImageBackground = styled.Image`
 const ContentItems = styled.View`
   position: absolute;
   width: 100%;
-  height: 100%;
+  height: 83%;
   flex-direction: row;
   align-items: flex-end;
 `;
@@ -41,6 +42,11 @@ const IconsItems = styled.View`
   height: 450px;
   background-color: rgba(255, 255, 255, 0.4);
   margin-left: 2%;
+`;
+const ContainerApp = styled.View`
+  width: 38%;
+  height: 60px;
+  margin-top: -450%;
 `;
 const FlatLinks = [
   {
@@ -88,7 +94,6 @@ const TextFlat = styled.Text`
   font-weight: bold;
   color: #333;
   padding-left: 5%;
-  
 `;
 
 const ButtonCustom = styled.TouchableOpacity`
@@ -108,9 +113,8 @@ interface IFlatItems {
   screen: any;
 }
 
-
-
-const Item = ({   //refatorar a const Item Link to modificando css da ImageFlat
+const Item = ({
+  //refatorar a const Item Link to modificando css da ImageFlat
   item,
   onPress,
 }: {
@@ -118,12 +122,10 @@ const Item = ({   //refatorar a const Item Link to modificando css da ImageFlat
   onPress: (event: GestureResponderEvent) => void;
 }) => (
   <ButtonCustom onPress={onPress}>
-    
     <ImageFlat source={item.icon} />
     <Link to={{ screen: item.screen }} key={item.id}>
-      
       <TextFlat>{item.text}</TextFlat>
-      </Link>
+    </Link>
   </ButtonCustom>
 );
 
@@ -154,6 +156,9 @@ export default function HomeItemsComponents() {
             <CardPerfilMagistrado />
             <CardConsultaEnfam />
             <CardNotificacoes />
+            <ContainerApp>
+              <AppLogo />
+            </ContainerApp>
           </IconsItems>
         </ContentItems>
       </BackgroundContainer>

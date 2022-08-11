@@ -7,11 +7,12 @@ import { InputValueContext } from "../context/InputValueContext";
 import Dropdown from "../components/Dropdown";
 import CardAtividade from "../components/CardInserirAtividade";
 import Header from "../components/Header";
+import AppLogo from "../components/Header/Applogo";
 
 const BackgroundContainer = styled.View`
-  height: 98%;
+  height: 100%;
   width: 100%;
-  margin-top: 10%;
+  margin-top: 9%;
   background: #1e2d3eee;
 `;
 
@@ -20,7 +21,6 @@ const ImageBackground = styled.Image`
   width: 100%;
   align-items: center;
   justify-content: center;
-  position: absolute;
   z-index: 0;
   opacity: 0.3;
 `;
@@ -39,9 +39,10 @@ const CursoItems = styled.View`
 
 const IconsItems = styled.View`
   width: 100%;
-  height: 89.1%;
-  margin-top: 10%;
+  height: 100%;
+  margin-top: 15%;
   margin-left: -68%;
+  margin-bottom: -1.1%;
 `;
 const ListItems = styled.View`
   width: 90%;
@@ -103,11 +104,27 @@ const SubmitButton = styled.Button`
   width: 50x;
   height: 50px;
 `;
+const ConteinerHeader = styled.View`
+  width: 100%;
+  height: 20%;
+  margin-top: -14%;
+  margin-left: 1%;
+`;
+const ConteinerApp = styled.View`
+  width: 100%;
+  height: 20%;
+  margin-top: -37%;
+  margin-left: 74%;
+`;
 
 export default function Record() {
   return (
     <>
       <BackgroundContainer>
+        <ConteinerHeader>
+          <Header />
+        </ConteinerHeader>
+
         <ImageBackground source={require("../assets/images/background.png")} />
 
         <ContentItems>
@@ -133,6 +150,9 @@ export default function Record() {
 
           <IconsItems>
             <CardAtividade />
+            <ConteinerApp>
+              <AppLogo />
+            </ConteinerApp>
           </IconsItems>
         </ContentItems>
       </BackgroundContainer>

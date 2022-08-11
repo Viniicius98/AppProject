@@ -14,32 +14,20 @@ export default function Activites({
 
   const Container = styled.View`
     height: 100%;
+    margin-top: -5.9%;
     border-bottom-width: 10px;
     border-bottom-color: #b8977e;
   `;
   const Container2 = styled.View`
     height: 20%;
-    margin-bottom: 0%;
-    background: black;
-    border-bottom-width: 10px;
-    border-bottom-color: #b8977e;
-  `;
-  const Container3 = styled.View`
-    height: 20%;
-    margin-bottom: 0%;
-    background: black;
-    border-bottom-width: 10px;
-    border-bottom-color: #b8977e;
+    flex: 1;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
   `;
   return (
     <Container>
-      <Container2>
-        <Header />
-        <AppLogo />
-      </Container2>
-      <Container3>
-        <AppLogo />
-      </Container3>
+      <Header />
       <InserirAtividadeComponents />
     </Container>
   );

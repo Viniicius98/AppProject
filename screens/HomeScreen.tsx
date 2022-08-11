@@ -1,28 +1,23 @@
-import styled from 'styled-components/native';
-import { Button } from 'react-native';
-import { useContext, useEffect } from 'react';
+import styled from "styled-components/native";
+import { Button } from "react-native";
+import { useContext, useEffect } from "react";
 
-
-
-import { Text, View } from '../components/Themed';
-import { RootTabScreenProps } from '../types';
-import HomeItemsComponents from '../components/HomeItemsComponents';
-import biometricAuth from '../utils/local-authentication';
-import { InputValueContext } from '../context/InputValueContext';
-
-
+import { Text, View } from "../components/Themed";
+import { RootTabScreenProps } from "../types";
+import HomeItemsComponents from "../components/HomeItemsComponents";
+import biometricAuth from "../utils/local-authentication";
+import { InputValueContext } from "../context/InputValueContext";
+import Header from "../components/Header";
 
 const Container = styled.View`
   height: 100%;
+  margin-top: -4%;
   border-bottom-width: 10px;
   border-bottom-color: #b8977e;
-`
+`;
 
-
-
-export default function HomeScreen({ navigation }: RootTabScreenProps<'Home'>) {
-const {state, dispatch} = useContext(InputValueContext);
-  
+export default function HomeScreen({ navigation }: RootTabScreenProps<"Home">) {
+  const { state, dispatch } = useContext(InputValueContext);
 
   /*const authLocal = async()=>{
     if(await biometricAuth()){
@@ -30,15 +25,14 @@ const {state, dispatch} = useContext(InputValueContext);
     }
   }*/
   return (
-    
-    
     <Container>
+      <Header />
       <HomeItemsComponents />
     </Container>
   );
 }
 
-//terirado de dentro do Container 
+//terirado de dentro do Container
 /*<View>
         <Text>Valor: {state.inputValue}</Text>
       </View>
