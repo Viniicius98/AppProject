@@ -6,17 +6,12 @@ import { useContext } from "react";
 import { InputValueContext } from "../context/InputValueContext";
 import Dropdown from "../components/Dropdown";
 import CardAtividade from "../components/CardInserirAtividade";
+import HomeIcon from "../components/HomeIcon";
 
-
-
-
-
-
-  const BackgroundContainer = styled.View`
+const BackgroundContainer = styled.View`
   height: 100%;
   width: 100%;
   background: #1e2d3eee;
-  
 `;
 
 const ImageBackground = styled.Image`
@@ -30,7 +25,6 @@ const ImageBackground = styled.Image`
 `;
 
 const ContentItems = styled.View`
- 
   width: 100%;
   height: 100%;
   flex-direction: row;
@@ -46,7 +40,6 @@ const IconsItems = styled.View`
   width: 100%;
   height: 89.1%;
   margin-left: -68%;
-  
 `;
 const ListItems = styled.View`
   width: 90%;
@@ -80,11 +73,11 @@ const TextoCursos = styled.Text`
   color: #333;
   padding-left: 5%;
   margin-top: 6px;
-  color: #343F4B;
+  color: #343f4b;
 `;
 const InputContainer = styled.View`
-margin-top: 40%;
-position: absolute;
+  margin-top: 40%;
+  position: absolute;
 `;
 
 const Input = styled.TextInput`
@@ -96,53 +89,43 @@ const Input = styled.TextInput`
   padding-left: 30px;
   margin-bottom: 1px;
   border-bottom-width: 1px;
-  border-bottom-color: #C0CCDA;
-  
+  border-bottom-color: #c0ccda;
 `;
 const ContainerSubmitButton = styled.View`
   margin-top: 110%;
   padding-left: 60%;
   padding-right: 4%;
-  
 `;
 
 const SubmitButton = styled.Button`
   width: 50x;
   height: 50px;
-  
-  
 `;
 
-export default function Record(){
-  
+export default function Record() {
   return (
     <>
-    
       <BackgroundContainer>
-        
-        <ImageBackground
-          source={require("../assets/images/background.png")}
-        />
-        
+        <ImageBackground source={require("../assets/images/background.png")} />
+
+        <HomeIcon />
+
         <ContentItems>
-
           <CursoItems>
-          <ListItems>
-            <TextoCursos>CURSOS</TextoCursos>
-          <TitleCustom>
-          
-            <SubTitleCustom>
-            <TextoCursos>CREDENCIADO PELA ENFAM</TextoCursos>
-            </SubTitleCustom>            
-             
-           
-          
-          </TitleCustom>   
-          <InputContainer>
-            <Input placeholder="NOME DO CURSO" />
-             <Input placeholder="INSTITUIÇÃO"/>  
-             <Input placeholder="CARGA HORÁRIA"/>
+            <ListItems>
+              <TextoCursos>CURSOS</TextoCursos>
+              <TitleCustom>
+                <SubTitleCustom>
+                  <TextoCursos>CREDENCIADO PELA ENFAM</TextoCursos>
+                </SubTitleCustom>
+              </TitleCustom>
+              <InputContainer>
+                <Input placeholder="NOME DO CURSO" />
+                <Input placeholder="INSTITUIÇÃO" />
+                <Input placeholder="CARGA HORÁRIA" />
+              </InputContainer>
 
+<<<<<<< HEAD
              </InputContainer>  
 
              <ContainerSubmitButton>
@@ -154,16 +137,19 @@ export default function Record(){
                     
           </ListItems>  
               
+=======
+              <ContainerSubmitButton>
+                <SubmitButton title="Registrar" color="#B8977E" />
+              </ContainerSubmitButton>
+            </ListItems>
+>>>>>>> 1f71cb8fd741eed13e3c7e29feec049180f377f0
           </CursoItems>
 
           <IconsItems>
-            <CardAtividade />            
+            <CardAtividade />
           </IconsItems>
-          
         </ContentItems>
-        
       </BackgroundContainer>
     </>
   );
 }
-
