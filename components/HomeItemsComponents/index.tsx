@@ -119,11 +119,18 @@ const Item = ({   //refatorar a const Item Link to modificando css da ImageFlat
 }) => (
   <ButtonCustom onPress={onPress}>
     
-    <ImageFlat source={item.icon} />
     <Link to={{ screen: item.screen }} key={item.id}>
+    
+    
+    
+
+    <ImageFlat source={item.icon} />
+    <TextFlat>{item.text}</TextFlat>
+
+    
       
-      <TextFlat>{item.text}</TextFlat>
       </Link>
+    
   </ButtonCustom>
 );
 

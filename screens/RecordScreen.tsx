@@ -148,14 +148,9 @@ export default function Record(){
              <ContainerSubmitButton>
               <SubmitButton
           title="Registrar"
-          color="#B8977E"
-          
-          />
-          
-          </ContainerSubmitButton>
-             
-
-        
+          color="#B8977E"    
+          />          
+          </ContainerSubmitButton>                     
                     
           </ListItems>  
               
