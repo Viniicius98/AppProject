@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components/native";
+import AppLogo from "../Header/Applogo";
 
 const Container = styled.View`
   margin-left: -45.2%;
@@ -14,7 +15,7 @@ const AvatarContainer = styled.View`
   width: 100%;
   align-items: center;
   margin-bottom: 58px;
-  
+  height: 15%;
 `;
 const Avatar = styled.Image`
   width: 40px;
@@ -31,16 +32,15 @@ const Logo = styled.Image`
   height: 171.9px;
   max-width: 100.9%;
   max-height: 100%;
-  margin-top: -65.0px;
+  margin-top: -65px;
   position: absolute;
-  
 `;
 
 const TextOne = styled.Text`
   text-align: center;
   font-weight: bold;
   margin-right: 35%;
-  margin-top: -15%;
+  margin-top: -16%;
 `;
 const TextTwo = styled.Text`
   text-align: center;
@@ -52,16 +52,12 @@ const TextTwo = styled.Text`
 export default function CardAtividade() {
   return (
     <Container>
-      
       <AvatarContainer>
-      <Logo source={require("../../assets/images/logoapp.png")} />
         <Avatar source={require("../../assets/images/inserirTitulos.png")} />
-        
-        </AvatarContainer>
-        
+      </AvatarContainer>
+
       <TextOne>INSERIR</TextOne>
       <TextTwo>ATIVIDADES</TextTwo>
-      
     </Container>
   );
 }
