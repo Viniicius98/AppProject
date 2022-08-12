@@ -53,7 +53,7 @@ const FlatLinks = [
     id: "0",
     text: "RELATÓRIO DE PONTOS",
     icon: require("../../assets/images/meusPontos.png"),
-    screen: "Chat",
+    screen: "PointsReport",
   },
   {
     id: "1",

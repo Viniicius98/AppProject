@@ -39,6 +39,7 @@ import {
   RootTabParamList,
   RootTabScreenProps,
 } from "../types";
+import PointsReport from "../screens/PointsReport";
 
 export default function Navigation({
   colorScheme,
@@ -78,6 +79,13 @@ function RootNavigator() {
         name="Record"
         component={Record}
         options={({ navigation }: RootTabScreenProps<"Record">) => ({
+          headerShown: false,
+        })}
+      />
+      <Stack.Screen
+        name="PointsReport"
+        component={PointsReport}
+        options={({ navigation }: RootTabScreenProps<"PointsReport">) => ({
           headerShown: false,
         })}
       />

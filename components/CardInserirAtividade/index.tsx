@@ -19,11 +19,11 @@ const AvatarContainer = styled.View`
 `;
 const Avatar = styled.Image`
   width: 40px;
-  height: 40px;
-  margin-right: 60%;
+  height: 50px;
+  margin-right: 66%;
   max-width: 80%;
   max-height: 80%;
-  margin-top: 3%;
+  margin-top: 2%;
   margin-bottom: 9px;
   display: flex;
 `;
@@ -39,13 +39,13 @@ const Logo = styled.Image`
 const TextOne = styled.Text`
   text-align: center;
   font-weight: bold;
-  margin-right: 44%;
-  margin-top: -16%;
+  margin-right: 49%;
+  margin-top: -17%;
 `;
 const TextTwo = styled.Text`
   text-align: center;
   font-weight: bold;
-  margin-right: 42%;
+  margin-right: 46%;
   margin-top: 0%;
 `;
 

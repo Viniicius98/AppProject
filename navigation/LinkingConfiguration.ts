@@ -29,11 +29,16 @@ const linking: LinkingOptions<RootStackParamList> = {
               ActivitesScreen: "Activites",
             },
           },
-          Record:{
+          Record: {
             screens: {
               RecordScreen: "Record",
-          }
-         },
+            },
+          },
+          PointsReport: {
+            screens: {
+              RecordScreen: "PointsReport",
+            },
+          },
           User: {
             screens: {
               UserScreen: "user",
@@ -44,7 +49,6 @@ const linking: LinkingOptions<RootStackParamList> = {
       Modal: "modal",
       Settings: "settings",
       NotFound: "*",
-      
     },
   },
 };

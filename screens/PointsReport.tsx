@@ -118,7 +118,7 @@ const ConteinerApp = styled.View`
   margin-left: 74%;
 `;
 
-export default function Record() {
+export default function PointsReport() {
   return (
     <>
       <BackgroundContainer>
@@ -127,35 +127,6 @@ export default function Record() {
         </ConteinerHeader>
 
         <ImageBackground source={require("../assets/images/background.png")} />
-
-        <ContentItems>
-          <CursoItems>
-            <ListItems>
-              <TextoCursos>CURSOS</TextoCursos>
-              <TitleCustom>
-                <SubTitleCustom>
-                  <TextoCursos>CREDENCIADO PELA ENFAM</TextoCursos>
-                </SubTitleCustom>
-              </TitleCustom>
-              <InputContainer>
-                <Input placeholder="NOME DO CURSO" />
-                <Input placeholder="INSTITUIÇÃO" />
-                <Input placeholder="CARGA HORÁRIA" />
-              </InputContainer>
-
-              <ContainerSubmitButton>
-                <SubmitButton title="Registrar" color="#B8977E" />
-              </ContainerSubmitButton>
-            </ListItems>
-          </CursoItems>
-
-          <IconsItems>
-            <CardAtividade />
-            <ConteinerApp>
-              <AppLogo />
-            </ConteinerApp>
-          </IconsItems>
-        </ContentItems>
       </BackgroundContainer>
     </>
   );
