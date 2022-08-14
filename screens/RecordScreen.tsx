@@ -6,11 +6,13 @@ import { useContext } from "react";
 import { InputValueContext } from "../context/InputValueContext";
 import Dropdown from "../components/Dropdown";
 import CardAtividade from "../components/CardInserirAtividade";
-import HomeIcon from "../components/HomeIcon";
+import Header from "../components/Header";
+import AppLogo from "../components/Header/Applogo";
 
 const BackgroundContainer = styled.View`
   height: 100%;
   width: 100%;
+  margin-top: 9%;
   background: #1e2d3eee;
 `;
 
@@ -19,7 +21,6 @@ const ImageBackground = styled.Image`
   width: 100%;
   align-items: center;
   justify-content: center;
-  position: absolute;
   z-index: 0;
   opacity: 0.3;
 `;
@@ -32,19 +33,22 @@ const ContentItems = styled.View`
 `;
 const CursoItems = styled.View`
   width: 100%;
-  height: 80%;
+  height: 75%;
   padding-right: -10%;
 `;
 
 const IconsItems = styled.View`
   width: 100%;
-  height: 89.1%;
+  height: 78%;
+  margin-top: -9%;
   margin-left: -68%;
+  margin-bottom: 45%;
 `;
 const ListItems = styled.View`
   width: 90%;
   height: 450px;
   margin-left: 6%;
+  margin-top: -70%;
   background-color: #fff;
 `;
 
@@ -76,17 +80,17 @@ const TextoCursos = styled.Text`
   color: #343f4b;
 `;
 const InputContainer = styled.View`
-  margin-top: 40%;
+  margin-top: 30%;
   position: absolute;
 `;
 
 const Input = styled.TextInput`
   height: 50px;
-  width: 300px;
+  width: 320px;
   background-color: #e0e6ed;
   border: none;
   background: #fff;
-  padding-left: 30px;
+  padding-left: 20px;
   margin-bottom: 1px;
   border-bottom-width: 1px;
   border-bottom-color: #c0ccda;
@@ -101,14 +105,28 @@ const SubmitButton = styled.Button`
   width: 50x;
   height: 50px;
 `;
+const ConteinerHeader = styled.View`
+  width: 100%;
+  height: 20%;
+  margin-top: -14%;
+  margin-left: 0%;
+`;
+const ConteinerApp = styled.View`
+  width: 100%;
+  height: 20%;
+  margin-top: -37%;
+  margin-left: 74%;
+`;
 
 export default function Record() {
   return (
     <>
       <BackgroundContainer>
-        <ImageBackground source={require("../assets/images/background.png")} />
+        <ConteinerHeader>
+          <Header />
+        </ConteinerHeader>
 
-        <HomeIcon />
+        <ImageBackground source={require("../assets/images/background.png")} />
 
         <ContentItems>
           <CursoItems>
@@ -125,29 +143,22 @@ export default function Record() {
                 <Input placeholder="CARGA HORÁRIA" />
               </InputContainer>
 
-<<<<<<< HEAD
-             </InputContainer>  
-
-             <ContainerSubmitButton>
-              <SubmitButton
-          title="Registrar"
-          color="#B8977E"    
-          />          
-          </ContainerSubmitButton>                     
-                    
-          </ListItems>  
-              
-=======
               <ContainerSubmitButton>
                 <SubmitButton title="Registrar" color="#B8977E" />
               </ContainerSubmitButton>
             </ListItems>
->>>>>>> 1f71cb8fd741eed13e3c7e29feec049180f377f0
           </CursoItems>
 
-          <IconsItems>
-            <CardAtividade />
+          
+          
+          
+          <IconsItems>   
+          <CardAtividade />         
+            <ConteinerApp>
+              <AppLogo />
+            </ConteinerApp>
           </IconsItems>
+
         </ContentItems>
       </BackgroundContainer>
     </>

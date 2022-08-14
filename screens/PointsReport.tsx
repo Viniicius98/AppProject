@@ -6,6 +6,7 @@ import { useContext } from "react";
 import { InputValueContext } from "../context/InputValueContext";
 import Header from "../components/Header";
 import AppLogo from "../components/Header/Applogo";
+import PointsReportComponents from "../components/PointsReportComponents";
 
 export default function Activites({
   navigation,
@@ -28,7 +29,7 @@ export default function Activites({
   return (
     <Container>
       <Header />
-      <InserirAtividadeComponents />
+      <PointsReportComponents />
     </Container>
   );
 }

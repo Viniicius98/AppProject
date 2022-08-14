@@ -6,24 +6,42 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 import api from "../services/api";
 import { ActivityIndicator } from "react-native";
 import React from "react";
+import Header from "../components/Header";
+import AppLogo from "../components/Header/Applogo";
 
 const BackgroundContainer = styled.View`
-    
-    background: #021831ed;
-    
-`
+  width: 100%;
+  height: 83.5%;
+`;
+const LoginBackgroundContainer = styled.View`
+  width: 100%;
+  height: 55%;
+  margin-top: 15%;
+  margin-left: 2%;
+  background: #021831ed;
+`;
 
-
-
-
-
-const ImageBackground = styled.Image``;
+const ImageBackground = styled.Image`
+  height: 4%;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  opacity: 0.3;
+  z-index: 0;
+`;
 
 const Container = styled.View`
   flex: 1;
   align-items: center;
   justify-content: center;
-  background-color: #ffffff;
+  background-color: black;
+`;
+const AppContainer = styled.View`
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+  margin-top: -20%;
+  margin-left: 30%;
 `;
 const ContainerTextt = styled.Text`
   color: #8492a6;
@@ -43,15 +61,19 @@ const ContainerTexte = styled.Text`
 const Input = styled.TextInput`
   height: 50px;
   width: 300px;
+  align-items: center;
   background-color: #e0e6ed;
   border-radius: 5px;
   padding-left: 20px;
+  margin-top: 5%;
+  margin-left: 5%;
   margin-bottom: 1px;
 `;
 
 const SubmitButton = styled.Button`
   width: 200px;
-  height: 10px;
+  height: 30%;
+  margin-bottom: -10%;
 `;
 
 const Loading = styled.View`
@@ -126,6 +148,8 @@ export default function LoginScreen({
 
   return (
     <Container>
+      <Header />
+
       <BackgroundContainer>
         {isLoading && (
           <Loading>
@@ -133,30 +157,34 @@ export default function LoginScreen({
           </Loading>
         )}
         <ImageBackground source={require("../assets/images/background.png")} />
+        <LoginBackgroundContainer>
+          <ContainerTextt>Login</ContainerTextt>
 
-        <ContainerTextt>Login</ContainerTextt>
+          <Input
+            placeholder="E-mail"
+            defaultValue={email}
+            onChangeText={(newEmail) => setEmail(newEmail)}
+          />
+          <Input
+            placeholder="Senha"
+            defaultValue={password}
+            onChangeText={(newPassword) => setPassword(newPassword)}
+            secureTextEntry
+          />
 
-        <Input
-          placeholder="E-mail"
-          defaultValue={email}
-          onChangeText={(newEmail) => setEmail(newEmail)}
-        />
-        <Input
-          placeholder="Senha"
-          defaultValue={password}
-          onChangeText={(newPassword) => setPassword(newPassword)}
-          secureTextEntry
-        />
+          <SubmitButton
+            title="Enviar"
+            color="#B8977E"
+            onPress={handleSignInPress}
+          />
+          <ContainerTexte>Esqueceu sua senha ? </ContainerTexte>
 
-        <SubmitButton
-          title="Enviar"
-          color="#B8977E"
-          onPress={handleSignInPress}
-        />
-        <ContainerTexte>Esqueceu sua senha ? </ContainerTexte>
-
-        <ContainerText>{error}</ContainerText>
-        <ContainerText>{success} </ContainerText>
+          <ContainerText>{error}</ContainerText>
+          <ContainerText>{success} </ContainerText>
+        </LoginBackgroundContainer>
+        <AppContainer>
+          <AppLogo />
+        </AppContainer>
       </BackgroundContainer>
     </Container>
   );

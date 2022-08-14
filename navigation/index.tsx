@@ -17,7 +17,7 @@ import { ColorSchemeName, Pressable } from "react-native";
 
 //screens
 import Record from "../screens/RecordScreen";
-import Activites from "../screens/ActivitesScreen"
+import Activites from "../screens/ActivitesScreen";
 import HomeScreen from "../screens/HomeScreen";
 import LoginScreen from "../screens/LoginScreen";
 import ModalScreen from "../screens/ModalScreen";
@@ -39,6 +39,7 @@ import {
   RootTabParamList,
   RootTabScreenProps,
 } from "../types";
+import PointsReport from "../screens/PointsReport";
 
 export default function Navigation({
   colorScheme,
@@ -78,23 +79,22 @@ function RootNavigator() {
         name="Record"
         component={Record}
         options={({ navigation }: RootTabScreenProps<"Record">) => ({
-
-          header: (props) => <Header />,
-
+          headerShown: false,
         })}
-        
-       
-        
+      />
+      <Stack.Screen
+        name="PointsReport"
+        component={PointsReport}
+        options={({ navigation }: RootTabScreenProps<"PointsReport">) => ({
+          headerShown: false,
+        })}
       />
       <Stack.Screen
         name="Activites"
         component={Activites}
         options={({ navigation }: RootTabScreenProps<"Activites">) => ({
-
-          header: (props) => <Header />,
-
+          headerShown: false,
         })}
-        
       />
 
       <Stack.Group screenOptions={{ presentation: "modal" }}>
@@ -128,8 +128,8 @@ function BottomTabNavigator() {
         name="Login"
         component={LoginScreen}
         options={({ navigation }: RootTabScreenProps<"Login">) => ({
-          title: "Login",
-          header: (props) => <Header />,
+          headerShown: false,
+
           tabBarIcon: ({ color }) => (
             <TabBarIcon name="sign-in" color={color} />
           ),
@@ -140,8 +140,8 @@ function BottomTabNavigator() {
         name="Home"
         component={HomeScreen}
         options={({ navigation }: RootTabScreenProps<"Home">) => ({
-          header: (props) => <Header />,
           tabBarIcon: ({ color }) => <TabBarIcon name="home" color={color} />,
+          headerShown: false,
           headerRight: () => (
             <Pressable
               onPress={() => navigation.navigate("Activites")}

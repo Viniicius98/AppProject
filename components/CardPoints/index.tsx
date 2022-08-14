@@ -3,7 +3,7 @@ import styled from "styled-components/native";
 import AppLogo from "../Header/Applogo";
 
 const Container = styled.View`
-  margin-left: -45.2%;
+  margin-left: -39%;
   width: 180%;
   height: 80%;
   display: flex;
@@ -15,10 +15,10 @@ const AvatarContainer = styled.View`
   width: 100%;
   align-items: center;
   margin-bottom: 58px;
-  height: 15%;
+  height: 14%;
 `;
 const Avatar = styled.Image`
-  width: 40px;
+  width: 50px;
   height: 50px;
   margin-right: 66%;
   max-width: 80%;
@@ -28,19 +28,20 @@ const Avatar = styled.Image`
   display: flex;
 `;
 const Logo = styled.Image`
-  width: 100.9px;
-  height: 171.9px;
-  max-width: 100.9%;
-  max-height: 100%;
+  width: 120px;
+  height: 120px;
+  max-width: 120%;
+  max-height: 120%;
   margin-top: -65px;
   position: absolute;
 `;
 
 const TextOne = styled.Text`
+  font-size: 17px;
   text-align: center;
   font-weight: bold;
-  margin-right: 49%;
-  margin-top: -17%;
+  margin-right: 45%;
+  margin-top: -15%;
 `;
 const TextTwo = styled.Text`
   text-align: center;
@@ -49,15 +50,15 @@ const TextTwo = styled.Text`
   margin-top: 0%;
 `;
 
-export default function PointsReportComponents() {
+export default function CardPoints() {
   return (
     <Container>
       <AvatarContainer>
-        <Avatar source={require("../../assets/images/inserirTitulos.png")} />
+        <Avatar source={require("../../assets/images/meusPontos.png")} />
       </AvatarContainer>
 
-      <TextOne>INSERIR</TextOne>
-      <TextTwo>ATIVIDADES</TextTwo>
+      <TextOne>PONTOS</TextOne>
+     
     </Container>
   );
 }

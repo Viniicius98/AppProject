@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components/native";
 import CardAtividade from "../CardInserirAtividade";
+import CardPoints from "../CardPoints";
 import Dropdown from "../Dropdown";
 import AppLogo from "../Header/Applogo";
 
@@ -44,7 +45,33 @@ const IconsApp = styled.View`
   margin-left: 74%;
 `;
 
-export default function InserirAtividadeComponents() {
+const ListItems = styled.View`
+  width: 90%;
+  height: 450px;
+  margin-left: 6%;
+  margin-top: -30%;
+  background-color: #fff;
+`;
+const TextoCursos = styled.Text`
+  font-size: 15px;
+  font-weight: bold;
+  color: #333;
+  padding-left: 5%;
+  margin-top: 6px;
+  color: #343f4b;
+`;
+const TitleCustom = styled.View`
+  background: #fff;
+  border-bottom-width: 8px;
+  border-bottom-color: #b8977e;
+  flex-direction: row;
+  width: 100%;
+  height: 20px;
+  align-items: center;
+`;
+
+
+export default function PointsReport() {
   return (
     <>
       <BackgroundContainer>
@@ -54,11 +81,19 @@ export default function InserirAtividadeComponents() {
 
         <ContentItems>
           <DropdownItems>
-            <Dropdown />
+          <ListItems>
+              <TextoCursos>RELATÓRIO</TextoCursos>
+              <TitleCustom>
+                
+              </TitleCustom>
+             
+
+              
+            </ListItems>
           </DropdownItems>
 
           <IconsItems>
-            <CardAtividade />
+            <CardPoints />
             <IconsApp>
               <AppLogo />
             </IconsApp>
