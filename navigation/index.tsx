@@ -86,7 +86,7 @@ function RootNavigator() {
         name="PointsReport"
         component={PointsReport}
         options={({ navigation }: RootTabScreenProps<"PointsReport">) => ({
-          headerShown: false,
+          headerShown: true,
         })}
       />
       <Stack.Screen

@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components/native";
 import AppLogo from "../Header/Applogo";
 import HomeIcon from "../HomeIcon";
+import { Link } from "@react-navigation/native";
 
 const Container = styled.View`
   margin-left: -39%;
@@ -52,13 +53,11 @@ const TextTwo = styled.Text`
 `;
 
 const HomeTop = styled.View`
-
-height: 24%;
+  height: 24%;
   width: 100%;
   margin-top: -8%;
   position: absolute;
   margin-left: -5%;
-
 `;
 
 export default function CardPoints() {
@@ -67,11 +66,13 @@ export default function CardPoints() {
       <AvatarContainer>
         <Avatar source={require("../../assets/images/meusPontos.png")} />
       </AvatarContainer>
-             <HomeTop>
-                  <HomeIcon />
-              </HomeTop>
+      <Link to={{ screen: "Activites" }}>
+        <HomeTop>
+          <HomeIcon />
+        </HomeTop>
+      </Link>
+
       <TextOne>PONTOS</TextOne>
-     
     </Container>
   );
 }
