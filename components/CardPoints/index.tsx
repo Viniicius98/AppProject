@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components/native";
 import AppLogo from "../Header/Applogo";
+import HomeIcon from "../HomeIcon";
 
 const Container = styled.View`
   margin-left: -39%;
@@ -50,13 +51,25 @@ const TextTwo = styled.Text`
   margin-top: 0%;
 `;
 
+const HomeTop = styled.View`
+
+height: 24%;
+  width: 100%;
+  margin-top: -8%;
+  position: absolute;
+  margin-left: -5%;
+
+`;
+
 export default function CardPoints() {
   return (
     <Container>
       <AvatarContainer>
         <Avatar source={require("../../assets/images/meusPontos.png")} />
       </AvatarContainer>
-
+             <HomeTop>
+                  <HomeIcon />
+              </HomeTop>
       <TextOne>PONTOS</TextOne>
      
     </Container>

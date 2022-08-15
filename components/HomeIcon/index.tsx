@@ -9,6 +9,7 @@ const HomeIcon = () => {
         variant="solid"
         borderRadius="full"
         
+        
         _icon={{
           as: MaterialIcons,
           name: "menu",

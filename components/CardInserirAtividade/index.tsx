@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components/native";
 import AppLogo from "../Header/Applogo";
+import HomeIcon from "../HomeIcon";
 
 const Container = styled.View`
   margin-left: -45.2%;
@@ -49,13 +50,25 @@ const TextTwo = styled.Text`
   margin-top: 0%;
 `;
 
+const HomeTop = styled.View`
+
+height: 24%;
+  width: 100%;
+  margin-top: -8%;
+  position: absolute;
+  margin-left: -4%;
+
+`;
+
 export default function PointsReportComponents() {
   return (
     <Container>
       <AvatarContainer>
         <Avatar source={require("../../assets/images/inserirTitulos.png")} />
       </AvatarContainer>
-
+          <HomeTop>
+                  <HomeIcon />
+              </HomeTop>
       <TextOne>INSERIR</TextOne>
       <TextTwo>ATIVIDADES</TextTwo>
     </Container>

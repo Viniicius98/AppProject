@@ -13,7 +13,7 @@ const HeaderContainer = styled.View`
   border-top-width: 1px;
   border-bottom-width: 10px;
   border-bottom-color: #b8977e;
-  margin-top: 50px;
+  margin-top: 63px;
 `;
 
 export default function Header(props: any) {

@@ -5,6 +5,8 @@ import CardPoints from "../CardPoints";
 import Dropdown from "../Dropdown";
 import AppLogo from "../Header/Applogo";
 
+
+
 const BackgroundContainer = styled.View`
   height: 100%;
   width: 100%;
@@ -20,6 +22,16 @@ const ImageBackground = styled.Image`
   z-index: 0;
   opacity: 0.3;
 `;
+const Imagerelatoriopoints = styled.Image`
+  height: 66%;
+  width: 98%;
+  margin-left: 1%;
+  margin-top: 7%;
+  
+`;
+
+
+
 
 const ContentItems = styled.View`
   width: 100%;
@@ -75,30 +87,43 @@ export default function PointsReport() {
   return (
     <>
       <BackgroundContainer>
+      
+
         <ImageBackground
           source={require("../../assets/images/background.png")}
         />
 
         <ContentItems>
+        
+
           <DropdownItems>
           <ListItems>
               <TextoCursos>RELATÓRIO</TextoCursos>
               <TitleCustom>
-                
+              
+             
               </TitleCustom>
              
-
-              
+              <Imagerelatoriopoints
+          source={require("../../assets/images/RelatórioPonits.png")}
+        />
+               
             </ListItems>
           </DropdownItems>
-
+          
           <IconsItems>
             <CardPoints />
+            
+            
             <IconsApp>
               <AppLogo />
-            </IconsApp>
-          </IconsItems>
 
+              
+            </IconsApp>
+            
+           
+          </IconsItems>
+          
         </ContentItems>
       </BackgroundContainer>
     </>
