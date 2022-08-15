@@ -1,13 +1,9 @@
 import React from "react";
 import styled from "styled-components/native";
-import { RootTabScreenProps } from "../types";
-import InserirAtividadeComponents from "../components/InserirTitulosComponents";
-import { useContext } from "react";
-import { InputValueContext } from "../context/InputValueContext";
-import Dropdown from "../components/Dropdown";
-import CardAtividade from "../components/CardInserirAtividade";
 import Header from "../components/Header";
 import AppLogo from "../components/Header/Applogo";
+import PointsReportComponents from "../components/PointsReportComponents";
+
 
 const BackgroundContainer = styled.View`
   height: 100%;
@@ -123,11 +119,15 @@ export default function PointsReport() {
     <>
       <BackgroundContainer>
         <ConteinerHeader>
-          <Header />
+            <Header />
+          <PointsReportComponents />
         </ConteinerHeader>
 
         <ImageBackground source={require("../assets/images/background.png")} />
       </BackgroundContainer>
     </>
-  );
+
+
+
+
 }

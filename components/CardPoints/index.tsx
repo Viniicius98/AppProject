@@ -4,21 +4,22 @@ import AppLogo from "../Header/Applogo";
 import HomeIcon from "../HomeIcon";
 
 const Container = styled.View`
-  margin-left: -45.2%;
+  margin-left: -39%;
   width: 180%;
   height: 80%;
   display: flex;
-  margin-top: -55.6%;
+  margin-top: -62%;
+  position: absolute;
 `;
 const AvatarContainer = styled.View`
   background: #c0ccda;
   width: 100%;
   align-items: center;
   margin-bottom: 58px;
-  height: 15%;
+  height: 14%;
 `;
 const Avatar = styled.Image`
-  width: 40px;
+  width: 50px;
   height: 50px;
   margin-right: 66%;
   max-width: 80%;
@@ -28,19 +29,20 @@ const Avatar = styled.Image`
   display: flex;
 `;
 const Logo = styled.Image`
-  width: 100.9px;
-  height: 171.9px;
-  max-width: 100.9%;
-  max-height: 100%;
+  width: 120px;
+  height: 120px;
+  max-width: 120%;
+  max-height: 120%;
   margin-top: -65px;
   position: absolute;
 `;
 
 const TextOne = styled.Text`
+  font-size: 17px;
   text-align: center;
   font-weight: bold;
-  margin-right: 49%;
-  margin-top: -17%;
+  margin-right: 45%;
+  margin-top: -15%;
 `;
 const TextTwo = styled.Text`
   text-align: center;
@@ -50,24 +52,26 @@ const TextTwo = styled.Text`
 `;
 
 const HomeTop = styled.View`
-  height: 24%;
+
+height: 24%;
   width: 100%;
   margin-top: -8%;
   position: absolute;
-  margin-left: -4%;
+  margin-left: -5%;
+
 `;
 
-export default function PointsReportComponents() {
+export default function CardPoints() {
   return (
     <Container>
       <AvatarContainer>
-        <Avatar source={require("../../assets/images/inserirTitulos.png")} />
+        <Avatar source={require("../../assets/images/meusPontos.png")} />
       </AvatarContainer>
-      <HomeTop>
-        <HomeIcon />
-      </HomeTop>
-      <TextOne>INSERIR</TextOne>
-      <TextTwo>ATIVIDADES</TextTwo>
+             <HomeTop>
+                  <HomeIcon />
+              </HomeTop>
+      <TextOne>PONTOS</TextOne>
+     
     </Container>
   );
 }

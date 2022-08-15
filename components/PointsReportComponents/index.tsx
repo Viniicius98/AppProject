@@ -1,8 +1,11 @@
 import React, { useState } from "react";
 import styled from "styled-components/native";
 import CardAtividade from "../CardInserirAtividade";
+import CardPoints from "../CardPoints";
 import Dropdown from "../Dropdown";
 import AppLogo from "../Header/Applogo";
+
+
 
 const BackgroundContainer = styled.View`
   height: 100%;
@@ -19,6 +22,16 @@ const ImageBackground = styled.Image`
   z-index: 0;
   opacity: 0.3;
 `;
+const Imagerelatoriopoints = styled.Image`
+  height: 66%;
+  width: 98%;
+  margin-left: 1%;
+  margin-top: 7%;
+  
+`;
+
+
+
 
 const ContentItems = styled.View`
   width: 100%;
@@ -35,12 +48,7 @@ const IconsItems = styled.View`
   width: 100%;
   height: 575px;
   margin-left: -68%;
-`;
-const IconsApp = styled.View`
-  width: 100%;
-  height: 575px;
-  margin-top: -40%;
-  margin-left: 74%;
+  
 `;
 const IconsApp = styled.View`
   width: 100%;
@@ -49,26 +57,73 @@ const IconsApp = styled.View`
   margin-left: 74%;
 `;
 
-export default function InserirAtividadeComponents() {
+const ListItems = styled.View`
+  width: 90%;
+  height: 450px;
+  margin-left: 6%;
+  margin-top: -30%;
+  background-color: #fff;
+`;
+const TextoCursos = styled.Text`
+  font-size: 15px;
+  font-weight: bold;
+  color: #333;
+  padding-left: 5%;
+  margin-top: 6px;
+  color: #343f4b;
+`;
+const TitleCustom = styled.View`
+  background: #fff;
+  border-bottom-width: 8px;
+  border-bottom-color: #b8977e;
+  flex-direction: row;
+  width: 100%;
+  height: 20px;
+  align-items: center;
+`;
+
+
+export default function PointsReport() {
   return (
     <>
       <BackgroundContainer>
+      
+
         <ImageBackground
           source={require("../../assets/images/background.png")}
         />
 
         <ContentItems>
-          <DropdownItems>
-            <Dropdown />
-          </DropdownItems>
+        
 
+          <DropdownItems>
+          <ListItems>
+              <TextoCursos>RELATÓRIO</TextoCursos>
+              <TitleCustom>
+              
+             
+              </TitleCustom>
+             
+              <Imagerelatoriopoints
+          source={require("../../assets/images/RelatórioPonits.png")}
+        />
+               
+            </ListItems>
+          </DropdownItems>
+          
           <IconsItems>
-            <CardAtividade />
+            <CardPoints />
+            
+            
             <IconsApp>
               <AppLogo />
-            </IconsApp>
-          </IconsItems>
 
+              
+            </IconsApp>
+            
+           
+          </IconsItems>
+          
         </ContentItems>
       </BackgroundContainer>
     </>

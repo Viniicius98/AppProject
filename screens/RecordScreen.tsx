@@ -42,7 +42,11 @@ const IconsItems = styled.View`
   height: 78%;
   margin-top: -9%;
   margin-left: -68%;
+<<<<<<< HEAD
   margin-bottom: 47%;
+=======
+  margin-bottom: 45%;
+>>>>>>> app_evandro
 `;
 const ListItems = styled.View`
   width: 90%;
@@ -149,8 +153,10 @@ export default function Record() {
             </ListItems>
           </CursoItems>
 
-          <IconsItems>
-            <CardAtividade />
+          
+          <IconsItems>   
+          <CardAtividade />         
+
             <ConteinerApp>
               <AppLogo />
             </ConteinerApp>
@@ -158,5 +164,5 @@ export default function Record() {
         </ContentItems>
       </BackgroundContainer>
     </>
-  );
+ 
 }
