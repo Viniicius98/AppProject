@@ -7,7 +7,7 @@ import AppLogo from "../Header/Applogo";
 const BackgroundContainer = styled.View`
   height: 100%;
   width: 100%;
-  margin-top: -48.7%;
+  margin-top: -66.7%;
   background: #1e2d3eee;
 `;
 
@@ -44,16 +44,9 @@ const IconsItems = styled.View`
 const IconsApp = styled.View`
   width: 100%;
   height: 575px;
-  margin-top: -110%;
+  margin-top: -90%;
   margin-bottom: 20%;
-  margin-left: 65%;
-`;
-const ContainerBack = styled.View`
-  width:18%
-  height: 12%;
-  margin-top: -198.5%;
-  margin-left: -39.4%;
-  
+  margin-left: 67%;
 `;
 
 export default function InserirAtividadeComponents() {

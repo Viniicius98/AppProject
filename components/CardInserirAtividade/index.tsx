@@ -9,55 +9,58 @@ const Container = styled.View`
   margin-top: -55.6%;
   margin-left: -45.2%;
 `;
-const AvatarContainer = styled.View`
+const Container2 = styled.View`
+  position: absolute;
+  width: 55%;
+  height: 9%;
+  margin-top: 10%;
+  margin-left: 3%;
+  display: flex;
   background: #c0ccda;
-  width: 100%;
+`;
+const AvatarContainer = styled.View`
+  position: relative;
+  width: 120px;
+  height: 150px;
   align-items: center;
   margin-bottom: 58px;
   height: 15%;
+  margin-top: 5%;
+  margin-left: 12%;
 `;
 const Avatar = styled.Image`
-  width: 40px;
-  height: 50px;
-  margin-right: 66%;
-  max-width: 80%;
-  max-height: 80%;
-  margin-top: 2%;
+  width: 60px;
+  height: 60px;
+  margin-left: 24%;
+  margin-top: 1%;
   margin-bottom: 9px;
   display: flex;
 `;
 
 const TextOne = styled.Text`
-  width: 13%;
+  position: absolute;
   text-align: center;
   font-weight: bold;
-  margin-left: 20%;
-  margin-top: -62%;
+  margin-top: 4%;
+  margin-left: 33%;
 `;
 const TextTwo = styled.Text`
-  width: 13%;
+  position: absolute;
   text-align: center;
   font-weight: bold;
-  margin-left: 21%;
-`;
-
-const HomeTop = styled.View`
-  height: 24%;
-  width: 100%;
-  margin-top: -8%;
-  position: absolute;
-  margin-left: -4%;
+  margin-left: 33%;
+  margin-top: 10%;
 `;
 
 export default function PointsReportComponents() {
   return (
     <Container>
-      <AvatarContainer>
+      <Container2>
         <Avatar source={require("../../assets/images/inserirTitulos.png")} />
-      </AvatarContainer>
 
-      <TextOne>INSERIR</TextOne>
-      <TextTwo>ATIVIDADES</TextTwo>
+        <TextOne>INSERIR</TextOne>
+        <TextTwo>ATIVIDADES</TextTwo>
+      </Container2>
       <BackButton />
     </Container>
   );

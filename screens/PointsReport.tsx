@@ -21,14 +21,14 @@ export default function PointsReport({
   const ConteinerHeader = styled.View`
     width: 100%;
     height: 20%;
-    margin-top: -14%;
+    margin-top: -4%;
     margin-left: 0%;
   `;
 
   const ConteinerReport = styled.View`
     width: 100%;
     height: 80%;
-    margin-top: 40.8%;
+    margin-top: 35.8%;
     margin-left: 0%;
   `;
 

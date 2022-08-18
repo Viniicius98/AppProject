@@ -39,11 +39,13 @@ const ContentItems = styled.View`
 const DropdownItems = styled.View`
   width: 100%;
   height: 460px;
+  margin-bottom: 70px;
 `;
 
 const IconsItems = styled.View`
   width: 100%;
   height: 475.6px;
+  margin-bottom: 24%;
   margin-left: -68%;
 `;
 const IconsApp = styled.View`

@@ -5,6 +5,7 @@ import CardPerfilMagistrado from "../CardMagistrado";
 import CardConsultaEnfam from "../CardConsultaEnfam";
 import CardNotificacoes from "../../components/CardNotificacoes";
 import { Link } from "@react-navigation/native";
+import { useNavigation } from "@react-navigation/native";
 import AppLogo from "../Header/Applogo";
 
 const BackgroundContainer = styled.View`
@@ -95,6 +96,7 @@ const TextFlat = styled.Text`
   font-weight: bold;
   color: #333;
   padding-left: 5%;
+  margin-top: 2%;
 `;
 
 const ButtonCustom = styled.TouchableOpacity`
@@ -124,9 +126,7 @@ const Item = ({
 }) => (
   <ButtonCustom onPress={onPress}>
     <ImageFlat source={item.icon} />
-    <Link to={{ screen: item.screen }} key={item.id}>
-      <TextFlat>{item.text}</TextFlat>
-    </Link>
+    <TextFlat>{item.text}</TextFlat>
   </ButtonCustom>
 );
 

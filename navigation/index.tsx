@@ -86,7 +86,7 @@ function RootNavigator() {
         name="PointsReport"
         component={PointsReport}
         options={({ navigation }: RootTabScreenProps<"PointsReport">) => ({
-          headerShown: true,
+          headerShown: false,
           headerTitle: "Home",
           headerStyle: {
             backgroundColor: "#1e2d3e",

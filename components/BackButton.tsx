@@ -4,30 +4,29 @@ import { TouchableOpacity } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 
 const ImageBack = styled.Image`
-  width: 45px;
-  height: 45px;
+  position: absolute;
+  width: 35px;
+  height: 35px;
   display: flex;
   justify-content: center;
-  margin-top: 10%;
-  margin-left: 70%;
-  background: red;
+  margin-top: 17%;
+  margin-left: 25%;
 `;
 const ContainerBack = styled.View`
-  position:relative;
-  width:100%
-  height:50%;
-  margin-top: 25%;
-  margin-left: -50%;
-  
-  
+  position: relative;
+  width: 100px;
+  height: 66px;
+  margin-top: 0%;
+  margin-left: 0%;
 `;
 const Container = styled.View`
   position:relative;
-  width:100%
-  height:50%;
-  margin-top: 25%;
-  margin-left: -50%;
-  background:white;
+  width:15%
+  height:14%;
+  margin-top: 10%;
+  margin-left:3.4 %;
+
+  
   
 `;
 
