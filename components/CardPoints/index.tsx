@@ -2,11 +2,12 @@ import React from "react";
 import styled from "styled-components/native";
 import AppLogo from "../Header/Applogo";
 import HomeIcon from "../HomeIcon";
+import { Link } from "@react-navigation/native";
 
 const Container = styled.View`
   margin-left: -39%;
   width: 180%;
-  height: 80%;
+  height: 100%;
   display: flex;
   margin-top: -62%;
   position: absolute;
@@ -28,14 +29,6 @@ const Avatar = styled.Image`
   margin-bottom: 9px;
   display: flex;
 `;
-const Logo = styled.Image`
-  width: 120px;
-  height: 120px;
-  max-width: 120%;
-  max-height: 120%;
-  margin-top: -65px;
-  position: absolute;
-`;
 
 const TextOne = styled.Text`
   font-size: 17px;
@@ -44,21 +37,13 @@ const TextOne = styled.Text`
   margin-right: 45%;
   margin-top: -15%;
 `;
-const TextTwo = styled.Text`
-  text-align: center;
-  font-weight: bold;
-  margin-right: 46%;
-  margin-top: 0%;
-`;
 
 const HomeTop = styled.View`
-
-height: 24%;
+  height: 24%;
   width: 100%;
-  margin-top: -8%;
+  margin-top: -7%;
   position: absolute;
-  margin-left: -5%;
-
+  margin-left: -16%;
 `;
 
 export default function CardPoints() {
@@ -67,11 +52,12 @@ export default function CardPoints() {
       <AvatarContainer>
         <Avatar source={require("../../assets/images/meusPontos.png")} />
       </AvatarContainer>
-             <HomeTop>
-                  <HomeIcon />
-              </HomeTop>
+
+      <HomeTop>
+        <HomeIcon />
+      </HomeTop>
+
       <TextOne>PONTOS</TextOne>
-     
     </Container>
   );
 }

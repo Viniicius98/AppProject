@@ -5,7 +5,7 @@ import InserirAtividadeComponents from "../components/InserirTitulosComponents";
 import { useContext } from "react";
 import { InputValueContext } from "../context/InputValueContext";
 import Header from "../components/Header";
-import AppLogo from "../components/Header/Applogo";
+import BackButton from "../components/BackButton";
 
 export default function Activites({
   navigation,
@@ -18,17 +18,30 @@ export default function Activites({
     border-bottom-width: 10px;
     border-bottom-color: #b8977e;
   `;
-  const Container2 = styled.View`
+
+  const ConteinerHeader = styled.View`
+    width: 100%;
     height: 20%;
-    flex: 1;
-    justify-content: center;
-    align-items: center;
-    position: absolute;
+    margin-top: -3%;
+    margin-left: 0%;
   `;
+
+  const ConteinerReport = styled.View`
+    width: 100%;
+    height: 90%;
+    margin-top: 68.8%;
+    margin-left: 0%;
+  `;
+
   return (
     <Container>
-      <Header />
-      <InserirAtividadeComponents />
+      <ConteinerHeader>
+        <Header />
+      </ConteinerHeader>
+
+      <ConteinerReport>
+        <InserirAtividadeComponents />
+      </ConteinerReport>
     </Container>
   );
 }

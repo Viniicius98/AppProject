@@ -86,7 +86,15 @@ function RootNavigator() {
         name="PointsReport"
         component={PointsReport}
         options={({ navigation }: RootTabScreenProps<"PointsReport">) => ({
-          headerShown: false,
+          headerShown: true,
+          headerTitle: "Home",
+          headerStyle: {
+            backgroundColor: "#1e2d3e",
+          },
+          headerTintColor: "#fff",
+          headerTitleStyle: {
+            fontWeight: "bold",
+          },
         })}
       />
       <Stack.Screen
@@ -94,12 +102,17 @@ function RootNavigator() {
         component={Activites}
         options={({ navigation }: RootTabScreenProps<"Activites">) => ({
           headerShown: false,
+          headerTitle: "Home",
+          headerStyle: {
+            backgroundColor: "#1e2d3e",
+          },
+          headerTintColor: "#fff",
+          headerTitleStyle: {
+            fontWeight: "bold",
+          },
         })}
       />
 
-      <Stack.Group screenOptions={{ presentation: "modal" }}>
-        <Stack.Screen name="Modal" component={ModalScreen} />
-      </Stack.Group>
       <Stack.Group screenOptions={{ presentation: "modal" }}>
         <Stack.Screen name="Settings" component={SettingsScreen} />
       </Stack.Group>
@@ -129,7 +142,6 @@ function BottomTabNavigator() {
         component={LoginScreen}
         options={({ navigation }: RootTabScreenProps<"Login">) => ({
           headerShown: false,
-
           tabBarIcon: ({ color }) => (
             <TabBarIcon name="sign-in" color={color} />
           ),

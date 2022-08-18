@@ -33,14 +33,15 @@ const ContentItems = styled.View`
 `;
 const FlatListItems = styled.View`
   width: 60%;
-  height: 450px;
+  height: 464px;
   background-color: rgba(255, 255, 255, 0.5);
 `;
 
 const IconsItems = styled.View`
   width: 38%;
-  height: 450px;
+  height: 464px;
   background-color: rgba(255, 255, 255, 0.4);
+  background: #1e2d3eee;
   margin-left: 2%;
 `;
 const ContainerApp = styled.View`

@@ -1,5 +1,11 @@
 import React from "react";
-import { IconButton,  Center,  VStack,  NativeBaseProvider,  Box,} from "native-base";
+import {
+  IconButton,
+  Center,
+  VStack,
+  NativeBaseProvider,
+  Box,
+} from "native-base";
 import { Entypo, MaterialIcons } from "@expo/vector-icons";
 
 const HomeIcon = () => {
@@ -8,8 +14,6 @@ const HomeIcon = () => {
       <IconButton
         variant="solid"
         borderRadius="full"
-        
-        
         _icon={{
           as: MaterialIcons,
           name: "menu",
@@ -22,7 +26,7 @@ const HomeIcon = () => {
 export default () => {
   return (
     <NativeBaseProvider>
-      <Center flex={1} px="0.5" marginRight="70%">
+      <Center flex={1} px="0.5" marginRight="50%">
         <HomeIcon />
       </Center>
     </NativeBaseProvider>

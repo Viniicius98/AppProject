@@ -5,33 +5,30 @@ import CardPoints from "../CardPoints";
 import Dropdown from "../Dropdown";
 import AppLogo from "../Header/Applogo";
 
-
-
 const BackgroundContainer = styled.View`
-  height: 100%;
+  height: 125%;
   width: 100%;
+  margin-top: -34.4%;
   background: #1e2d3eee;
 `;
 
 const ImageBackground = styled.Image`
-  height: 24%;
+  height: 30%;
   width: 100%;
+  margin-top: -0%;
   align-items: center;
   justify-content: center;
   position: absolute;
   z-index: 0;
   opacity: 0.3;
 `;
+
 const Imagerelatoriopoints = styled.Image`
   height: 66%;
   width: 98%;
   margin-left: 1%;
   margin-top: 7%;
-  
 `;
-
-
-
 
 const ContentItems = styled.View`
   width: 100%;
@@ -41,19 +38,18 @@ const ContentItems = styled.View`
 `;
 const DropdownItems = styled.View`
   width: 100%;
-  height: 530px;
+  height: 460px;
 `;
 
 const IconsItems = styled.View`
   width: 100%;
-  height: 575px;
+  height: 475.6px;
   margin-left: -68%;
-  
 `;
 const IconsApp = styled.View`
   width: 100%;
-  height: 575px;
-  margin-top: -40%;
+  height: 100px;
+  margin-top: -41%;
   margin-left: 74%;
 `;
 
@@ -82,48 +78,32 @@ const TitleCustom = styled.View`
   align-items: center;
 `;
 
-
 export default function PointsReport() {
   return (
     <>
       <BackgroundContainer>
-      
-
         <ImageBackground
           source={require("../../assets/images/background.png")}
         />
 
         <ContentItems>
-        
-
           <DropdownItems>
-          <ListItems>
+            <ListItems>
               <TextoCursos>RELATÓRIO</TextoCursos>
-              <TitleCustom>
-              
-             
-              </TitleCustom>
-             
+              <TitleCustom></TitleCustom>
+
               <Imagerelatoriopoints
-          source={require("../../assets/images/RelatórioPonits.png")}
-        />
-               
+                source={require("../../assets/images/RelatórioPonits.png")}
+              />
             </ListItems>
           </DropdownItems>
-          
+
           <IconsItems>
             <CardPoints />
-            
-            
             <IconsApp>
               <AppLogo />
-
-              
             </IconsApp>
-            
-           
           </IconsItems>
-          
         </ContentItems>
       </BackgroundContainer>
     </>

@@ -153,9 +153,8 @@ export default function Record() {
             </ListItems>
           </CursoItems>
 
-          
-          <IconsItems>   
-          <CardAtividade />         
+          <IconsItems>
+            <CardAtividade />
 
             <ConteinerApp>
               <AppLogo />
@@ -164,5 +163,5 @@ export default function Record() {
         </ContentItems>
       </BackgroundContainer>
     </>
- 
+  );
 }

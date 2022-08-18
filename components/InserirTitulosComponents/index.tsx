@@ -7,6 +7,7 @@ import AppLogo from "../Header/Applogo";
 const BackgroundContainer = styled.View`
   height: 100%;
   width: 100%;
+  margin-top: -48.7%;
   background: #1e2d3eee;
 `;
 
@@ -23,30 +24,36 @@ const ImageBackground = styled.Image`
 const ContentItems = styled.View`
   width: 100%;
   height: 100%;
+  margin-top: 49%;
   flex-direction: row;
   align-items: flex-end;
 `;
 const DropdownItems = styled.View`
   width: 100%;
-  height: 530px;
+  height: 525px;
+  margin-bottom: 32%;
 `;
 
 const IconsItems = styled.View`
   width: 100%;
   height: 575px;
-  margin-left: -68%;
+  margin-bottom: 45.3%;
+  margin-left: -60%;
 `;
+
 const IconsApp = styled.View`
   width: 100%;
   height: 575px;
-  margin-top: -40%;
-  margin-left: 74%;
+  margin-top: -110%;
+  margin-bottom: 20%;
+  margin-left: 65%;
 `;
-const IconsApp = styled.View`
-  width: 100%;
-  height: 575px;
-  margin-top: -40%;
-  margin-left: 74%;
+const ContainerBack = styled.View`
+  width:18%
+  height: 12%;
+  margin-top: -198.5%;
+  margin-left: -39.4%;
+  
 `;
 
 export default function InserirAtividadeComponents() {
@@ -64,11 +71,11 @@ export default function InserirAtividadeComponents() {
 
           <IconsItems>
             <CardAtividade />
+
             <IconsApp>
               <AppLogo />
             </IconsApp>
           </IconsItems>
-
         </ContentItems>
       </BackgroundContainer>
     </>

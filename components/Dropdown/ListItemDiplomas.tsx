@@ -1,6 +1,5 @@
 import React from "react";
 import { StyleSheet, Text, View } from "react-native";
-import { LIST_ITEM_HEIGHT } from "./ListItemAcoes";
 
 export const LIST_ITEM_HEIGHT = 54;
 const styles = StyleSheet.create({
@@ -30,7 +29,6 @@ interface ListItemProps {
   isOpen: boolean;
   btnOnClick: () => void;
 }
-
 
 export default ({ item, isLast }: ListItemProps) => {
   const bottomRadius = isLast ? 8 : 0;

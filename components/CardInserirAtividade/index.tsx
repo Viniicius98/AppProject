@@ -1,14 +1,13 @@
 import React from "react";
 import styled from "styled-components/native";
-import AppLogo from "../Header/Applogo";
-import HomeIcon from "../HomeIcon";
+import BackButton from "../BackButton";
 
 const Container = styled.View`
-  margin-left: -45.2%;
   width: 180%;
   height: 80%;
   display: flex;
   margin-top: -55.6%;
+  margin-left: -45.2%;
 `;
 const AvatarContainer = styled.View`
   background: #c0ccda;
@@ -27,26 +26,19 @@ const Avatar = styled.Image`
   margin-bottom: 9px;
   display: flex;
 `;
-const Logo = styled.Image`
-  width: 100.9px;
-  height: 171.9px;
-  max-width: 100.9%;
-  max-height: 100%;
-  margin-top: -65px;
-  position: absolute;
-`;
 
 const TextOne = styled.Text`
+  width: 13%;
   text-align: center;
   font-weight: bold;
-  margin-right: 49%;
-  margin-top: -17%;
+  margin-left: 20%;
+  margin-top: -62%;
 `;
 const TextTwo = styled.Text`
+  width: 13%;
   text-align: center;
   font-weight: bold;
-  margin-right: 46%;
-  margin-top: 0%;
+  margin-left: 21%;
 `;
 
 const HomeTop = styled.View`
@@ -63,11 +55,10 @@ export default function PointsReportComponents() {
       <AvatarContainer>
         <Avatar source={require("../../assets/images/inserirTitulos.png")} />
       </AvatarContainer>
-      <HomeTop>
-        <HomeIcon />
-      </HomeTop>
+
       <TextOne>INSERIR</TextOne>
       <TextTwo>ATIVIDADES</TextTwo>
+      <BackButton />
     </Container>
   );
 }
