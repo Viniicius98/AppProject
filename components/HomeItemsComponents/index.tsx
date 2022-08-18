@@ -125,8 +125,10 @@ const Item = ({
   onPress: (event: GestureResponderEvent) => void;
 }) => (
   <ButtonCustom onPress={onPress}>
-    <ImageFlat source={item.icon} />
-    <TextFlat>{item.text}</TextFlat>
+    <Link to={{ screen: item.screen }} key={item.id}>
+      <ImageFlat source={item.icon} />
+      <TextFlat>{item.text}</TextFlat>
+    </Link>
   </ButtonCustom>
 );
 
