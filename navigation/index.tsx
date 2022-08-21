@@ -17,7 +17,11 @@ import { ColorSchemeName, Pressable } from "react-native";
 
 //screens
 import Record from "../screens/RecordScreen";
+<<<<<<< HEAD
 import Activites from "../screens/ActivitesScreen";
+=======
+import Activites from "../screens/ActivitesScreen"
+>>>>>>> vinicius_branch
 import HomeScreen from "../screens/HomeScreen";
 import LoginScreen from "../screens/LoginScreen";
 import ModalScreen from "../screens/ModalScreen";
@@ -79,6 +83,7 @@ function RootNavigator() {
         name="Record"
         component={Record}
         options={({ navigation }: RootTabScreenProps<"Record">) => ({
+<<<<<<< HEAD
           headerShown: false,
         })}
       />
@@ -88,13 +93,30 @@ function RootNavigator() {
         options={({ navigation }: RootTabScreenProps<"PointsReport">) => ({
           headerShown: true,
         })}
+=======
+
+          header: (props) => <Header />,
+
+        })}
+        
+       
+        
+>>>>>>> vinicius_branch
       />
       <Stack.Screen
         name="Activites"
         component={Activites}
         options={({ navigation }: RootTabScreenProps<"Activites">) => ({
+<<<<<<< HEAD
           headerShown: false,
         })}
+=======
+
+          header: (props) => <Header />,
+
+        })}
+        
+>>>>>>> vinicius_branch
       />
 
       <Stack.Group screenOptions={{ presentation: "modal" }}>

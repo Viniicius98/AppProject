@@ -7,6 +7,9 @@ import { InputValueContext } from "../context/InputValueContext";
 import Header from "../components/Header";
 import AppLogo from "../components/Header/Applogo";
 
+
+
+
 export default function Activites({
   navigation,
 }: RootTabScreenProps<"Activites">) {
@@ -27,7 +30,11 @@ export default function Activites({
   `;
   return (
     <Container>
+<<<<<<< HEAD
       <Header />
+=======
+     
+>>>>>>> vinicius_branch
       <InserirAtividadeComponents />
     </Container>
   );
