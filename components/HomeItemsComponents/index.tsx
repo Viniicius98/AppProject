@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import styled from "styled-components/native";
-import { FlatList, GestureResponderEvent, ImageProps } from "react-native";
+import { FlatList, GestureResponderEvent,  } from "react-native";
 import CardPerfilMagistrado from "../CardMagistrado";
 import CardConsultaEnfam from "../CardConsultaEnfam";
 import CardNotificacoes from "../../components/CardNotificacoes";
@@ -122,17 +122,28 @@ const Item = ({
   onPress: (event: GestureResponderEvent) => void;
 }) => (
   <ButtonCustom onPress={onPress}>
+<<<<<<< HEAD
     
     <Link to={{ screen: item.screen }} key={item.id}>
       <ImageFlat source={item.icon} />
       <TextFlat>{item.text}</TextFlat>
     </Link>
 
+=======
+    <ImageFlat source={item.icon} />
+    {{ screen: item.screen }} key={item.id}>
+      <TextFlat>{item.text}</TextFlat>
+    
+>>>>>>> 8c66cac5351301937edfc671736e8f76b4407651
   </ButtonCustom>
 );
 
 export default function HomeItemsComponents() {
   const [selectedId, setSelectedId] = useState<number | null>(null);
+  const navigate = useNavigate()
+  const handleRedirect = (location: string) => {
+    navigate.navigation(location)
+  }
 
   const renderItem = ({ item }: { item: IFlatItems }) => {
     return <Item item={item} onPress={() => setSelectedId(Number(item.id))} />;
