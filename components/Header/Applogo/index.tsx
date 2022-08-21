@@ -8,11 +8,15 @@ const ImageContainer = styled.View`
   margin-bottom: 750px;
 `;
 const LogoIcon = styled.Image`
+  width: 147px;
+  height: 150px;
+  margin-top: -39%;
+  margin-left: 120%;
+
   width: 125px;
   height: 125px;
   margin-top: -38%;
   margin-left: 126%;
-  margin-bottom: 50%;
 `;
 export default function AppLogo(props: any) {
   return (

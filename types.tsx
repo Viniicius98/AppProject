@@ -4,7 +4,10 @@
  */
 
 import { BottomTabScreenProps } from "@react-navigation/bottom-tabs";
-import {  CompositeScreenProps,  NavigatorScreenParams,} from "@react-navigation/native";
+import {
+  CompositeScreenProps,
+  NavigatorScreenParams,
+} from "@react-navigation/native";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
 
 declare global {
@@ -18,12 +21,10 @@ export type RootStackParamList = {
   Modal: undefined;
   Settings: undefined;
   NotFound: undefined;
+  Home: undefined;
   Activites: undefined;
   Record: undefined;
-<<<<<<< HEAD
   PointsReport: undefined;
-=======
->>>>>>> vinicius_branch
 };
 
 export type RootStackScreenProps<Screen extends keyof RootStackParamList> =
@@ -35,10 +36,7 @@ export type RootTabParamList = {
   User: undefined;
   Activites: undefined;
   Record: undefined;
-<<<<<<< HEAD
   PointsReport: undefined;
-=======
->>>>>>> vinicius_branch
 };
 
 export type RootTabScreenProps<Screen extends keyof RootTabParamList> =

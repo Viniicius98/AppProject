@@ -1,119 +1,67 @@
 import React from "react";
 import styled from "styled-components/native";
-import AppLogo from "../Header/Applogo";
-import HomeIcon from "../HomeIcon";
+import BackButton from "../BackButton";
 
 const Container = styled.View`
-  margin-left: -45.2%;
   width: 180%;
   height: 80%;
   display: flex;
-<<<<<<< HEAD
-  margin-top: -62%;
-=======
-  margin-top: -21%;
->>>>>>> vinicius_branch
+  margin-top: -55.6%;
+  margin-left: -45.2%;
+`;
+const Container2 = styled.View`
   position: absolute;
+  width: 55%;
+  height: 9%;
+  margin-top: 10%;
+  margin-left: 3%;
+  display: flex;
+  background: #c0ccda;
 `;
 const AvatarContainer = styled.View`
-  background: #c0ccda;
-  width: 100%;
+  position: relative;
+  width: 120px;
+  height: 150px;
   align-items: center;
   margin-bottom: 58px;
-<<<<<<< HEAD
   height: 15%;
+  margin-top: 5%;
+  margin-left: 12%;
 `;
 const Avatar = styled.Image`
-  width: 40px;
-  height: 50px;
-  margin-right: 66%;
-=======
-  
-`;
-const Avatar = styled.Image`
-  width: 40px;
-  height: 40px;
-  margin-right: 50%;
->>>>>>> vinicius_branch
-  max-width: 80%;
-  max-height: 80%;
-  margin-top: 2%;
+  width: 60px;
+  height: 60px;
+  margin-left: 24%;
+  margin-top: 1%;
   margin-bottom: 9px;
   display: flex;
 `;
-const Logo = styled.Image`
-  width: 100.9px;
-  height: 171.9px;
-  max-width: 100.9%;
-  max-height: 100%;
-<<<<<<< HEAD
-  margin-top: -65px;
-  position: absolute;
-=======
-  margin-top: -65.0px;
-  position: absolute;
-  
-`;
 
 const TextOne = styled.Text`
-  text-align: center;
-  font-weight: bold;
-  margin-right: 35%;
-  margin-top: -15%;
-`;
-const TextTwo = styled.Text`
-  text-align: center;
-  font-weight: bold;
-  margin-right: 32%;
-  margin-top: 0%;
->>>>>>> vinicius_branch
-`;
-
-const TextOne = styled.Text`
-  text-align: center;
-  font-weight: bold;
-  margin-right: 49%;
-  margin-top: -17%;
-`;
-const TextTwo = styled.Text`
-  text-align: center;
-  font-weight: bold;
-  margin-right: 46%;
-  margin-top: 0%;
-`;
-
-const HomeTop = styled.View`
-
-height: 24%;
-  width: 100%;
-  margin-top: -8%;
   position: absolute;
-  margin-left: -4%;
-
+  text-align: center;
+  font-weight: bold;
+  margin-top: 4%;
+  margin-left: 33%;
+`;
+const TextTwo = styled.Text`
+  position: absolute;
+  text-align: center;
+  font-weight: bold;
+  margin-left: 33%;
+  margin-top: 10%;
 `;
 
 export default function PointsReportComponents() {
   return (
     <Container>
-      
-      <AvatarContainer>
-      <Logo source={require("../../assets/images/logoapp.png")} />
+      <Container2>
         <Avatar source={require("../../assets/images/inserirTitulos.png")} />
-<<<<<<< HEAD
-      </AvatarContainer>
-          <HomeTop>
-                  <HomeIcon />
-              </HomeTop>
-      <TextOne>INSERIR</TextOne>
-      <TextTwo>ATIVIDADES</TextTwo>
-=======
-        
-        </AvatarContainer>
-        
-      <TextOne>INSERIR</TextOne>
-      <TextTwo>ATIVIDADES</TextTwo>
-      
->>>>>>> vinicius_branch
+
+        <TextOne>INSERIR</TextOne>
+        <TextTwo>ATIVIDADES</TextTwo>
+      </Container2>
+      <BackButton />
     </Container>
   );
 }

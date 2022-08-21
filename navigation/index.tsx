@@ -17,11 +17,7 @@ import { ColorSchemeName, Pressable } from "react-native";
 
 //screens
 import Record from "../screens/RecordScreen";
-<<<<<<< HEAD
 import Activites from "../screens/ActivitesScreen";
-=======
-import Activites from "../screens/ActivitesScreen"
->>>>>>> vinicius_branch
 import HomeScreen from "../screens/HomeScreen";
 import LoginScreen from "../screens/LoginScreen";
 import ModalScreen from "../screens/ModalScreen";
@@ -83,7 +79,6 @@ function RootNavigator() {
         name="Record"
         component={Record}
         options={({ navigation }: RootTabScreenProps<"Record">) => ({
-<<<<<<< HEAD
           headerShown: false,
         })}
       />
@@ -91,37 +86,33 @@ function RootNavigator() {
         name="PointsReport"
         component={PointsReport}
         options={({ navigation }: RootTabScreenProps<"PointsReport">) => ({
-          headerShown: true,
+          headerShown: false,
+          headerTitle: "Home",
+          headerStyle: {
+            backgroundColor: "#1e2d3e",
+          },
+          headerTintColor: "#fff",
+          headerTitleStyle: {
+            fontWeight: "bold",
+          },
         })}
-=======
-
-          header: (props) => <Header />,
-
-        })}
-        
-       
-        
->>>>>>> vinicius_branch
       />
       <Stack.Screen
         name="Activites"
         component={Activites}
         options={({ navigation }: RootTabScreenProps<"Activites">) => ({
-<<<<<<< HEAD
           headerShown: false,
+          headerTitle: "Home",
+          headerStyle: {
+            backgroundColor: "#1e2d3e",
+          },
+          headerTintColor: "#fff",
+          headerTitleStyle: {
+            fontWeight: "bold",
+          },
         })}
-=======
-
-          header: (props) => <Header />,
-
-        })}
-        
->>>>>>> vinicius_branch
       />
 
-      <Stack.Group screenOptions={{ presentation: "modal" }}>
-        <Stack.Screen name="Modal" component={ModalScreen} />
-      </Stack.Group>
       <Stack.Group screenOptions={{ presentation: "modal" }}>
         <Stack.Screen name="Settings" component={SettingsScreen} />
       </Stack.Group>
@@ -151,7 +142,6 @@ function BottomTabNavigator() {
         component={LoginScreen}
         options={({ navigation }: RootTabScreenProps<"Login">) => ({
           headerShown: false,
-
           tabBarIcon: ({ color }) => (
             <TabBarIcon name="sign-in" color={color} />
           ),

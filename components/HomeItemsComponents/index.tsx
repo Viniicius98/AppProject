@@ -1,11 +1,13 @@
 import React, { useState } from "react";
 import styled from "styled-components/native";
-import { FlatList, GestureResponderEvent,  } from "react-native";
+import { FlatList, GestureResponderEvent, ImageProps } from "react-native";
 import CardPerfilMagistrado from "../CardMagistrado";
 import CardConsultaEnfam from "../CardConsultaEnfam";
 import CardNotificacoes from "../../components/CardNotificacoes";
 import { Link } from "@react-navigation/native";
+import { StyleSheet, View } from "react-native";
 import AppLogo from "../Header/Applogo";
+import BackButton from "../BackButton";
 
 const BackgroundContainer = styled.View`
   height: 100%;
@@ -33,14 +35,15 @@ const ContentItems = styled.View`
 `;
 const FlatListItems = styled.View`
   width: 60%;
-  height: 450px;
+  height: 464px;
   background-color: rgba(255, 255, 255, 0.5);
 `;
 
 const IconsItems = styled.View`
   width: 38%;
-  height: 450px;
+  height: 464px;
   background-color: rgba(255, 255, 255, 0.4);
+  background: #1e2d3eee;
   margin-left: 2%;
 `;
 const ContainerApp = styled.View`
@@ -90,10 +93,15 @@ const ImageFlat = styled.Image`
 `;
 
 const TextFlat = styled.Text`
+  height: 50px;
+  position: relative;
   font-size: 12px;
   font-weight: bold;
   color: #333;
   padding-left: 5%;
+  padding-left: 5%;
+  margin-top: 2%;
+  text-align: center;
 `;
 
 const ButtonCustom = styled.TouchableOpacity`
@@ -121,29 +129,14 @@ const Item = ({
   item: IFlatItems;
   onPress: (event: GestureResponderEvent) => void;
 }) => (
-  <ButtonCustom onPress={onPress}>
-<<<<<<< HEAD
-    
-    <Link to={{ screen: item.screen }} key={item.id}>
-      <ImageFlat source={item.icon} />
-      <TextFlat>{item.text}</TextFlat>
-    </Link>
-
-=======
+  <Link style={styles.container} to={{ screen: item.screen }}>
     <ImageFlat source={item.icon} />
-    {{ screen: item.screen }} key={item.id}>
-      <TextFlat>{item.text}</TextFlat>
-    
->>>>>>> 8c66cac5351301937edfc671736e8f76b4407651
-  </ButtonCustom>
+    <TextFlat> {item.text}</TextFlat>
+  </Link>
 );
 
 export default function HomeItemsComponents() {
   const [selectedId, setSelectedId] = useState<number | null>(null);
-  const navigate = useNavigate()
-  const handleRedirect = (location: string) => {
-    navigate.navigation(location)
-  }
 
   const renderItem = ({ item }: { item: IFlatItems }) => {
     return <Item item={item} onPress={() => setSelectedId(Number(item.id))} />;
@@ -178,3 +171,13 @@ export default function HomeItemsComponents() {
     </>
   );
 }
+const styles = StyleSheet.create({
+  container: {
+    width: 230,
+    height: 90,
+    marginLeft: 4,
+    backgroundColor: "#c0ccda",
+    borderBottomColor: "#b8977e",
+    borderBottomWidth: 10,
+  },
+});

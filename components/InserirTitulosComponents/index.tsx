@@ -4,15 +4,11 @@ import CardAtividade from "../CardInserirAtividade";
 import Dropdown from "../Dropdown";
 import AppLogo from "../Header/Applogo";
 
-
 const BackgroundContainer = styled.View`
   height: 100%;
   width: 100%;
+  margin-top: -66.7%;
   background: #1e2d3eee;
-<<<<<<< HEAD
-=======
-  
->>>>>>> vinicius_branch
 `;
 
 const ImageBackground = styled.Image`
@@ -26,68 +22,54 @@ const ImageBackground = styled.Image`
 `;
 
 const ContentItems = styled.View`
-<<<<<<< HEAD
-=======
- 
->>>>>>> vinicius_branch
   width: 100%;
   height: 100%;
+  margin-top: 49%;
   flex-direction: row;
   align-items: flex-end;
 `;
 const DropdownItems = styled.View`
   width: 100%;
-  height: 530px;
+  height: 525px;
+  margin-bottom: 32%;
 `;
 
 const IconsItems = styled.View`
   width: 100%;
   height: 575px;
-  margin-left: -68%;
-  
-<<<<<<< HEAD
+  margin-bottom: 45.3%;
+  margin-left: -60%;
 `;
+
 const IconsApp = styled.View`
   width: 100%;
   height: 575px;
-  margin-top: -40%;
-  margin-left: 74%;
-=======
->>>>>>> vinicius_branch
+  margin-top: -90%;
+  margin-bottom: 20%;
+  margin-left: 67%;
 `;
 
 export default function InserirAtividadeComponents() {
   return (
     <>
-    
       <BackgroundContainer>
-        
         <ImageBackground
           source={require("../../assets/images/background.png")}
         />
 
-
-
-        
-
         <ContentItems>
           <DropdownItems>
-            <Dropdown />            
+            <Dropdown />
           </DropdownItems>
 
           <IconsItems>
-
             <CardAtividade />
+
             <IconsApp>
               <AppLogo />
             </IconsApp>
-
-            <CardAtividade />            
-
           </IconsItems>
-
         </ContentItems>
-        
       </BackgroundContainer>
     </>
   );

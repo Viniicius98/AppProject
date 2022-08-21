@@ -8,28 +8,38 @@ import Header from "../components/Header";
 import AppLogo from "../components/Header/Applogo";
 import PointsReportComponents from "../components/PointsReportComponents";
 
-export default function Activites({
+export default function PointsReport({
   navigation,
-}: RootTabScreenProps<"Activites">) {
+}: RootTabScreenProps<"PointsReport">) {
   const { state, dispatch } = useContext(InputValueContext);
 
   const Container = styled.View`
     height: 100%;
     margin-top: -5.9%;
-    border-bottom-width: 10px;
-    border-bottom-color: #b8977e;
   `;
-  const Container2 = styled.View`
+
+  const ConteinerHeader = styled.View`
+    width: 100%;
     height: 20%;
-    flex: 1;
-    justify-content: center;
-    align-items: center;
-    position: absolute;
+    margin-top: 2%;
+    margin-left: 0%;
   `;
+
+  const ConteinerReport = styled.View`
+    width: 100%;
+    height: 80%;
+    margin-top: 35.8%;
+    margin-left: 0%;
+  `;
+
   return (
     <Container>
-      <Header />
-      <PointsReportComponents />
+      <ConteinerHeader>
+        <Header />
+      </ConteinerHeader>
+      <ConteinerReport>
+        <PointsReportComponents />
+      </ConteinerReport>
     </Container>
   );
 }
