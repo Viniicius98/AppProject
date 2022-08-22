@@ -1,6 +1,5 @@
 import React from "react";
 import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
-import { Link } from "@react-navigation/native";
 import { useNavigation } from "@react-navigation/native";
 
 export const LIST_ITEM_HEIGHT = 54;
@@ -30,6 +29,7 @@ interface ListItemProps {
   item: ListItem;
   isLast: boolean;
   isOpen: boolean;
+
   btnOnClick: () => void;
 }
 
@@ -37,7 +37,7 @@ export default ({ item, isLast }: ListItemProps) => {
   const bottomRadius = isLast ? 8 : 0;
   const navigation = useNavigation();
   const tela = () => {
-    navigation.navigate(item.screen);
+    navigation.navigate(item.screen, { nome: item.name });
   };
   return (
     <View style={[styles.container, {}]}>

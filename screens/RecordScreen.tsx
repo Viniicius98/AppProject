@@ -1,10 +1,5 @@
 import React from "react";
 import styled from "styled-components/native";
-import { RootTabScreenProps } from "../types";
-import InserirAtividadeComponents from "../components/InserirTitulosComponents";
-import { useContext } from "react";
-import { InputValueContext } from "../context/InputValueContext";
-import Dropdown from "../components/Dropdown";
 import CardAtividade from "../components/CardInserirAtividade";
 import Header from "../components/Header";
 import AppLogo from "../components/Header/Applogo";
@@ -81,14 +76,15 @@ const TextoCursos = styled.Text`
   color: #343f4b;
 `;
 const TextoCursos2 = styled.Text`
-  width: 50%;
+  width: 100%;
+  height: 100%;
   font-size: 15px;
   font-weight: bold;
   color: #333;
-  padding-left: 50%;
-  margin-top: 6px;
+  padding-top: 3%;
+  padding-left: 5%;
+  margin-top: 0px;
   color: #343f4b;
-  background: white;
 `;
 const InputContainer = styled.View`
   margin-top: 30%;
@@ -145,7 +141,7 @@ export default function Record({ route }: any) {
               <TextoCursos>CURSOS</TextoCursos>
               <TitleCustom>
                 <SubTitleCustom>
-                  <TextoCursos2>{route.item?.nome}</TextoCursos2>
+                  <TextoCursos2>{route.params.nome}</TextoCursos2>
                 </SubTitleCustom>
               </TitleCustom>
               <InputContainer>
