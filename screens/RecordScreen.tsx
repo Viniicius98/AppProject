@@ -12,7 +12,7 @@ import AppLogo from "../components/Header/Applogo";
 const BackgroundContainer = styled.View`
   height: 100%;
   width: 100%;
-  margin-top: 9%;
+  margin-top: 19%;
   background: #1e2d3eee;
 `;
 
@@ -43,7 +43,7 @@ const IconsItems = styled.View`
   height: 78%;
   margin-top: -9%;
   margin-left: -60%;
-  margin-bottom: 58.7%;
+  margin-bottom: 62.7%;
 `;
 const ListItems = styled.View`
   width: 90%;
@@ -81,14 +81,13 @@ const TextoCursos = styled.Text`
   color: #343f4b;
 `;
 const TextoCursos2 = styled.Text`
-  width: 50%;
+  width: 110%;
   font-size: 15px;
   font-weight: bold;
   color: #333;
-  padding-left: 50%;
-  margin-top: 6px;
-  color: #343f4b;
-  background: white;
+  padding-left: 3%;
+  margin-top: -18%;
+  position: absolute;
 `;
 const InputContainer = styled.View`
   margin-top: 30%;
@@ -119,7 +118,7 @@ const SubmitButton = styled.Button`
 const ConteinerHeader = styled.View`
   width: 100%;
   height: 20%;
-  margin-top: -18%;
+  margin-top: -15%;
   margin-left: 0%;
 `;
 const ConteinerApp = styled.View`
@@ -145,7 +144,7 @@ export default function Record({ route }: any) {
               <TextoCursos>CURSOS</TextoCursos>
               <TitleCustom>
                 <SubTitleCustom>
-                  <TextoCursos2>{route.item?.nome}</TextoCursos2>
+                  <TextoCursos2>CURSOS OFICIAIS REALIZADOS</TextoCursos2>
                 </SubTitleCustom>
               </TitleCustom>
               <InputContainer>

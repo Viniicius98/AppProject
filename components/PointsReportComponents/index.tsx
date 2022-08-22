@@ -6,6 +6,7 @@ import Dropdown from "../Dropdown";
 import AppLogo from "../Header/Applogo";
 import FormRelatoriPoints from "../../components/PointsReportComponents/FormRelatoriPoints";
 
+
 const BackgroundContainer = styled.View`
   height: 125%;
   width: 100%;
