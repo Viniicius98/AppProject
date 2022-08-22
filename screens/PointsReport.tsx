@@ -22,7 +22,7 @@ export default function PointsReport({
     width: 100%;
     height: 20%;
 
-    margin-top: -4%;
+    margin-top: 3%;
 
     margin-left: 0%;
   `;

@@ -39,7 +39,7 @@ const IconsItems = styled.View`
   margin-top: -9%;
   margin-left: -60%;
 
-  margin-bottom: 58.7%;
+  margin-bottom: 62.7%;
 
 `;
 const ListItems = styled.View`
