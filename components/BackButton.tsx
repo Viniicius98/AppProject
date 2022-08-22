@@ -5,11 +5,19 @@ import { useNavigation } from "@react-navigation/native";
 
 const ImageBack = styled.Image`
   position: absolute;
+<<<<<<< HEAD
   width: 10px;
   height: 10px;
   display: flex;
   justify-content: center;
   margin-top: 25%;
+=======
+  width: 35px;
+  height: 35px;
+  display: flex;
+  justify-content: center;
+  margin-top: 17%;
+>>>>>>> vinicius_branch
   margin-left: 25%;
 `;
 const ContainerBack = styled.View`

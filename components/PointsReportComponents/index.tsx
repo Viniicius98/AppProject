@@ -4,7 +4,7 @@ import CardAtividade from "../CardInserirAtividade";
 import CardPoints from "../CardPoints";
 import Dropdown from "../Dropdown";
 import AppLogo from "../Header/Applogo";
-import FormRelatoriPoints from "../../components/PointsReportComponents/FormRelatoriPoints";
+
 
 
 const BackgroundContainer = styled.View`
@@ -25,11 +25,13 @@ const ImageBackground = styled.Image`
   opacity: 0.3;
 `;
 
-const Imagerelatoriopoints = styled.View`
+
+const Imagerelatoriopoints = styled.Image`
   height: 66%;
   width: 98%;
   margin-left: 1%;
-  margin-top: 35%;
+  margin-top: 7%;
+
 `;
 
 const ContentItems = styled.View`
@@ -47,7 +49,9 @@ const DropdownItems = styled.View`
 const IconsItems = styled.View`
   width: 100%;
   height: 475.6px;
-  margin-bottom: 32%;
+
+  margin-bottom: 24%;
+
   margin-left: -68%;
 `;
 const IconsApp = styled.View`
@@ -96,11 +100,10 @@ export default function PointsReport() {
               <TextoCursos>RELATÓRIO</TextoCursos>
               <TitleCustom></TitleCustom>
 
-              <Imagerelatoriopoints>
-              
-               <FormRelatoriPoints />
+              <Imagerelatoriopoints
+                source={require("../../assets/images/RelatórioPonits.png")}
+              />
 
-              </Imagerelatoriopoints>
             </ListItems>
           </DropdownItems>
 

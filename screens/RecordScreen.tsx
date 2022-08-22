@@ -1,10 +1,5 @@
 import React from "react";
 import styled from "styled-components/native";
-import { RootTabScreenProps } from "../types";
-import InserirAtividadeComponents from "../components/InserirTitulosComponents";
-import { useContext } from "react";
-import { InputValueContext } from "../context/InputValueContext";
-import Dropdown from "../components/Dropdown";
 import CardAtividade from "../components/CardInserirAtividade";
 import Header from "../components/Header";
 import AppLogo from "../components/Header/Applogo";
@@ -43,7 +38,9 @@ const IconsItems = styled.View`
   height: 78%;
   margin-top: -9%;
   margin-left: -60%;
-  margin-bottom: 62.7%;
+
+  margin-bottom: 58.7%;
+
 `;
 const ListItems = styled.View`
   width: 90%;
@@ -78,17 +75,22 @@ const TextoCursos = styled.Text`
   color: #333;
   padding-left: 5%;
   margin-top: 6px;
+
   color: #343f4b;
 `;
 const TextoCursos2 = styled.Text`
-  width: 110%;
+  width: 100%;
+  height: 100%;
   font-size: 15px;
   font-weight: bold;
   color: #333;
-  padding-left: 3%;
-  margin-top: -18%;
-  position: absolute;
+  padding-top: 3%;
+  padding-left: 5%;
+  margin-top: 0px;
+
+  color: #343f4b;
 `;
+
 const InputContainer = styled.View`
   margin-top: 30%;
   position: absolute;
@@ -118,7 +120,9 @@ const SubmitButton = styled.Button`
 const ConteinerHeader = styled.View`
   width: 100%;
   height: 20%;
-  margin-top: -15%;
+
+  margin-top: -18%;
+
   margin-left: 0%;
 `;
 const ConteinerApp = styled.View`
@@ -144,7 +148,9 @@ export default function Record({ route }: any) {
               <TextoCursos>CURSOS</TextoCursos>
               <TitleCustom>
                 <SubTitleCustom>
-                  <TextoCursos2>CURSOS OFICIAIS REALIZADOS</TextoCursos2>
+
+                  <TextoCursos2>{route.params.nome}</TextoCursos2>
+
                 </SubTitleCustom>
               </TitleCustom>
               <InputContainer>

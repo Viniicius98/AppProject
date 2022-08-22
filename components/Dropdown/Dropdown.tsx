@@ -15,22 +15,22 @@ const list: ListModel = {
 const list2: ListModel2 = {
   name: "Diplomas e Titulos",
   items: [
-    { name: "DIPLOMA DE ESPECIALIZAÇÃO" },
-    { name: "DIPLOMA DE ESPECIALIZAÇÃO ENFAM " },
-    { name: "DIPLOMA DE MESTRADO" },
-    { name: "DIPLOMA DE MESTRADO PROFISSIONAL" },
-    { name: "DIPLOMA DE DOUTORADO" },
-    { name: "DIPLOMA DE PÓS DOUTORADO" },
+    { name: "DIPLOMA DE ESPECIALIZAÇÃO", screen: "Record" },
+    { name: "DIPLOMA DE ESPECIALIZAÇÃO ENFAM ", screen: "Record" },
+    { name: "DIPLOMA DE MESTRADO", screen: "Record" },
+    { name: "DIPLOMA DE MESTRADO PROFISSIONAL", screen: "Record" },
+    { name: "DIPLOMA DE DOUTORADO", screen: "Record" },
+    { name: "DIPLOMA DE PÓS DOUTORADO", screen: "Record" },
   ],
 };
 
 const list3: ListModel3 = {
   name: "Atuação na Doçência",
   items: [
-    { name: "PRÁTICA JURISDICIONAL" },
-    { name: "PUBLICAÇÕES" },
-    { name: "DOCÊNCIA COM FOFO" },
-    { name: "DOCÊNCIA COU OU SEM FOFO" },
+    { name: "PRÁTICA JURISDICIONAL", screen: "Record" },
+    { name: "PUBLICAÇÕES", screen: "Record" },
+    { name: "DOCÊNCIA COM FOFO", screen: "Record" },
+    { name: "DOCÊNCIA COU OU SEM FOFO", screen: "Record" },
   ],
 };
 

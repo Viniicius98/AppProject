@@ -37,7 +37,11 @@ const DropdownItems = styled.View`
 const IconsItems = styled.View`
   width: 100%;
   height: 575px;
+<<<<<<< HEAD
   margin-bottom: 53.1%;
+=======
+  margin-bottom: 45.3%;
+>>>>>>> vinicius_branch
   margin-left: -60%;
 `;
 
