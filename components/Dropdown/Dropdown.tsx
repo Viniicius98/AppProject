@@ -30,7 +30,7 @@ const list3: ListModel3 = {
     { name: "PRÁTICA JURISDICIONAL", screen: "Record" },
     { name: "PUBLICAÇÕES", screen: "Record" },
     { name: "DOCÊNCIA COM FOFO", screen: "Record" },
-    { name: "DOCÊNCIA COU OU SEM FOFO", screen: "Record" },
+    { name: "DOCÊNCIA COM OU SEM FOFO", screen: "Record" },
   ],
 };
 

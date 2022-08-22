@@ -27,7 +27,7 @@ const Container = styled.View`
   margin-left:3.4 %;
 
   
-  
+
 `;
 
 export default function BackButton() {
