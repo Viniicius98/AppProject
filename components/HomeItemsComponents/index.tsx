@@ -5,8 +5,9 @@ import CardPerfilMagistrado from "../CardMagistrado";
 import CardConsultaEnfam from "../CardConsultaEnfam";
 import CardNotificacoes from "../../components/CardNotificacoes";
 import { Link } from "@react-navigation/native";
-import { useNavigation } from "@react-navigation/native";
+import { StyleSheet, View } from "react-native";
 import AppLogo from "../Header/Applogo";
+import BackButton from "../BackButton";
 
 const BackgroundContainer = styled.View`
   height: 100%;
@@ -92,11 +93,15 @@ const ImageFlat = styled.Image`
 `;
 
 const TextFlat = styled.Text`
+  height: 50px;
+  position: relative;
   font-size: 12px;
   font-weight: bold;
   color: #333;
   padding-left: 5%;
+  padding-left: 5%;
   margin-top: 2%;
+  text-align: center;
 `;
 
 const ButtonCustom = styled.TouchableOpacity`
@@ -124,12 +129,10 @@ const Item = ({
   item: IFlatItems;
   onPress: (event: GestureResponderEvent) => void;
 }) => (
-  <ButtonCustom onPress={onPress}>
-    <Link to={{ screen: item.screen }} key={item.id}>
-      <ImageFlat source={item.icon} />
-      <TextFlat>{item.text}</TextFlat>
-    </Link>
-  </ButtonCustom>
+  <Link style={styles.container} to={{ screen: item.screen }}>
+    <ImageFlat source={item.icon} />
+    <TextFlat> {item.text}</TextFlat>
+  </Link>
 );
 
 export default function HomeItemsComponents() {
@@ -168,3 +171,13 @@ export default function HomeItemsComponents() {
     </>
   );
 }
+const styles = StyleSheet.create({
+  container: {
+    width: 230,
+    height: 90,
+    marginLeft: 4,
+    backgroundColor: "#c0ccda",
+    borderBottomColor: "#b8977e",
+    borderBottomWidth: 10,
+  },
+});

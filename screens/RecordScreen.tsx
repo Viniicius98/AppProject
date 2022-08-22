@@ -17,8 +17,9 @@ const BackgroundContainer = styled.View`
 `;
 
 const ImageBackground = styled.Image`
-  height: 24%;
+  height: 22%;
   width: 100%;
+  margin-top: 2%;
   align-items: center;
   justify-content: center;
   z-index: 0;
@@ -41,12 +42,8 @@ const IconsItems = styled.View`
   width: 100%;
   height: 78%;
   margin-top: -9%;
-  margin-left: -68%;
-<<<<<<< HEAD
-  margin-bottom: 47%;
-=======
-  margin-bottom: 45%;
->>>>>>> app_evandro
+  margin-left: -60%;
+  margin-bottom: 58.7%;
 `;
 const ListItems = styled.View`
   width: 90%;
@@ -83,6 +80,16 @@ const TextoCursos = styled.Text`
   margin-top: 6px;
   color: #343f4b;
 `;
+const TextoCursos2 = styled.Text`
+  width: 50%;
+  font-size: 15px;
+  font-weight: bold;
+  color: #333;
+  padding-left: 50%;
+  margin-top: 6px;
+  color: #343f4b;
+  background: white;
+`;
 const InputContainer = styled.View`
   margin-top: 30%;
   position: absolute;
@@ -112,17 +119,17 @@ const SubmitButton = styled.Button`
 const ConteinerHeader = styled.View`
   width: 100%;
   height: 20%;
-  margin-top: -14%;
+  margin-top: -18%;
   margin-left: 0%;
 `;
 const ConteinerApp = styled.View`
   width: 100%;
   height: 20%;
-  margin-top: -37%;
-  margin-left: 74%;
+  margin-top: -100%;
+  margin-left: 65%;
 `;
 
-export default function Record() {
+export default function Record({ route }: any) {
   return (
     <>
       <BackgroundContainer>
@@ -138,7 +145,7 @@ export default function Record() {
               <TextoCursos>CURSOS</TextoCursos>
               <TitleCustom>
                 <SubTitleCustom>
-                  <TextoCursos>CREDENCIADO PELA ENFAM</TextoCursos>
+                  <TextoCursos2>{route.item?.nome}</TextoCursos2>
                 </SubTitleCustom>
               </TitleCustom>
               <InputContainer>
@@ -155,7 +162,6 @@ export default function Record() {
 
           <IconsItems>
             <CardAtividade />
-
             <ConteinerApp>
               <AppLogo />
             </ConteinerApp>
