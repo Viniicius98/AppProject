@@ -5,6 +5,9 @@ import CardPerfilMagistrado from "../CardMagistrado";
 import CardConsultaEnfam from "../CardConsultaEnfam";
 import CardNotificacoes from "../../components/CardNotificacoes";
 import { Link } from "@react-navigation/native";
+import { StyleSheet, View } from "react-native";
+import AppLogo from "../Header/Applogo";
+import BackButton from "../BackButton";
 
 const BackgroundContainer = styled.View`
   height: 100%;
@@ -26,28 +29,34 @@ const ImageBackground = styled.Image`
 const ContentItems = styled.View`
   position: absolute;
   width: 100%;
-  height: 100%;
+  height: 83%;
   flex-direction: row;
   align-items: flex-end;
 `;
 const FlatListItems = styled.View`
   width: 60%;
-  height: 450px;
+  height: 464px;
   background-color: rgba(255, 255, 255, 0.5);
 `;
 
 const IconsItems = styled.View`
   width: 38%;
-  height: 450px;
+  height: 464px;
   background-color: rgba(255, 255, 255, 0.4);
+  background: #1e2d3eee;
   margin-left: 2%;
+`;
+const ContainerApp = styled.View`
+  width: 38%;
+  height: 60px;
+  margin-top: -450%;
 `;
 const FlatLinks = [
   {
     id: "0",
     text: "RELATÓRIO DE PONTOS",
     icon: require("../../assets/images/meusPontos.png"),
-    screen: "Chat",
+    screen: "PointsReport",
   },
   {
     id: "1",
@@ -75,19 +84,24 @@ const FlatLinks = [
   },
 ];
 
-const ImageFlatLinks = styled.Image`
-  width: 70px;
-  height: 80px;
-  margin-left: 3%;
+const ImageFlat = styled.Image`
+  width: 50px;
+  height: 50px;
+  margin-left: 5%;
   max-width: 60%;
   max-height: 70%;
 `;
 
-const TextFlatLinks = styled.Text`
+const TextFlat = styled.Text`
+  height: 50px;
+  position: relative;
   font-size: 12px;
   font-weight: bold;
   color: #333;
-  margin-left: 3%;
+  padding-left: 5%;
+  padding-left: 5%;
+  margin-top: 2%;
+  text-align: center;
 `;
 
 const ButtonCustom = styled.TouchableOpacity`
@@ -96,6 +110,7 @@ const ButtonCustom = styled.TouchableOpacity`
   border-bottom-color: #b8977e;
   flex-direction: row;
   width: 100%;
+  height: 90px;
   align-items: center;
 `;
 
@@ -107,18 +122,17 @@ interface IFlatItems {
 }
 
 const Item = ({
+  //refatorar a const Item Link to modificando css da ImageFlat
   item,
   onPress,
 }: {
   item: IFlatItems;
   onPress: (event: GestureResponderEvent) => void;
 }) => (
-  <ButtonCustom onPress={onPress}>
-    <Link to={{ screen: item.screen }} key={item.id}>
-      <ImageFlatLinks source={item.icon} />
-      <TextFlatLinks>{item.text}</TextFlatLinks>
-    </Link>
-  </ButtonCustom>
+  <Link style={styles.container} to={{ screen: item.screen }}>
+    <ImageFlat source={item.icon} />
+    <TextFlat> {item.text}</TextFlat>
+  </Link>
 );
 
 export default function HomeItemsComponents() {
@@ -148,9 +162,22 @@ export default function HomeItemsComponents() {
             <CardPerfilMagistrado />
             <CardConsultaEnfam />
             <CardNotificacoes />
+            <ContainerApp>
+              <AppLogo />
+            </ContainerApp>
           </IconsItems>
         </ContentItems>
       </BackgroundContainer>
     </>
   );
 }
+const styles = StyleSheet.create({
+  container: {
+    width: 230,
+    height: 90,
+    marginLeft: 4,
+    backgroundColor: "#c0ccda",
+    borderBottomColor: "#b8977e",
+    borderBottomWidth: 10,
+  },
+});

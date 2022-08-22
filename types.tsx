@@ -21,7 +21,10 @@ export type RootStackParamList = {
   Modal: undefined;
   Settings: undefined;
   NotFound: undefined;
+  Home: undefined;
   Activites: undefined;
+  Record: undefined;
+  PointsReport: undefined;
 };
 
 export type RootStackScreenProps<Screen extends keyof RootStackParamList> =
@@ -32,6 +35,8 @@ export type RootTabParamList = {
   Login: undefined;
   User: undefined;
   Activites: undefined;
+  Record: undefined;
+  PointsReport: undefined;
 };
 
 export type RootTabScreenProps<Screen extends keyof RootTabParamList> =

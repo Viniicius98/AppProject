@@ -16,7 +16,8 @@ import * as React from "react";
 import { ColorSchemeName, Pressable } from "react-native";
 
 //screens
-import Activites from "../screens/ActivitiesScreen";
+import Record from "../screens/RecordScreen";
+import Activites from "../screens/ActivitesScreen";
 import HomeScreen from "../screens/HomeScreen";
 import LoginScreen from "../screens/LoginScreen";
 import ModalScreen from "../screens/ModalScreen";
@@ -38,6 +39,7 @@ import {
   RootTabParamList,
   RootTabScreenProps,
 } from "../types";
+import PointsReport from "../screens/PointsReport";
 
 export default function Navigation({
   colorScheme,
@@ -73,10 +75,44 @@ function RootNavigator() {
         component={NotFoundScreen}
         options={{ title: "Oops!" }}
       />
+      <Stack.Screen
+        name="Record"
+        component={Record}
+        options={({ navigation }: RootTabScreenProps<"Record">) => ({
+          headerShown: false,
+        })}
+      />
+      <Stack.Screen
+        name="PointsReport"
+        component={PointsReport}
+        options={({ navigation }: RootTabScreenProps<"PointsReport">) => ({
+          headerShown: false,
+          headerTitle: "Home",
+          headerStyle: {
+            backgroundColor: "#1e2d3e",
+          },
+          headerTintColor: "#fff",
+          headerTitleStyle: {
+            fontWeight: "bold",
+          },
+        })}
+      />
+      <Stack.Screen
+        name="Activites"
+        component={Activites}
+        options={({ navigation }: RootTabScreenProps<"Activites">) => ({
+          headerShown: false,
+          headerTitle: "Home",
+          headerStyle: {
+            backgroundColor: "#1e2d3e",
+          },
+          headerTintColor: "#fff",
+          headerTitleStyle: {
+            fontWeight: "bold",
+          },
+        })}
+      />
 
-      <Stack.Group screenOptions={{ presentation: "modal" }}>
-        <Stack.Screen name="Modal" component={ModalScreen} />
-      </Stack.Group>
       <Stack.Group screenOptions={{ presentation: "modal" }}>
         <Stack.Screen name="Settings" component={SettingsScreen} />
       </Stack.Group>
@@ -105,8 +141,7 @@ function BottomTabNavigator() {
         name="Login"
         component={LoginScreen}
         options={({ navigation }: RootTabScreenProps<"Login">) => ({
-          title: "Login",
-          header: (props) => <Header />,
+          headerShown: false,
           tabBarIcon: ({ color }) => (
             <TabBarIcon name="sign-in" color={color} />
           ),
@@ -117,11 +152,11 @@ function BottomTabNavigator() {
         name="Home"
         component={HomeScreen}
         options={({ navigation }: RootTabScreenProps<"Home">) => ({
-          header: (props) => <Header />,
           tabBarIcon: ({ color }) => <TabBarIcon name="home" color={color} />,
+          headerShown: false,
           headerRight: () => (
             <Pressable
-              onPress={() => navigation.navigate("Chat")}
+              onPress={() => navigation.navigate("Activites")}
               style={({ pressed }) => ({
                 opacity: pressed ? 0.5 : 1,
               })}
@@ -137,7 +172,7 @@ function BottomTabNavigator() {
         })}
       />
 
-      <BottomTab.Screen
+      {/*BottomTab.Screen
         name="Activites"
         component={Activites}
         options={({ navigation }: RootTabScreenProps<"Activites">) => ({
@@ -145,7 +180,7 @@ function BottomTabNavigator() {
           header: (props) => <Header />,
           tabBarIcon: ({ color }) => <TabBarIcon name="book" color={color} />,
         })}
-      />
+      />*/}
 
       <BottomTab.Screen
         name="User"

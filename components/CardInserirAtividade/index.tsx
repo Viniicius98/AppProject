@@ -1,46 +1,67 @@
 import React from "react";
 import styled from "styled-components/native";
+import BackButton from "../BackButton";
 
 const Container = styled.View`
-  margin-left: -65%;
   width: 180%;
-  height: 70px;
+  height: 80%;
   display: flex;
-  margin-top: -7%;
-  position: absolute;
+  margin-top: -55.6%;
+  margin-left: -45.2%;
 `;
-
-const Avatar = styled.Image`
-  width: 60px;
-  height: 70px;
-  margin-left: -10%;
-  max-width: 80%;
-  max-height: 80%;
-  margin-top: 4%;
+const Container2 = styled.View`
+  position: absolute;
+  width: 55%;
+  height: 9%;
+  margin-top: 10%;
+  margin-left: 3%;
   display: flex;
+  background: #c0ccda;
 `;
 const AvatarContainer = styled.View`
-  background: #c0ccda;
-  width: 100%;
+  position: relative;
+  width: 120px;
+  height: 150px;
   align-items: center;
-  margin-bottom: 70px;
-  margin-left: -20%;
+  margin-bottom: 58px;
+  height: 15%;
+  margin-top: 5%;
+  margin-left: 12%;
 `;
-const TextUm = styled.Text`
+const Avatar = styled.Image`
+  width: 60px;
+  height: 60px;
+  margin-left: 24%;
+  margin-top: 1%;
+  margin-bottom: 9px;
+  display: flex;
+`;
+
+const TextOne = styled.Text`
+  position: absolute;
   text-align: center;
   font-weight: bold;
-  margin-left: -18%;
-  margin-top: -17%;
+  margin-top: 4%;
+  margin-left: 33%;
+`;
+const TextTwo = styled.Text`
+  position: absolute;
+  text-align: center;
+  font-weight: bold;
+  margin-left: 33%;
+  margin-top: 10%;
 `;
 
-export default function CardAtividade() {
+export default function PointsReportComponents() {
   return (
     <Container>
-      <AvatarContainer>
+      <Container2>
         <Avatar source={require("../../assets/images/inserirTitulos.png")} />
-      </AvatarContainer>
 
-      <TextUm>INSERIR ATIVIDADES</TextUm>
+        <TextOne>INSERIR</TextOne>
+        <TextTwo>ATIVIDADES</TextTwo>
+      </Container2>
+      <BackButton />
     </Container>
   );
 }

@@ -7,30 +7,30 @@ import List3, { List3 as ListModel3 } from "./ListDocencia";
 const list: ListModel = {
   name: "Ações Educacionais",
   items: [
-    { name: "CURSOS OFICIAIS REALIZADOS" },
-    { name: "CURSO CREDENCIADOS PELO ENFAM" },
+    { name: "CURSOS OFICIAIS REALIZADOS", screen: "Record" },
+    { name: "CURSO CREDENCIADOS PELO ENFAM", screen: "Record" },
   ],
 };
 
 const list2: ListModel2 = {
   name: "Diplomas e Titulos",
   items: [
-    { name: "DIPLOMA DE ESPECIALIZAÇÃO" },
-    { name: "DIPLOMA DE ESPECIALIZAÇÃO ENFAM " },
-    { name: "DIPLOMA DE MESTRADO" },
-    { name: "DIPLOMA DE MESTRADO PROFISSIONAL" },
-    { name: "DIPLOMA DE DOUTORADO" },
-    { name: "DIPLOMA DE PÓS DOUTORADO" },
+    { name: "DIPLOMA DE ESPECIALIZAÇÃO", screen: "Record" },
+    { name: "DIPLOMA DE ESPECIALIZAÇÃO ENFAM ", screen: "Record" },
+    { name: "DIPLOMA DE MESTRADO", screen: "Record" },
+    { name: "DIPLOMA DE MESTRADO PROFISSIONAL", screen: "Record" },
+    { name: "DIPLOMA DE DOUTORADO", screen: "Record" },
+    { name: "DIPLOMA DE PÓS DOUTORADO", screen: "Record" },
   ],
 };
 
 const list3: ListModel3 = {
   name: "Atuação na Doçência",
   items: [
-    { name: "PRÁTICA JURISDICIONAL" },
-    { name: "PUBLICAÇÕES" },
-    { name: "DOCÊNCIA COM FOFO" },
-    { name: "DOCÊNCIA COU OU SEM FOFO" },
+    { name: "PRÁTICA JURISDICIONAL", screen: "Record" },
+    { name: "PUBLICAÇÕES", screen: "Record" },
+    { name: "DOCÊNCIA COM FOFO", screen: "Record" },
+    { name: "DOCÊNCIA COU OU SEM FOFO", screen: "Record" },
   ],
 };
 
@@ -39,6 +39,7 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "#343F4B",
     padding: 9,
+    marginTop: -70,
   },
   title: {
     fontSize: 32,
@@ -49,7 +50,7 @@ const styles = StyleSheet.create({
 export default () => {
   return (
     <View style={styles.container}>
-      <List {...{ list }} />
+      <List {...{ list /*list2*/ }} />
       <List2 {...{ list2 }} />
       <List3 {...{ list3 }} />
     </View>

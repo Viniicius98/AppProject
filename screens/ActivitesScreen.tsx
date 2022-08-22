@@ -4,6 +4,8 @@ import { RootTabScreenProps } from "../types";
 import InserirAtividadeComponents from "../components/InserirTitulosComponents";
 import { useContext } from "react";
 import { InputValueContext } from "../context/InputValueContext";
+import Header from "../components/Header";
+import BackButton from "../components/BackButton";
 
 export default function Activites({
   navigation,
@@ -12,12 +14,34 @@ export default function Activites({
 
   const Container = styled.View`
     height: 100%;
+    margin-top: -5.9%;
     border-bottom-width: 10px;
     border-bottom-color: #b8977e;
   `;
+
+  const ConteinerHeader = styled.View`
+    width: 100%;
+    height: 20%;
+    margin-top: -3%;
+    margin-left: 0%;
+  `;
+
+  const ConteinerReport = styled.View`
+    width: 100%;
+    height: 90%;
+    margin-top: 68.8%;
+    margin-left: 0%;
+  `;
+
   return (
     <Container>
-      <InserirAtividadeComponents />
+      <ConteinerHeader>
+        <Header />
+      </ConteinerHeader>
+
+      <ConteinerReport>
+        <InserirAtividadeComponents />
+      </ConteinerReport>
     </Container>
   );
 }
