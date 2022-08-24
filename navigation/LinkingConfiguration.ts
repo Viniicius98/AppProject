@@ -29,9 +29,14 @@ const linking: LinkingOptions<RootStackParamList> = {
               ActivitesScreen: "Activites",
             },
           },
-          Record: {
+          ActionRecord: {
             screens: {
-              RecordScreen: "Record",
+              ActionRecordScreen: "ActionRecord",
+            },
+          },
+          TitlesRecord: {
+            screens: {
+              TitlesRecordScreen: "TitlesRecord",
             },
           },
           PointsReport: {

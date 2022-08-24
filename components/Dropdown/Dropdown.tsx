@@ -7,20 +7,20 @@ import List3, { List3 as ListModel3 } from "./ListDocencia";
 const list: ListModel = {
   name: "Ações Educacionais",
   items: [
-    { name: "CURSOS OFICIAIS REALIZADOS", screen: "Record" },
-    { name: "CURSO CREDENCIADOS PELO ENFAM", screen: "Record" },
+    { name: "CURSOS OFICIAIS REALIZADOS", screen: "ActionRecord" },
+    { name: "CURSO CREDENCIADOS PELO ENFAM", screen: "ActionRecord" },
   ],
 };
 
 const list2: ListModel2 = {
   name: "Diplomas e Titulos",
   items: [
-    { name: "DIPLOMA DE ESPECIALIZAÇÃO", screen: "Record" },
-    { name: "DIPLOMA DE ESPECIALIZAÇÃO ENFAM ", screen: "Record" },
-    { name: "DIPLOMA DE MESTRADO", screen: "Record" },
-    { name: "DIPLOMA DE MESTRADO PROFISSIONAL", screen: "Record" },
-    { name: "DIPLOMA DE DOUTORADO", screen: "Record" },
-    { name: "DIPLOMA DE PÓS DOUTORADO", screen: "Record" },
+    { name: "DIPLOMA DE ESPECIALIZAÇÃO", screen: "TitlesRecord" },
+    { name: "DIPLOMA DE ESPECIALIZAÇÃO ENFAM ", screen: "TitlesRecord" },
+    { name: "DIPLOMA DE MESTRADO", screen: "TitlesRecord" },
+    { name: "DIPLOMA DE MESTRADO PROFISSIONAL", screen: "TitlesRecord" },
+    { name: "DIPLOMA DE DOUTORADO", screen: "TitlesRecord" },
+    { name: "DIPLOMA DE PÓS DOUTORADO", screen: "TitlesRecord" },
   ],
 };
 

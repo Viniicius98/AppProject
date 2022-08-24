@@ -33,7 +33,7 @@ const Container = styled.View`
 export default function BackButton() {
   const navigation = useNavigation();
   const voltar = () => {
-    navigation.navigate("Home");
+    navigation.goBack();
   };
 
   return (
