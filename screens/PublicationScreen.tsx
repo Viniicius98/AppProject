@@ -1,8 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
+import { Text, StyleSheet } from "react-native";
 import styled from "styled-components/native";
 import CardAtividade from "../components/CardInserirAtividade";
 import Header from "../components/Header";
 import AppLogo from "../components/Header/Applogo";
+import { useForm, Controller } from "react-hook-form";
+
+import { yupResolver } from "@hookform/resolvers/yup";
+import * as yup from "yup";
 
 const BackgroundContainer = styled.View`
   height: 100%;
@@ -99,6 +104,8 @@ const InputContainer = styled.View`
 const Input = styled.TextInput`
   height: 50px;
   width: 320px;
+  max-height: 50px;
+  max-width: 320px;
   background-color: #e0e6ed;
   border: none;
   background: #fff;
@@ -132,7 +139,33 @@ const ConteinerApp = styled.View`
   margin-left: 65%;
 `;
 
-export default function Record({ route }: any) {
+const schema = yup.object({
+  scientificwork: yup.string().required("Informe o Nome do Curso"),
+  magazinename: yup.string().required("Informe o Nome da Instituição"),
+});
+
+const defaultValues = {
+  RadioGroup: "",
+  scientificwork: "",
+  magazinename: "",
+  qualification: "1",
+};
+
+export default function Publication({ route }: any) {
+  const {
+    control,
+    handleSubmit,
+    register,
+    formState: { errors },
+  } = useForm({
+    resolver: yupResolver(schema),
+    defaultValues,
+  });
+
+  function handleSignIn(data: Object) {
+    console.log(data, "Tipo " + route.params.nome);
+  }
+
   return (
     <>
       <BackgroundContainer>
@@ -145,7 +178,7 @@ export default function Record({ route }: any) {
         <ContentItems>
           <CursoItems>
             <ListItems>
-              <TextoCursos>CURSOS</TextoCursos>
+              <TextoCursos>ATUAÇÃO NA DOCÊNCIA</TextoCursos>
               <TitleCustom>
                 <SubTitleCustom>
 
@@ -154,13 +187,65 @@ export default function Record({ route }: any) {
                 </SubTitleCustom>
               </TitleCustom>
               <InputContainer>
-                <Input placeholder="NOME DO CURSO" />
-                <Input placeholder="INSTITUIÇÃO" />
-                <Input placeholder="CARGA HORÁRIA" />
+                <Controller
+                  control={control}
+                  name="scientificwork"
+                  render={({ field: { onChange, onBlur, value } }) => (
+                    <Input
+                      style={[
+                        styles.input,
+                        {
+                          borderWidth: errors.scientificwork && 1,
+                          borderColor: errors.scientificwork && "#ff375b",
+                        },
+                      ]}
+                      onChangeText={onChange}
+                      onBlur={onBlur} // chamado quando o Input é tocado
+                      value={value}
+                      placeholder="NOME DO TRABALHO CIÊNTIFÍCO"
+                    />
+                  )}
+                />
+                {errors.scientificwork && (
+                  <Text style={styles.labelError}>
+                    {errors.scientificwork?.message}
+                  </Text>
+                )}
+
+                <Controller
+                  control={control}
+                  name="magazinename"
+                  render={({ field: { onChange, onBlur, value } }) => (
+                    <Input
+                      style={[
+                        styles.input,
+                        {
+                          borderWidth: errors.magazinename && 1,
+                          borderColor: errors.magazinename && "#ff375b",
+                        },
+                      ]}
+                      onChangeText={onChange}
+                      onBlur={onBlur}
+                      value={value}
+                      placeholder="NOME DA REVISTA"
+                    />
+                  )}
+                />
+                {errors.magazinename && (
+                  <Text style={styles.labelError}>
+                    {errors.magazinename?.message}
+                  </Text>
+                )}
+                <Text>Qualificação da</Text>
+                <Controller control={control} name="qualification" />
               </InputContainer>
 
               <ContainerSubmitButton>
-                <SubmitButton title="Registrar" color="#B8977E" />
+                <SubmitButton
+                  onPress={handleSubmit(handleSignIn)}
+                  title="Registrar"
+                  color="#B8977E"
+                />
               </ContainerSubmitButton>
             </ListItems>
           </CursoItems>
@@ -176,3 +261,12 @@ export default function Record({ route }: any) {
     </>
   );
 }
+
+const styles = StyleSheet.create({
+  input: {},
+  labelError: {
+    alignSelf: "flex-start",
+    color: "#ff375b",
+    marginBottom: 8,
+  },
+});
