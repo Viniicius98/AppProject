@@ -34,6 +34,11 @@ const linking: LinkingOptions<RootStackParamList> = {
               ActionRecordScreen: "ActionRecord",
             },
           },
+          Publication: {
+            screens: {
+              PublicationScreen: "Publication",
+            },
+          },
           TitlesRecord: {
             screens: {
               TitlesRecordScreen: "TitlesRecord",

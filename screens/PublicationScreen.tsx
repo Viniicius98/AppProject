@@ -5,6 +5,7 @@ import CardAtividade from "../components/CardInserirAtividade";
 import Header from "../components/Header";
 import AppLogo from "../components/Header/Applogo";
 import { useForm, Controller } from "react-hook-form";
+
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 
@@ -132,23 +133,26 @@ const ConteinerApp = styled.View`
 `;
 
 const schema = yup.object({
-  titlename: yup.string().required("Informe o Diploma/Titulo"),
-  institution: yup.string().required("Informe o Nome da Instituição"),
-
-  resume: yup
-    .string()
-    .max(120, "O Resumo não pode conter mais que 120 caracteres")
-    .min(1, "O Resumo não pode conter menos que 10 caracteres")
-    .required("Informe o Resumo "),
+  scientificwork: yup.string().required("Informe o Nome do Curso"),
+  magazinename: yup.string().required("Informe o Nome da Instituição"),
 });
 
-export default function TitlesRecord({ route }: any) {
+const defaultValues = {
+  RadioGroup: "",
+  scientificwork: "",
+  magazinename: "",
+  qualification: "1",
+};
+
+export default function Publication({ route }: any) {
   const {
     control,
     handleSubmit,
+    register,
     formState: { errors },
   } = useForm({
     resolver: yupResolver(schema),
+    defaultValues,
   });
 
   function handleSignIn(data: Object) {
@@ -167,7 +171,7 @@ export default function TitlesRecord({ route }: any) {
         <ContentItems>
           <CursoItems>
             <ListItems>
-              <TextoCursos>OUTROS DIPLOMAS E TÍTULOS</TextoCursos>
+              <TextoCursos>ATUAÇÃO NA DOCÊNCIA</TextoCursos>
               <TitleCustom>
                 <SubTitleCustom>
                   <TextoCursos2>{route.params.nome}</TextoCursos2>
@@ -176,97 +180,55 @@ export default function TitlesRecord({ route }: any) {
               <InputContainer>
                 <Controller
                   control={control}
-                  name="type"
-                  render={({ field: { value, onBlur, onChange } }) => (
-                    <Input
-                      style={[
-                        styles.input,
-                        {
-                          display: "none",
-                          borderWidth: errors.coursename && 1,
-                          borderColor: errors.coursename && "#ff375b",
-                        },
-                      ]}
-                      onBlur={onBlur}
-                      defaultValue={route.params.nome}
-                      value={value}
-                    />
-                  )}
-                />
-
-                <Controller
-                  control={control}
-                  name="titlename"
+                  name="scientificwork"
                   render={({ field: { onChange, onBlur, value } }) => (
                     <Input
                       style={[
                         styles.input,
                         {
-                          borderWidth: errors.coursename && 1,
-                          borderColor: errors.coursename && "#ff375b",
+                          borderWidth: errors.scientificwork && 1,
+                          borderColor: errors.scientificwork && "#ff375b",
                         },
                       ]}
                       onChangeText={onChange}
                       onBlur={onBlur} // chamado quando o Input é tocado
                       value={value}
-                      placeholder="Diploma/Titulo"
+                      placeholder="NOME DO TRABALHO CIÊNTIFÍCO"
                     />
                   )}
                 />
-                {errors.titlename && (
+                {errors.scientificwork && (
                   <Text style={styles.labelError}>
-                    {errors.titlename?.message}
+                    {errors.scientificwork?.message}
                   </Text>
                 )}
 
                 <Controller
                   control={control}
-                  name="institution"
+                  name="magazinename"
                   render={({ field: { onChange, onBlur, value } }) => (
                     <Input
                       style={[
                         styles.input,
                         {
-                          borderWidth: errors.institution && 1,
-                          borderColor: errors.institution && "#ff375b",
+                          borderWidth: errors.magazinename && 1,
+                          borderColor: errors.magazinename && "#ff375b",
                         },
                       ]}
                       onChangeText={onChange}
                       onBlur={onBlur}
                       value={value}
-                      placeholder="Instituição"
+                      placeholder="NOME DA REVISTA"
                     />
                   )}
                 />
-                {errors.institution && (
+                {errors.magazinename && (
                   <Text style={styles.labelError}>
-                    {errors.institution?.message}
+                    {errors.magazinename?.message}
                   </Text>
                 )}
-                <Controller
-                  control={control}
-                  name="resume"
-                  render={({ field: { onChange, onBlur, value } }) => (
-                    <Input
-                      style={[
-                        styles.input,
-                        {
-                          borderWidth: errors.workload && 1,
-                          borderColor: errors.workload && "#ff375b",
-                        },
-                      ]}
-                      onChangeText={onChange}
-                      onBlur={onBlur}
-                      value={value}
-                      placeholder="Resumo"
-                    />
-                  )}
-                />
-                {errors.resume && (
-                  <Text style={styles.labelError}>
-                    {errors.resume?.message}
-                  </Text>
-                )}
+                <Text>Qualificação da</Text>
+                <Controller control={control} name="qualification" />
               </InputContainer>
 
               <ContainerSubmitButton>

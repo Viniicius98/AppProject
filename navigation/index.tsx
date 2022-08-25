@@ -40,6 +40,7 @@ import {
   RootTabScreenProps,
 } from "../types";
 import PointsReport from "../screens/PointsReport";
+import Publication from "../screens/PublicationScreen";
 
 export default function Navigation({
   colorScheme,
@@ -78,21 +79,28 @@ function RootNavigator() {
       <Stack.Screen
         name="ActionRecord"
         component={ActionRecord}
-        options={({ navigation }: RootTabScreenProps<"ActionRecord">) => ({
+        options={() => ({
+          headerShown: false,
+        })}
+      />
+      <Stack.Screen
+        name="Publication"
+        component={Publication}
+        options={() => ({
           headerShown: false,
         })}
       />
       <Stack.Screen
         name="TitlesRecord"
         component={TitlesRecord}
-        options={({ navigation }: RootTabScreenProps<"TitlesRecord">) => ({
+        options={() => ({
           headerShown: false,
         })}
       />
       <Stack.Screen
         name="PointsReport"
         component={PointsReport}
-        options={({ navigation }: RootTabScreenProps<"PointsReport">) => ({
+        options={() => ({
           headerShown: false,
           headerTitle: "Home",
           headerStyle: {
@@ -107,7 +115,7 @@ function RootNavigator() {
       <Stack.Screen
         name="Activites"
         component={Activites}
-        options={({ navigation }: RootTabScreenProps<"Activites">) => ({
+        options={() => ({
           headerShown: false,
           headerTitle: "Home",
           headerStyle: {
