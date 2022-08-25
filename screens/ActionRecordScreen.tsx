@@ -39,7 +39,7 @@ const CursoItems = styled.View`
 
 const IconsItems = styled.View`
   width: 100%;
-  height: 78%;
+  height: 80%;
   margin-top: -9%;
   margin-left: -60%;
   margin-bottom: 58.7%;
@@ -121,14 +121,14 @@ const SubmitButton = styled.Button`
 const ConteinerHeader = styled.View`
   width: 100%;
   height: 20%;
-  margin-top: -18%;
+  margin-top: -12%;
   margin-left: 0%;
 `;
 const ConteinerApp = styled.View`
   width: 100%;
   height: 20%;
-  margin-top: -100%;
-  margin-left: 65%;
+  margin-top: -105%;
+  margin-left: 67%;
 `;
 
 const schema = yup.object({
