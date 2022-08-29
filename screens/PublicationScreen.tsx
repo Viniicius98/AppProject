@@ -5,9 +5,9 @@ import CardAtividade from "../components/CardInserirAtividade";
 import Header from "../components/Header";
 import AppLogo from "../components/Header/Applogo";
 import { useForm, Controller } from "react-hook-form";
-
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
+import { RadioButton } from "react-native-paper";
 
 const BackgroundContainer = styled.View`
   height: 100%;
@@ -137,13 +137,6 @@ const schema = yup.object({
   magazinename: yup.string().required("Informe o Nome da Instituição"),
 });
 
-const defaultValues = {
-  RadioGroup: "",
-  scientificwork: "",
-  magazinename: "",
-  qualification: "1",
-};
-
 export default function Publication({ route }: any) {
   const {
     control,
@@ -152,7 +145,6 @@ export default function Publication({ route }: any) {
     formState: { errors },
   } = useForm({
     resolver: yupResolver(schema),
-    defaultValues,
   });
 
   function handleSignIn(data: Object) {
@@ -178,6 +170,17 @@ export default function Publication({ route }: any) {
                 </SubTitleCustom>
               </TitleCustom>
               <InputContainer>
+                <Controller
+                  control={control}
+                  name="type"
+                  render={({ field: { value, onBlur, onChange } }) => (
+                    <Input
+                      onBlur={onBlur}
+                      defaultValue={route.params.nome}
+                      value={value}
+                    />
+                  )}
+                />
                 <Controller
                   control={control}
                   name="scientificwork"
@@ -227,8 +230,8 @@ export default function Publication({ route }: any) {
                     {errors.magazinename?.message}
                   </Text>
                 )}
-                <Text>Qualificação da</Text>
-                <Controller control={control} name="qualification" />
+
+                <Text> Radio Buttons Example</Text>
               </InputContainer>
 
               <ContainerSubmitButton>
