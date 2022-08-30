@@ -81,7 +81,7 @@ export default function CursoRegistroComponents() {
 
         <ContentForm>
           <ContainerTitulo>
-            <Titulo>CURSOS</Titulo>
+            <Titulo>CURSO</Titulo>
           </ContainerTitulo>
 
           <ContainerCurso>

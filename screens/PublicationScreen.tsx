@@ -12,7 +12,7 @@ import { RadioButton } from "react-native-paper";
 const BackgroundContainer = styled.View`
   height: 100%;
   width: 100%;
-  margin-top: 9%;
+  margin-top: 19%;
   background: #1e2d3eee;
 `;
 
@@ -43,7 +43,9 @@ const IconsItems = styled.View`
   height: 78%;
   margin-top: -9%;
   margin-left: -60%;
-  margin-bottom: 58.7%;
+
+  margin-bottom: 62.7%;
+
 `;
 const ListItems = styled.View`
   width: 90%;
@@ -78,6 +80,7 @@ const TextoCursos = styled.Text`
   color: #333;
   padding-left: 5%;
   margin-top: 6px;
+
   color: #343f4b;
 `;
 const TextoCursos2 = styled.Text`
@@ -89,8 +92,10 @@ const TextoCursos2 = styled.Text`
   padding-top: 3%;
   padding-left: 5%;
   margin-top: 0px;
+
   color: #343f4b;
 `;
+
 const InputContainer = styled.View`
   margin-top: 30%;
   position: absolute;
@@ -122,7 +127,9 @@ const SubmitButton = styled.Button`
 const ConteinerHeader = styled.View`
   width: 100%;
   height: 20%;
+
   margin-top: -18%;
+
   margin-left: 0%;
 `;
 const ConteinerApp = styled.View`
@@ -166,7 +173,9 @@ export default function Publication({ route }: any) {
               <TextoCursos>ATUAÇÃO NA DOCÊNCIA</TextoCursos>
               <TitleCustom>
                 <SubTitleCustom>
+
                   <TextoCursos2>{route.params.nome}</TextoCursos2>
+
                 </SubTitleCustom>
               </TitleCustom>
               <InputContainer>

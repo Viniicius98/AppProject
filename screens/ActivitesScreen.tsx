@@ -22,7 +22,9 @@ export default function Activites({
   const ConteinerHeader = styled.View`
     width: 100%;
     height: 20%;
-    margin-top: -3%;
+
+    margin-top: 4%;
+
     margin-left: 0%;
   `;
 
