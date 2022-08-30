@@ -7,7 +7,7 @@ import AppLogo from "../components/Header/Applogo";
 import { useForm, Controller } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
-import { RadioButton } from "react-native-paper";
+import { Radio } from "antd";
 
 const BackgroundContainer = styled.View`
   height: 100%;
@@ -179,17 +179,6 @@ export default function Publication({ route }: any) {
                 </SubTitleCustom>
               </TitleCustom>
               <InputContainer>
-                <Controller
-                  control={control}
-                  name="type"
-                  render={({ field: { value, onBlur, onChange } }) => (
-                    <Input
-                      onBlur={onBlur}
-                      defaultValue={route.params.nome}
-                      value={value}
-                    />
-                  )}
-                />
                 <Controller
                   control={control}
                   name="scientificwork"
