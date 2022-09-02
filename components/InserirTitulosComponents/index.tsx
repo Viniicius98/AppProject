@@ -37,7 +37,9 @@ const DropdownItems = styled.View`
 const IconsItems = styled.View`
   width: 100%;
   height: 575px;
-  margin-bottom: 45.3%;
+
+  margin-bottom: 52.3%;
+
   margin-left: -60%;
 `;
 
@@ -70,6 +72,7 @@ export default function InserirAtividadeComponents() {
             </IconsApp>
           </IconsItems>
         </ContentItems>
+
       </BackgroundContainer>
     </>
   );

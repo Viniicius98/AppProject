@@ -44,7 +44,9 @@ const HomeTop = styled.View`
   position: relative;
   height: 100%;
   width: 100%;
+
   margin-top: -17%;
+
   margin-left: -1%;
 `;
 

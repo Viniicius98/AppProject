@@ -1,11 +1,9 @@
 import React from "react";
 import styled from "styled-components/native";
 import { RootTabScreenProps } from "../types";
-import InserirAtividadeComponents from "../components/InserirTitulosComponents";
 import { useContext } from "react";
 import { InputValueContext } from "../context/InputValueContext";
 import Header from "../components/Header";
-import AppLogo from "../components/Header/Applogo";
 import PointsReportComponents from "../components/PointsReportComponents";
 
 export default function PointsReport({
@@ -21,7 +19,9 @@ export default function PointsReport({
   const ConteinerHeader = styled.View`
     width: 100%;
     height: 20%;
-    margin-top: -4%;
+
+    margin-top: 3%;
+
     margin-left: 0%;
   `;
 

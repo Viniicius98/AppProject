@@ -16,11 +16,11 @@ import * as React from "react";
 import { ColorSchemeName, Pressable } from "react-native";
 
 //screens
-import Record from "../screens/RecordScreen";
+import ActionRecord from "../screens/ActionRecordScreen";
 import Activites from "../screens/ActivitesScreen";
 import HomeScreen from "../screens/HomeScreen";
 import LoginScreen from "../screens/LoginScreen";
-import ModalScreen from "../screens/ModalScreen";
+import TitlesRecord from "../screens/TitlesRecordScreen";
 import NotFoundScreen from "../screens/NotFoundScreen";
 import SettingsScreen from "../screens/SettingsScreen";
 import UserScreen from "../screens/UserScreen";
@@ -40,6 +40,7 @@ import {
   RootTabScreenProps,
 } from "../types";
 import PointsReport from "../screens/PointsReport";
+import Publication from "../screens/PublicationScreen";
 
 export default function Navigation({
   colorScheme,
@@ -76,16 +77,30 @@ function RootNavigator() {
         options={{ title: "Oops!" }}
       />
       <Stack.Screen
-        name="Record"
-        component={Record}
-        options={({ navigation }: RootTabScreenProps<"Record">) => ({
+        name="ActionRecord"
+        component={ActionRecord}
+        options={() => ({
+          headerShown: false,
+        })}
+      />
+      <Stack.Screen
+        name="Publication"
+        component={Publication}
+        options={() => ({
+          headerShown: false,
+        })}
+      />
+      <Stack.Screen
+        name="TitlesRecord"
+        component={TitlesRecord}
+        options={() => ({
           headerShown: false,
         })}
       />
       <Stack.Screen
         name="PointsReport"
         component={PointsReport}
-        options={({ navigation }: RootTabScreenProps<"PointsReport">) => ({
+        options={() => ({
           headerShown: false,
           headerTitle: "Home",
           headerStyle: {
@@ -100,7 +115,7 @@ function RootNavigator() {
       <Stack.Screen
         name="Activites"
         component={Activites}
-        options={({ navigation }: RootTabScreenProps<"Activites">) => ({
+        options={() => ({
           headerShown: false,
           headerTitle: "Home",
           headerStyle: {

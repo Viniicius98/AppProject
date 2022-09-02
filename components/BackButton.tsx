@@ -5,11 +5,13 @@ import { useNavigation } from "@react-navigation/native";
 
 const ImageBack = styled.Image`
   position: absolute;
-  width: 35px;
-  height: 35px;
+
+  width: 5px;
+  height: 5px;
   display: flex;
   justify-content: center;
-  margin-top: 17%;
+  margin-top: 23%;
+
   margin-left: 25%;
 `;
 const ContainerBack = styled.View`
@@ -27,13 +29,13 @@ const Container = styled.View`
   margin-left:3.4 %;
 
   
-  
+
 `;
 
 export default function BackButton() {
   const navigation = useNavigation();
   const voltar = () => {
-    navigation.navigate("Home");
+    navigation.goBack();
   };
 
   return (
