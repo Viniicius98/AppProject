@@ -44,10 +44,11 @@ export default ({ item, isLast }: ListItemProps) => {
 
   };
   return (
-    <View style={[styles.container, {}]}>
-      <TouchableOpacity onPress={() => tela()}>
-        <Text style={styles.name}>{item.name}</Text>
+    <TouchableOpacity onPress={() => tela()}>
+         <View style={[styles.container, {}]}>      
+           <Text style={styles.name}>{item.name}</Text>
+        </View>
       </TouchableOpacity>
-    </View>
+    
   );
 };
