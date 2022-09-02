@@ -38,10 +38,10 @@ export default ({ item, isLast }: ListItemProps) => {
     navigation.navigate(item.screen, { nome: item.name });
   };
   return (
-    <View style={[styles.container, {}]}>
-      <TouchableOpacity onPress={() => tela()}>
-        <Text style={styles.name}>{item.name}</Text>
-      </TouchableOpacity>
+    <TouchableOpacity onPress={() => tela()}>
+       <View style={[styles.container, {}]}>      
+        <Text style={styles.name}>{item.name}</Text>      
     </View>
+    </TouchableOpacity>
   );
 };

@@ -5,9 +5,10 @@ import CardAtividade from "../components/CardInserirAtividade";
 import Header from "../components/Header";
 import AppLogo from "../components/Header/Applogo";
 import { useForm, Controller } from "react-hook-form";
-
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
+import { NativeBaseProvider } from "native-base";
+import { Radio } from "native-base";
 
 const BackgroundContainer = styled.View`
   height: 100%;
@@ -45,7 +46,6 @@ const IconsItems = styled.View`
   margin-left: -60%;
 
   margin-bottom: 62.7%;
-
 `;
 const ListItems = styled.View`
   width: 90%;
@@ -144,22 +144,15 @@ const schema = yup.object({
   magazinename: yup.string().required("Informe o Nome da Instituição"),
 });
 
-const defaultValues = {
-  RadioGroup: "",
-  scientificwork: "",
-  magazinename: "",
-  qualification: "1",
-};
-
 export default function Publication({ route }: any) {
+  const [value, setValue] = React.useState("A1");
   const {
     control,
     handleSubmit,
-    register,
+
     formState: { errors },
   } = useForm({
     resolver: yupResolver(schema),
-    defaultValues,
   });
 
   function handleSignIn(data: Object) {
@@ -181,9 +174,7 @@ export default function Publication({ route }: any) {
               <TextoCursos>ATUAÇÃO NA DOCÊNCIA</TextoCursos>
               <TitleCustom>
                 <SubTitleCustom>
-
                   <TextoCursos2>{route.params.nome}</TextoCursos2>
-
                 </SubTitleCustom>
               </TitleCustom>
               <InputContainer>
@@ -211,7 +202,6 @@ export default function Publication({ route }: any) {
                     {errors.scientificwork?.message}
                   </Text>
                 )}
-
                 <Controller
                   control={control}
                   name="magazinename"
@@ -236,8 +226,57 @@ export default function Publication({ route }: any) {
                     {errors.magazinename?.message}
                   </Text>
                 )}
-                <Text>Qualificação da</Text>
-                <Controller control={control} name="qualification" />
+                <Text
+                  style={[
+                    styles.input,
+                    {
+                      fontSize: 14,
+                      color: "#a0a0a0",
+                      marginTop: 7,
+                      marginLeft: 15,
+                    },
+                  ]}
+                >
+                  {" "}
+                  QUALIFICAÇÃO DA REVISTA
+                </Text>
+
+                <NativeBaseProvider>
+                  <Controller
+                    control={control}
+                    name="radio"
+                    render={({}) => (
+                      <Radio.Group
+                        style={[
+                          styles.input,
+                          {
+                            display: "flex",
+                            marginTop: 11,
+                            marginLeft: 22,
+                          },
+                        ]}
+                        name="radio"
+                        value={value}
+                        onChange={(nextValue) => {
+                          setValue(nextValue);
+                        }}
+                      >
+                        <Radio value="A1" my={1}>
+                          A1
+                        </Radio>
+                        <Radio value="A2" my={1}>
+                          A2
+                        </Radio>
+                        <Radio value="B1" my={1}>
+                          B1
+                        </Radio>
+                        <Radio value="B2" my={1}>
+                          B2
+                        </Radio>
+                      </Radio.Group>
+                    )}
+                  />
+                </NativeBaseProvider>
               </InputContainer>
 
               <ContainerSubmitButton>

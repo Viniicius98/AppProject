@@ -27,10 +27,10 @@ const list2: ListModel2 = {
 const list3: ListModel3 = {
   name: "Atuação na Doçência",
   items: [
-    { name: "PRÁTICA JURISDICIONAL", screen: "TitlesRecord" },
+    { name: "PRÁTICA JURISDICIONAL", screen: "Publication" },
     { name: "PUBLICAÇÕES", screen: "Publication" },
-    { name: "DOCÊNCIA COM FOFO", screen: "TitlesRecord" },
-    { name: "DOCÊNCIA COM OU SEM FOFO", screen: "TitlesRecord" },
+    { name: "DOCÊNCIA COM FOFO", screen: "Publication" },
+    { name: "DOCÊNCIA COM OU SEM FOFO", screen: "Publication" },
   ],
 };
 
