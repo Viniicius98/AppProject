@@ -1,5 +1,5 @@
 import React from "react";
-import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { StyleSheet, Text, TouchableHighlight, TouchableOpacity, View } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 
 export const LIST_ITEM_HEIGHT = 54;
@@ -38,10 +38,10 @@ export default ({ item, isLast }: ListItemProps) => {
     navigation.navigate(item.screen, { nome: item.name });
   };
   return (
-    <TouchableOpacity onPress={() => tela()}>
+    <TouchableHighlight onPress={() => tela()}>
        <View style={[styles.container, {}]}>      
         <Text style={styles.name}>{item.name}</Text>      
     </View>
-    </TouchableOpacity>
+    </TouchableHighlight>
   );
 };

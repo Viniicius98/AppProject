@@ -1,10 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components/native";
 import CardAtividade from "../CardInserirAtividade";
 import CardPoints from "../CardPoints";
 import Dropdown from "../Dropdown";
 import AppLogo from "../Header/Applogo";
 import FormRelatoriPoints from "../../components/PointsReportComponents/FormRelatoriPoints";
+
 
 
 const BackgroundContainer = styled.View`
@@ -83,6 +84,9 @@ const TitleCustom = styled.View`
 `;
 
 export default function PointsReport() {
+
+  
+
   return (
     <>
       <BackgroundContainer>

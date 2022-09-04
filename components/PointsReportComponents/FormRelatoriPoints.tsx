@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import styled from "styled-components/native";
 import { View, TextInput, StyleSheet, Text} from 'react-native'
 import Icon from 'react-native-vector-icons/Entypo';
+import { getPoints } from "../../services/apiexterna";
+import {  } from "../../services/apiInterna";
 
 
 
@@ -190,9 +192,26 @@ const TextpointFour = styled.Text`
     margin-top: 90.3%;
     position: absolute;
 `;
-
+  
+  
 
 export default function FormRelatoriPoints() {
+ 
+  
+  const [Totalpoints, setTotalPoints] = useState([]);
+  const [Cursopoints, setCursoPoints] = useState([]);
+  const [Credenciadaspoints, setCredenciadasPoints] = useState([]);
+  const [Docentepoints, setDocentePoints] = useState([]);
+  const [Títulospoints, setTítulosPoints] = useState([]);
+  const [Jurisdicionalpoints, setJurisdicionalPoints] = useState([]);
+  const [Publicaçõespoints, setPublicaçõesPoints] = useState([]);
+  const [qty, setQty] = useState(0);
+
+
+
+
+
+
   return (
     <>
       <BackgroundContainer>        
@@ -210,35 +229,35 @@ export default function FormRelatoriPoints() {
               
               <ControllerBoll>
               <Icon name="controller-record" size={25} color='#273444'/>
-              <Textpoints>5,0 pts</Textpoints>
+              <Textpoints>{Totalpoints}</Textpoints>
               </ControllerBoll>
               <TextBoll>Cursos</TextBoll>        
               <TextBoll>Oficiais</TextBoll> 
               
               <TextoCursostwo>Total de frequência em ações</TextoCursostwo>
               <TextoCursosthree>educacionais não credenciadas</TextoCursosthree>
-              <TextPointTotal>12,0 pts</TextPointTotal> 
+              <TextPointTotal>{Cursopoints}</TextPointTotal> 
              
               <ControllerBollAtua>
               <Icon name="controller-record" size={25} color='#79899F'/>
               </ControllerBollAtua>
               <TextBoll>Atuação como</TextBoll>        
               <TextBoll>Docente</TextBoll>
-              <TextPointatua>3,0 pts</TextPointatua> 
+              <TextPointatua>{Credenciadaspoints}</TextPointatua> 
 
               <ControllerBollDip>
               <Icon name="controller-record" size={25} color='#C0CCDA'/>
               </ControllerBollDip>
               <TextBoll>Diplomas e</TextBoll>        
               <TextBoll>Títulos</TextBoll>
-              <TextPointaDip>5,0 pts</TextPointaDip> 
+              <TextPointaDip>{Docentepoints}s</TextPointaDip> 
 
               <ControllerBollPrat>
               <Icon name="controller-record" size={25} color='#D3DCE6' />
               </ControllerBollPrat>
               <TextBoll>Prática</TextBoll>        
               <TextBoll>Jurisdicional</TextBoll>
-              <TextPointaPra>3,0 pts</TextPointaPra>
+              <TextPointaPra>{Títulospoints}</TextPointaPra>
               
               <ControllerBollPubli>
               <Icon name="controller-record" size={22} color='#F5F7FA' />
@@ -249,13 +268,13 @@ export default function FormRelatoriPoints() {
               </ControllerBollPub>
 
               <TextBoll>Publicações</TextBoll>
-              <TextPointaPub>1,0 pts</TextPointaPub>
+              <TextPointaPub>{Jurisdicionalpoints}</TextPointaPub>
 
               <TextoCursosfour>Total de pontos =</TextoCursosfour>
               <IconToobarfour>
               <Icon name="circular-graph" size={120} color='#79899F' />
               </IconToobarfour>
-              <TextpointFour>17,0 pts</TextpointFour>
+              <TextpointFour>{Publicaçõespoints}</TextpointFour>
            
         
       </BackgroundContainer>
