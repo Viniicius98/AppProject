@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useRef } from "react";
-import { StyleSheet, Text, TouchableWithoutFeedback, View } from "react-native";
+import { StyleSheet, Text, TouchableHighlight, TouchableWithoutFeedback, View } from "react-native";
 import Item, { ListItem } from "./ListItemAcoes";
 
 const bit = (b: boolean) => (b ? 1 : 0);
@@ -50,11 +50,11 @@ export default ({ list, /*list2*/ }: ListProps) => {
 
   return (
     <>
-      <TouchableWithoutFeedback onPress={() => setOpen((open) => !open)}>
+      <TouchableHighlight onPress={() => setOpen((open) => !open)}>
         <View style={[styles.container]}>
           <Text style={styles.title}>AÇÕES EDUCACIONAIS</Text>
         </View>
-      </TouchableWithoutFeedback>
+      </TouchableHighlight>
       <View style={[styles.items, { height }]}>
         {list.items.map((item, idx) => (
           <Item

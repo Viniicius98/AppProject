@@ -1,5 +1,6 @@
+import { Overlay } from "native-base";
 import React, { useState } from "react";
-import { StyleSheet, Text, TouchableWithoutFeedback, View } from "react-native";
+import { StyleSheet, Text, TouchableHighlight, TouchableWithoutFeedback, View } from "react-native"; // TouchableWithoutFeedback não funciona no ios
 
 //import Animated, { Easing } from "react-native-reanimated";
 //import { bInterpolate, bin, useTransition } from "react-native-redash";
@@ -51,14 +52,14 @@ export default ({ list3 }: ListProps) => {
   const [open, setOpen] = useState(false);
 
   const height = open ? "auto" : 0;
-  const bottomRadius = open ? 0 : 8;
   return (
     <>
-      <TouchableWithoutFeedback onPress={() => setOpen((prev) => !prev)}>
+      <TouchableHighlight onPress={() => setOpen((prev) => !prev)}>
         <View style={[styles.container, {}]}>
           <Text style={styles.title}>ATUAÇÃO NA DOCÊNCIA</Text>
         </View>
-      </TouchableWithoutFeedback>
+      </TouchableHighlight>
+      
       <View style={[styles.items, { height }]}>
         {list3.items.map((item, key) => (
           <Item {...{ item, key }} isLast={key === list3.items.length - 1} />

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import styled from "styled-components/native";
-import { FlatList, GestureResponderEvent, ImageProps } from "react-native";
+import { FlatList, GestureResponderEvent, ImageProps, TouchableHighlight } from "react-native";
 import CardPerfilMagistrado from "../CardMagistrado";
 import CardConsultaEnfam from "../CardConsultaEnfam";
 import CardNotificacoes from "../../components/CardNotificacoes";
@@ -129,10 +129,12 @@ const Item = ({
   item: IFlatItems;
   onPress: (event: GestureResponderEvent) => void;
 }) => (
+  
   <Link style={styles.container} to={{ screen: item.screen }}>
     <ImageFlat source={item.icon} />
     <TextFlat> {item.text}</TextFlat>
   </Link>
+  
 );
 
 export default function HomeItemsComponents() {

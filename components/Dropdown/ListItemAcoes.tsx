@@ -1,5 +1,5 @@
 import React from "react";
-import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { StyleSheet, Text, TouchableHighlight, TouchableOpacity, View } from "react-native"; // TouchableWithoutFeedback não funciona no ios
 
 
 import { useNavigation } from "@react-navigation/native";
@@ -44,11 +44,11 @@ export default ({ item, isLast }: ListItemProps) => {
 
   };
   return (
-    <TouchableOpacity onPress={() => tela()}>
+    <TouchableHighlight onPress={() => tela()}>
          <View style={[styles.container, {}]}>      
            <Text style={styles.name}>{item.name}</Text>
         </View>
-      </TouchableOpacity>
+      </TouchableHighlight>
     
   );
 };

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { StyleSheet, Text, TouchableWithoutFeedback, View } from "react-native";
+import { StyleSheet, Text, TouchableHighlight, TouchableWithoutFeedback, View } from "react-native"; // TouchableWithoutFeedback não funciona no ios
 import Item, { ListItem } from "./ListItemDiplomas";
 
 const bit = (b: boolean) => (b ? 1 : 0);
@@ -43,11 +43,11 @@ export default ({ list2 }: ListProps) => {
   const bottomRadius = open ? 0 : 8;
   return (
     <>
-      <TouchableWithoutFeedback onPress={() => setOpen((open =>!open))}>
+      <TouchableHighlight onPress={() => setOpen((open =>!open))}> 
         <View style={[styles.container]}>
           <Text style={styles.title}>DIPLOMAS E TÍTULOS</Text>
         </View>
-      </TouchableWithoutFeedback>
+      </TouchableHighlight>
       <View style={[styles.items, { height}]}>
         {list2.items.map((item,idx) => (
           <Item 
