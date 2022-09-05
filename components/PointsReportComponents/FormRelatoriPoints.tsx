@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import styled from "styled-components/native";
-import { View, TextInput, StyleSheet, Text} from 'react-native'
+import { View, TextInput, StyleSheet, Text, DrawerLayoutAndroidBase, DatePickerAndroid} from 'react-native'
 import Icon from 'react-native-vector-icons/Entypo';
-import { getPoints } from "../../services/apiexterna";
-import {  } from "../../services/apiInterna";
+
+
+
 
 
 
@@ -194,23 +195,30 @@ const TextpointFour = styled.Text`
 `;
   
   
+const ContainerSubmitButton = styled.View`
+  margin-top: 110%;
+  padding-left: 10%;
+  padding-right: 4%;
+  position: absolute;
+`;
+
+const SubmitButton = styled.Button`
+  width: 50x;
+  height: 50px;
+`;
+
+
+
 
 export default function FormRelatoriPoints() {
  
-  
-  const [Totalpoints, setTotalPoints] = useState([]);
-  const [Cursopoints, setCursoPoints] = useState([]);
-  const [Credenciadaspoints, setCredenciadasPoints] = useState([]);
-  const [Docentepoints, setDocentePoints] = useState([]);
-  const [Títulospoints, setTítulosPoints] = useState([]);
-  const [Jurisdicionalpoints, setJurisdicionalPoints] = useState([]);
-  const [Publicaçõespoints, setPublicaçõesPoints] = useState([]);
-  const [qty, setQty] = useState(0);
 
+  //async function consulta(){
+    //const response = await api.get('points')
+  //}
+ 
 
-
-
-
+ 
 
   return (
     <>
@@ -221,43 +229,43 @@ export default function FormRelatoriPoints() {
               
                 <ControllerToobar>     
                 <IconToobar>
-                <Icon name="minus" size={22}  color='#273444' />
+                
                 </IconToobar>
-              <Textpointstoobar>5,0 pts</Textpointstoobar>
+              <Textpointstoobar>___ pts</Textpointstoobar>
               </ControllerToobar> 
               
               
               <ControllerBoll>
               <Icon name="controller-record" size={25} color='#273444'/>
-              <Textpoints>{Totalpoints}</Textpoints>
+              <Textpoints>__ __ pts</Textpoints>
               </ControllerBoll>
               <TextBoll>Cursos</TextBoll>        
               <TextBoll>Oficiais</TextBoll> 
               
               <TextoCursostwo>Total de frequência em ações</TextoCursostwo>
               <TextoCursosthree>educacionais não credenciadas</TextoCursosthree>
-              <TextPointTotal>{Cursopoints}</TextPointTotal> 
+              <TextPointTotal>__ __ pts</TextPointTotal> 
              
               <ControllerBollAtua>
               <Icon name="controller-record" size={25} color='#79899F'/>
               </ControllerBollAtua>
               <TextBoll>Atuação como</TextBoll>        
               <TextBoll>Docente</TextBoll>
-              <TextPointatua>{Credenciadaspoints}</TextPointatua> 
+              <TextPointatua>__ __ pts</TextPointatua> 
 
               <ControllerBollDip>
               <Icon name="controller-record" size={25} color='#C0CCDA'/>
               </ControllerBollDip>
               <TextBoll>Diplomas e</TextBoll>        
               <TextBoll>Títulos</TextBoll>
-              <TextPointaDip>{Docentepoints}s</TextPointaDip> 
+              <TextPointaDip>__ __ pts</TextPointaDip> 
 
               <ControllerBollPrat>
               <Icon name="controller-record" size={25} color='#D3DCE6' />
               </ControllerBollPrat>
               <TextBoll>Prática</TextBoll>        
               <TextBoll>Jurisdicional</TextBoll>
-              <TextPointaPra>{Títulospoints}</TextPointaPra>
+              <TextPointaPra>__ __ pts</TextPointaPra>
               
               <ControllerBollPubli>
               <Icon name="controller-record" size={22} color='#F5F7FA' />
@@ -268,16 +276,32 @@ export default function FormRelatoriPoints() {
               </ControllerBollPub>
 
               <TextBoll>Publicações</TextBoll>
-              <TextPointaPub>{Jurisdicionalpoints}</TextPointaPub>
+              <TextPointaPub>__ __ pts</TextPointaPub>
 
               <TextoCursosfour>Total de pontos =</TextoCursosfour>
               <IconToobarfour>
               <Icon name="circular-graph" size={120} color='#79899F' />
               </IconToobarfour>
-              <TextpointFour>{Publicaçõespoints}</TextpointFour>
-           
+              <TextpointFour>__ __ pts</TextpointFour>
+
+              <ContainerSubmitButton>
+                <SubmitButton
+                  
+                  title="Atualizar"
+                  color="#B8977E"
+                />
+              </ContainerSubmitButton>
         
-      </BackgroundContainer>
+          </BackgroundContainer>
     </>
   );
 }
+
+const styles = StyleSheet.create({
+  input: {},
+  labelError: {
+    alignSelf: "flex-start",
+    color: "#ff375b",
+    marginBottom: 8,
+  },
+});

@@ -113,6 +113,7 @@ const ContainerSubmitButton = styled.View`
   margin-top: 110%;
   padding-left: 60%;
   padding-right: 4%;
+  
 `;
 
 const SubmitButton = styled.Button`
