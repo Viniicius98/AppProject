@@ -264,7 +264,7 @@ export default function FormRelatoriPoints() {
         <TextpointFour>__ __ pts</TextpointFour>
 
         <ContainerSubmitButton>
-          <SubmitButton title="teste" color="#B8977E" />
+          <SubmitButton title="teste1" color="#B8977E" />
         </ContainerSubmitButton>
       </BackgroundContainer>
     </>
