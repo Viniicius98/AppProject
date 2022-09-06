@@ -34,7 +34,7 @@ const Container = styled.View`
   flex: 1;
   align-items: center;
   justify-content: center;
-  background-color: black;
+  background-color: #fff;
 `;
 const AppContainer = styled.View`
   flex: 1;
@@ -85,6 +85,11 @@ const Loading = styled.View`
   z-index: 30;
   top: 60%;
 `;
+
+type Repository = {
+  full_name: string;
+  description: string;
+};
 
 export default function LoginScreen({
   navigation,
@@ -146,46 +151,74 @@ export default function LoginScreen({
     }
   };
 
+  const [repositories, setRepositories] = useState<Repository[]>([]);
+  useEffect(() => {
+    fetch("https://api.github.com/users/diego3g/repos")
+      .then((response) => response.json())
+      .then((data) => {
+        setRepositories(data);
+      });
+  }, []);
+
   return (
     <Container>
       <Header />
 
       <BackgroundContainer>
-        {isLoading && (
-          <Loading>
-            <ActivityIndicator size="large" color="#8492A6" />
-          </Loading>
-        )}
-        <ImageBackground source={require("../assets/images/background.png")} />
-        <LoginBackgroundContainer>
-          <ContainerTextt>Login</ContainerTextt>
-
-          <Input
-            placeholder="E-mail"
-            defaultValue={email}
-            onChangeText={(newEmail) => setEmail(newEmail)}
-          />
-          <Input
-            placeholder="Senha"
-            defaultValue={password}
-            onChangeText={(newPassword) => setPassword(newPassword)}
-            secureTextEntry
-          />
-
-          <SubmitButton
-            title="Enviar"
-            color="#B8977E"
-            onPress={handleSignInPress}
-          />
-          <ContainerTexte>Esqueceu sua senha ? </ContainerTexte>
-
-          <ContainerText>{error}</ContainerText>
-          <ContainerText>{success} </ContainerText>
-        </LoginBackgroundContainer>
-        <AppContainer>
-          <AppLogo />
-        </AppContainer>
+        <ul>
+          {repositories.map((repo) => {
+            return (
+              <li key={repo.full_name}>
+                <strong>{repo.full_name}</strong>
+                <p>{repo.description}</p>
+              </li>
+            );
+          })}
+        </ul>
       </BackgroundContainer>
     </Container>
   );
+}
+
+{
+  /*<Container>
+      <Header />
+
+      <BackgroundContainer>
+  {isLoading && (
+  <Loading>
+    <ActivityIndicator size="large" color="#8492A6" />
+  </Loading>
+)}
+<ImageBackground source={require("../assets/images/background.png")} />
+<LoginBackgroundContainer>
+  <ContainerTextt>Login</ContainerTextt>
+
+  <Input
+    placeholder="E-mail"
+    defaultValue={email}
+    onChangeText={(newEmail) => setEmail(newEmail)}
+  />
+  <Input
+    placeholder="Senha"
+    defaultValue={password}
+    onChangeText={(newPassword) => setPassword(newPassword)}
+    secureTextEntry
+  />
+
+  <SubmitButton
+    title="Enviar"
+    color="#B8977E"
+    onPress={handleSignInPress}
+  />
+  <ContainerTexte>Esqueceu sua senha ? </ContainerTexte>
+
+  <ContainerText>{error}</ContainerText>
+  <ContainerText>{success} </ContainerText>
+</LoginBackgroundContainer>
+<AppContainer>
+  <AppLogo />
+  </AppContainer>
+  </BackgroundContainer>
+  </Container>*/
 }
