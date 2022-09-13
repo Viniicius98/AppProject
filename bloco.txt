@@ -1,6 +1,9 @@
 https://www.youtube.com/watch?v=3bBdj_tHkVk
 
 
+=> ex de api - https://www.youtube.com/watch?v=d45CJyRvXks
+
+
 /enfamrules/activity
 
 
