@@ -9,6 +9,7 @@ import React from "react";
 import Header from "../components/Header";
 import AppLogo from "../components/Header/Applogo";
 
+
 const BackgroundContainer = styled.View`
   width: 100%;
   height: 83.5%;
@@ -86,9 +87,9 @@ const Loading = styled.View`
   top: 60%;
 `;
 
-type Repository = {
-  full_name: string;
-  description: string;
+type Chamado = {
+  ativo_fl: string;
+  id_usuario: number;
 };
 
 export default function LoginScreen({
@@ -151,9 +152,9 @@ export default function LoginScreen({
     }
   };
 
-  const [repositories, setRepositories] = useState<Repository[]>([]);
+  const [repositories, setRepositories] = useState<Chamado[]>([]);
   useEffect(() => {
-    fetch("https://api.github.com/users/diego3g/repos")
+    fetch("http://localhost:3000/chamado")
       .then((response) => response.json())
       .then((data) => {
         setRepositories(data);
@@ -168,9 +169,9 @@ export default function LoginScreen({
         <ul>
           {repositories.map((repo) => {
             return (
-              <li key={repo.full_name}>
-                <strong>{repo.full_name}</strong>
-                <p>{repo.description}</p>
+              <li key={repo.ativo_fl}>
+                <strong>{repo.id_usuario}</strong>
+                <p>{repo.id_usuario}</p>
               </li>
             );
           })}
