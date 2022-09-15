@@ -214,6 +214,8 @@ export default function FormRelatoriPoints() {
       .then((data) => {
         setRepositories(data);
       });
+     
+     
   }, []);
 
   return (   
