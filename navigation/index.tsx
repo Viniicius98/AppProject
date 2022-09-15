@@ -32,7 +32,7 @@ import Colors from "../constants/Colors";
 //hooks
 import useColorScheme from "../hooks/useColorScheme";
 //navigation
-import LinkingConfiguration from "./LinkingConfiguration";
+//import LinkingConfiguration from "../navigation/LinkingConfiguration";
 
 import {
   RootStackParamList,
@@ -49,7 +49,7 @@ export default function Navigation({
 }) {
   return (
     <NavigationContainer
-      linking={LinkingConfiguration}
+      //linking={LinkingConfiguration}
       theme={colorScheme === "dark" ? DarkTheme : DefaultTheme}
     >
       <RootNavigator />
@@ -171,7 +171,7 @@ function BottomTabNavigator() {
           headerShown: false,
           headerRight: () => (
             <Pressable
-              onPress={() => navigation.navigate("Activites")}
+              //onPress={() => navigation.navigate("Activites")}
               style={({ pressed }) => ({
                 opacity: pressed ? 0.5 : 1,
               })}
@@ -205,7 +205,7 @@ function BottomTabNavigator() {
           tabBarIcon: ({ color }) => <TabBarIcon name="user" color={color} />,
           headerRight: () => (
             <Pressable
-              onPress={() => navigation.navigate("Settings")}
+              //onPress={() => navigation.navigate("Settings")}
               style={({ pressed }) => ({
                 opacity: pressed ? 0.5 : 1,
               })}

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components/native";
 import {
   View,
@@ -197,40 +197,58 @@ const SubmitButton = styled.Button`
   width: 50x;
   height: 50px;
 `;
+type posts = {
+  points_total_cur: Number;
+  points_curso_ofi: Number;
+  points_total_fre: Number;
+  points_atuacao_doc: Number;
+  author: String;
+};
 
 export default function FormRelatoriPoints() {
-  //async function consulta(){
-  //const response = await api.get('points')
-  //}
+  
+  const [repositories, setRepositories] = useState<posts[]>([]);
+  useEffect(() => {
+    fetch("http://localhost:3000/posts")
+      .then((response) => response.json())
+      .then((data) => {
+        setRepositories(data);
+      });
+  }, []);
 
-  return (
-    <>
-      <BackgroundContainer>
+  return (   
+  <>   
+
+        
+      {repositories.map((repo) => {
+
+            return (
+              <BackgroundContainer>
         <TextoCursosone>Total de frequência com</TextoCursosone>
         <TextoCursos>aproveitamento em cursos oficiais</TextoCursos>
-
-        <ControllerToobar>
-          <IconToobar></IconToobar>
-          <Textpointstoobar>___ pts</Textpointstoobar>
-        </ControllerToobar>
-
-        <ControllerBoll>
+              <ControllerToobar>     
+              <IconToobar>
+                <Icon name="minus" size={22}  color='#273444' />
+                </IconToobar>
+              <Textpointstoobar>{repo.points_total_cur}</Textpointstoobar>
+              </ControllerToobar> 
+              <ControllerBoll>
           <Icon name="controller-record" size={25} color="#273444" />
-          <Textpoints>__ __ pts</Textpoints>
+          <Textpoints>{repo.points_curso_ofi}</Textpoints>
         </ControllerBoll>
         <TextBoll>Cursos</TextBoll>
         <TextBoll>Oficiais</TextBoll>
 
         <TextoCursostwo>Total de frequência em ações</TextoCursostwo>
         <TextoCursosthree>educacionais não credenciadas</TextoCursosthree>
-        <TextPointTotal>__ __ pts</TextPointTotal>
+        <TextPointTotal>{repo.points_total_fre}</TextPointTotal>
 
         <ControllerBollAtua>
           <Icon name="controller-record" size={25} color="#79899F" />
         </ControllerBollAtua>
         <TextBoll>Atuação como</TextBoll>
         <TextBoll>Docente</TextBoll>
-        <TextPointatua>__ __ pts</TextPointatua>
+        <TextPointatua>{repo.points_atuacao_doc}pts</TextPointatua>
 
         <ControllerBollDip>
           <Icon name="controller-record" size={25} color="#C0CCDA" />
@@ -263,10 +281,15 @@ export default function FormRelatoriPoints() {
         </IconToobarfour>
         <TextpointFour>__ __ pts</TextpointFour>
 
-        <ContainerSubmitButton>
-          <SubmitButton title="teste1" color="#B8977E" />
-        </ContainerSubmitButton>
+        
       </BackgroundContainer>
+            );
+          })}           
+
+
+              
+
+        
     </>
   );
 }

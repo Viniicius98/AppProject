@@ -108,3 +108,59 @@ https://www.youtube.com/watch?v=3bBdj_tHkVk
 		"category_id": 4
 	}
 ]
+
+
+type Chamado = {
+  ativo_fl: string;
+  id_usuario: number;
+};
+
+
+ const [repositories, setRepositories] = useState<Chamado[]>([]);
+  useEffect(() => {
+    fetch("http://localhost:3000/chamado")
+      .then((response) => response.json())
+      .then((data) => {
+        setRepositories(data);
+      });
+  }, []);
+
+
+
+
+
+
+
+
+
+
+<ul>
+          {repositories.map((repo) => {
+            return (
+              <li key={repo.ativo_fl}>
+                <strong>{repo.id_usuario}</strong>
+                <p>{repo.id_usuario}</p>
+              </li>
+            );
+          })}
+        </ul>
+
+
+
+type posts = {
+  title: String;
+  author: String;
+};
+
+
+
+
+
+		const [repositories, setRepositories] = useState<posts[]>([]);
+  useEffect(() => {
+    fetch("http://localhost:3000/posts")
+      .then((response) => response.json())
+      .then((data) => {
+        setRepositories(data);
+      });
+  }, []);

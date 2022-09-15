@@ -86,7 +86,6 @@ const TitleCustom = styled.View`
 export default function PointsReport() {
 
   
-
   return (
     <>
       <BackgroundContainer>

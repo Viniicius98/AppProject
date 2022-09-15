@@ -1,11 +1,11 @@
 import { Text, View } from "../components/Themed";
 import { RootTabScreenProps } from "../types";
 import styled from "styled-components/native";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import api from "../services/api";
 import { ActivityIndicator } from "react-native";
-import React from "react";
+
 import Header from "../components/Header";
 import AppLogo from "../components/Header/Applogo";
 
@@ -87,10 +87,6 @@ const Loading = styled.View`
   top: 60%;
 `;
 
-type Chamado = {
-  ativo_fl: string;
-  id_usuario: number;
-};
 
 export default function LoginScreen({
   navigation,
@@ -152,32 +148,52 @@ export default function LoginScreen({
     }
   };
 
-  const [repositories, setRepositories] = useState<Chamado[]>([]);
-  useEffect(() => {
-    fetch("http://localhost:3000/chamado")
-      .then((response) => response.json())
-      .then((data) => {
-        setRepositories(data);
-      });
-  }, []);
+ 
 
   return (
     <Container>
       <Header />
 
       <BackgroundContainer>
-        <ul>
-          {repositories.map((repo) => {
-            return (
-              <li key={repo.ativo_fl}>
-                <strong>{repo.id_usuario}</strong>
-                <p>{repo.id_usuario}</p>
-              </li>
-            );
-          })}
-        </ul>
-      </BackgroundContainer>
-    </Container>
+  {isLoading && (
+  <Loading>
+    <ActivityIndicator size="large" color="#8492A6" />
+  </Loading>
+)}
+<ImageBackground source={require("../assets/images/background.png")} />
+<LoginBackgroundContainer>
+  
+<ContainerTextt>Login</ContainerTextt>
+
+<Input
+  placeholder="E-mail"
+  defaultValue={email}
+  onChangeText={(newEmail) => setEmail(newEmail)}
+/>
+
+  
+  <Input
+    placeholder="Senha"
+    defaultValue={password}
+    onChangeText={(newPassword) => setPassword(newPassword)}
+    secureTextEntry
+  />
+
+  <SubmitButton
+    title="Enviar"
+    color="#B8977E"
+    onPress={handleSignInPress}
+  />
+  <ContainerTexte>Esqueceu sua senha ? </ContainerTexte>
+
+  <ContainerText>{error}</ContainerText>
+  <ContainerText>{success} </ContainerText>
+</LoginBackgroundContainer>
+<AppContainer>
+  <AppLogo />
+  </AppContainer>
+  </BackgroundContainer>
+  </Container>
   );
 }
 
