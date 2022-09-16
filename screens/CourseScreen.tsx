@@ -1,15 +1,13 @@
 import React from "react";
 import styled from "styled-components/native";
 import { RootTabScreenProps } from "../types";
-import InserirTitulosComponents from "../components/InserirTitulosComponents";
+import CourseComponents from "../components/CourseComponents";
 import { useContext } from "react";
 import { InputValueContext } from "../context/InputValueContext";
 import Header from "../components/Header";
 import BackButton from "../components/BackButton";
 
-export default function Activites({
-  navigation,
-}: RootTabScreenProps<"Activites">) {
+export default function Course({ navigation }: RootTabScreenProps<"Course">) {
   const { state, dispatch } = useContext(InputValueContext);
 
   const Container = styled.View`
@@ -42,7 +40,7 @@ export default function Activites({
       </ConteinerHeader>
 
       <ConteinerReport>
-        <InserirTitulosComponents />
+        <CourseComponents />
       </ConteinerReport>
     </Container>
   );

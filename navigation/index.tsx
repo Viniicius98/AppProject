@@ -18,6 +18,7 @@ import { ColorSchemeName, Pressable } from "react-native";
 //screens
 import ActionRecord from "../screens/ActionRecordScreen";
 import Activites from "../screens/ActivitesScreen";
+import Course from "../screens/CourseScreen";
 import HomeScreen from "../screens/HomeScreen";
 import LoginScreen from "../screens/LoginScreen";
 import TitlesRecord from "../screens/TitlesRecordScreen";
@@ -126,7 +127,23 @@ function RootNavigator() {
             fontWeight: "bold",
           },
         })}
+        
       />
+      <Stack.Screen
+        name="Course"
+        component={Course}
+        options={() => ({
+          headerShown: false,
+          headerTitle: "Home",
+          headerStyle: {
+            backgroundColor: "#1e2d3e",
+          },
+          headerTintColor: "#fff",
+          headerTitleStyle: {
+            fontWeight: "bold",
+          },
+        })}
+        />
 
       <Stack.Group screenOptions={{ presentation: "modal" }}>
         <Stack.Screen name="Settings" component={SettingsScreen} />

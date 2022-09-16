@@ -51,7 +51,7 @@ const IconsApp = styled.View`
   margin-left: 67%;
 `;
 
-export default function InserirAtividadeComponents() {
+export default function InserirTitulosComponents() {
   return (
     <>
       <BackgroundContainer>

@@ -62,7 +62,7 @@ const FlatLinks = [
     id: "1",
     text: "CURSOS EMERJ",
     icon: require("../../assets/images/cursos.png"),
-    screen: "Chat",
+    screen: "Course",
   },
   {
     id: "2",
