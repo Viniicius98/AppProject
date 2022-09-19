@@ -10,11 +10,11 @@ import {
 import { useNavigation } from "@react-navigation/native";
 import { color } from "native-base/lib/typescript/theme/styled-system";
 
-export const LIST_ITEM_HEIGHT = 100;
+export const LIST_ITEM_HEIGHT = 150;
 const styles = StyleSheet.create({
   container: {
     backgroundColor: "white",
-    flexDirection: "row",
+    flexDirection: "column",
     justifyContent: "space-between",
     alignItems: "center",
     paddingVertical: 8,
@@ -24,15 +24,23 @@ const styles = StyleSheet.create({
     height: LIST_ITEM_HEIGHT,
   },
   name: {
+    width:200,
+    marginBottom:10,
+    marginLeft:60,
     fontSize: 16,
     fontWeight: "bold",
     color: "#343f4b",
   },
   ctn: {
+    width:500,
+    marginTop:-8,
+    marginLeft:50,
     backgroundColor: "#c0ccda",
+    borderTopWidth: 10,
+    borderTopColor: "#1e2d3eee",
     borderBottomWidth: 10,
     borderBottomColor: "#b8977e",
-    flexDirection: "row",
+    
   },
 });
 

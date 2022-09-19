@@ -8,11 +8,11 @@ import {
 } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 
-export const LIST_ITEM_HEIGHT = 54;
+export const LIST_ITEM_HEIGHT = 150;
 const styles = StyleSheet.create({
   container: {
     backgroundColor: "white",
-    flexDirection: "row",
+    flexDirection: "column",
     justifyContent: "space-between",
     alignItems: "center",
     paddingVertical: 8,
@@ -22,10 +22,25 @@ const styles = StyleSheet.create({
     height: LIST_ITEM_HEIGHT,
   },
   name: {
+    width:200,
+    marginBottom:10,
+    marginLeft:60,
     fontSize: 16,
+    fontWeight: "bold",
+    color: "#343f4b",
+  },
+  ctn: {
+    width:500,
+    marginTop:-8,
+    marginLeft:50,
+    backgroundColor: "#c0ccda",
+    borderTopWidth: 10,
+    borderTopColor: "#1e2d3eee",
+    borderBottomWidth: 10,
+    borderBottomColor: "#b8977e",
+    
   },
 });
-
 export interface ListItem {
   name: string;
   component: any;
@@ -42,10 +57,12 @@ export default ({ item, isLast }: ListItemProps) => {
   const navigation = useNavigation();
 
   return (
-    <TouchableHighlight>
-      <View style={[styles.container, {}]}>
-        <Text style={styles.name}>{item.name}</Text>
-      </View>
-    </TouchableHighlight>
+    <View style={[styles.container, {}]}>
+    <View style={styles.ctn}>
+      <Text style={styles.name}>{item.name}</Text>
+    </View>
+
+    <View>{item.component}</View>
+  </View>
   );
 };
