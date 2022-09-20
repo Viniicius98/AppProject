@@ -14,7 +14,7 @@ export default function Activites({
 
   const Container = styled.View`
     height: 100%;
-    margin-top: -5.9%;
+    margin-top: -13.5%;
     border-bottom-width: 10px;
     border-bottom-color: #b8977e;
   `;

@@ -18,15 +18,14 @@ const Container2 = styled.View`
   display: flex;
   background: #c0ccda;
 `;
-const AvatarContainer = styled.View`
+const BackContainer = styled.View`
   position: relative;
-  width: 120px;
-  height: 150px;
+  width: 100%;
+  height: 100%;
   align-items: center;
-  margin-bottom: 58px;
-  height: 15%;
-  margin-top: 5%;
-  margin-left: 12%;
+  margin-top: 4%;
+  margin-left: -41%;
+ 
 `;
 const Avatar = styled.Image`
   width: 60px;
@@ -60,8 +59,12 @@ export default function CardCourse() {
 
         <TextOne>CURSOS</TextOne>
         <TextTwo>EMERJ</TextTwo>
+      
       </Container2>
+      <BackContainer>
       <BackButton />
+      </BackContainer>
+      
     </Container>
   );
 }

@@ -24,7 +24,7 @@ const ImageBackground = styled.Image`
 const ContentItems = styled.View`
   width: 100%;
   height: 100%;
-  margin-top: 49%;
+  margin-top: 39%;
   flex-direction: row;
   align-items: flex-end;
 `;
@@ -37,9 +37,7 @@ const DropdownItems = styled.View`
 const IconsItems = styled.View`
   width: 100%;
   height: 575px;
-
-  margin-bottom: 52.3%;
-
+  margin-bottom: 40.9%;
   margin-left: -60%;
 `;
 

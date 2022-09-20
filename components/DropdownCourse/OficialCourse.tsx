@@ -23,7 +23,9 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: 16,
+    marginLeft:7.3,
     fontWeight: "bold",
+    color:"#343F4B",
   },
   items: {
     overflow: "hidden",

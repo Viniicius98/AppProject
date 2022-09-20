@@ -11,7 +11,7 @@ import Header from "../components/Header";
 
 const Container = styled.View`
   height: 100%;
-  margin-top: -4%;
+  margin-top: -9.4%;
   border-bottom-width: 10px;
   border-bottom-color: #b8977e;
 `;

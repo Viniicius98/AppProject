@@ -22,8 +22,10 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   title: {
+    marginLeft:3,
     fontSize: 16,
     fontWeight: "bold",
+    color:"#343F4B",
   },
   items: {
     overflow: "hidden",

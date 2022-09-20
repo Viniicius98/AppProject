@@ -12,7 +12,7 @@ export default function Course({ navigation }: RootTabScreenProps<"Course">) {
 
   const Container = styled.View`
     height: 100%;
-    margin-top: -5.9%;
+    margin-top: -14%;
     border-bottom-width: 10px;
     border-bottom-color: #b8977e;
   `;

@@ -12,7 +12,7 @@ import * as yup from "yup";
 const BackgroundContainer = styled.View`
   height: 100%;
   width: 100%;
-  margin-top: 9%;
+  margin-top: 3%;
   background: #1e2d3eee;
 `;
 
@@ -41,9 +41,8 @@ const CursoItems = styled.View`
 const IconsItems = styled.View`
   width: 100%;
   height: 80%;
-  margin-top: -9%;
   margin-left: -60%;
-  margin-bottom: 58.7%;
+  margin-bottom: 54.4%;
 `;
 const ListItems = styled.View`
   width: 90%;

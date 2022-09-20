@@ -25,7 +25,8 @@ const styles = StyleSheet.create({
   },
   name: {
     width:200,
-    marginBottom:10,
+    marginTop:5,
+    marginBottom:7,
     marginLeft:60,
     fontSize: 16,
     fontWeight: "bold",
@@ -41,6 +42,10 @@ const styles = StyleSheet.create({
     borderBottomWidth: 10,
     borderBottomColor: "#b8977e",
     
+  },
+  component: {
+    width:100,
+    height:100,
   },
 });
 
@@ -67,7 +72,7 @@ export default ({ item, isLast }: ListItemProps) => {
         <Text style={styles.name}>{item.name}</Text>
       </View>
 
-      <View>{item.component}</View>
+      <View style={styles.component}>{item.component}</View>
     </View>
   );
 };

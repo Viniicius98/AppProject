@@ -29,7 +29,7 @@ const ImageBackground = styled.Image`
 const ContentItems = styled.View`
   position: absolute;
   width: 100%;
-  height: 83%;
+  height: 85.5%;
   flex-direction: row;
   align-items: flex-end;
 `;
