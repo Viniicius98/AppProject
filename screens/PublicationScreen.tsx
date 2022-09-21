@@ -125,9 +125,7 @@ const SubmitButton = styled.Button`
 const ConteinerHeader = styled.View`
   width: 100%;
   height: 20%;
-
   margin-top: -18%;
-
   margin-left: 0%;
 `;
 const ConteinerApp = styled.View`

@@ -11,7 +11,7 @@ import * as yup from "yup";
 const BackgroundContainer = styled.View`
   height: 100%;
   width: 100%;
-  margin-top: 3%;
+  margin-top: 8%;
   background: #1e2d3eee;
 `;
 
@@ -120,7 +120,7 @@ const SubmitButton = styled.Button`
 const ConteinerHeader = styled.View`
   width: 100%;
   height: 20%;
-  margin-top: -12%;
+  margin-top: -17.5%;
   margin-left: 0%;
 `;
 const ConteinerApp = styled.View`
