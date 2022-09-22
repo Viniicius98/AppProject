@@ -1,13 +1,14 @@
 import { Text, View } from "../components/Themed";
 import { RootTabScreenProps } from "../types";
 import styled from "styled-components/native";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import api from "../services/api";
 import { ActivityIndicator } from "react-native";
-import React from "react";
+
 import Header from "../components/Header";
 import AppLogo from "../components/Header/Applogo";
+
 
 const BackgroundContainer = styled.View`
   width: 100%;
@@ -34,7 +35,7 @@ const Container = styled.View`
   flex: 1;
   align-items: center;
   justify-content: center;
-  background-color: black;
+  background-color: #fff;
 `;
 const AppContainer = styled.View`
   flex: 1;
@@ -86,6 +87,7 @@ const Loading = styled.View`
   top: 60%;
 `;
 
+
 export default function LoginScreen({
   navigation,
 }: RootTabScreenProps<"Login">) {
@@ -103,7 +105,7 @@ export default function LoginScreen({
       setSuccess("Autenticando...");
 
       setTimeout(() => {
-        navigation.navigate("User");
+        //navigation.navigate("User");
       }, 3000);
     }
   };
@@ -146,46 +148,94 @@ export default function LoginScreen({
     }
   };
 
+ 
+
   return (
     <Container>
       <Header />
 
       <BackgroundContainer>
-        {isLoading && (
-          <Loading>
-            <ActivityIndicator size="large" color="#8492A6" />
-          </Loading>
-        )}
-        <ImageBackground source={require("../assets/images/background.png")} />
-        <LoginBackgroundContainer>
-          <ContainerTextt>Login</ContainerTextt>
+  {isLoading && (
+  <Loading>
+    <ActivityIndicator size="large" color="#8492A6" />
+  </Loading>
+)}
+<ImageBackground source={require("../assets/images/background.png")} />
+<LoginBackgroundContainer>
+  
+<ContainerTextt>Login</ContainerTextt>
 
-          <Input
-            placeholder="E-mail"
-            defaultValue={email}
-            onChangeText={(newEmail) => setEmail(newEmail)}
-          />
-          <Input
-            placeholder="Senha"
-            defaultValue={password}
-            onChangeText={(newPassword) => setPassword(newPassword)}
-            secureTextEntry
-          />
+<Input
+  placeholder="E-mail"
+  defaultValue={email}
+  onChangeText={(newEmail) => setEmail(newEmail)}
+/>
 
-          <SubmitButton
-            title="Enviar"
-            color="#B8977E"
-            onPress={handleSignInPress}
-          />
-          <ContainerTexte>Esqueceu sua senha ? </ContainerTexte>
+  
+  <Input
+    placeholder="Senha"
+    defaultValue={password}
+    onChangeText={(newPassword) => setPassword(newPassword)}
+    secureTextEntry
+  />
 
-          <ContainerText>{error}</ContainerText>
-          <ContainerText>{success} </ContainerText>
-        </LoginBackgroundContainer>
-        <AppContainer>
-          <AppLogo />
-        </AppContainer>
-      </BackgroundContainer>
-    </Container>
+  <SubmitButton
+    title="Enviar"
+    color="#B8977E"
+    onPress={handleSignInPress}
+  />
+  <ContainerTexte>Esqueceu sua senha ? </ContainerTexte>
+
+  <ContainerText>{error}</ContainerText>
+  <ContainerText>{success} </ContainerText>
+</LoginBackgroundContainer>
+<AppContainer>
+  <AppLogo />
+  </AppContainer>
+  </BackgroundContainer>
+  </Container>
   );
+}
+
+{
+  /*<Container>
+      <Header />
+
+      <BackgroundContainer>
+  {isLoading && (
+  <Loading>
+    <ActivityIndicator size="large" color="#8492A6" />
+  </Loading>
+)}
+<ImageBackground source={require("../assets/images/background.png")} />
+<LoginBackgroundContainer>
+  <ContainerTextt>Login</ContainerTextt>
+
+  <Input
+    placeholder="E-mail"
+    defaultValue={email}
+    onChangeText={(newEmail) => setEmail(newEmail)}
+  />
+  <Input
+    placeholder="Senha"
+    defaultValue={password}
+    onChangeText={(newPassword) => setPassword(newPassword)}
+    secureTextEntry
+  />
+
+  <SubmitButton
+    title="Enviar"
+    color="#B8977E"
+    onPress={handleSignInPress}
+  />
+  <ContainerTexte>Esqueceu sua senha ? </ContainerTexte>
+
+  <ContainerText>{error}</ContainerText>
+  <ContainerText>{success} </ContainerText>
+</LoginBackgroundContainer>
+<AppContainer>
+  <AppLogo />
+  </AppContainer>
+  </BackgroundContainer>
+  </Container>*/
 }

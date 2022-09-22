@@ -1,11 +1,11 @@
 import React from "react";
 import styled from "styled-components/native";
 import { RootTabScreenProps } from "../types";
-import InserirAtividadeComponents from "../components/InserirTitulosComponents";
+import InserirTitulosComponents from "../components/InserirTitulosComponents";
 import { useContext } from "react";
 import { InputValueContext } from "../context/InputValueContext";
 import Header from "../components/Header";
-import BackButton from "../components/BackButton";
+
 
 export default function Activites({
   navigation,
@@ -14,7 +14,7 @@ export default function Activites({
 
   const Container = styled.View`
     height: 100%;
-    margin-top: -5.9%;
+    margin-top: -14%;
     border-bottom-width: 10px;
     border-bottom-color: #b8977e;
   `;
@@ -22,9 +22,7 @@ export default function Activites({
   const ConteinerHeader = styled.View`
     width: 100%;
     height: 20%;
-
     margin-top: 4%;
-
     margin-left: 0%;
   `;
 
@@ -42,7 +40,7 @@ export default function Activites({
       </ConteinerHeader>
 
       <ConteinerReport>
-        <InserirAtividadeComponents />
+        <InserirTitulosComponents />
       </ConteinerReport>
     </Container>
   );

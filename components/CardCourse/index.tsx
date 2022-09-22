@@ -13,20 +13,19 @@ const Container2 = styled.View`
   position: absolute;
   width: 55%;
   height: 9%;
-  margin-top: 10%;
+  margin-top: 13%;
   margin-left: 3%;
   display: flex;
   background: #c0ccda;
 `;
-const AvatarContainer = styled.View`
+const BackContainer = styled.View`
   position: relative;
-  width: 120px;
-  height: 150px;
+  width: 100%;
+  height: 100%;
   align-items: center;
-  margin-bottom: 58px;
-  height: 15%;
-  margin-top: 5%;
-  margin-left: 12%;
+  margin-top: 4%;
+  margin-left: -41%;
+ 
 `;
 const Avatar = styled.Image`
   width: 60px;
@@ -52,16 +51,20 @@ const TextTwo = styled.Text`
   margin-top: 10%;
 `;
 
-export default function CardAtividade() {
+export default function CardCourse() {
   return (
     <Container>
       <Container2>
-        <Avatar source={require("../../assets/images/inserirTitulos.png")} />
+        <Avatar source={require("../../assets/images/cursos.png")} />
 
-        <TextOne>INSERIR</TextOne>
-        <TextTwo>ATIVIDADES</TextTwo>
+        <TextOne>CURSOS</TextOne>
+        <TextTwo>EMERJ</TextTwo>
+      
       </Container2>
+      <BackContainer>
       <BackButton />
+      </BackContainer>
+      
     </Container>
   );
 }

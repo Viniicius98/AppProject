@@ -1,5 +1,11 @@
 import React, { useState } from "react";
-import { Text, StyleSheet, KeyboardAvoidingView, Platform, KeyboardAvoidingViewComponent } from "react-native";
+import {
+  Text,
+  StyleSheet,
+  KeyboardAvoidingView,
+  Platform,
+  KeyboardAvoidingViewComponent,
+} from "react-native";
 import styled from "styled-components/native";
 import CardAtividade from "../components/CardInserirAtividade";
 import Header from "../components/Header";
@@ -12,7 +18,7 @@ import * as yup from "yup";
 const BackgroundContainer = styled.View`
   height: 100%;
   width: 100%;
-  margin-top: 9%;
+  margin-top: 8%;
   background: #1e2d3eee;
 `;
 
@@ -41,9 +47,8 @@ const CursoItems = styled.View`
 const IconsItems = styled.View`
   width: 100%;
   height: 80%;
-  margin-top: -9%;
   margin-left: -60%;
-  margin-bottom: 58.7%;
+  margin-bottom: 54.4%;
 `;
 const ListItems = styled.View`
   width: 90%;
@@ -122,7 +127,7 @@ const SubmitButton = styled.Button`
 const ConteinerHeader = styled.View`
   width: 100%;
   height: 20%;
-  margin-top: -12%;
+  margin-top: -18%;
   margin-left: 0%;
 `;
 const ConteinerApp = styled.View`
@@ -164,9 +169,8 @@ export default function TitlesRecord({ route }: any) {
         </ConteinerHeader>
 
         <ImageBackground source={require("../assets/images/background.png")} />
-        
+
         <ContentItems>
-        
           <CursoItems>
             <ListItems>
               <TextoCursos>OUTROS DIPLOMAS E TÍTULOS</TextoCursos>
@@ -176,7 +180,6 @@ export default function TitlesRecord({ route }: any) {
                 </SubTitleCustom>
               </TitleCustom>
               <InputContainer>
-              
                 <Controller
                   control={control}
                   name="type"
@@ -194,8 +197,7 @@ export default function TitlesRecord({ route }: any) {
                       defaultValue={route.params.nome}
                       value={value}
                     />
-                  )}       
-        
+                  )}
                 />
 
                 <Controller
@@ -271,7 +273,6 @@ export default function TitlesRecord({ route }: any) {
                     {errors.resume?.message}
                   </Text>
                 )}
-                
               </InputContainer>
 
               <ContainerSubmitButton>
@@ -283,7 +284,6 @@ export default function TitlesRecord({ route }: any) {
               </ContainerSubmitButton>
             </ListItems>
           </CursoItems>
-          
 
           <IconsItems>
             <CardAtividade />
@@ -292,7 +292,6 @@ export default function TitlesRecord({ route }: any) {
             </ConteinerApp>
           </IconsItems>
         </ContentItems>
-        
       </BackgroundContainer>
     </>
   );

@@ -18,6 +18,7 @@ import { ColorSchemeName, Pressable } from "react-native";
 //screens
 import ActionRecord from "../screens/ActionRecordScreen";
 import Activites from "../screens/ActivitesScreen";
+import Course from "../screens/CourseScreen";
 import HomeScreen from "../screens/HomeScreen";
 import LoginScreen from "../screens/LoginScreen";
 import TitlesRecord from "../screens/TitlesRecordScreen";
@@ -32,7 +33,7 @@ import Colors from "../constants/Colors";
 //hooks
 import useColorScheme from "../hooks/useColorScheme";
 //navigation
-import LinkingConfiguration from "./LinkingConfiguration";
+//import LinkingConfiguration from "../navigation/LinkingConfiguration";
 
 import {
   RootStackParamList,
@@ -49,7 +50,7 @@ export default function Navigation({
 }) {
   return (
     <NavigationContainer
-      linking={LinkingConfiguration}
+      //linking={LinkingConfiguration}
       theme={colorScheme === "dark" ? DarkTheme : DefaultTheme}
     >
       <RootNavigator />
@@ -126,7 +127,23 @@ function RootNavigator() {
             fontWeight: "bold",
           },
         })}
+        
       />
+      <Stack.Screen
+        name="Course"
+        component={Course}
+        options={() => ({
+          headerShown: false,
+          headerTitle: "Home",
+          headerStyle: {
+            backgroundColor: "#1e2d3e",
+          },
+          headerTintColor: "#fff",
+          headerTitleStyle: {
+            fontWeight: "bold",
+          },
+        })}
+        />
 
       <Stack.Group screenOptions={{ presentation: "modal" }}>
         <Stack.Screen name="Settings" component={SettingsScreen} />
@@ -171,7 +188,7 @@ function BottomTabNavigator() {
           headerShown: false,
           headerRight: () => (
             <Pressable
-              onPress={() => navigation.navigate("Activites")}
+              //onPress={() => navigation.navigate("Activites")}
               style={({ pressed }) => ({
                 opacity: pressed ? 0.5 : 1,
               })}
@@ -205,7 +222,7 @@ function BottomTabNavigator() {
           tabBarIcon: ({ color }) => <TabBarIcon name="user" color={color} />,
           headerRight: () => (
             <Pressable
-              onPress={() => navigation.navigate("Settings")}
+              //onPress={() => navigation.navigate("Settings")}
               style={({ pressed }) => ({
                 opacity: pressed ? 0.5 : 1,
               })}

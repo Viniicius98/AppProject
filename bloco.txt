@@ -1,1 +1,166 @@
-testeteste test 
+https://www.youtube.com/watch?v=3bBdj_tHkVk
+
+
+=> ex de api - https://www.youtube.com/watch?v=d45CJyRvXks
+
+
+/enfamrules/activity
+
+
+[
+	{
+		"id": 2,
+		"title": "Cursos Oficiais credenciados pela Enfam",
+		"description": "Frequência com aproveitamento em cursos oficiais realizados ou credenciados pela Enfam",
+		"minimum_hours": 20,
+		"points": 5,
+		"max_points": 25,
+		"category_id": 2
+	},
+	{
+		"id": 3,
+		"title": "Cursos não credenciados.",
+		"description": "Frequência com aproveitamento em ações educacionais não credenciadas e de outras instituições relacionadas às competências profissionais da magistratura",
+		"minimum_hours": 12,
+		"points": 1,
+		"max_points": 5,
+		"category_id": 2
+	},
+	{
+		"id": 4,
+		"title": "Diploma de Especialização",
+		"description": "Diploma de Especialização.",
+		"minimum_hours": 0,
+		"points": 3,
+		"max_points": 0,
+		"category_id": 3
+	},
+	{
+		"id": 5,
+		"title": "Diploma de Especialização credenciada pela Enfam",
+		"description": "Diploma de Especialização credenciada pela Enfam.",
+		"minimum_hours": 0,
+		"points": 5,
+		"max_points": 0,
+		"category_id": 3
+	},
+	{
+		"id": 6,
+		"title": "Diploma de Mestrado",
+		"description": "Diploma de Mestrado.",
+		"minimum_hours": 0,
+		"points": 7,
+		"max_points": 0,
+		"category_id": 3
+	},
+	{
+		"id": 7,
+		"title": "Diploma de Mestrado Profissional da Enfam",
+		"description": "Diploma de Mestrado Profissional da Enfam.",
+		"minimum_hours": 0,
+		"points": 8,
+		"max_points": 0,
+		"category_id": 3
+	},
+	{
+		"id": 8,
+		"title": "Diploma de Doutorado e Pós-Doutorado",
+		"description": "Diploma de Doutorado e Pós-Doutorado.",
+		"minimum_hours": 0,
+		"points": 10,
+		"max_points": 0,
+		"category_id": 3
+	},
+	{
+		"id": 9,
+		"title": "Docência com curso de Formação de Formadores",
+		"description": "Docência com curso de Formação de Formadores em ações educacionais credenciadas   pela Enfam ou em Programa de Pós-Graduação strictosensu em Direito.",
+		"minimum_hours": 20,
+		"points": 3,
+		"max_points": 10,
+		"category_id": 4
+	},
+	{
+		"id": 10,
+		"title": "Docência com ou sem curso de Formação de Formadores   em ações educacionais realizadas por Escola Judicial ou de Magistratura",
+		"description": "Docência com ou sem curso de Formação de Formadores   em ações educacionais realizadas por Escola Judicial ou de Magistratura (não credenciadas) ou, sem curso de Formação de Formadores, em Programa de Pós-Graduação strictosensu  em Direito.",
+		"minimum_hours": 20,
+		"points": 2,
+		"max_points": 6,
+		"category_id": 4
+	},
+	{
+		"id": 11,
+		"title": "Publicação de trabalhos científicos",
+		"description": "Publicação de trabalhos científicos em Revistas de Tribunais ou de Escolas, impressas ou eletrônicas, ou em revistas com Qualis igual ou superior a B2.",
+		"minimum_hours": 0,
+		"points": 1,
+		"max_points": 5,
+		"category_id": 4
+	},
+	{
+		"id": 12,
+		"title": "Acompanhamento ou orientação de juízes(ízas) vitaliciandos(as), em prática jurisdicional supervisionada",
+		"description": "Acompanhamento ou orientação de juízes(ízas) vitaliciandos(as), em prática jurisdicional supervisionada, ou em estágio probatório em curso oficial de formação inicial para ingresso na carreira da magistratura ou atuação como formador(a) de juiz(íza) em processo de vitaliciamento.",
+		"minimum_hours": 12,
+		"points": 3,
+		"max_points": 10,
+		"category_id": 4
+	}
+]
+
+
+type Chamado = {
+  ativo_fl: string;
+  id_usuario: number;
+};
+
+
+ const [repositories, setRepositories] = useState<Chamado[]>([]);
+  useEffect(() => {
+    fetch("http://localhost:3000/chamado")
+      .then((response) => response.json())
+      .then((data) => {
+        setRepositories(data);
+      });
+  }, []);
+
+
+
+
+
+
+
+
+
+
+<ul>
+          {repositories.map((repo) => {
+            return (
+              <li key={repo.ativo_fl}>
+                <strong>{repo.id_usuario}</strong>
+                <p>{repo.id_usuario}</p>
+              </li>
+            );
+          })}
+        </ul>
+
+
+
+type posts = {
+  title: String;
+  author: String;
+};
+
+
+
+
+
+		const [repositories, setRepositories] = useState<posts[]>([]);
+  useEffect(() => {
+    fetch("http://localhost:3000/posts")
+      .then((response) => response.json())
+      .then((data) => {
+        setRepositories(data);
+      });
+  }, []);

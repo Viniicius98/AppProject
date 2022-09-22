@@ -13,7 +13,7 @@ import { Radio } from "native-base";
 const BackgroundContainer = styled.View`
   height: 100%;
   width: 100%;
-  margin-top: 19%;
+  margin-top: 8%;
   background: #1e2d3eee;
 `;
 
@@ -41,11 +41,9 @@ const CursoItems = styled.View`
 
 const IconsItems = styled.View`
   width: 100%;
-  height: 78%;
-  margin-top: -9%;
+  height: 80%;
   margin-left: -60%;
-
-  margin-bottom: 62.7%;
+  margin-bottom: 54.4%;
 `;
 const ListItems = styled.View`
   width: 90%;
@@ -127,9 +125,7 @@ const SubmitButton = styled.Button`
 const ConteinerHeader = styled.View`
   width: 100%;
   height: 20%;
-
   margin-top: -18%;
-
   margin-left: 0%;
 `;
 const ConteinerApp = styled.View`
