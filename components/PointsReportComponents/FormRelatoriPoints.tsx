@@ -1,13 +1,10 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components/native";
 import {
-  View,
-  TextInput,
+  Alert,
   StyleSheet,
-  Text,
-  DrawerLayoutAndroidBase,
-  DatePickerAndroid,
 } from "react-native";
+
 import Icon from "react-native-vector-icons/Entypo";
 
 const BackgroundContainer = styled.View`
@@ -212,7 +209,8 @@ export default function FormRelatoriPoints() {
       .then((response) => response.json())
       .then((data) => {
         setRepositories(data);
-      });
+      })
+      .catch(() =>{Alert.alert('Erro',"Deu ruim ao carregar os dados")});
   }, []);
 
   return (

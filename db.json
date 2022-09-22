@@ -7,7 +7,17 @@
       "points_total_fre": "'20",
       "points_atuacao_doc": "10",
       "author": "emerj"
-    }
+    },
+    [
+      {
+        "id": 1,
+        "points_total_cur": "200",
+        "points_curso_ofi": "20",
+        "points_total_fre": "'20",
+        "points_atuacao_doc": "10",
+        "author": "emerj"
+      }
+    ]
   ],
   "comments": [
     {
