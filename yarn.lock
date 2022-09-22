@@ -4438,6 +4438,11 @@
   dependencies:
     "follow-redirects" "^1.10.0"
 
+"axioss@^0.0.1-security":
+  "integrity" "sha512-ph4lmY1+4Nq8PhqU3G9dz/Tu2VpqzLpRgt39j7+tZd41fwKwN1fyYrJfR7m0LZF5utVp+SHuQB7xJ/yjeA8w/Q=="
+  "resolved" "https://registry.npmjs.org/axioss/-/axioss-0.0.1-security.tgz"
+  "version" "0.0.1-security"
+
 "babel-code-frame@^6.26.0":
   "integrity" "sha512-XqYMR2dfdGMW+hd0IUZ2PwK+fGeFkOxZJ0wY+JaQAHzt1Zx8LcvpiZD2NiGkEG8qx0CfkAOr5xt76d1e8vG90g=="
   "resolved" "https://registry.npmjs.org/babel-code-frame/-/babel-code-frame-6.26.0.tgz"

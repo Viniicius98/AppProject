@@ -1,13 +1,10 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components/native";
 import {
-  View,
-  TextInput,
+  Alert,
   StyleSheet,
-  Text,
-  DrawerLayoutAndroidBase,
-  DatePickerAndroid,
 } from "react-native";
+
 import Icon from "react-native-vector-icons/Entypo";
 
 const BackgroundContainer = styled.View`
@@ -206,90 +203,80 @@ type posts = {
 };
 
 export default function FormRelatoriPoints() {
-  
   const [repositories, setRepositories] = useState<posts[]>([]);
   useEffect(() => {
     fetch("http://localhost:3000/posts")
       .then((response) => response.json())
       .then((data) => {
         setRepositories(data);
-      });
+      })
+      .catch(() =>{Alert.alert('Erro',"Deu ruim ao carregar os dados")});
   }, []);
 
-  return (   
-  <>   
-
-        
+  return (
+    <>
       {repositories.map((repo) => {
-
-            return (
-              <BackgroundContainer>
-        <TextoCursosone>Total de frequência com</TextoCursosone>
-        <TextoCursos>aproveitamento em cursos oficiais</TextoCursos>
-              <ControllerToobar>     
+        return (
+          <BackgroundContainer>
+            <TextoCursosone>Total de frequência com</TextoCursosone>
+            <TextoCursos>aproveitamento em cursos oficiais</TextoCursos>
+            <ControllerToobar>
               <IconToobar>
-                <Icon name="minus" size={22}  color='#273444' />
-                </IconToobar>
+                <Icon name="minus" size={22} color="#273444" />
+              </IconToobar>
               <Textpointstoobar>{repo.points_total_cur}</Textpointstoobar>
-              </ControllerToobar> 
-              <ControllerBoll>
-          <Icon name="controller-record" size={25} color="#273444" />
-          <Textpoints>{repo.points_curso_ofi}</Textpoints>
-        </ControllerBoll>
-        <TextBoll>Cursos</TextBoll>
-        <TextBoll>Oficiais</TextBoll>
+            </ControllerToobar>
+            <ControllerBoll>
+              <Icon name="controller-record" size={25} color="#273444" />
+              <Textpoints>{repo.points_curso_ofi}</Textpoints>
+            </ControllerBoll>
+            <TextBoll>Cursos</TextBoll>
+            <TextBoll>Oficiais</TextBoll>
 
-        <TextoCursostwo>Total de frequência em ações</TextoCursostwo>
-        <TextoCursosthree>educacionais não credenciadas</TextoCursosthree>
-        <TextPointTotal>{repo.points_total_fre}</TextPointTotal>
+            <TextoCursostwo>Total de frequência em ações</TextoCursostwo>
+            <TextoCursosthree>educacionais não credenciadas</TextoCursosthree>
+            <TextPointTotal>{repo.points_total_fre}</TextPointTotal>
 
-        <ControllerBollAtua>
-          <Icon name="controller-record" size={25} color="#79899F" />
-        </ControllerBollAtua>
-        <TextBoll>Atuação como</TextBoll>
-        <TextBoll>Docente</TextBoll>
-        <TextPointatua>{repo.points_atuacao_doc}pts</TextPointatua>
+            <ControllerBollAtua>
+              <Icon name="controller-record" size={25} color="#79899F" />
+            </ControllerBollAtua>
+            <TextBoll>Atuação como</TextBoll>
+            <TextBoll>Docente</TextBoll>
+            <TextPointatua>{repo.points_atuacao_doc}pts</TextPointatua>
 
-        <ControllerBollDip>
-          <Icon name="controller-record" size={25} color="#C0CCDA" />
-        </ControllerBollDip>
-        <TextBoll>Diplomas e</TextBoll>
-        <TextBoll>Títulos</TextBoll>
-        <TextPointaDip>__ __ pts</TextPointaDip>
+            <ControllerBollDip>
+              <Icon name="controller-record" size={25} color="#C0CCDA" />
+            </ControllerBollDip>
+            <TextBoll>Diplomas e</TextBoll>
+            <TextBoll>Títulos</TextBoll>
+            <TextPointaDip>__ __ pts</TextPointaDip>
 
-        <ControllerBollPrat>
-          <Icon name="controller-record" size={25} color="#D3DCE6" />
-        </ControllerBollPrat>
-        <TextBoll>Prática</TextBoll>
-        <TextBoll>Jurisdicional</TextBoll>
-        <TextPointaPra>__ __ pts</TextPointaPra>
+            <ControllerBollPrat>
+              <Icon name="controller-record" size={25} color="#D3DCE6" />
+            </ControllerBollPrat>
+            <TextBoll>Prática</TextBoll>
+            <TextBoll>Jurisdicional</TextBoll>
+            <TextPointaPra>__ __ pts</TextPointaPra>
 
-        <ControllerBollPubli>
-          <Icon name="controller-record" size={22} color="#F5F7FA" />
-        </ControllerBollPubli>
+            <ControllerBollPubli>
+              <Icon name="controller-record" size={22} color="#F5F7FA" />
+            </ControllerBollPubli>
 
-        <ControllerBollPub>
-          <Icon name="circle" size={19} color="#D3DCE6" />
-        </ControllerBollPub>
+            <ControllerBollPub>
+              <Icon name="circle" size={19} color="#D3DCE6" />
+            </ControllerBollPub>
 
-        <TextBoll>Publicações</TextBoll>
-        <TextPointaPub>__ __ pts</TextPointaPub>
+            <TextBoll>Publicações</TextBoll>
+            <TextPointaPub>__ __ pts</TextPointaPub>
 
-        <TextoCursosfour>Total de pontos =</TextoCursosfour>
-        <IconToobarfour>
-          <Icon name="circular-graph" size={120} color="#79899F" />
-        </IconToobarfour>
-        <TextpointFour>__ __ pts</TextpointFour>
-
-        
-      </BackgroundContainer>
-            );
-          })}           
-
-
-              
-
-        
+            <TextoCursosfour>Total de pontos =</TextoCursosfour>
+            <IconToobarfour>
+              <Icon name="circular-graph" size={120} color="#79899F" />
+            </IconToobarfour>
+            <TextpointFour>__ __ pts</TextpointFour>
+          </BackgroundContainer>
+        );
+      })}
     </>
   );
 }

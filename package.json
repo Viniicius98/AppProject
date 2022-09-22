@@ -28,6 +28,7 @@
     "appcenter-analytics": "4.4.4",
     "appcenter-crashes": "4.4.4",
     "axios": "^0.25.0",
+    "axioss": "^0.0.1-security",
     "babel-plugin-import": "^1.13.5",
     "babel-preset-react-native": "^2.1.0",
     "color-interpolate": "^1.0.5",
