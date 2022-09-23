@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { StyleSheet, Text, TouchableHighlight, TouchableWithoutFeedback, View } from "react-native"; // TouchableWithoutFeedback não funciona no ios
+import { StyleSheet, Text, TouchableOpacity, View } from "react-native"; // TouchableWithoutFeedback não funciona no ios
 import Item, { ListItem } from "./ListItemDiplomas";
 
 const bit = (b: boolean) => (b ? 1 : 0);
@@ -7,7 +7,7 @@ const styles = StyleSheet.create({
   container: {
     marginTop: 10,
     padding: 4,
-    backgroundColor: "white",
+    backgroundColor: "#FFFFFF",
     borderBottomWidth: 10,
     borderBottomColor: "#B8977E",
     flexDirection: "row",
@@ -18,6 +18,7 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 16,
     fontWeight: "bold",
+    color:"#343F4B",
   },
   items: {
     overflow: "hidden",
@@ -43,11 +44,11 @@ export default ({ list2 }: ListProps) => {
   const bottomRadius = open ? 0 : 8;
   return (
     <>
-      <TouchableHighlight onPress={() => setOpen((open =>!open))}> 
+      <TouchableOpacity onPress={() => setOpen((open =>!open))}> 
         <View style={[styles.container]}>
           <Text style={styles.title}>DIPLOMAS E TÍTULOS</Text>
         </View>
-      </TouchableHighlight>
+      </TouchableOpacity>
       <View style={[styles.items, { height}]}>
         {list2.items.map((item,idx) => (
           <Item 

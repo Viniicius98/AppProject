@@ -30,8 +30,8 @@ const ContentItems = styled.View`
 `;
 const DropdownItems = styled.View`
   width: 100%;
-  height: 525px;
-  margin-bottom: 32%;
+  height: 380px;
+  margin-bottom: 71.5%;
 `;
 
 const IconsItems = styled.View`

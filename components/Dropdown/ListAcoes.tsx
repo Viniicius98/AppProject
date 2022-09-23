@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useRef } from "react";
-import { StyleSheet, Text, TouchableHighlight, TouchableWithoutFeedback, View } from "react-native";
+import { StyleSheet, Text,TouchableOpacity, View } from "react-native";
 import Item, { ListItem } from "./ListItemAcoes";
 
 const bit = (b: boolean) => (b ? 1 : 0);
@@ -7,7 +7,7 @@ const styles = StyleSheet.create({
   container: {
     marginTop: 0,
     padding: 4,
-    backgroundColor: "white",
+    backgroundColor: "#FFFFFF",
     borderBottomWidth: 10,
     borderBottomColor: "#B8977E",
     flexDirection: "row",
@@ -18,6 +18,7 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 16,
     fontWeight: "bold",
+    color:"#343F4B",
   },
   items: {
     overflow: "hidden",
@@ -50,11 +51,11 @@ export default ({ list, /*list2*/ }: ListProps) => {
 
   return (
     <>
-      <TouchableHighlight onPress={() => setOpen((open) => !open)}>
+      <TouchableOpacity onPress={() => setOpen((open) => !open)}>
         <View style={[styles.container]}>
           <Text style={styles.title}>AÇÕES EDUCACIONAIS</Text>
         </View>
-      </TouchableHighlight>
+      </TouchableOpacity>
       <View style={[styles.items, { height }]}>
         {list.items.map((item, idx) => (
           <Item

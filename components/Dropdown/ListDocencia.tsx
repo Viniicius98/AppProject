@@ -1,6 +1,6 @@
 import { Overlay } from "native-base";
 import React, { useState } from "react";
-import { StyleSheet, Text, TouchableHighlight, TouchableWithoutFeedback, View } from "react-native"; // TouchableWithoutFeedback não funciona no ios
+import { StyleSheet, Text, TouchableOpacity, View } from "react-native"; // TouchableWithoutFeedback não funciona no ios
 
 //import Animated, { Easing } from "react-native-reanimated";
 //import { bInterpolate, bin, useTransition } from "react-native-redash";
@@ -13,7 +13,7 @@ const styles = StyleSheet.create({
   container: {
     marginTop: 10,
     padding: 4,
-    backgroundColor: "white",
+    backgroundColor: "#FFFFFF",
     borderBottomWidth: 10,
     borderBottomColor: "#B8977E",
     flexDirection: "row",
@@ -33,6 +33,7 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 16,
     fontWeight: "bold",
+    color:"#343F4B",
   },
   items: {
     overflow: "hidden",
@@ -54,11 +55,11 @@ export default ({ list3 }: ListProps) => {
   const height = open ? "auto" : 0;
   return (
     <>
-      <TouchableHighlight onPress={() => setOpen((prev) => !prev)}>
+      <TouchableOpacity onPress={() => setOpen((prev) => !prev)}>
         <View style={[styles.container, {}]}>
           <Text style={styles.title}>ATUAÇÃO NA DOCÊNCIA</Text>
         </View>
-      </TouchableHighlight>
+      </TouchableOpacity>
       
       <View style={[styles.items, { height }]}>
         {list3.items.map((item, key) => (
