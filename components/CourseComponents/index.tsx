@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components/native";
 import CardCourse from "../CardCourse";
+import {  ScrollView } from "react-native";
 import DropdownCourse from "../DropdownCourse/Dropdown";
 import AppLogo from "../Header/Applogo";
 
@@ -8,7 +9,7 @@ const BackgroundContainer = styled.View`
   height: 100%;
   width: 100%;
   margin-top: -66.7%;
-  background: #1e2d3eee;
+  background: #343F4B;
 `;
 
 const ImageBackground = styled.Image`
@@ -23,15 +24,15 @@ const ImageBackground = styled.Image`
 
 const ContentItems = styled.View`
   width: 100%;
-  height: 100%;
-  margin-top: 39%;
+  height: 85%;
+  margin-top: 68%;
   flex-direction: row;
   align-items: flex-end;
 `;
 const DropdownItems = styled.View`
   width: 100%;
-  height: 525px;
-  margin-bottom: 32%;
+  height: 350px;
+  margin-bottom: 70%;
 `;
 
 const IconsItems = styled.View`
@@ -58,9 +59,13 @@ export default function CourseComponents() {
         />
 
         <ContentItems>
+        
           <DropdownItems>
+           
             <DropdownCourse />
+         
           </DropdownItems>
+          
 
           <IconsItems>
             <CardCourse />

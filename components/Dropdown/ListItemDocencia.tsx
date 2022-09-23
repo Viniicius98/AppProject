@@ -5,7 +5,7 @@ import { useNavigation } from "@react-navigation/native";
 export const LIST_ITEM_HEIGHT = 54;
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: "white",
+    backgroundColor:"#E0E6ED",
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
@@ -17,6 +17,9 @@ const styles = StyleSheet.create({
   },
   name: {
     fontSize: 16,
+    fontFamily:"Roboto",
+    fontWeight: "bold",
+    color:"#3C4858",
   },
 });
 

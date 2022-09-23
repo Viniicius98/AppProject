@@ -210,7 +210,7 @@ export default function FormRelatoriPoints() {
       .then((data) => {
         setRepositories(data);
       })
-      .catch(() =>{Alert.alert('Erro',"Deu ruim ao carregar os dados")});
+      .catch(() =>{Alert.alert('Erro',"Não foi possível carregar os dados")});
   }, []);
 
   return (

@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components/native";
+import {  ScrollView } from "react-native";
 import { RootTabScreenProps } from "../types";
 import CourseComponents from "../components/CourseComponents";
 import { useContext } from "react";
@@ -40,6 +41,7 @@ export default function Course({ navigation }: RootTabScreenProps<"Course">) {
       </ConteinerHeader>
 
       <ConteinerReport>
+      
         <CourseComponents />
       </ConteinerReport>
     </Container>

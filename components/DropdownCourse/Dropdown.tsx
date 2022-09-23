@@ -1,5 +1,5 @@
 import React from "react";
-import { StyleSheet, View } from "react-native";
+import { StyleSheet, View, ScrollView } from "react-native";
 import Concluded from "../CourseComponents/OficialCourseComponent/Concluded"
 import WaintigConfirmation from "../CourseComponents/OficialCourseComponent/WaintigConfirmation"
 import ConcludedFOFO from "../CourseComponents/FOFOComponent/Concluded"
@@ -40,6 +40,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#343F4B",
     padding: 9,
     marginTop: -70,
+    
   },
   title: {
     fontSize: 32,
@@ -50,9 +51,11 @@ const styles = StyleSheet.create({
 export default () => {
   return (
     <View style={styles.container}>
+      <ScrollView style={{}}>
       <List {...{ list /*list2*/ }} />
       <List2 {...{ list2 }} />
       <List3 {...{ list3 }} />
+      </ScrollView>
     </View>
   );
 };
