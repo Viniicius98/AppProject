@@ -1,11 +1,9 @@
-import { Text, View } from "../components/Themed";
 import { RootTabScreenProps } from "../types";
 import styled from "styled-components/native";
 import React, { useEffect, useState } from "react";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import api from "../services/api";
 import { ActivityIndicator } from "react-native";
-
 import Header from "../components/Header";
 import AppLogo from "../components/Header/Applogo";
 

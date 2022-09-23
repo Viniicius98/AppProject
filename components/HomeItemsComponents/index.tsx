@@ -74,13 +74,13 @@ const FlatLinks = [
     id: "3",
     text: "Virtual EMERJ",
     icon: require("../../assets/images/virtualEmerj.png"),
-    screen: "Chat",
+    screen: "NotFound",
   },
   {
     id: "4",
     text: "ATENDIMENTO",
     icon: require("../../assets/images/atendimento.png"),
-    screen: "Chat",
+    screen: "NotFound",
   },
 ];
 

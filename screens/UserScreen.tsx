@@ -1,8 +1,7 @@
 import { StyleSheet } from "react-native";
-
 import UserInfo from "../components/UserInfo";
 import { Text, View } from "../components/Themed";
-import Modalteste from "../components/Modalteste";
+
 
 export default function UserScreen() {
   return (
