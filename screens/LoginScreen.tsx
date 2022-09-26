@@ -58,8 +58,20 @@ const ContainerTexttt = styled.View`
   border-bottom-width: 10px;
   border-bottom-color: #b8977e;
 `;
-const ContainerText = styled.Text`
-  color: #8492a6;
+const ContainerTextSucess = styled.Text`
+  margin-top: 4%;
+  margin-left: 21%;
+  color: #228b22;
+  font-size: 14px;
+  font-weight: bold;
+  padding-right: 10%;
+`;
+const ContainerTextError = styled.Text`
+  margin-top: 4%;
+  margin-left: 10%;
+  font-size: 14px;
+  font-weight: bold;
+  color: #ff0000;
   padding-right: 10%;
 `;
 
@@ -95,7 +107,6 @@ const SubmitButton = styled.Button`
 const ContainerButton = styled.View`
   width: 65%;
   height: 50%;
-
   margin-top: 51%;
   margin-left: 16.8%;
   z-index: 2;
@@ -213,8 +224,8 @@ export default function LoginScreen({
 
           <ContainerTexte>Esqueceu sua senha ? </ContainerTexte>
 
-          <ContainerText>{error}</ContainerText>
-          <ContainerText>{success} </ContainerText>
+          <ContainerTextError>{error}</ContainerTextError>
+          <ContainerTextSucess>{success} </ContainerTextSucess>
         </LoginBackgroundContainer>
 
         <AppContainer>
