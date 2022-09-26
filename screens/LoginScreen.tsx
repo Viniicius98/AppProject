@@ -7,44 +7,56 @@ import { ActivityIndicator } from "react-native";
 import Header from "../components/Header";
 import AppLogo from "../components/Header/Applogo";
 
-
 const BackgroundContainer = styled.View`
   width: 100%;
-  height: 83.5%;
+  height: 84.5%;
+  background-color: #ffffff;
 `;
 const LoginBackgroundContainer = styled.View`
-  width: 100%;
-  height: 55%;
-  margin-top: 15%;
-  margin-left: 2%;
+  width: 92%;
+  height: 51%;
+  margin-top: 10%;
+  margin-left: 3.9%;
   background: #021831ed;
 `;
 
 const ImageBackground = styled.Image`
-  height: 4%;
+  position: absolute;
+  height: 87%;
   width: 100%;
   align-items: center;
   justify-content: center;
-  opacity: 0.3;
-  z-index: 0;
+  margin-top: 12.5%;
+  opacity: 0.2;
 `;
 
 const Container = styled.View`
   flex: 1;
+  margin-top: -3%;
   align-items: center;
   justify-content: center;
-  background-color: #fff;
 `;
 const AppContainer = styled.View`
   flex: 1;
   align-items: center;
   justify-content: center;
-  margin-top: -20%;
-  margin-left: 30%;
+  margin-top: -43.5%;
+  margin-left: 24.8%;
 `;
 const ContainerTextt = styled.Text`
-  color: #8492a6;
-  padding-right: 55%;
+  font-size: 19px;
+  font-weight: bold;
+  color: #b8977e;
+  padding: 1%;
+  margin-left: 6%;
+`;
+const ContainerTexttt = styled.View`
+  height: 13%;
+  background-color: #c0ccda;
+  border-top-width: 1px;
+  border-top-color: #8492a6;
+  border-bottom-width: 10px;
+  border-bottom-color: #b8977e;
 `;
 const ContainerText = styled.Text`
   color: #8492a6;
@@ -54,25 +66,39 @@ const ContainerText = styled.Text`
 const ContainerTexte = styled.Text`
   color: #8492a6;
   padding-right: 35%;
-  margin-top: 3%;
+  text-align: center;
+  margin-top: -35%;
+  margin-left: 20%;
 `;
 
 const Input = styled.TextInput`
-  height: 50px;
-  width: 300px;
+  height: 45px;
+  width: 260px;
   align-items: center;
+  font-size: 15px;
+  font-weight: bold;
+  color: black;
   background-color: #e0e6ed;
   border-radius: 5px;
   padding-left: 20px;
-  margin-top: 5%;
-  margin-left: 5%;
-  margin-bottom: 1px;
+  margin-top: 22%;
+  margin-bottom: -22%;
+  margin-left: 10%;
+  z-index: 1;
+  opacity: 0.5;
 `;
 
 const SubmitButton = styled.Button`
-  width: 200px;
-  height: 30%;
-  margin-bottom: -10%;
+  width: 50%;
+  height: 50%;
+`;
+const ContainerButton = styled.View`
+  width: 65%;
+  height: 50%;
+
+  margin-top: 51%;
+  margin-left: 16.8%;
+  z-index: 2;
 `;
 
 const Loading = styled.View`
@@ -82,9 +108,8 @@ const Loading = styled.View`
   align-items: center;
   justify-content: center;
   z-index: 30;
-  top: 60%;
+  top: 55%;
 `;
-
 
 export default function LoginScreen({
   navigation,
@@ -146,52 +171,57 @@ export default function LoginScreen({
     }
   };
 
- 
-
   return (
     <Container>
       <Header />
 
       <BackgroundContainer>
-  {isLoading && (
-  <Loading>
-    <ActivityIndicator size="large" color="#8492A6" />
-  </Loading>
-)}
-<ImageBackground source={require("../assets/images/background.png")} />
-<LoginBackgroundContainer>
-  
-<ContainerTextt>Login</ContainerTextt>
+        {isLoading && (
+          <Loading>
+            <ActivityIndicator size="large" color="#8492A6" />
+          </Loading>
+        )}
 
-<Input
-  placeholder="E-mail"
-  defaultValue={email}
-  onChangeText={(newEmail) => setEmail(newEmail)}
-/>
+        <LoginBackgroundContainer>
+          <ContainerTexttt>
+            <ContainerTextt>Login</ContainerTextt>
+          </ContainerTexttt>
 
-  
-  <Input
-    placeholder="Senha"
-    defaultValue={password}
-    onChangeText={(newPassword) => setPassword(newPassword)}
-    secureTextEntry
-  />
+          <Input
+            placeholder="E-mail"
+            defaultValue={email}
+            onChangeText={(newEmail) => setEmail(newEmail)}
+          />
 
-  <SubmitButton
-    title="Enviar"
-    color="#B8977E"
-    onPress={handleSignInPress}
-  />
-  <ContainerTexte>Esqueceu sua senha ? </ContainerTexte>
+          <Input
+            placeholder="Senha"
+            defaultValue={password}
+            onChangeText={(newPassword) => setPassword(newPassword)}
+            secureTextEntry
+          />
+          <ContainerButton>
+            <SubmitButton
+              title="Entrar"
+              color="#B8977E"
+              onPress={handleSignInPress}
+            />
+          </ContainerButton>
 
-  <ContainerText>{error}</ContainerText>
-  <ContainerText>{success} </ContainerText>
-</LoginBackgroundContainer>
-<AppContainer>
-  <AppLogo />
-  </AppContainer>
-  </BackgroundContainer>
-  </Container>
+          <ImageBackground
+            source={require("../assets/images/background.png")}
+          />
+
+          <ContainerTexte>Esqueceu sua senha ? </ContainerTexte>
+
+          <ContainerText>{error}</ContainerText>
+          <ContainerText>{success} </ContainerText>
+        </LoginBackgroundContainer>
+
+        <AppContainer>
+          <AppLogo />
+        </AppContainer>
+      </BackgroundContainer>
+    </Container>
   );
 }
 
