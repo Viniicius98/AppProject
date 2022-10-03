@@ -13,14 +13,25 @@ const HeaderContainer = styled.View`
   border-top-width: 1px;
   border-bottom-width: 10px;
   border-bottom-color: #b8977e;
-  margin-top: 18%;
+  margin-top: -152%;
+  
+  z-index: 1;
+`;
+const ConatinerLogo = styled.View`
+  width: 100%;    
+  height: 15%;   
+  margin-top: 80%;
+  margin-left: 80%;
 `;
 
-export default function Header(props: any) {
+export default function Header() {
   return (
     <HeaderContainer>
       <EmerjLogo />
-      
+
+      <ConatinerLogo>
+       <AppLogo />  
+      </ConatinerLogo>    
     </HeaderContainer>
   );
 }

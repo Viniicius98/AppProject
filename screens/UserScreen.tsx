@@ -1,36 +1,58 @@
-import { StyleSheet } from "react-native";
+import React, { ReactNode, useEffect, useState } from 'react';
+import { FlatList, SafeAreaView, View, Text } from 'react-native';
 
-import UserInfo from "../components/UserInfo";
-import { Text, View } from "../components/Themed";
-import Modalteste from "../components/Modalteste";
 
-export default function UserScreen() {
-  return (
-    <View style={styles.container}>
-      <Text style={styles.title}>Usuário</Text>
-      <View
-        style={styles.separator}
-        lightColor="#eee"
-        darkColor="rgba(255,255,255,0.1)"
-      />
-      <UserInfo path="/screens/UserScreen.tsx" />
-    </View>
-  );
+export default function App() {
+  
+
+  useEffect(() => {
+    fetch('https://wwwh3.tjrj.jus.br/HWEBAPIEVENTOS/api/acesso/obtertoken/claudio/77359194768', {
+      method: 'GET',
+      headers: {
+        'Accept': 'application/json' 
+      }
+    })
+    .then(response => response.json())
+    .then(data =>{
+      console.log (data) 
+    })
+  }, [] )
+  
+  return(
+    <SafeAreaView>
+       
+    </SafeAreaView>
+  )
+  }
+    
+
+
+  /*return (
+    <SafeAreaView>
+      <FlatList
+         data={pokemons}
+         keyExtractor={(pokemon: { name: string; }) => pokemon.name}
+         contentContainerStyle={{ flexGrow: 1}}
+         renderItem={PokemonShow}
+        />
+    </SafeAreaView>
+  )
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  title: {
-    fontSize: 20,
-    fontWeight: "bold",
-  },
-  separator: {
-    marginVertical: 30,
-    height: 1,
-    width: "80%",
-  },
-});
+function PokemonShow(item: {
+  name: ReactNode; item: { name: any; url: any; }; 
+}){
+
+
+
+//: { item: { name: string; url: any; }  }){
+  return(
+    <View>
+      <image/>
+      <div>{item.name}</div>
+    </View>
+  )
+}
+*/
+
+
