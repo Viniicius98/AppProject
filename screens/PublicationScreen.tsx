@@ -189,6 +189,7 @@ export default function Publication({ route }: any) {
                       onChangeText={onChange}
                       onBlur={onBlur} // chamado quando o Input é tocado
                       value={value}
+                      secureTextEntry
                       placeholder="NOME DO TRABALHO CIÊNTIFÍCO"
                     />
                   )}
