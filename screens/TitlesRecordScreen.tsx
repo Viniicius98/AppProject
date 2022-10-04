@@ -2,9 +2,6 @@ import React, { useState } from "react";
 import {
   Text,
   StyleSheet,
-  KeyboardAvoidingView,
-  Platform,
-  KeyboardAvoidingViewComponent,
 } from "react-native";
 import styled from "styled-components/native";
 import CardAtividade from "../components/CardInserirAtividade";
@@ -160,7 +157,7 @@ export default function TitlesRecord({ route }: any) {
   function handleSignIn(data: Object) {
     console.log(data, "Tipo " + route.params.nome);
   }
-
+  const [screen,setScreen] = useState('')
   return (
     <>
       <BackgroundContainer>
@@ -195,6 +192,8 @@ export default function TitlesRecord({ route }: any) {
                       ]}
                       onBlur={onBlur}
                       defaultValue={route.params.nome}
+                      secureTextEntry
+                      onChangeText={(newScreen)=>setScreen(newScreen)}
                       value={value}
                     />
                   )}

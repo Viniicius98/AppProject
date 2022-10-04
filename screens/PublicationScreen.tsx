@@ -214,6 +214,7 @@ export default function Publication({ route }: any) {
                       onChangeText={onChange}
                       onBlur={onBlur}
                       value={value}
+                      secureTextEntry
                       placeholder="NOME DA REVISTA"
                     />
                   )}
@@ -254,6 +255,7 @@ export default function Publication({ route }: any) {
                         ]}
                         name="radio"
                         value={value}
+                        
                         onChange={(nextValue) => {
                           setValue(nextValue);
                         }}

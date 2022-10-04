@@ -28,28 +28,27 @@ const ImageBackground = styled.Image`
 
 const ContentItems = styled.View`
   position: absolute;
-  width: 100%;
-  height: 85.5%;
+  height: 81.9%;
   flex-direction: row;
   align-items: flex-end;
 `;
 const FlatListItems = styled.View`
-  width: 60%;
-  height: 464px;
+  width: 59%;
+  height: 74.6%;
   background-color: rgba(255, 255, 255, 0.5);
 `;
 
 const IconsItems = styled.View`
   width: 38%;
-  height: 464px;
+  height: 74.5%;
   background-color: rgba(255, 255, 255, 0.4);
   background: #1e2d3eee;
   margin-left: 2%;
 `;
 const ContainerApp = styled.View`
   width: 38%;
-  height: 60px;
   margin-top: -450%;
+  margin-left:5%;
 `;
 const FlatLinks = [
   {
@@ -104,15 +103,6 @@ const TextFlat = styled.Text`
   text-align: center;
 `;
 
-const ButtonCustom = styled.TouchableOpacity`
-  background: #c0ccda;
-  border-bottom-width: 10px;
-  border-bottom-color: #b8977e;
-  flex-direction: row;
-  width: 100%;
-  height: 90px;
-  align-items: center;
-`;
 
 interface IFlatItems {
   id: string;

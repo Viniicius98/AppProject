@@ -9,21 +9,10 @@ import {useState, useEffect} from 'react'
 //Emulador para iOS
 //http://localhost:3000
 
-//const api = axios.create({
- // baseURL: "http://20.120.7.70/",
-//});
-export function api<T =unknown>(url:'https://wwwh3.tjrj.jus.br/HWEBAPIEVENTOS/api/acesso/obtertoken/SDarlan/28863720720'){
-  const [token,setToken] = useState<T|null>(null)
-
-  useEffect(() => {
-    axios.get(url)
-    .then(response => {
-      setToken(response.token);
-    })
-  },[])
-
-  return {token}
-}
+const api = axios.create({
+ baseURL: "http://20.120.7.70/",
+});
 
 
+export default api;
 

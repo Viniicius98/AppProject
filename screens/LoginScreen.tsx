@@ -7,6 +7,7 @@ import { ActivityIndicator } from "react-native";
 import Header from "../components/Header";
 import AppLogo from "../components/Header/Applogo";
 
+
 const BackgroundContainer = styled.View`
   width: 100%;
   height: 84.5%;
@@ -40,8 +41,8 @@ const AppContainer = styled.View`
   flex: 1;
   align-items: center;
   justify-content: center;
-  margin-top: -43.5%;
-  margin-left: 24.8%;
+  margin-top: -38.9%;
+  margin-left: 25.5%;
 `;
 const ContainerTextt = styled.Text`
   font-size: 19px;
@@ -202,6 +203,7 @@ export default function LoginScreen({
             placeholder="E-mail"
             defaultValue={email}
             onChangeText={(newEmail) => setEmail(newEmail)}
+            
           />
 
           <Input
