@@ -4,8 +4,9 @@ import styled from "styled-components/native";
 import Header_Copy from "../components/Header_Copy";
 
 const Container = styled.View`
-  flex: 1;
-  margin-top: 86%;
+  width: 100%;
+  height: 100%;  
+  margin-top: 70%;
   align-items: center;
   justify-content: center;
 `;
@@ -13,14 +14,15 @@ const Container = styled.View`
 const BackgroundContainer = styled.View`
   width: 100%;
   height: 70.5%;
-  background-color: #ffffff;
+  
 `;
 const LoginBackgroundContainer = styled.View`
   width: 90%;
   height: 90%;
-  margin-top: 30%;
+  margin-top: 26%;
   margin-left: 3.9%;
   background: #021831ed;
+  
 `;
 const ContainerTextt = styled.Text`
   font-size: 19px;
@@ -28,12 +30,11 @@ const ContainerTextt = styled.Text`
   color: #b8977e;
   padding: 1%;
   margin-left: 6%;
+  
 `;
 const ContainerTexttt = styled.View`
-  height: 13%;
+  height: 12%;
   background-color: #c0ccda;
-  border-top-width: 1px;
-  border-top-color: #8492a6;
   border-bottom-width: 10px;
   border-bottom-color: #b8977e;
 `;
@@ -48,6 +49,7 @@ const ContainerTexte = styled.Text`
   text-align: center;
   margin-top: -35%;
   margin-left: 20%;
+  
 `;
 const ImageBackground = styled.Image`
   position: absolute;
@@ -55,22 +57,22 @@ const ImageBackground = styled.Image`
   width: 100%;
   align-items: center;
   justify-content: center;
-  margin-top: 12.5%;
+  margin-top: 1%;
   opacity: 0.2;
 `;
 const Input = styled.TextInput`
-  height: 45px;
-  width: 260px;
+  height: 10%;
+  width: 90%;
   align-items: center;
   font-size: 15px;
   font-weight: bold;
   color: black;
   background-color: #e0e6ed;
   border-radius: 5px;
-  padding-left: 20px;
+  padding-left: 10px;
   margin-top: 22%;
-  margin-bottom: -22%;
-  margin-left: 10%;
+  margin-bottom: -19%;
+  margin-left: 5%;
   z-index: 1;
   opacity: 0.5;
 `;
@@ -85,52 +87,29 @@ const ContainerButton = styled.View`
   margin-left: 16.8%;
   z-index: 2;
 `;
+
+const ContainerHeader = styled.View`
+width: 100%;
+height: 100%;  
+margin-top: 490pxs;
+align-items: center;
+justify-content: center;
+
+`;
 export default function LoginScreen (){
   return (
     
-    <Container>  
+    <Container>      
+<ContainerHeader>
+<Header_Copy />
+</ContainerHeader>
      
-      <Header_Copy />
+
       
       
-
-      <BackgroundContainer>
-        
-
-        <LoginBackgroundContainer>
-          <ContainerTexttt>
-            <ContainerTextt>Login</ContainerTextt>
-          </ContainerTexttt>
-
-          <Input
-            placeholder="E-mail"
-            
-          />
-
-          <Input
-            placeholder="Senha"
-            
-            secureTextEntry
-          />
-          <ContainerButton>
-            <SubmitButton
-              title="Entrar"
-              color="#B8977E"
-              
-            />
-          </ContainerButton>
-
-          <ImageBackground
-            source={require("../assets/images/background.png")}
-          />
-
-          <ContainerTexte>Esqueceu sua senha ? </ContainerTexte>
-
-          
-        </LoginBackgroundContainer>
-
-        
-      </BackgroundContainer>
+     
+      
+    
       
     </Container>
 
@@ -378,7 +357,7 @@ export default function LoginScreen({
   );
 }
 
-{
+
   /*<Container>
       <Header />
       <BackgroundContainer>
