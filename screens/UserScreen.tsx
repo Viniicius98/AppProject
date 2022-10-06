@@ -1,14 +1,13 @@
-import React ,{useEffect,useState} from'react'
-import {View,Text,FlatList,ActivityIndicator} from 'react-native';
-import { SafeAreaView } from 'react-native-safe-area-context';
+import React, { useEffect, useState } from "react";
+import { View, Text, FlatList, ActivityIndicator } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
 import styled from "styled-components/native";
 import UserInfo from "../components/UserInfo";
-
 
 const Container = styled.View`
   height: 100%;
   margin-top: -9.4%;
-  background:#fff;
+  background: #fff;
   border-bottom-width: 10px;
   border-bottom-color: #b8977e;
 `;
@@ -41,74 +40,62 @@ const ContainerButton = styled.View`
   z-index: 2;
 `;
 
-
 export default function UserScreen() {
-  const [token,setToken] = useState('')
-  const[soma,setSoma] = useState(0)
-  const [user,setUser] = useState('Sdarlan')
-  const [cpf,setCPF] = useState('28863720720')
+  const [token, setToken] = useState("");
+  const [soma, setSoma] = useState(0);
+  const [user, setUser] = useState("Sdarlan");
+  const [cpf, setCPF] = useState("28863720720");
 
   const handleSignInPress = async () => {
-     
-      setSoma(tokenCount => tokenCount+1)
+    setSoma((tokenCount) => tokenCount + 1);
   };
 
   useEffect(() => {
-    fetch(`https://wwwh3.tjrj.jus.br/HWEBAPIEVENTOS/api/acesso/obtertoken/${user}/${cpf}`,{
-      method:'GET',
-      headers:{
-        'Accept':'application/json',
-        'Content-Type':'application/json'
-      },
-    
-    })
-    .then(response => response.json())
-    .then(data=>{
-      setToken(data)
-      console.log(data)
-    })
-    .catch(()=>(alert('Não Obteve o Token')))
-    
-  },[])
- 
+    fetch(
+      `https://wwwh3.tjrj.jus.br/HWEBAPIEVENTOS/api/acesso/obtertoken/${user}/${cpf}`,
+      {
+        method: "GET",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+      }
+    )
+      .then((response) => response.json())
+      .then((data) => {
+        localStorage.setItem("accessToken", data.accessToken);
+      })
+
+      .catch(() => alert("Não Obteve o Token"));
+  }, []);
+
   return (
-  
-    
-   <SafeAreaView style={{flex:1,backgroundColor:'#fff'}}>
-      
-    
+    <SafeAreaView style={{ flex: 1, backgroundColor: "#fff" }}>
       <Input
-            placeholder="Usuario"
-            defaultValue={user}
-            onChangeText={(newUser) => setUser(newUser)}
-            
-          />
-           <Input
-            placeholder="CPF"
-            defaultValue={cpf}
-            onChangeText={(newCpf) => setCPF(newCpf)}
-            secureTextEntry
-          />
+        placeholder="Usuario"
+        defaultValue={user}
+        onChangeText={(newUser) => setUser(newUser)}
+      />
+      <Input
+        placeholder="CPF"
+        defaultValue={cpf}
+        onChangeText={(newCpf) => setCPF(newCpf)}
+        secureTextEntry
+      />
 
-<ContainerButton>
-            <SubmitButton
-              title="Entrar"
-              color="#B8977E"
-              onPress={handleSignInPress}
-            />
-          </ContainerButton>
+      <ContainerButton>
+        <SubmitButton
+          title="Entrar"
+          color="#B8977E"
+          onPress={handleSignInPress}
+        />
+      </ContainerButton>
 
-          <Text style={{marginLeft:170,marginTop:-240}}>{soma}</Text>
-          <Text style={{marginLeft:120,marginTop:0}}>Usuário: {user}</Text>
-          <Text style={{marginLeft:10,marginTop:0,fontWeight:'bold'}}>Token do Usuário: {token}</Text>
-         
-    
-   </SafeAreaView>
-    
-
-      
-    
+      <Text style={{ marginLeft: 170, marginTop: -240 }}>{soma}</Text>
+      <Text style={{ marginLeft: 120, marginTop: 0 }}>Usuário: {user}</Text>
+      <Text style={{ marginLeft: 10, marginTop: 0, fontWeight: "bold" }}>
+        Token do Usuário: {token}
+      </Text>
+    </SafeAreaView>
   );
-
-
-  }
+}
