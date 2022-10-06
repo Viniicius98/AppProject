@@ -38,7 +38,6 @@ export default function Activites({
       <ConteinerHeader>
         <Header />
       </ConteinerHeader>
-
       <ConteinerReport>
         <InserirTitulosComponents />
       </ConteinerReport>

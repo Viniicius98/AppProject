@@ -1,7 +1,6 @@
 import styled from "styled-components/native";
-import { Button } from "react-native";
+import { SafeAreaView } from 'react-native-safe-area-context';
 import { useContext, useEffect } from "react";
-
 import { Text, View } from "../components/Themed";
 import { RootTabScreenProps } from "../types";
 import HomeItemsComponents from "../components/HomeItemsComponents";
@@ -9,8 +8,8 @@ import biometricAuth from "../utils/local-authentication";
 import { InputValueContext } from "../context/InputValueContext";
 import Header from "../components/Header";
 
-const Container = styled.View`
-  height: 100%;
+const Container = styled.SafeAreaView`
+  flex:1;
   margin-top: -9.4%;
   border-bottom-width: 10px;
   border-bottom-color: #b8977e;

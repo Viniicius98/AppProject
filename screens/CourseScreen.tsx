@@ -5,7 +5,6 @@ import CourseComponents from "../components/CourseComponents";
 import { useContext } from "react";
 import { InputValueContext } from "../context/InputValueContext";
 import Header from "../components/Header";
-import BackButton from "../components/BackButton";
 
 export default function Course({ navigation }: RootTabScreenProps<"Course">) {
   const { state, dispatch } = useContext(InputValueContext);
@@ -20,9 +19,7 @@ export default function Course({ navigation }: RootTabScreenProps<"Course">) {
   const ConteinerHeader = styled.View`
     width: 100%;
     height: 20%;
-
     margin-top: 4%;
-
     margin-left: 0%;
   `;
 
@@ -38,7 +35,6 @@ export default function Course({ navigation }: RootTabScreenProps<"Course">) {
       <ConteinerHeader>
         <Header />
       </ConteinerHeader>
-
       <ConteinerReport>
         <CourseComponents />
       </ConteinerReport>

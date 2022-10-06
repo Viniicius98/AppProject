@@ -1,4 +1,5 @@
 import axios from "axios";
+import {useState, useEffect} from 'react'
 //axios para requisição HTTP.
 
 //# No caso de API sendo acessada na mesma máquina.
@@ -9,7 +10,9 @@ import axios from "axios";
 //http://localhost:3000
 
 const api = axios.create({
-  baseURL: "http://20.120.7.70/",
+ baseURL: "http://20.120.7.70/",
 });
 
+
 export default api;
+

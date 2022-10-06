@@ -1,5 +1,5 @@
 import React from "react";
-import { StyleSheet, View } from "react-native";
+import { StyleSheet, View,ScrollView  } from "react-native";
 import List, { List as ListModel } from "./ListAcoes";
 import List2, { List2 as ListModel2 } from "./ListDiplomasTitles";
 import List3, { List3 as ListModel3 } from "./ListDocencia";
@@ -50,9 +50,11 @@ const styles = StyleSheet.create({
 export default () => {
   return (
     <View style={styles.container}>
-      <List {...{ list /*list2*/ }} />
-      <List2 {...{ list2 }} />
-      <List3 {...{ list3 }} />
+      <ScrollView style={{}}>
+        <List {...{ list /*list2*/ }} />
+        <List2 {...{ list2 }} />
+        <List3 {...{ list3 }} />
+      </ScrollView>
     </View>
   );
 };

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+
 import { Text, StyleSheet } from "react-native";
 import styled from "styled-components/native";
 import CardAtividade from "../components/CardInserirAtividade";
