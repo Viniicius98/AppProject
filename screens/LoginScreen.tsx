@@ -1,137 +1,13 @@
-import React from "react";
-import { ActivityIndicator, SafeAreaView } from "react-native";
-import styled from "styled-components/native";
-import Header_Copy from "../components/Header_Copy";
 
-const Container = styled.View`
-  width: 100%;
-  height: 100%;  
-  margin-top: 70%;
-  align-items: center;
-  justify-content: center;
-`;
+import { RootTabScreenProps } from "../types";
 
-const BackgroundContainer = styled.View`
-  width: 100%;
-  height: 70.5%;
-  
-`;
-const LoginBackgroundContainer = styled.View`
-  width: 90%;
-  height: 90%;
-  margin-top: 26%;
-  margin-left: 3.9%;
-  background: #021831ed;
-  
-`;
-const ContainerTextt = styled.Text`
-  font-size: 19px;
-  font-weight: bold;
-  color: #b8977e;
-  padding: 1%;
-  margin-left: 6%;
-  
-`;
-const ContainerTexttt = styled.View`
-  height: 12%;
-  background-color: #c0ccda;
-  border-bottom-width: 10px;
-  border-bottom-color: #b8977e;
-`;
-const ContainerText = styled.Text`
-  color: #8492a6;
-  padding-right: 10%;
-`;
-
-const ContainerTexte = styled.Text`
-  color: #8492a6;
-  padding-right: 35%;
-  text-align: center;
-  margin-top: -35%;
-  margin-left: 20%;
-  
-`;
-const ImageBackground = styled.Image`
-  position: absolute;
-  height: 87%;
-  width: 100%;
-  align-items: center;
-  justify-content: center;
-  margin-top: 1%;
-  opacity: 0.2;
-`;
-const Input = styled.TextInput`
-  height: 10%;
-  width: 90%;
-  align-items: center;
-  font-size: 15px;
-  font-weight: bold;
-  color: black;
-  background-color: #e0e6ed;
-  border-radius: 5px;
-  padding-left: 10px;
-  margin-top: 22%;
-  margin-bottom: -19%;
-  margin-left: 5%;
-  z-index: 1;
-  opacity: 0.5;
-`;
-const SubmitButton = styled.Button`
-  width: 50%;
-  height: 50%;
-`;
-const ContainerButton = styled.View`
-  width: 65%;
-  height: 50%;
-  margin-top: 51%;
-  margin-left: 16.8%;
-  z-index: 2;
-`;
-
-const ContainerHeader = styled.View`
-width: 100%;
-height: 100%;  
-margin-top: 490pxs;
-align-items: center;
-justify-content: center;
-
-`;
-export default function LoginScreen (){
-  return (
-    
-    <Container>      
-<ContainerHeader>
-<Header_Copy />
-</ContainerHeader>
-     
-
-      
-      
-     
-      
-    
-      
-    </Container>
-
-      
-      
-    
-    
-  );
-}
-
-
-
-
-
-
-
-/*import { RootTabScreenProps } from "../types";
 import styled from "styled-components/native";
 import React, { useEffect, useState } from "react";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import api from "../services/api";
+
 import { ActivityIndicator, SafeAreaView } from "react-native";
+
 import Header from "../components/Header";
 import AppLogo from "../components/Header/Applogo";
 
@@ -168,8 +44,10 @@ const AppContainer = styled.View`
   flex: 1;
   align-items: center;
   justify-content: center;
-  margin-top: -158%;
-  margin-left: 63%;
+
+  margin-top: -38.9%;
+  margin-left: 25.5%;
+
 `;
 const ContainerTextt = styled.Text`
   font-size: 19px;
@@ -177,6 +55,16 @@ const ContainerTextt = styled.Text`
   color: #b8977e;
   padding: 1%;
   margin-left: 6%;
+
+`;
+const ContainerTexttt = styled.View`
+  height: 13%;
+  background-color: #c0ccda;
+  border-top-width: 1px;
+  border-top-color: #8492a6;
+  border-bottom-width: 10px;
+  border-bottom-color: #b8977e;
+
 `;
 const ContainerTexttt = styled.View`
   height: 13%;
@@ -186,8 +74,20 @@ const ContainerTexttt = styled.View`
   border-bottom-width: 10px;
   border-bottom-color: #b8977e;
 `;
-const ContainerText = styled.Text`
-  color: #8492a6;
+const ContainerTextSucess = styled.Text`
+  margin-top: 4%;
+  margin-left: 21%;
+  color: #228b22;
+  font-size: 14px;
+  font-weight: bold;
+  padding-right: 10%;
+`;
+const ContainerTextError = styled.Text`
+  margin-top: 4%;
+  margin-left: 10%;
+  font-size: 14px;
+  font-weight: bold;
+  color: #ff0000;
   padding-right: 10%;
 `;
 
@@ -321,6 +221,7 @@ export default function LoginScreen({
             placeholder="E-mail"
             defaultValue={email}
             onChangeText={(newEmail) => setEmail(newEmail)}
+
           />
 
           <Input
@@ -343,17 +244,19 @@ export default function LoginScreen({
 
           <ContainerTexte>Esqueceu sua senha ? </ContainerTexte>
 
-          <ContainerText>{error}</ContainerText>
-          <ContainerText>{success} </ContainerText>
+
+          <ContainerTextError>{error}</ContainerTextError>
+          <ContainerTextSucess>{success} </ContainerTextSucess>
+
         </LoginBackgroundContainer>
 
         <AppContainer>
           <AppLogo />
         </AppContainer>
       </BackgroundContainer>
-      
+
     </Container>
-    
+
   );
 }
 
