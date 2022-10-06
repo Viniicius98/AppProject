@@ -1,12 +1,15 @@
+
 import { RootTabScreenProps } from "../types";
+
 import styled from "styled-components/native";
 import React, { useEffect, useState } from "react";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import api from "../services/api";
-import { ActivityIndicator } from "react-native";
+
+import { ActivityIndicator, SafeAreaView } from "react-native";
+
 import Header from "../components/Header";
 import AppLogo from "../components/Header/Applogo";
-
 
 const BackgroundContainer = styled.View`
   width: 100%;
@@ -41,8 +44,10 @@ const AppContainer = styled.View`
   flex: 1;
   align-items: center;
   justify-content: center;
+
   margin-top: -38.9%;
   margin-left: 25.5%;
+
 `;
 const ContainerTextt = styled.Text`
   font-size: 19px;
@@ -50,6 +55,16 @@ const ContainerTextt = styled.Text`
   color: #b8977e;
   padding: 1%;
   margin-left: 6%;
+
+`;
+const ContainerTexttt = styled.View`
+  height: 13%;
+  background-color: #c0ccda;
+  border-top-width: 1px;
+  border-top-color: #8492a6;
+  border-bottom-width: 10px;
+  border-bottom-color: #b8977e;
+
 `;
 const ContainerTexttt = styled.View`
   height: 13%;
@@ -184,8 +199,11 @@ export default function LoginScreen({
   };
 
   return (
+    
     <Container>
+      
       <Header />
+      
 
       <BackgroundContainer>
         {isLoading && (
@@ -203,7 +221,7 @@ export default function LoginScreen({
             placeholder="E-mail"
             defaultValue={email}
             onChangeText={(newEmail) => setEmail(newEmail)}
-            
+
           />
 
           <Input
@@ -226,22 +244,25 @@ export default function LoginScreen({
 
           <ContainerTexte>Esqueceu sua senha ? </ContainerTexte>
 
+
           <ContainerTextError>{error}</ContainerTextError>
           <ContainerTextSucess>{success} </ContainerTextSucess>
+
         </LoginBackgroundContainer>
 
         <AppContainer>
           <AppLogo />
         </AppContainer>
       </BackgroundContainer>
+
     </Container>
+
   );
 }
 
-{
+
   /*<Container>
       <Header />
-
       <BackgroundContainer>
   {isLoading && (
   <Loading>
@@ -251,7 +272,6 @@ export default function LoginScreen({
 <ImageBackground source={require("../assets/images/background.png")} />
 <LoginBackgroundContainer>
   <ContainerTextt>Login</ContainerTextt>
-
   <Input
     placeholder="E-mail"
     defaultValue={email}
@@ -263,14 +283,12 @@ export default function LoginScreen({
     onChangeText={(newPassword) => setPassword(newPassword)}
     secureTextEntry
   />
-
   <SubmitButton
     title="Enviar"
     color="#B8977E"
     onPress={handleSignInPress}
   />
   <ContainerTexte>Esqueceu sua senha ? </ContainerTexte>
-
   <ContainerText>{error}</ContainerText>
   <ContainerText>{success} </ContainerText>
 </LoginBackgroundContainer>
@@ -279,4 +297,4 @@ export default function LoginScreen({
   </AppContainer>
   </BackgroundContainer>
   </Container>*/
-}
+  

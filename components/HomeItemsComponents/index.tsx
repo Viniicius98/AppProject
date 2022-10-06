@@ -40,7 +40,9 @@ const FlatListItems = styled.View`
 
 const IconsItems = styled.View`
   width: 38%;
+
   height: 74.5%;
+
   background-color: rgba(255, 255, 255, 0.4);
   background: #1e2d3eee;
   margin-left: 2%;
