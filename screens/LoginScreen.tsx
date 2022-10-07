@@ -1,15 +1,12 @@
-
 import { RootTabScreenProps } from "../types";
-
 import styled from "styled-components/native";
 import React, { useEffect, useState } from "react";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import api from "../services/api";
-
 import { ActivityIndicator, SafeAreaView } from "react-native";
-
 import Header from "../components/Header";
 import AppLogo from "../components/Header/Applogo";
+import axios from "axios";
 
 const BackgroundContainer = styled.View`
   width: 100%;
@@ -47,7 +44,6 @@ const AppContainer = styled.View`
 
   margin-top: -38.9%;
   margin-left: 25.5%;
-
 `;
 const ContainerTextt = styled.Text`
   font-size: 19px;
@@ -55,17 +51,8 @@ const ContainerTextt = styled.Text`
   color: #b8977e;
   padding: 1%;
   margin-left: 6%;
-
 `;
-const ContainerTexttt = styled.View`
-  height: 13%;
-  background-color: #c0ccda;
-  border-top-width: 1px;
-  border-top-color: #8492a6;
-  border-bottom-width: 10px;
-  border-bottom-color: #b8977e;
 
-`;
 const ContainerTexttt = styled.View`
   height: 13%;
   background-color: #c0ccda;
@@ -168,10 +155,9 @@ export default function LoginScreen({
     } else {
       //aqui virá a API
       try {
-        const response = await api.post("/auth/login", {
-          email: email,
-          password: password,
-        });
+        const response = await axios.get(
+          `https://wwwh3.tjrj.jus.br/HWEBAPIEVENTOS/api/acesso/obtertoken/${email}/${password}`
+        );
 
         if (response.data.accessToken) {
           setSuccess("");
@@ -189,9 +175,13 @@ export default function LoginScreen({
           }
         }
 
-        // console.log(response);
+        console.log(response);
       } catch (error) {
-        setSuccess("");
+        setTimeout(() => {
+          setIsLoading(false);
+          setSuccess("");
+          setError("Falha na autenticação");
+        }, 5000);
         setError("Falha na autenticação");
         console.log(error);
       }
@@ -199,11 +189,8 @@ export default function LoginScreen({
   };
 
   return (
-    
     <Container>
-      
       <Header />
-      
 
       <BackgroundContainer>
         {isLoading && (
@@ -221,7 +208,6 @@ export default function LoginScreen({
             placeholder="E-mail"
             defaultValue={email}
             onChangeText={(newEmail) => setEmail(newEmail)}
-
           />
 
           <Input
@@ -244,24 +230,19 @@ export default function LoginScreen({
 
           <ContainerTexte>Esqueceu sua senha ? </ContainerTexte>
 
-
           <ContainerTextError>{error}</ContainerTextError>
           <ContainerTextSucess>{success} </ContainerTextSucess>
-
         </LoginBackgroundContainer>
 
         <AppContainer>
           <AppLogo />
         </AppContainer>
       </BackgroundContainer>
-
     </Container>
-
   );
 }
 
-
-  /*<Container>
+/*<Container>
       <Header />
       <BackgroundContainer>
   {isLoading && (
@@ -297,4 +278,3 @@ export default function LoginScreen({
   </AppContainer>
   </BackgroundContainer>
   </Container>*/
-  

@@ -1,9 +1,8 @@
-
 import React, { useEffect, useState } from "react";
 import { View, Text, FlatList, ActivityIndicator } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import styled from "styled-components/native";
-import UserInfo from "../components/UserInfo";
+import axios from "axios";
 
 const Container = styled.View`
   height: 100%;
@@ -49,6 +48,9 @@ export default function UserScreen() {
 
   const handleSignInPress = async () => {
     setSoma((tokenCount) => tokenCount + 1);
+    setTimeout(() => {
+      setToken((token) => (token = ""));
+    }, 2000);
   };
 
   useEffect(() => {
@@ -64,7 +66,8 @@ export default function UserScreen() {
     )
       .then((response) => response.json())
       .then((data) => {
-        localStorage.setItem("accessToken", data.accessToken);
+        setToken(data);
+        console.log(data);
       })
 
       .catch(() => alert("Não Obteve o Token"));
