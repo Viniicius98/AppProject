@@ -5,8 +5,9 @@ import styled from "styled-components/native";
 import React, { useEffect, useState } from "react";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import api from "../services/api";
+import { getBottomSpace, getStatusBarHeight } from 'react-native-iphone-x-helper'
 
-import { ActivityIndicator, SafeAreaView } from "react-native";
+import { ActivityIndicator, SafeAreaView,  StyleSheet, View } from "react-native";
 
 import Header from "../components/Header";
 import AppLogo from "../components/Header/Applogo";
@@ -42,11 +43,11 @@ const Container = styled.View`
 `;
 const AppContainer = styled.View`
   flex: 1;
-  align-items: center;
-  justify-content: center;
+  
+  
 
-  margin-top: -38.9%;
-  margin-left: 25.5%;
+  margin-top: -105%;
+  margin-left: 70.5%;
 
 `;
 const ContainerTextt = styled.Text`
@@ -66,14 +67,7 @@ const ContainerTexttt = styled.View`
   border-bottom-color: #b8977e;
 
 `;
-const ContainerTexttt = styled.View`
-  height: 13%;
-  background-color: #c0ccda;
-  border-top-width: 1px;
-  border-top-color: #8492a6;
-  border-bottom-width: 10px;
-  border-bottom-color: #b8977e;
-`;
+
 const ContainerTextSucess = styled.Text`
   margin-top: 4%;
   margin-left: 21%;
@@ -199,8 +193,11 @@ export default function LoginScreen({
   };
 
   return (
-    
+    <View style={styles.container}>
+          
+    <SafeAreaView style={{ flex: 1 }}>
     <Container>
+      
       
       <Header />
       
@@ -254,11 +251,23 @@ export default function LoginScreen({
           <AppLogo />
         </AppContainer>
       </BackgroundContainer>
+      
 
     </Container>
-
+    </SafeAreaView>
+    </View>
   );
 }
+
+const styles = StyleSheet.create({
+   container:{
+    flex: 1,
+    paddingHorizontal: 1,
+    paddingVertical: getBottomSpace()
+   },
+  
+})
+
 
 
   /*<Container>
