@@ -2,11 +2,11 @@ import { RootTabScreenProps } from "../types";
 import styled from "styled-components/native";
 import React, { useEffect, useState } from "react";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import api from "../services/api";
 import { ActivityIndicator, SafeAreaView } from "react-native";
 import Header from "../components/Header";
 import AppLogo from "../components/Header/Applogo";
 import axios from "axios";
+import { setLocale } from "yup";
 
 const BackgroundContainer = styled.View`
   width: 100%;
@@ -138,11 +138,9 @@ export default function LoginScreen({
   const authLocal = async () => {
     if (auth) {
       setError("");
-
       setSuccess("Autenticando...");
-
       setTimeout(() => {
-        //navigation.navigate("User");
+        navigation.navigate("Login");
       }, 3000);
     }
   };
@@ -156,33 +154,32 @@ export default function LoginScreen({
       //aqui virá a API
       try {
         const response = await axios.get(
-          `https://wwwh3.tjrj.jus.br/HWEBAPIEVENTOS/api/acesso/obtertoken/${email}/${password}`
+          `https://wwwh3.tjrj.jus.br/HWEBAPIEVENTOS/api/acesso/obtertoken/${email}/${password}`,
+          {
+            method: "GET",
+            headers: {},
+          }
         );
 
         if (response.data.accessToken) {
           setSuccess("");
-          await AsyncStorage.setItem("@accessToken", response.data.accessToken);
-
+          await AsyncStorage.setItem("@accessToken", response.data.acessToken);
           const result = await AsyncStorage.getItem("@accessToken");
 
+          console.log(response.data.acessToken);
+
           if (result) {
-            setTimeout(() => {
-              setIsLoading(false);
-            }, 5000);
-            setSuccess("Usuário autenticado");
+            setSuccess("Usuario Autenticado");
             setAuth(true);
             authLocal();
           }
         }
-
-        console.log(response);
       } catch (error) {
         setTimeout(() => {
           setIsLoading(false);
           setSuccess("");
           setError("Falha na autenticação");
         }, 5000);
-        setError("Falha na autenticação");
         console.log(error);
       }
     }

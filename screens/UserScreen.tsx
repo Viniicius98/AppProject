@@ -3,6 +3,7 @@ import { View, Text, FlatList, ActivityIndicator } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import styled from "styled-components/native";
 import axios from "axios";
+import { RootTabScreenProps } from "../types";
 
 const Container = styled.View`
   height: 100%;
@@ -40,7 +41,7 @@ const ContainerButton = styled.View`
   z-index: 2;
 `;
 
-export default function UserScreen() {
+export default function UserScreen({ navigation }: RootTabScreenProps<"User">) {
   const [token, setToken] = useState("");
   const [soma, setSoma] = useState(0);
   const [user, setUser] = useState("Sdarlan");
