@@ -139,9 +139,9 @@ export default function LoginScreen({
     if (auth) {
       setError("");
       setSuccess("Autenticando...");
-      setTimeout(() => {
-        navigation.navigate("Login");
-      }, 3000);
+      //setTimeout(() => {
+      // navigation.navigate("Login");
+      // }, 3000);
     }
   };
 
