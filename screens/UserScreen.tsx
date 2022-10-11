@@ -44,7 +44,7 @@ const ContainerButton = styled.View`
 const ContainerButton2 = styled.View`
   width: 65%;
   height: 50%;
-  margin-top: 30%;
+  margin-top: 20%;
   margin-left: 16.8%;
 `;
 const ContainerButton3 = styled.View`
@@ -75,7 +75,7 @@ export default function UserScreen({ navigation }: RootTabScreenProps<"User">) {
         .then((response) => response.json())
         .then((data) => {
           setToken(data);
-          console.log(data);
+          console.log(token);
         });
     } catch {
       console.log("Não obteve Resposta");
@@ -84,16 +84,16 @@ export default function UserScreen({ navigation }: RootTabScreenProps<"User">) {
   const handleSignInPress2 = async () => {
     try {
       fetch(
-        `https://wwwh3.tjrj.jus.br/HWEBAPIEVENTOS/api/evento/encontros/007392`,
+        `https://wwwh3.tjrj.jus.br/HWEBAPIEVENTOS/api/magistrado/obterdados/${cpf}`,
         {
           method: "GET",
-          headers: { Authorization: `Basic ${token}` },
+          headers: { Authorization: `Bearer ${token}` },
         }
       )
         .then((response) => response.json())
         .then((data) => {
           setInfo(data);
-          console.log(data);
+          console.log(info);
         });
     } catch {
       console.log("Não obteve Resposta");
@@ -144,19 +144,24 @@ export default function UserScreen({ navigation }: RootTabScreenProps<"User">) {
         </ContainerButton3>
         <ContainerButton2>
           <SubmitButton
-            title="Lista"
+            title="Obter Dados"
             color="#B8977E"
             onPress={handleSignInPress2}
           />
         </ContainerButton2>
       </ContainerButton>
 
-      <Text style={{ marginLeft: 120, marginTop: -290 }}>Usuário: {user}</Text>
-      <Text style={{ marginLeft: 10, marginTop: 0, fontWeight: "bold" }}>
+      <Text style={{ marginLeft: 10, marginTop: -290, fontWeight: "bold" }}>
         Token do Usuário: {token}
       </Text>
-      <Text style={{ marginLeft: 120, marginTop: 200, fontWeight: "bold" }}>
-        Lista: {JSON.stringify(info)}
+      <Text style={{ marginLeft: 40, marginTop: 70, fontWeight: "bold" }}>
+        Nome: {JSON.stringify(info.nome)}
+      </Text>
+      <Text style={{ marginLeft: 40, marginTop: 5, fontWeight: "bold" }}>
+        Email: {JSON.stringify(info.email)}
+      </Text>
+      <Text style={{ marginLeft: 40, marginTop: 0, fontWeight: "bold" }}>
+        Lotação: {JSON.stringify(info.lotacao)}
       </Text>
     </SafeAreaView>
   );
