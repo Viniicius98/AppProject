@@ -2,11 +2,11 @@ import { RootTabScreenProps } from "../types";
 import styled from "styled-components/native";
 import React, { useEffect, useState } from "react";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import api from "../services/api";
-import { ActivityIndicator } from "react-native";
+import { ActivityIndicator, SafeAreaView } from "react-native";
 import Header from "../components/Header";
 import AppLogo from "../components/Header/Applogo";
-
+import axios from "axios";
+import { setLocale } from "yup";
 
 const BackgroundContainer = styled.View`
   width: 100%;
@@ -41,6 +41,7 @@ const AppContainer = styled.View`
   flex: 1;
   align-items: center;
   justify-content: center;
+
   margin-top: -38.9%;
   margin-left: 25.5%;
 `;
@@ -51,6 +52,7 @@ const ContainerTextt = styled.Text`
   padding: 1%;
   margin-left: 6%;
 `;
+
 const ContainerTexttt = styled.View`
   height: 13%;
   background-color: #c0ccda;
@@ -136,11 +138,9 @@ export default function LoginScreen({
   const authLocal = async () => {
     if (auth) {
       setError("");
-
       setSuccess("Autenticando...");
-
       setTimeout(() => {
-        //navigation.navigate("User");
+        navigation.navigate("Login");
       }, 3000);
     }
   };
@@ -153,31 +153,33 @@ export default function LoginScreen({
     } else {
       //aqui virá a API
       try {
-        const response = await api.post("/auth/login", {
-          email: email,
-          password: password,
-        });
+        const response = await axios.get(
+          `https://wwwh3.tjrj.jus.br/HWEBAPIEVENTOS/api/acesso/obtertoken/${email}/${password}`,
+          {
+            method: "GET",
+            headers: {},
+          }
+        );
 
         if (response.data.accessToken) {
           setSuccess("");
-          await AsyncStorage.setItem("@accessToken", response.data.accessToken);
-
+          await AsyncStorage.setItem("@accessToken", response.data.acessToken);
           const result = await AsyncStorage.getItem("@accessToken");
 
+          console.log(response.data.acessToken);
+
           if (result) {
-            setTimeout(() => {
-              setIsLoading(false);
-            }, 5000);
-            setSuccess("Usuário autenticado");
+            setSuccess("Usuario Autenticado");
             setAuth(true);
             authLocal();
           }
         }
-
-        // console.log(response);
       } catch (error) {
-        setSuccess("");
-        setError("Falha na autenticação");
+        setTimeout(() => {
+          setIsLoading(false);
+          setSuccess("");
+          setError("Falha na autenticação");
+        }, 5000);
         console.log(error);
       }
     }
@@ -203,7 +205,6 @@ export default function LoginScreen({
             placeholder="E-mail"
             defaultValue={email}
             onChangeText={(newEmail) => setEmail(newEmail)}
-            
           />
 
           <Input
@@ -238,10 +239,8 @@ export default function LoginScreen({
   );
 }
 
-{
-  /*<Container>
+/*<Container>
       <Header />
-
       <BackgroundContainer>
   {isLoading && (
   <Loading>
@@ -251,7 +250,6 @@ export default function LoginScreen({
 <ImageBackground source={require("../assets/images/background.png")} />
 <LoginBackgroundContainer>
   <ContainerTextt>Login</ContainerTextt>
-
   <Input
     placeholder="E-mail"
     defaultValue={email}
@@ -263,14 +261,12 @@ export default function LoginScreen({
     onChangeText={(newPassword) => setPassword(newPassword)}
     secureTextEntry
   />
-
   <SubmitButton
     title="Enviar"
     color="#B8977E"
     onPress={handleSignInPress}
   />
   <ContainerTexte>Esqueceu sua senha ? </ContainerTexte>
-
   <ContainerText>{error}</ContainerText>
   <ContainerText>{success} </ContainerText>
 </LoginBackgroundContainer>
@@ -279,4 +275,3 @@ export default function LoginScreen({
   </AppContainer>
   </BackgroundContainer>
   </Container>*/
-}

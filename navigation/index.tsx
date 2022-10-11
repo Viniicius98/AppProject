@@ -127,7 +127,6 @@ function RootNavigator() {
             fontWeight: "bold",
           },
         })}
-        
       />
       <Stack.Screen
         name="Course"
@@ -143,7 +142,7 @@ function RootNavigator() {
             fontWeight: "bold",
           },
         })}
-        />
+      />
 
       <Stack.Group screenOptions={{ presentation: "modal" }}>
         <Stack.Screen name="Settings" component={SettingsScreen} />

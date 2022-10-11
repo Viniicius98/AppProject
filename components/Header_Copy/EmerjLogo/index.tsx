@@ -2,19 +2,19 @@ import React from "react";
 import styled from "styled-components/native";
 
 const ImageContainer = styled.View`
-  width: 30%;
-  height: 60%;
+  width: 21%;
+  height: 75%;
   align-items: center;
   justify-content: center;
   background: #1e2d3e;
 `;
 const EmerjImage = styled.Image`
-  width: 67%;
-  height: 135%;
+  width: 61px;
+  height: 55px;
   border-width: 2px;
 `;
 
-export default function EmerjLogo(props: any) {
+export default function EmerjLogo() {
   return (
     <ImageContainer>
       <EmerjImage
