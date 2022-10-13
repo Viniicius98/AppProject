@@ -132,8 +132,7 @@ const Loading = styled.View`
   top: 55%;
 `;
 
-export default function LoginScreen({
-  navigation,
+export default function LoginScreen({navigation,
 }: RootTabScreenProps<"Login">) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
