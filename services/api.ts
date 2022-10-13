@@ -10,7 +10,7 @@ import {useState, useEffect} from 'react'
 //http://localhost:3000
 
 const api = axios.create({
- baseURL: "http://20.120.7.70/",
+ baseURL: "http://20.120.7.70/"
 });
 
 
