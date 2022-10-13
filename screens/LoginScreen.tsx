@@ -2,11 +2,11 @@ import { RootTabScreenProps } from "../types";
 import styled from "styled-components/native";
 import React, { useEffect, useState } from "react";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import { ActivityIndicator, SafeAreaView } from "react-native";
+import { ActivityIndicator, SafeAreaView, StyleSheet } from "react-native";
 import Header from "../components/Header";
 import AppLogo from "../components/Header/Applogo";
 import axios from "axios";
-import { setLocale } from "yup";
+import { KeyboardAvoidingView, NativeBaseProvider } from "native-base";
 
 const BackgroundContainer = styled.View`
   width: 100%;
@@ -82,7 +82,7 @@ const ContainerTexte = styled.Text`
   color: #8492a6;
   padding-right: 35%;
   text-align: center;
-  margin-top: -35%;
+  margin-top: -15%;
   margin-left: 20%;
 `;
 
@@ -106,13 +106,14 @@ const Input = styled.TextInput`
 const SubmitButton = styled.Button`
   width: 50%;
   height: 50%;
+  background-color: black;
 `;
 const ContainerButton = styled.View`
   width: 65%;
   height: 50%;
-  margin-top: 51%;
+  margin-top: 52%;
   margin-left: 16.8%;
-  z-index: 2;
+  z-index: 1;
 `;
 
 const Loading = styled.View`
@@ -139,9 +140,9 @@ export default function LoginScreen({
     if (auth) {
       setError("");
       setSuccess("Autenticando...");
-      //setTimeout(() => {
-      // navigation.navigate("Login");
-      // }, 3000);
+      setTimeout(() => {
+        navigation.navigate("Home");
+      }, 3000);
     }
   };
 
@@ -154,21 +155,20 @@ export default function LoginScreen({
       //aqui virá a API
       try {
         const response = await axios.get(
-          `https://wwwh3.tjrj.jus.br/HWEBAPIEVENTOS/api/acesso/obtertoken/${email}/${password}`,
-          {
-            method: "GET",
-            headers: {},
-          }
+          `https://wwwh3.tjrj.jus.br/HWEBAPIEVENTOS/api/acesso/obtertoken/${email}/${password}`
         );
 
-        if (response.data.accessToken) {
+        if (response.data) {
           setSuccess("");
-          await AsyncStorage.setItem("@accessToken", response.data.acessToken);
+          await AsyncStorage.setItem("@accessToken", response.data);
           const result = await AsyncStorage.getItem("@accessToken");
 
-          console.log(response.data.acessToken);
+          console.log(response.data);
 
           if (result) {
+            setTimeout(() => {
+              setIsLoading(false);
+            }, 5000);
             setSuccess("Usuario Autenticado");
             setAuth(true);
             authLocal();
@@ -186,92 +186,66 @@ export default function LoginScreen({
   };
 
   return (
-    <Container>
-      <Header />
+    <NativeBaseProvider>
+      <KeyboardAvoidingView behavior="padding" style={styles.container}>
+        <Header />
 
-      <BackgroundContainer>
-        {isLoading && (
-          <Loading>
-            <ActivityIndicator size="large" color="#8492A6" />
-          </Loading>
-        )}
+        <BackgroundContainer>
+          {isLoading && (
+            <Loading>
+              <ActivityIndicator size="large" color="#8492A6" />
+            </Loading>
+          )}
 
-        <LoginBackgroundContainer>
-          <ContainerTexttt>
-            <ContainerTextt>Login</ContainerTextt>
-          </ContainerTexttt>
+          <LoginBackgroundContainer>
+            <ContainerTexttt>
+              <ContainerTextt>Login</ContainerTextt>
+            </ContainerTexttt>
 
-          <Input
-            placeholder="E-mail"
-            defaultValue={email}
-            onChangeText={(newEmail) => setEmail(newEmail)}
-          />
-
-          <Input
-            placeholder="Senha"
-            defaultValue={password}
-            onChangeText={(newPassword) => setPassword(newPassword)}
-            secureTextEntry
-          />
-          <ContainerButton>
-            <SubmitButton
-              title="Entrar"
-              color="#B8977E"
-              onPress={handleSignInPress}
+            <Input
+              placeholder="E-mail"
+              defaultValue={email}
+              onChangeText={(newEmail) => setEmail(newEmail)}
             />
-          </ContainerButton>
 
-          <ImageBackground
-            source={require("../assets/images/background.png")}
-          />
+            <Input
+              placeholder="Senha"
+              defaultValue={password}
+              onChangeText={(newPassword) => setPassword(newPassword)}
+              secureTextEntry
+            />
+            <ContainerButton>
+              <SubmitButton
+                title="Entrar"
+                color="#B8977E"
+                onPress={handleSignInPress}
+              />
+            </ContainerButton>
 
-          <ContainerTexte>Esqueceu sua senha ? </ContainerTexte>
+            <ImageBackground
+              source={require("../assets/images/background.png")}
+            />
 
-          <ContainerTextError>{error}</ContainerTextError>
-          <ContainerTextSucess>{success} </ContainerTextSucess>
-        </LoginBackgroundContainer>
+            <ContainerTexte>Esqueceu sua senha ? </ContainerTexte>
 
-        <AppContainer>
-          <AppLogo />
-        </AppContainer>
-      </BackgroundContainer>
-    </Container>
+            <ContainerTextError>{error}</ContainerTextError>
+            <ContainerTextSucess>{success} </ContainerTextSucess>
+          </LoginBackgroundContainer>
+
+          <AppContainer>
+            <AppLogo />
+          </AppContainer>
+        </BackgroundContainer>
+      </KeyboardAvoidingView>
+    </NativeBaseProvider>
   );
 }
 
-/*<Container>
-      <Header />
-      <BackgroundContainer>
-  {isLoading && (
-  <Loading>
-    <ActivityIndicator size="large" color="#8492A6" />
-  </Loading>
-)}
-<ImageBackground source={require("../assets/images/background.png")} />
-<LoginBackgroundContainer>
-  <ContainerTextt>Login</ContainerTextt>
-  <Input
-    placeholder="E-mail"
-    defaultValue={email}
-    onChangeText={(newEmail) => setEmail(newEmail)}
-  />
-  <Input
-    placeholder="Senha"
-    defaultValue={password}
-    onChangeText={(newPassword) => setPassword(newPassword)}
-    secureTextEntry
-  />
-  <SubmitButton
-    title="Enviar"
-    color="#B8977E"
-    onPress={handleSignInPress}
-  />
-  <ContainerTexte>Esqueceu sua senha ? </ContainerTexte>
-  <ContainerText>{error}</ContainerText>
-  <ContainerText>{success} </ContainerText>
-</LoginBackgroundContainer>
-<AppContainer>
-  <AppLogo />
-  </AppContainer>
-  </BackgroundContainer>
-  </Container>*/
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    marginTop: "-3",
+    alignItems: "center",
+    justifyContent: "center",
+  },
+});
