@@ -6,7 +6,11 @@ import { ActivityIndicator, SafeAreaView, StyleSheet } from "react-native";
 import Header from "../components/Header";
 import AppLogo from "../components/Header/Applogo";
 import axios from "axios";
-import { KeyboardAvoidingView, NativeBaseProvider } from "native-base";
+import {
+  InfoIcon,
+  KeyboardAvoidingView,
+  NativeBaseProvider,
+} from "native-base";
 
 const BackgroundContainer = styled.View`
   width: 100%;
@@ -135,18 +139,21 @@ export default function LoginScreen({
   const [success, setSuccess] = useState("");
   const [auth, setAuth] = useState<boolean>(false);
   const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [info, setInfo] = useState("");
 
   const authLocal = async () => {
     if (auth) {
       setError("");
       setSuccess("Autenticando...");
       setTimeout(() => {
-        navigation.navigate("Home");
+        navigation.navigate("Home", { nome: JSON.stringify(info.nome) });
       }, 3000);
     }
   };
 
   const handleSignInPress = async () => {
+    setError("");
+    setSuccess("");
     setIsLoading(true);
 
     if (email.length === 0 || password.length === 0) {
@@ -163,9 +170,25 @@ export default function LoginScreen({
           await AsyncStorage.setItem("@accessToken", response.data);
           const result = await AsyncStorage.getItem("@accessToken");
 
-          console.log(response.data);
+          console.log(result);
 
           if (result) {
+            try {
+              fetch(
+                `https://wwwh3.tjrj.jus.br/HWEBAPIEVENTOS/api/magistrado/obterdados/${password}`,
+                {
+                  method: "GET",
+                  headers: { Authorization: `Bearer ${result}` },
+                }
+              )
+                .then((response) => response.json())
+                .then((data) => {
+                  setInfo(data);
+                  console.log(info);
+                });
+            } catch {
+              console.log("Não obteve Resposta");
+            }
             setTimeout(() => {
               setIsLoading(false);
             }, 5000);
@@ -186,58 +209,56 @@ export default function LoginScreen({
   };
 
   return (
-    <NativeBaseProvider>
-      <KeyboardAvoidingView behavior="padding" style={styles.container}>
-        <Header />
+    <Container>
+      <Header />
 
-        <BackgroundContainer>
-          {isLoading && (
-            <Loading>
-              <ActivityIndicator size="large" color="#8492A6" />
-            </Loading>
-          )}
+      <BackgroundContainer>
+        {isLoading && (
+          <Loading>
+            <ActivityIndicator size="large" color="#8492A6" />
+          </Loading>
+        )}
 
-          <LoginBackgroundContainer>
-            <ContainerTexttt>
-              <ContainerTextt>Login</ContainerTextt>
-            </ContainerTexttt>
+        <LoginBackgroundContainer>
+          <ContainerTexttt>
+            <ContainerTextt>Login</ContainerTextt>
+          </ContainerTexttt>
 
-            <Input
-              placeholder="E-mail"
-              defaultValue={email}
-              onChangeText={(newEmail) => setEmail(newEmail)}
+          <Input
+            placeholder="E-mail"
+            defaultValue={email}
+            onChangeText={(newEmail) => setEmail(newEmail)}
+          />
+
+          <Input
+            placeholder="Senha"
+            defaultValue={password}
+            onChangeText={(newPassword) => setPassword(newPassword)}
+            secureTextEntry
+          />
+          <ContainerButton>
+            <SubmitButton
+              title="Entrar"
+              color="#B8977E"
+              onPress={handleSignInPress}
             />
+          </ContainerButton>
 
-            <Input
-              placeholder="Senha"
-              defaultValue={password}
-              onChangeText={(newPassword) => setPassword(newPassword)}
-              secureTextEntry
-            />
-            <ContainerButton>
-              <SubmitButton
-                title="Entrar"
-                color="#B8977E"
-                onPress={handleSignInPress}
-              />
-            </ContainerButton>
+          <ImageBackground
+            source={require("../assets/images/background.png")}
+          />
 
-            <ImageBackground
-              source={require("../assets/images/background.png")}
-            />
+          <ContainerTexte>Esqueceu sua senha ? </ContainerTexte>
 
-            <ContainerTexte>Esqueceu sua senha ? </ContainerTexte>
+          <ContainerTextError>{error}</ContainerTextError>
+          <ContainerTextSucess>{success} </ContainerTextSucess>
+        </LoginBackgroundContainer>
 
-            <ContainerTextError>{error}</ContainerTextError>
-            <ContainerTextSucess>{success} </ContainerTextSucess>
-          </LoginBackgroundContainer>
-
-          <AppContainer>
-            <AppLogo />
-          </AppContainer>
-        </BackgroundContainer>
-      </KeyboardAvoidingView>
-    </NativeBaseProvider>
+        <AppContainer>
+          <AppLogo />
+        </AppContainer>
+      </BackgroundContainer>
+    </Container>
   );
 }
 

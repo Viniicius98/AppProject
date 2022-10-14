@@ -35,7 +35,7 @@ const AvatarContainer = styled.View`
   align-items: center;
   margin-bottom: 30px;
 `;
-export default function CardPerfilMagistrado() {
+export default function CardPerfilMagistrado({ route }: any) {
   return (
     <Container>
       <Title>
@@ -48,7 +48,8 @@ export default function CardPerfilMagistrado() {
       </AvatarContainer>
 
       <Text style={{ fontWeight: "bold", textAlign: "center" }}>
-        Dra. Helena Herth
+        Dr.
+        {/* {route.params?.nome} */}
       </Text>
       <Text style={{ fontSize: 9, textAlign: "center", marginBottom: 5 }}>
         Diretora do Departamento de Aperfeiçoamento de Magistrados
