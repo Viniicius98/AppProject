@@ -151,7 +151,7 @@ export default function LoginScreen({navigation,
       setError("");
       setSuccess("Autenticando...");
       setTimeout(() => {
-        navigation.navigate("Home", { nome: JSON.stringify(info.nome) });
+        return navigation.navigate("Home",);
       }, 3000);
     }
   };
@@ -190,6 +190,7 @@ export default function LoginScreen({navigation,
                 .then((data) => {
                   setInfo(data);
                   console.log(info);
+                  console.log(data);
                 });
             } catch {
               console.log("Não obteve Resposta");
