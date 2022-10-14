@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from "react";
 import { View, Text, FlatList, ActivityIndicator } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
@@ -81,10 +80,9 @@ export default function UserScreen({ navigation }: RootTabScreenProps<"User">) {
     } catch {
       console.log("Não obteve Resposta");
     }
-  };
-  
 
- const handleSignInPress2 = async () => {
+  };
+  const handleSignInPress2 = async () => {
     try {
       fetch(
         `https://wwwh3.tjrj.jus.br/HWEBAPIEVENTOS/api/magistrado/obterdados/${cpf}`,
@@ -101,7 +99,31 @@ export default function UserScreen({ navigation }: RootTabScreenProps<"User">) {
     } catch {
       console.log("Não obteve Resposta");
     }
+
   };
+  
+
+
+  /* {useEffect(() => {
+    fetch(
+      `https://wwwh3.tjrj.jus.br/HWEBAPIEVENTOS/api/acesso/obtertoken/${user}/${cpf}`,
+      {
+        method: "GET",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+      }
+    )
+      .then((response) => response.json())
+      .then((data) => {
+        setToken(data);
+        console.log(data);
+      })
+
+      .catch(() => alert("Não Obteve o Token"));
+  }, []);}*/
+
 
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: "#fff" }}>

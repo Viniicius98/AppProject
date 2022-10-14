@@ -1,16 +1,18 @@
-
 import { RootTabScreenProps } from "../types";
-
 import styled from "styled-components/native";
 import React, { useEffect, useState } from "react";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import api from "../services/api";
-import { getBottomSpace, getStatusBarHeight } from 'react-native-iphone-x-helper'
 
-import { ActivityIndicator, SafeAreaView,  StyleSheet, View } from "react-native";
+import { ActivityIndicator, SafeAreaView, StyleSheet } from "react-native";
 
 import Header from "../components/Header";
 import AppLogo from "../components/Header/Applogo";
+import axios from "axios";
+import {
+  InfoIcon,
+  KeyboardAvoidingView,
+  NativeBaseProvider,
+} from "native-base";
 
 const BackgroundContainer = styled.View`
   width: 100%;
@@ -46,8 +48,9 @@ const AppContainer = styled.View`
   
   
 
-  margin-top: -105%;
-  margin-left: 70.5%;
+
+  margin-top: -38.9%;
+  margin-left: 25.5%;
 
 `;
 const ContainerTextt = styled.Text`
@@ -56,8 +59,9 @@ const ContainerTextt = styled.Text`
   color: #b8977e;
   padding: 1%;
   margin-left: 6%;
-
 `;
+
+
 const ContainerTexttt = styled.View`
   height: 13%;
   background-color: #c0ccda;
@@ -65,7 +69,6 @@ const ContainerTexttt = styled.View`
   border-top-color: #8492a6;
   border-bottom-width: 10px;
   border-bottom-color: #b8977e;
-
 `;
 
 const ContainerTextSucess = styled.Text`
@@ -89,7 +92,7 @@ const ContainerTexte = styled.Text`
   color: #8492a6;
   padding-right: 35%;
   text-align: center;
-  margin-top: -35%;
+  margin-top: -15%;
   margin-left: 20%;
 `;
 
@@ -113,13 +116,14 @@ const Input = styled.TextInput`
 const SubmitButton = styled.Button`
   width: 50%;
   height: 50%;
+  background-color: black;
 `;
 const ContainerButton = styled.View`
   width: 65%;
   height: 50%;
-  margin-top: 51%;
+  margin-top: 52%;
   margin-left: 16.8%;
-  z-index: 2;
+  z-index: 1;
 `;
 
 const Loading = styled.View`
@@ -140,20 +144,21 @@ export default function LoginScreen({navigation,
   const [success, setSuccess] = useState("");
   const [auth, setAuth] = useState<boolean>(false);
   const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [info, setInfo] = useState("");
 
   const authLocal = async () => {
     if (auth) {
       setError("");
-
       setSuccess("Autenticando...");
-
       setTimeout(() => {
-        //navigation.navigate("User");
+        navigation.navigate("Home", { nome: JSON.stringify(info.nome) });
       }, 3000);
     }
   };
 
   const handleSignInPress = async () => {
+    setError("");
+    setSuccess("");
     setIsLoading(true);
 
     if (email.length === 0 || password.length === 0) {
@@ -161,45 +166,58 @@ export default function LoginScreen({navigation,
     } else {
       //aqui virá a API
       try {
-        const response = await api.post("/auth/login", {
-          email: email,
-          password: password,
-        });
+        const response = await axios.get(
+          `https://wwwh3.tjrj.jus.br/HWEBAPIEVENTOS/api/acesso/obtertoken/${email}/${password}`
+        );
 
-        if (response.data.accessToken) {
+        if (response.data) {
           setSuccess("");
-          await AsyncStorage.setItem("@accessToken", response.data.accessToken);
-
+          await AsyncStorage.setItem("@accessToken", response.data);
           const result = await AsyncStorage.getItem("@accessToken");
 
+          console.log(result);
+
           if (result) {
+            try {
+              fetch(
+                `https://wwwh3.tjrj.jus.br/HWEBAPIEVENTOS/api/magistrado/obterdados/${password}`,
+                {
+                  method: "GET",
+                  headers: { Authorization: `Bearer ${result}` },
+                }
+              )
+                .then((response) => response.json())
+                .then((data) => {
+                  setInfo(data);
+                  console.log(info);
+                });
+            } catch {
+              console.log("Não obteve Resposta");
+            }
             setTimeout(() => {
               setIsLoading(false);
             }, 5000);
-            setSuccess("Usuário autenticado");
+            setSuccess("Usuario Autenticado");
             setAuth(true);
             authLocal();
           }
         }
-
-        // console.log(response);
       } catch (error) {
-        setSuccess("");
-        setError("Falha na autenticação");
+        setTimeout(() => {
+          setIsLoading(false);
+          setSuccess("");
+          setError("Falha na autenticação");
+        }, 5000);
         console.log(error);
       }
     }
   };
 
   return (
-    <View style={styles.container}>
-          
-    <SafeAreaView style={{ flex: 1 }}>
+
     <Container>
-      
-      
+
       <Header />
-      
 
       <BackgroundContainer>
         {isLoading && (
@@ -217,7 +235,6 @@ export default function LoginScreen({navigation,
             placeholder="E-mail"
             defaultValue={email}
             onChangeText={(newEmail) => setEmail(newEmail)}
-
           />
 
           <Input
@@ -240,69 +257,27 @@ export default function LoginScreen({navigation,
 
           <ContainerTexte>Esqueceu sua senha ? </ContainerTexte>
 
-
           <ContainerTextError>{error}</ContainerTextError>
           <ContainerTextSucess>{success} </ContainerTextSucess>
-
         </LoginBackgroundContainer>
 
         <AppContainer>
           <AppLogo />
         </AppContainer>
       </BackgroundContainer>
-      
 
     </Container>
-    </SafeAreaView>
-    </View>
+
   );
 }
 
 const styles = StyleSheet.create({
-   container:{
+
+  container: {
     flex: 1,
-    paddingHorizontal: 1,
-    paddingVertical: getBottomSpace()
-   },
-  
-})
+    marginTop: "-3",
+    alignItems: "center",
+    justifyContent: "center",
+  },
+});
 
-
-
-  /*<Container>
-      <Header />
-      <BackgroundContainer>
-  {isLoading && (
-  <Loading>
-    <ActivityIndicator size="large" color="#8492A6" />
-  </Loading>
-)}
-<ImageBackground source={require("../assets/images/background.png")} />
-<LoginBackgroundContainer>
-  <ContainerTextt>Login</ContainerTextt>
-  <Input
-    placeholder="E-mail"
-    defaultValue={email}
-    onChangeText={(newEmail) => setEmail(newEmail)}
-  />
-  <Input
-    placeholder="Senha"
-    defaultValue={password}
-    onChangeText={(newPassword) => setPassword(newPassword)}
-    secureTextEntry
-  />
-  <SubmitButton
-    title="Enviar"
-    color="#B8977E"
-    onPress={handleSignInPress}
-  />
-  <ContainerTexte>Esqueceu sua senha ? </ContainerTexte>
-  <ContainerText>{error}</ContainerText>
-  <ContainerText>{success} </ContainerText>
-</LoginBackgroundContainer>
-<AppContainer>
-  <AppLogo />
-  </AppContainer>
-  </BackgroundContainer>
-  </Container>*/
-  

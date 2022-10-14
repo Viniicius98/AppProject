@@ -1,5 +1,5 @@
 import axios from "axios";
-import {useState, useEffect} from 'react'
+import { useState, useEffect } from "react";
 //axios para requisição HTTP.
 
 //# No caso de API sendo acessada na mesma máquina.
@@ -10,9 +10,9 @@ import {useState, useEffect} from 'react'
 //http://localhost:3000
 
 const api = axios.create({
- baseURL: "http://20.120.7.70/"
+
+  baseURL: "https://wwwh3.tjrj.jus.br/HWEBAPIEVENTOS/api/acesso/obtertoken/",
+
 });
 
-
 export default api;
-
