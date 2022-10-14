@@ -2,7 +2,9 @@ import { RootTabScreenProps } from "../types";
 import styled from "styled-components/native";
 import React, { useEffect, useState } from "react";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+
 import { ActivityIndicator, SafeAreaView, StyleSheet } from "react-native";
+
 import Header from "../components/Header";
 import AppLogo from "../components/Header/Applogo";
 import axios from "axios";
@@ -43,11 +45,13 @@ const Container = styled.View`
 `;
 const AppContainer = styled.View`
   flex: 1;
-  align-items: center;
-  justify-content: center;
+  
+  
+
 
   margin-top: -38.9%;
   margin-left: 25.5%;
+
 `;
 const ContainerTextt = styled.Text`
   font-size: 19px;
@@ -57,6 +61,7 @@ const ContainerTextt = styled.Text`
   margin-left: 6%;
 `;
 
+
 const ContainerTexttt = styled.View`
   height: 13%;
   background-color: #c0ccda;
@@ -65,6 +70,7 @@ const ContainerTexttt = styled.View`
   border-bottom-width: 10px;
   border-bottom-color: #b8977e;
 `;
+
 const ContainerTextSucess = styled.Text`
   margin-top: 4%;
   margin-left: 21%;
@@ -130,8 +136,7 @@ const Loading = styled.View`
   top: 55%;
 `;
 
-export default function LoginScreen({
-  navigation,
+export default function LoginScreen({navigation,
 }: RootTabScreenProps<"Login">) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -209,7 +214,9 @@ export default function LoginScreen({
   };
 
   return (
+
     <Container>
+
       <Header />
 
       <BackgroundContainer>
@@ -258,11 +265,14 @@ export default function LoginScreen({
           <AppLogo />
         </AppContainer>
       </BackgroundContainer>
+
     </Container>
+
   );
 }
 
 const styles = StyleSheet.create({
+
   container: {
     flex: 1,
     marginTop: "-3",
@@ -270,3 +280,4 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
 });
+

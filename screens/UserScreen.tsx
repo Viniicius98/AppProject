@@ -80,6 +80,7 @@ export default function UserScreen({ navigation }: RootTabScreenProps<"User">) {
     } catch {
       console.log("Não obteve Resposta");
     }
+
   };
   const handleSignInPress2 = async () => {
     try {
@@ -98,7 +99,10 @@ export default function UserScreen({ navigation }: RootTabScreenProps<"User">) {
     } catch {
       console.log("Não obteve Resposta");
     }
+
   };
+  
+
 
   /* {useEffect(() => {
     fetch(
@@ -119,6 +123,7 @@ export default function UserScreen({ navigation }: RootTabScreenProps<"User">) {
 
       .catch(() => alert("Não Obteve o Token"));
   }, []);}*/
+
 
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: "#fff" }}>
