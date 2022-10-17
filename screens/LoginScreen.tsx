@@ -45,13 +45,9 @@ const Container = styled.View`
 `;
 const AppContainer = styled.View`
   flex: 1;
-  
-  
-
 
   margin-top: -38.9%;
   margin-left: 25.5%;
-
 `;
 const ContainerTextt = styled.Text`
   font-size: 19px;
@@ -60,7 +56,6 @@ const ContainerTextt = styled.Text`
   padding: 1%;
   margin-left: 6%;
 `;
-
 
 const ContainerTexttt = styled.View`
   height: 13%;
@@ -136,7 +131,8 @@ const Loading = styled.View`
   top: 55%;
 `;
 
-export default function LoginScreen({navigation,
+export default function LoginScreen({
+  navigation,
 }: RootTabScreenProps<"Login">) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -147,12 +143,30 @@ export default function LoginScreen({navigation,
   const [info, setInfo] = useState("");
 
   const authLocal = async () => {
-    if (auth) {
-      setError("");
-      setSuccess("Autenticando...");
-      setTimeout(() => {
-        navigation.navigate("Home", { nome: JSON.stringify(info.nome) });
-      }, 3000);
+    setError("");
+    setSuccess("");
+    setSuccess("Autenticando...");
+    setTimeout(() => {
+      navigation.navigate("Home");
+    }, 3000);
+  };
+
+  const Login = async (result: any) => {
+    try {
+      fetch(
+        `https://wwwh3.tjrj.jus.br/HWEBAPIEVENTOS/api/magistrado/obterdados/${password}`,
+        {
+          method: "GET",
+          headers: { Authorization: `Bearer ${result}` },
+        }
+      )
+        .then((response) => response.json())
+        .then((data) => {
+          setInfo(data);
+          console.log(info);
+        });
+    } catch {
+      console.log("Não obteve Resposta");
     }
   };
 
@@ -174,33 +188,21 @@ export default function LoginScreen({navigation,
           setSuccess("");
           await AsyncStorage.setItem("@accessToken", response.data);
           const result = await AsyncStorage.getItem("@accessToken");
+          Login(result);
 
           console.log(result);
 
           if (result) {
-            try {
-              fetch(
-                `https://wwwh3.tjrj.jus.br/HWEBAPIEVENTOS/api/magistrado/obterdados/${password}`,
-                {
-                  method: "GET",
-                  headers: { Authorization: `Bearer ${result}` },
-                }
-              )
-                .then((response) => response.json())
-                .then((data) => {
-                  setInfo(data);
-                  console.log(info);
-                });
-            } catch {
-              console.log("Não obteve Resposta");
-            }
             setTimeout(() => {
               setIsLoading(false);
+              setSuccess("Usuario Autenticado");
             }, 5000);
-            setSuccess("Usuario Autenticado");
-            setAuth(true);
             authLocal();
+          } else {
+            console.log("não foi possivel autenticar");
           }
+        } else {
+          console.log("não foi possivel obter o token");
         }
       } catch (error) {
         setTimeout(() => {
@@ -214,9 +216,7 @@ export default function LoginScreen({navigation,
   };
 
   return (
-
     <Container>
-
       <Header />
 
       <BackgroundContainer>
@@ -265,14 +265,11 @@ export default function LoginScreen({navigation,
           <AppLogo />
         </AppContainer>
       </BackgroundContainer>
-
     </Container>
-
   );
 }
 
 const styles = StyleSheet.create({
-
   container: {
     flex: 1,
     marginTop: "-3",
@@ -280,4 +277,3 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
 });
-
