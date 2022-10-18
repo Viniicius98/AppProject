@@ -148,6 +148,7 @@ export default function LoginScreen({
     setSuccess("Autenticando...");
     setTimeout(() => {
       navigation.navigate("Home");
+      setIsLoading(false);
       setSuccess("");
     }, 3000);
   };
@@ -174,12 +175,12 @@ export default function LoginScreen({
   const handleSignInPress = async () => {
     setError("");
     setSuccess("");
-    setIsLoading(true);
 
     if (email.length === 0 || password.length === 0) {
       setError("Preencha usuário e senha para continuar!");
     } else {
       //aqui virá a API
+      setIsLoading(true);
       try {
         const response = await axios.get(
           `https://wwwh3.tjrj.jus.br/HWEBAPIEVENTOS/api/acesso/obtertoken/${email}/${password}`

@@ -27,6 +27,9 @@ export type RootStackParamList = {
   PointsReport: undefined;
   Publication: undefined;
   TitlesRecord: undefined;
+  Home: undefined;
+  Login: undefined;
+  User: undefined;
 };
 
 export type RootStackScreenProps<Screen extends keyof RootStackParamList> =
