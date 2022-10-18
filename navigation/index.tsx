@@ -142,8 +142,54 @@ function RootNavigator() {
             fontWeight: "bold",
           },
         })}
-      />
+      />       
+       
+          
+        <Stack.Screen name="Home" component={HomeScreen} options={() => ({
+          headerShown: false,
+          headerTitle: "Home",
+          headerStyle: {
+            backgroundColor: "#1e2d3e",
+          },
+          headerTintColor: "#fff",
+          headerTitleStyle: {
+            fontWeight: "bold",
+          },
+        })} />
 
+        <Stack.Screen name="User" component={UserScreen} options={() => ({
+          headerShown: false,
+          headerTitle: "Home",
+          headerStyle: {
+            backgroundColor: "#1e2d3e",
+          },
+          headerTintColor: "#fff",
+          headerTitleStyle: {
+            fontWeight: "bold",
+          },
+        })} />
+
+         
+      <Stack.Screen
+        name="Login"
+        component={LoginScreen}
+        options={({ navigation }: RootTabScreenProps<"Login">) => ({
+          headerShown: false,
+          
+          
+          headerTitle: "Home",
+          headerStyle: {
+            backgroundColor: "#1e2d3e",
+          },
+          headerTintColor: "#fff",
+          headerTitleStyle: {
+            fontWeight: "bold",
+          },
+          
+        })}
+      />
+         
+            
       <Stack.Group screenOptions={{ presentation: "modal" }}>
         <Stack.Screen name="Settings" component={SettingsScreen} />
       </Stack.Group>
@@ -166,6 +212,7 @@ function BottomTabNavigator() {
       screenOptions={{
         tabBarActiveTintColor: Colors[colorScheme].tint,
         headerShown: true,
+        
       }}
     >
       <BottomTab.Screen
@@ -173,8 +220,11 @@ function BottomTabNavigator() {
         component={LoginScreen}
         options={({ navigation }: RootTabScreenProps<"Login">) => ({
           headerShown: false,
+          
+          
           tabBarIcon: ({ color }) => (
             <TabBarIcon name="sign-in" color={color} />
+            
           ),
         })}
       />
@@ -201,7 +251,7 @@ function BottomTabNavigator() {
             </Pressable>
           ),
         })}
-      />
+      /> 
 
       {/*BottomTab.Screen
         name="Activites"
@@ -235,7 +285,7 @@ function BottomTabNavigator() {
             </Pressable>
           ),
         })}
-      />
+      /> 
     </BottomTab.Navigator>
   );
 }

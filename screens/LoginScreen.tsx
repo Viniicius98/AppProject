@@ -142,35 +142,8 @@ export default function LoginScreen({
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [info, setInfo] = useState("");
 
-  const authLocal = async () => {
-    setError("");
-    setSuccess("");
-    setSuccess("Autenticando...");
-    setTimeout(() => {
-      navigation.navigate("Home");
-    }, 3000);
-  };
-
-  const Login = async (result: any) => {
-    try {
-      fetch(
-        `https://wwwh3.tjrj.jus.br/HWEBAPIEVENTOS/api/magistrado/obterdados/${password}`,
-        {
-          method: "GET",
-          headers: { Authorization: `Bearer ${result}` },
-        }
-      )
-        .then((response) => response.json())
-        .then((data) => {
-          setInfo(data);
-          console.log(info);
-        });
-    } catch {
-      console.log("Não obteve Resposta");
-    }
-  };
-
-  const handleSignInPress = async () => {
+  
+    const handleSignInPress = async () => {
     setError("");
     setSuccess("");
     setIsLoading(true);
@@ -214,6 +187,36 @@ export default function LoginScreen({
       }
     }
   };
+
+  const authLocal = async () => {
+    setError("");
+    setSuccess("");
+    setSuccess("Autenticando...");
+    setTimeout(() => {
+      navigation.navigate("Home");
+    }, 3000);
+  };
+
+    const Login = async (result: any) => {
+    try {
+      fetch(
+        `https://wwwh3.tjrj.jus.br/HWEBAPIEVENTOS/api/magistrado/obterdados/${password}`,
+        {
+          method: "GET",
+          headers: { Authorization: `Bearer ${result}` },
+        }
+      )
+        .then((response) => response.json())
+        .then((data) => {
+          setInfo(data);
+          console.log(info);
+        });
+    } catch {
+      console.log("Não obteve Resposta");
+    }
+  };
+
+  
 
   return (
     <Container>
