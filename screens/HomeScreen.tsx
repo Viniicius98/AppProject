@@ -10,7 +10,7 @@ import Header from "../components/Header";
 
 const Container = styled.SafeAreaView`
   flex:1;
-  margin-top: -9.4%;
+  margin-top: -8.4%;
   border-bottom-width: 10px;
   border-bottom-color: #b8977e;
 `;

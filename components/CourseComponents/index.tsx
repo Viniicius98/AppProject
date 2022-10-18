@@ -8,7 +8,7 @@ import AppLogo from "../Header/Applogo";
 const BackgroundContainer = styled.View`
   height: 100%;
   width: 100%;
-  margin-top: -66.7%;
+  margin-top: -70.7%;
   background: #343F4B;
 `;
 
@@ -37,8 +37,8 @@ const DropdownItems = styled.View`
 
 const IconsItems = styled.View`
   width: 100%;
-  height: 575px;
-  margin-bottom: 40.9%;
+  height: 100%;
+  margin-bottom: 49.9%;
   margin-left: -60%;
 `;
 
@@ -47,7 +47,7 @@ const IconsApp = styled.View`
   height: 575px;
   margin-top: -90%;
   margin-bottom: 20%;
-  margin-left: 67%;
+  margin-left: 80%;
 `;
 
 export default function CourseComponents() {

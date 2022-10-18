@@ -6,11 +6,7 @@ import { InputValueContext } from "../context/InputValueContext";
 import Header from "../components/Header";
 import PointsReportComponents from "../components/PointsReportComponents";
 
-export default function PointsReport({
-  navigation,
-}: RootTabScreenProps<"PointsReport">) {
-  const { state, dispatch } = useContext(InputValueContext);
-
+export default function PointsReport() {
   const Container = styled.View`
     height: 100%;
     margin-top: -13%;

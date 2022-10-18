@@ -2,11 +2,17 @@ import { RootTabScreenProps } from "../types";
 import styled from "styled-components/native";
 import React, { useEffect, useState } from "react";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import api from "../services/api";
-import { ActivityIndicator } from "react-native";
+
+import { ActivityIndicator, SafeAreaView, StyleSheet } from "react-native";
+
 import Header from "../components/Header";
 import AppLogo from "../components/Header/Applogo";
-
+import axios from "axios";
+import {
+  InfoIcon,
+  KeyboardAvoidingView,
+  NativeBaseProvider,
+} from "native-base";
 
 const BackgroundContainer = styled.View`
   width: 100%;
@@ -39,8 +45,7 @@ const Container = styled.View`
 `;
 const AppContainer = styled.View`
   flex: 1;
-  align-items: center;
-  justify-content: center;
+
   margin-top: -38.9%;
   margin-left: 25.5%;
 `;
@@ -51,6 +56,7 @@ const ContainerTextt = styled.Text`
   padding: 1%;
   margin-left: 6%;
 `;
+
 const ContainerTexttt = styled.View`
   height: 13%;
   background-color: #c0ccda;
@@ -59,6 +65,7 @@ const ContainerTexttt = styled.View`
   border-bottom-width: 10px;
   border-bottom-color: #b8977e;
 `;
+
 const ContainerTextSucess = styled.Text`
   margin-top: 4%;
   margin-left: 21%;
@@ -80,7 +87,7 @@ const ContainerTexte = styled.Text`
   color: #8492a6;
   padding-right: 35%;
   text-align: center;
-  margin-top: -35%;
+  margin-top: -15%;
   margin-left: 20%;
 `;
 
@@ -104,13 +111,14 @@ const Input = styled.TextInput`
 const SubmitButton = styled.Button`
   width: 50%;
   height: 50%;
+  background-color: black;
 `;
 const ContainerButton = styled.View`
   width: 65%;
   height: 50%;
-  margin-top: 51%;
+  margin-top: 52%;
   margin-left: 16.8%;
-  z-index: 2;
+  z-index: 1;
 `;
 
 const Loading = styled.View`
@@ -132,20 +140,12 @@ export default function LoginScreen({
   const [success, setSuccess] = useState("");
   const [auth, setAuth] = useState<boolean>(false);
   const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [info, setInfo] = useState("");
 
-  const authLocal = async () => {
-    if (auth) {
-      setError("");
-
-      setSuccess("Autenticando...");
-
-      setTimeout(() => {
-        //navigation.navigate("User");
-      }, 3000);
-    }
-  };
-
-  const handleSignInPress = async () => {
+  
+    const handleSignInPress = async () => {
+    setError("");
+    setSuccess("");
     setIsLoading(true);
 
     if (email.length === 0 || password.length === 0) {
@@ -153,35 +153,70 @@ export default function LoginScreen({
     } else {
       //aqui virá a API
       try {
-        const response = await api.post("/auth/login", {
-          email: email,
-          password: password,
-        });
+        const response = await axios.get(
+          `https://wwwh3.tjrj.jus.br/HWEBAPIEVENTOS/api/acesso/obtertoken/${email}/${password}`
+        );
 
-        if (response.data.accessToken) {
+        if (response.data) {
           setSuccess("");
-          await AsyncStorage.setItem("@accessToken", response.data.accessToken);
-
+          await AsyncStorage.setItem("@accessToken", response.data);
           const result = await AsyncStorage.getItem("@accessToken");
+          Login(result);
+
+          console.log(result);
 
           if (result) {
             setTimeout(() => {
               setIsLoading(false);
+              setSuccess("Usuario Autenticado");
             }, 5000);
-            setSuccess("Usuário autenticado");
-            setAuth(true);
             authLocal();
+          } else {
+            console.log("não foi possivel autenticar");
           }
+        } else {
+          console.log("não foi possivel obter o token");
         }
-
-        // console.log(response);
       } catch (error) {
-        setSuccess("");
-        setError("Falha na autenticação");
+        setTimeout(() => {
+          setIsLoading(false);
+          setSuccess("");
+          setError("Falha na autenticação");
+        }, 5000);
         console.log(error);
       }
     }
   };
+
+  const authLocal = async () => {
+    setError("");
+    setSuccess("");
+    setSuccess("Autenticando...");
+    setTimeout(() => {
+      navigation.navigate("Home");
+    }, 3000);
+  };
+
+    const Login = async (result: any) => {
+    try {
+      fetch(
+        `https://wwwh3.tjrj.jus.br/HWEBAPIEVENTOS/api/magistrado/obterdados/${password}`,
+        {
+          method: "GET",
+          headers: { Authorization: `Bearer ${result}` },
+        }
+      )
+        .then((response) => response.json())
+        .then((data) => {
+          setInfo(data);
+          console.log(info);
+        });
+    } catch {
+      console.log("Não obteve Resposta");
+    }
+  };
+
+  
 
   return (
     <Container>
@@ -203,7 +238,6 @@ export default function LoginScreen({
             placeholder="E-mail"
             defaultValue={email}
             onChangeText={(newEmail) => setEmail(newEmail)}
-            
           />
 
           <Input
@@ -238,45 +272,11 @@ export default function LoginScreen({
   );
 }
 
-{
-  /*<Container>
-      <Header />
-
-      <BackgroundContainer>
-  {isLoading && (
-  <Loading>
-    <ActivityIndicator size="large" color="#8492A6" />
-  </Loading>
-)}
-<ImageBackground source={require("../assets/images/background.png")} />
-<LoginBackgroundContainer>
-  <ContainerTextt>Login</ContainerTextt>
-
-  <Input
-    placeholder="E-mail"
-    defaultValue={email}
-    onChangeText={(newEmail) => setEmail(newEmail)}
-  />
-  <Input
-    placeholder="Senha"
-    defaultValue={password}
-    onChangeText={(newPassword) => setPassword(newPassword)}
-    secureTextEntry
-  />
-
-  <SubmitButton
-    title="Enviar"
-    color="#B8977E"
-    onPress={handleSignInPress}
-  />
-  <ContainerTexte>Esqueceu sua senha ? </ContainerTexte>
-
-  <ContainerText>{error}</ContainerText>
-  <ContainerText>{success} </ContainerText>
-</LoginBackgroundContainer>
-<AppContainer>
-  <AppLogo />
-  </AppContainer>
-  </BackgroundContainer>
-  </Container>*/
-}
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    marginTop: "-3",
+    alignItems: "center",
+    justifyContent: "center",
+  },
+});
