@@ -144,10 +144,11 @@ export default function LoginScreen({
 
   const authLocal = async () => {
     setError("");
-    setSuccess("");
+
     setSuccess("Autenticando...");
     setTimeout(() => {
       navigation.navigate("Home");
+      setSuccess("");
     }, 3000);
   };
 
@@ -194,10 +195,12 @@ export default function LoginScreen({
 
           if (result) {
             setTimeout(() => {
-              setIsLoading(false);
               setSuccess("Usuario Autenticado");
-            }, 5000);
-            authLocal();
+            }, 4000);
+
+            setTimeout(() => {
+              authLocal();
+            }, 8000);
           } else {
             console.log("não foi possivel autenticar");
           }
