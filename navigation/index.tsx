@@ -66,12 +66,18 @@ const Stack = createNativeStackNavigator<RootStackParamList>();
 
 function RootNavigator() {
   return (
-    <Stack.Navigator>
+    <Stack.Navigator
+      initialRouteName="Login"
+      screenOptions={{
+        headerShown: true,
+      }}
+    >
       <Stack.Screen
         name="Login"
         component={LoginScreen}
-        options={({ navigation }: RootTabScreenProps<"Login">) => ({
+        options={() => ({
           headerShown: false,
+          gestureEnabled: false,
         })}
       />
       <Stack.Screen
@@ -79,6 +85,7 @@ function RootNavigator() {
         component={HomeScreen}
         options={({ navigation }: RootTabScreenProps<"Home">) => ({
           headerShown: false,
+          gestureEnabled: false,
         })}
       />
       <Stack.Screen
@@ -86,23 +93,25 @@ function RootNavigator() {
         component={UserScreen}
         options={({ navigation }: RootTabScreenProps<"User">) => ({
           title: "Usuário",
+          gestureEnabled: false,
         })}
       />
       <Stack.Screen
         name="Root"
         component={UserScreen}
-        options={{ headerShown: false }}
+        options={{ headerShown: false, gestureEnabled: false }}
       />
       <Stack.Screen
         name="NotFound"
         component={NotFoundScreen}
-        options={{ title: "Opa!" }}
+        options={{ title: "Opa!", gestureEnabled: false }}
       />
       <Stack.Screen
         name="ActionRecord"
         component={ActionRecord}
         options={() => ({
           headerShown: false,
+          gestureEnabled: false,
         })}
       />
       <Stack.Screen
@@ -110,6 +119,7 @@ function RootNavigator() {
         component={Publication}
         options={() => ({
           headerShown: false,
+          gestureEnabled: false,
         })}
       />
       <Stack.Screen
@@ -117,6 +127,7 @@ function RootNavigator() {
         component={TitlesRecord}
         options={() => ({
           headerShown: false,
+          gestureEnabled: false,
         })}
       />
       <Stack.Screen
@@ -132,6 +143,7 @@ function RootNavigator() {
           headerTitleStyle: {
             fontWeight: "bold",
           },
+          gestureEnabled: false,
         })}
       />
       <Stack.Screen
@@ -147,6 +159,7 @@ function RootNavigator() {
           headerTitleStyle: {
             fontWeight: "bold",
           },
+          gestureEnabled: false,
         })}
       />
       <Stack.Screen
@@ -162,6 +175,7 @@ function RootNavigator() {
           headerTitleStyle: {
             fontWeight: "bold",
           },
+          gestureEnabled: false,
         })}
       />
 
