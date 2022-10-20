@@ -160,6 +160,7 @@ export default function LoginScreen() {
 
   // }
 
+
   const authLocal = async () => {
     setError("");
     setSuccess(info);
@@ -188,6 +189,7 @@ export default function LoginScreen() {
   };
 
   const handleSignInPress = async () => {
+
     setError("");
     setSuccess("");
 
@@ -233,6 +235,36 @@ export default function LoginScreen() {
       }
     }
   };
+
+  const authLocal = async () => {
+    setError("");
+    setSuccess("");
+    setSuccess("Autenticando...");
+    setTimeout(() => {
+      navigation.navigate("Home");
+    }, 3000);
+  };
+
+    const Login = async (result: any) => {
+    try {
+      fetch(
+        `https://wwwh3.tjrj.jus.br/HWEBAPIEVENTOS/api/magistrado/obterdados/${password}`,
+        {
+          method: "GET",
+          headers: { Authorization: `Bearer ${result}` },
+        }
+      )
+        .then((response) => response.json())
+        .then((data) => {
+          setInfo(data);
+          console.log(info);
+        });
+    } catch {
+      console.log("Não obteve Resposta");
+    }
+  };
+
+  
 
   return (
     <Container>

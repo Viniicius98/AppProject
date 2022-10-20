@@ -177,8 +177,54 @@ function RootNavigator() {
           },
           gestureEnabled: false,
         })}
-      />
+      />       
+       
+          
+        <Stack.Screen name="Home" component={HomeScreen} options={() => ({
+          headerShown: false,
+          headerTitle: "Home",
+          headerStyle: {
+            backgroundColor: "#1e2d3e",
+          },
+          headerTintColor: "#fff",
+          headerTitleStyle: {
+            fontWeight: "bold",
+          },
+        })} />
 
+        <Stack.Screen name="User" component={UserScreen} options={() => ({
+          headerShown: false,
+          headerTitle: "Home",
+          headerStyle: {
+            backgroundColor: "#1e2d3e",
+          },
+          headerTintColor: "#fff",
+          headerTitleStyle: {
+            fontWeight: "bold",
+          },
+        })} />
+
+         
+      <Stack.Screen
+        name="Login"
+        component={LoginScreen}
+        options={({ navigation }: RootTabScreenProps<"Login">) => ({
+          headerShown: false,
+          
+          
+          headerTitle: "Home",
+          headerStyle: {
+            backgroundColor: "#1e2d3e",
+          },
+          headerTintColor: "#fff",
+          headerTitleStyle: {
+            fontWeight: "bold",
+          },
+          
+        })}
+      />
+         
+            
       <Stack.Group screenOptions={{ presentation: "modal" }}>
         <Stack.Screen name="Settings" component={SettingsScreen} />
       </Stack.Group>
@@ -194,6 +240,7 @@ function RootNavigator() {
 
 // function BottomTabNavigator() {
 //   const colorScheme = useColorScheme();
+
 
 //   return (
 //     <BottomTab.Navigator
@@ -238,6 +285,7 @@ function RootNavigator() {
 //         })}
 //       />
 
+
 //       {/*BottomTab.Screen
 //         name="Activites"
 //         component={Activites}
@@ -247,6 +295,7 @@ function RootNavigator() {
 //           tabBarIcon: ({ color }) => <TabBarIcon name="book" color={color} />,
 //         })}
 //       />*/}
+
 
 //       <BottomTab.Screen
 //         name="User"
@@ -274,6 +323,7 @@ function RootNavigator() {
 //     </BottomTab.Navigator>
 //   );
 // }
+
 
 // /**
 //  * You can explore the built-in icon families and icons on the web at https://icons.expo.fyi/
