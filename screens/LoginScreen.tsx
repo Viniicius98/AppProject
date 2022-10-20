@@ -1,19 +1,12 @@
-import { RootTabScreenProps } from "../types";
 import styled from "styled-components/native";
 import React, { useEffect, useState } from "react";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-
 import { ActivityIndicator, SafeAreaView, StyleSheet } from "react-native";
-
 import Header from "../components/Header";
 import AppLogo from "../components/Header/Applogo";
 import axios from "axios";
-import {
-  InfoIcon,
-  KeyboardAvoidingView,
-  NativeBaseProvider,
-} from "native-base";
-
+import { useNavigation } from "@react-navigation/native";
+import CardPerfilMagistrado from "../components/CardMagistrado";
 const BackgroundContainer = styled.View`
   width: 100%;
   height: 84.5%;
@@ -131,9 +124,7 @@ const Loading = styled.View`
   top: 55%;
 `;
 
-export default function LoginScreen({
-  navigation,
-}: RootTabScreenProps<"Login">) {
+export default function LoginScreen() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
@@ -141,17 +132,72 @@ export default function LoginScreen({
   const [auth, setAuth] = useState<boolean>(false);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [info, setInfo] = useState("");
+  const navigation = useNavigation();
 
-  
-    const handleSignInPress = async () => {
+  const user = {
+    nome: info,
+    idade: 20,
+  };
+  console.log(user.idade);
+  {
+    CardPerfilMagistrado(user);
+  }
+
+  // interface ListMagistrados {
+  //   name: string;
+  //   items: Magistrado[];
+  // }
+  // interface Magistrado {
+  //   nome: String;
+  //   idade: Number;
+  // }
+
+  // interface DadosMagistrados {
+  //   item: Magistrado;
+  // }
+
+  // const Magistrados :ListMagistrados{
+
+  // }
+
+
+  const authLocal = async () => {
+    setError("");
+    setSuccess(info);
+    setTimeout(() => {
+      navigation.navigate("Home");
+      setIsLoading(false);
+    }, 3000);
+  };
+
+  const Login = async (result: any) => {
+    try {
+      const dados = await axios.get(
+        `https://wwwh3.tjrj.jus.br/HWEBAPIEVENTOS/api/magistrado/obterdados/${password}`,
+        {
+          method: "GET",
+          headers: { Authorization: `Bearer ${result}` },
+        }
+      );
+      await AsyncStorage.setItem("Dados", JSON.stringify(dados.data));
+      const Dados = await AsyncStorage.getItem("Dados");
+
+      setInfo(dados.data.nome);
+    } catch {
+      console.log("Não obteve Resposta");
+    }
+  };
+
+  const handleSignInPress = async () => {
+
     setError("");
     setSuccess("");
-    setIsLoading(true);
 
     if (email.length === 0 || password.length === 0) {
       setError("Preencha usuário e senha para continuar!");
     } else {
       //aqui virá a API
+      setIsLoading(true);
       try {
         const response = await axios.get(
           `https://wwwh3.tjrj.jus.br/HWEBAPIEVENTOS/api/acesso/obtertoken/${email}/${password}`
@@ -163,14 +209,16 @@ export default function LoginScreen({
           const result = await AsyncStorage.getItem("@accessToken");
           Login(result);
 
-          console.log(result);
+          // console.log(result);
 
           if (result) {
             setTimeout(() => {
-              setIsLoading(false);
-              setSuccess("Usuario Autenticado");
-            }, 5000);
-            authLocal();
+              setSuccess(info);
+            }, 4000);
+
+            setTimeout(() => {
+              authLocal();
+            }, 8000);
           } else {
             console.log("não foi possivel autenticar");
           }

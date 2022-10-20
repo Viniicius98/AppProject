@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Text } from "../Themed";
 import styled from "styled-components/native";
+import LoginScreen from "../../screens/LoginScreen";
 
 const Container = styled.View`
   background: #fff;
@@ -35,7 +36,11 @@ const AvatarContainer = styled.View`
   align-items: center;
   margin-bottom: 30px;
 `;
-export default function CardPerfilMagistrado({ route }: any) {
+export default function CardPerfilMagistrado(user: any) {
+  console.log(user.nome);
+  console.log(user.idade);
+  const [nome, idade] = user;
+
   return (
     <Container>
       <Title>
@@ -48,8 +53,8 @@ export default function CardPerfilMagistrado({ route }: any) {
       </AvatarContainer>
 
       <Text style={{ fontWeight: "bold", textAlign: "center" }}>
-        Dr.
-        {/* {route.params?.nome} */}
+        Dr(a){nome}
+        minha id{idade}
       </Text>
       <Text style={{ fontSize: 9, textAlign: "center", marginBottom: 5 }}>
         Diretora do Departamento de Aperfeiçoamento de Magistrados

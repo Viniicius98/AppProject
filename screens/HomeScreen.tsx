@@ -1,5 +1,5 @@
 import styled from "styled-components/native";
-import { SafeAreaView } from 'react-native-safe-area-context';
+import { SafeAreaView } from "react-native-safe-area-context";
 import { useContext, useEffect } from "react";
 import { Text, View } from "../components/Themed";
 import { RootTabScreenProps } from "../types";
@@ -7,9 +7,10 @@ import HomeItemsComponents from "../components/HomeItemsComponents";
 import biometricAuth from "../utils/local-authentication";
 import { InputValueContext } from "../context/InputValueContext";
 import Header from "../components/Header";
+import BackButton from "../components/BackButton";
 
 const Container = styled.SafeAreaView`
-  flex:1;
+  flex: 1;
   margin-top: -8.4%;
   border-bottom-width: 10px;
   border-bottom-color: #b8977e;
@@ -26,6 +27,7 @@ export default function HomeScreen({ navigation }: RootTabScreenProps<"Home">) {
   return (
     <Container>
       <Header />
+
       <HomeItemsComponents />
     </Container>
   );
