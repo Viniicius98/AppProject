@@ -1,4 +1,3 @@
-import { RootTabScreenProps } from "../types";
 import styled from "styled-components/native";
 import React, { useEffect, useState } from "react";
 import AsyncStorage from "@react-native-async-storage/async-storage";
@@ -7,7 +6,7 @@ import Header from "../components/Header";
 import AppLogo from "../components/Header/Applogo";
 import axios from "axios";
 import { useNavigation } from "@react-navigation/native";
-
+import CardPerfilMagistrado from "../components/CardMagistrado";
 const BackgroundContainer = styled.View`
   width: 100%;
   height: 84.5%;
@@ -135,30 +134,54 @@ export default function LoginScreen() {
   const [info, setInfo] = useState("");
   const navigation = useNavigation();
 
+  const user = {
+    nome: info,
+    idade: 20,
+  };
+  console.log(user.idade);
+  {
+    CardPerfilMagistrado(user);
+  }
+
+  // interface ListMagistrados {
+  //   name: string;
+  //   items: Magistrado[];
+  // }
+  // interface Magistrado {
+  //   nome: String;
+  //   idade: Number;
+  // }
+
+  // interface DadosMagistrados {
+  //   item: Magistrado;
+  // }
+
+  // const Magistrados :ListMagistrados{
+
+  // }
+
   const authLocal = async () => {
     setError("");
-    setSuccess("Autenticando...");
+    setSuccess(info);
     setTimeout(() => {
       navigation.navigate("Home");
       setIsLoading(false);
-      setSuccess("");
     }, 3000);
   };
 
   const Login = async (result: any) => {
     try {
-      fetch(
+      const dados = await axios.get(
         `https://wwwh3.tjrj.jus.br/HWEBAPIEVENTOS/api/magistrado/obterdados/${password}`,
         {
           method: "GET",
           headers: { Authorization: `Bearer ${result}` },
         }
-      )
-        .then((response) => response.json())
-        .then((data) => {
-          setInfo(data);
-          console.log(info);
-        });
+      );
+      await AsyncStorage.setItem("Dados", JSON.stringify(dados.data));
+      const Dados = await AsyncStorage.getItem("Dados");
+
+      setInfo(dados.data.nome);
     } catch {
       console.log("Não obteve Resposta");
     }
@@ -184,11 +207,11 @@ export default function LoginScreen() {
           const result = await AsyncStorage.getItem("@accessToken");
           Login(result);
 
-          console.log(result);
+          // console.log(result);
 
           if (result) {
             setTimeout(() => {
-              setSuccess("Usuario Autenticado");
+              setSuccess(info);
             }, 4000);
 
             setTimeout(() => {

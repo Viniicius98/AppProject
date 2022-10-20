@@ -19,11 +19,11 @@ const linking: LinkingOptions<RootStackParamList> = {
               LoginScreen: "Login",
             },
           },
-          Home: {
-            screens: {
-              HomeScreen: "Home",
-            },
-          },
+          // Home: {
+          //   screens: {
+          //     HomeScreen: "Home",
+          //   },
+          // },
           Activites: {
             screens: {
               ActivitesScreen: "Activites",
@@ -67,4 +67,5 @@ const linking: LinkingOptions<RootStackParamList> = {
     },
   },
 };
+
 export default linking;
