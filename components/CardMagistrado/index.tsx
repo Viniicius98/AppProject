@@ -36,10 +36,12 @@ const AvatarContainer = styled.View`
   align-items: center;
   margin-bottom: 30px;
 `;
-export default function CardPerfilMagistrado(user: any) {
-  console.log(user.nome);
-  console.log(user.idade);
-  const [nome, idade] = user;
+type CardPerfilMagistradoProps = {
+  nome: string 
+  idade: number
+}
+
+export default function CardPerfilMagistrado({nome, idade}: CardPerfilMagistradoProps) {
 
   return (
     <Container>
