@@ -1,7 +1,14 @@
-import React, { useEffect, useState } from "react";
-import { Text } from "../Themed";
+import React from "react";
+import {
+  StyleSheet,
+  Text,
+  TouchableHighlight,
+  TouchableOpacity,
+  View,
+} from "react-native";
+import { useNavigation } from "@react-navigation/native";
+
 import styled from "styled-components/native";
-import LoginScreen from "../../screens/LoginScreen";
 
 const Container = styled.View`
   background: #fff;
@@ -36,17 +43,13 @@ const AvatarContainer = styled.View`
   align-items: center;
   margin-bottom: 30px;
 `;
-type CardPerfilMagistradoProps = {
-  nome: string 
-  idade: number
-}
-
-export default function CardPerfilMagistrado({nome, idade}: CardPerfilMagistradoProps) {
-
+export default function CardPerfilMagistrado(user: any) {
+  //console.log(user.nome)
+  //console.log(user.idade)
   return (
     <Container>
       <Title>
-        <TitleText>PERFIL DO MAGISTRADO</TitleText>
+        <TitleText>PERFIL DO MAGISTRADO{user.idade}</TitleText>
       </Title>
 
       <CardBanner source={require("../../assets/images/background.png")} />
@@ -54,13 +57,11 @@ export default function CardPerfilMagistrado({nome, idade}: CardPerfilMagistrado
         <Avatar source={require("../../assets/images/avatar.jpg")} />
       </AvatarContainer>
 
-      <Text style={{ fontWeight: "bold", textAlign: "center" }}>
-        Dr(a){nome}
-        minha id{idade}
-      </Text>
-      <Text style={{ fontSize: 9, textAlign: "center", marginBottom: 5 }}>
-        Diretora do Departamento de Aperfeiçoamento de Magistrados
-      </Text>
+     <View>
+      <Text>{user.idade}</Text>
+      <Text>{user.name}</Text>
+      </View>
+      
     </Container>
   );
 }
