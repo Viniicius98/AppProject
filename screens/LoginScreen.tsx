@@ -1,3 +1,4 @@
+import { RootTabScreenProps } from "../types";
 import styled from "styled-components/native";
 import React, { useEffect, useState } from "react";
 import AsyncStorage from "@react-native-async-storage/async-storage";
@@ -7,6 +8,7 @@ import AppLogo from "../components/Header/Applogo";
 import axios from "axios";
 import { useNavigation } from "@react-navigation/native";
 import CardPerfilMagistrado from "../components/CardMagistrado";
+
 const BackgroundContainer = styled.View`
   width: 100%;
   height: 84.5%;
@@ -38,7 +40,6 @@ const Container = styled.View`
 `;
 const AppContainer = styled.View`
   flex: 1;
-
   margin-top: -38.9%;
   margin-left: 25.5%;
 `;
@@ -134,62 +135,47 @@ export default function LoginScreen() {
   const [info, setInfo] = useState("");
   const navigation = useNavigation();
 
-  const user = {
-    nome: info,
-    idade: 20,
-  };
-  console.log(user.idade);
-  {
-    CardPerfilMagistrado(user);
-  }
-
-  // interface ListMagistrados {
-  //   name: string;
-  //   items: Magistrado[];
-  // }
-  // interface Magistrado {
-  //   nome: String;
-  //   idade: Number;
-  // }
-
-  // interface DadosMagistrados {
-  //   item: Magistrado;
-  // }
-
-  // const Magistrados :ListMagistrados{
-
-  // }
+    const user = {
+     nome: "evandro",
+     idade: 20,
+   };
+   //console.log(user.nome);
+   {
+     CardPerfilMagistrado(user);
+   }
 
 
   const authLocal = async () => {
     setError("");
-    setSuccess(info);
+    setSuccess("Autenticando...");
     setTimeout(() => {
       navigation.navigate("Home");
       setIsLoading(false);
+      setSuccess("");
     }, 3000);
   };
 
   const Login = async (result: any) => {
     try {
-      const dados = await axios.get(
+      fetch(
         `https://wwwh3.tjrj.jus.br/HWEBAPIEVENTOS/api/magistrado/obterdados/${password}`,
         {
           method: "GET",
           headers: { Authorization: `Bearer ${result}` },
         }
-      );
-      await AsyncStorage.setItem("Dados", JSON.stringify(dados.data));
-      const Dados = await AsyncStorage.getItem("Dados");
-
-      setInfo(dados.data.nome);
+      )
+        .then((response) => response.json())
+        .then((data) => {
+          setInfo(data);
+          //console.log(info);
+          
+        });
     } catch {
       console.log("Não obteve Resposta");
     }
   };
 
   const handleSignInPress = async () => {
-
     setError("");
     setSuccess("");
 
@@ -209,11 +195,11 @@ export default function LoginScreen() {
           const result = await AsyncStorage.getItem("@accessToken");
           Login(result);
 
-          // console.log(result);
+          //console.log(result);
 
           if (result) {
             setTimeout(() => {
-              setSuccess(info);
+              setSuccess("Usuario Autenticado");
             }, 4000);
 
             setTimeout(() => {
@@ -235,36 +221,6 @@ export default function LoginScreen() {
       }
     }
   };
-
-  const authLocal = async () => {
-    setError("");
-    setSuccess("");
-    setSuccess("Autenticando...");
-    setTimeout(() => {
-      navigation.navigate("Home");
-    }, 3000);
-  };
-
-    const Login = async (result: any) => {
-    try {
-      fetch(
-        `https://wwwh3.tjrj.jus.br/HWEBAPIEVENTOS/api/magistrado/obterdados/${password}`,
-        {
-          method: "GET",
-          headers: { Authorization: `Bearer ${result}` },
-        }
-      )
-        .then((response) => response.json())
-        .then((data) => {
-          setInfo(data);
-          console.log(info);
-        });
-    } catch {
-      console.log("Não obteve Resposta");
-    }
-  };
-
-  
 
   return (
     <Container>
