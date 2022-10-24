@@ -53,7 +53,7 @@ export default function CardPerfilMagistrado({ user, route }: any) {
   return (
     <Container>
       <Title>
-        <TitleText>PERFIL DO MAGISTRADO{user.idade}</TitleText>
+        <TitleText>PERFIL DO MAGISTRADO</TitleText>
       </Title>
 
       <CardBanner source={require("../../assets/images/background.png")} />
