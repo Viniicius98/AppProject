@@ -180,7 +180,7 @@ function RootNavigator() {
       />       
        
           
-        <Stack.Screen name="Home" component={HomeScreen} options={() => ({
+        {/* <Stack.Screen name="Home" component={HomeScreen} options={() => ({
           headerShown: false,
           headerTitle: "Home",
           headerStyle: {
@@ -222,7 +222,7 @@ function RootNavigator() {
           },
           
         })}
-      />
+      /> */}
          
             
       <Stack.Group screenOptions={{ presentation: "modal" }}>

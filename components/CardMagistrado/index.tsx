@@ -43,9 +43,13 @@ const AvatarContainer = styled.View`
   align-items: center;
   margin-bottom: 30px;
 `;
-export default function CardPerfilMagistrado(user: any) {
-  //console.log(user.nome)
-  //console.log(user.idade)
+
+export default function CardPerfilMagistrado({ user, route }: any) {
+  // console.log(user.nome);
+  // console.log(user.idade);
+  // const [nome, idade] = user;
+
+
   return (
     <Container>
       <Title>
@@ -57,11 +61,14 @@ export default function CardPerfilMagistrado(user: any) {
         <Avatar source={require("../../assets/images/avatar.jpg")} />
       </AvatarContainer>
 
-     <View>
-      <Text>{user.idade}</Text>
-      <Text>{user.name}</Text>
-      </View>
-      
+
+      <Text style={{ fontWeight: "bold", textAlign: "center" }}>
+        Dr
+      </Text>
+      <Text style={{ fontSize: 9, textAlign: "center", marginBottom: 5 }}>
+        Diretora do Departamento de Aperfeiçoamento de Magistrados
+      </Text>
+
     </Container>
   );
 }
