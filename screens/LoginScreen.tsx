@@ -210,10 +210,11 @@ export default function LoginScreen({ item }: DadosMagistrados) {
 
   const authLocal = async () => {
     setError("");
-    setSuccess(info);
+    setSuccess("Autenticando...");
     setTimeout(() => {
       navigation.navigate("Home");
       setIsLoading(false);
+      setSuccess("");
     }, 3000);
   };
 

@@ -1,7 +1,14 @@
-import React, { useEffect, useState } from "react";
-import { Text } from "../Themed";
+import React from "react";
+import {
+  StyleSheet,
+  Text,
+  TouchableHighlight,
+  TouchableOpacity,
+  View,
+} from "react-native";
+import { useNavigation } from "@react-navigation/native";
+
 import styled from "styled-components/native";
-import LoginScreen from "../../screens/LoginScreen";
 
 const Container = styled.View`
   background: #fff;
@@ -36,15 +43,17 @@ const AvatarContainer = styled.View`
   align-items: center;
   margin-bottom: 30px;
 `;
+
 export default function CardPerfilMagistrado({ user, route }: any) {
   // console.log(user.nome);
   // console.log(user.idade);
   // const [nome, idade] = user;
 
+
   return (
     <Container>
       <Title>
-        <TitleText>PERFIL DO MAGISTRADO</TitleText>
+        <TitleText>PERFIL DO MAGISTRADO{user.idade}</TitleText>
       </Title>
 
       <CardBanner source={require("../../assets/images/background.png")} />
@@ -52,12 +61,14 @@ export default function CardPerfilMagistrado({ user, route }: any) {
         <Avatar source={require("../../assets/images/avatar.jpg")} />
       </AvatarContainer>
 
+
       <Text style={{ fontWeight: "bold", textAlign: "center" }}>
         Dr
       </Text>
       <Text style={{ fontSize: 9, textAlign: "center", marginBottom: 5 }}>
         Diretora do Departamento de Aperfeiçoamento de Magistrados
       </Text>
+
     </Container>
   );
 }
