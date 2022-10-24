@@ -129,7 +129,7 @@ interface ListMagistrados {
   items: Magistrado[];
 }
 interface Magistrado {
-  nome: String;
+  nome: string;
   idade: Number;
 }
 
@@ -152,14 +152,14 @@ export default function LoginScreen({ item }: DadosMagistrados) {
   const [info, setInfo] = useState("");
   const navigation = useNavigation();
 
-   const user = {
-     nome: info,
-     idade: 20,
-   };
-   console.log(user.idade);
-   {
-     CardPerfilMagistrado(user);
-   }
+  const user = {
+    nome: info,
+    idade: 20,
+  };
+  console.log(user.idade);
+  {
+    CardPerfilMagistrado(user);
+  }
 
   const handleSignInPress = async () => {
     setError("");
@@ -212,7 +212,7 @@ export default function LoginScreen({ item }: DadosMagistrados) {
     setError("");
     setSuccess("Autenticando...");
     setTimeout(() => {
-      navigation.navigate("Home");
+      navigation.navigate("Home", { nome: item.nome });
       setIsLoading(false);
       setSuccess("");
     }, 3000);
