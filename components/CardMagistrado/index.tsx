@@ -53,7 +53,7 @@ export default function CardPerfilMagistrado({ user, route }: any) {
       </AvatarContainer>
 
       <Text style={{ fontWeight: "bold", textAlign: "center" }}>
-        Dr(a){route.params.nome}
+        Dr
       </Text>
       <Text style={{ fontSize: 9, textAlign: "center", marginBottom: 5 }}>
         Diretora do Departamento de Aperfeiçoamento de Magistrados

@@ -152,14 +152,14 @@ export default function LoginScreen({ item }: DadosMagistrados) {
   const [info, setInfo] = useState("");
   const navigation = useNavigation();
 
-  // const user = {
-  //   nome: info,
-  //   idade: 20,
-  // };
-  // console.log(user.idade);
-  // {
-  //   CardPerfilMagistrado(user);
-  // }
+   const user = {
+     nome: info,
+     idade: 20,
+   };
+   console.log(user.idade);
+   {
+     CardPerfilMagistrado(user);
+   }
 
   const handleSignInPress = async () => {
     setError("");
@@ -212,7 +212,7 @@ export default function LoginScreen({ item }: DadosMagistrados) {
     setError("");
     setSuccess(info);
     setTimeout(() => {
-      navigation.navigate("Home", { nome: item.nome });
+      navigation.navigate("Home");
       setIsLoading(false);
     }, 3000);
   };
