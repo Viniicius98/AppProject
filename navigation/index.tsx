@@ -66,22 +66,52 @@ const Stack = createNativeStackNavigator<RootStackParamList>();
 
 function RootNavigator() {
   return (
-    <Stack.Navigator>
+    <Stack.Navigator
+      initialRouteName="Login"
+      screenOptions={{
+        headerShown: true,
+      }}
+    >
+      <Stack.Screen
+        name="Login"
+        component={LoginScreen}
+        options={() => ({
+          headerShown: false,
+          gestureEnabled: false,
+        })}
+      />
+      <Stack.Screen
+        name="Home"
+        component={HomeScreen}
+        options={({ navigation }: RootTabScreenProps<"Home">) => ({
+          headerShown: false,
+          gestureEnabled: false,
+        })}
+      />
+      <Stack.Screen
+        name="User"
+        component={UserScreen}
+        options={({ navigation }: RootTabScreenProps<"User">) => ({
+          title: "Usuário",
+          gestureEnabled: false,
+        })}
+      />
       <Stack.Screen
         name="Root"
-        component={BottomTabNavigator}
-        options={{ headerShown: false }}
+        component={UserScreen}
+        options={{ headerShown: false, gestureEnabled: false }}
       />
       <Stack.Screen
         name="NotFound"
         component={NotFoundScreen}
-        options={{ title: "Opa!" }}
+        options={{ title: "Opa!", gestureEnabled: false }}
       />
       <Stack.Screen
         name="ActionRecord"
         component={ActionRecord}
         options={() => ({
           headerShown: false,
+          gestureEnabled: false,
         })}
       />
       <Stack.Screen
@@ -89,6 +119,7 @@ function RootNavigator() {
         component={Publication}
         options={() => ({
           headerShown: false,
+          gestureEnabled: false,
         })}
       />
       <Stack.Screen
@@ -96,6 +127,7 @@ function RootNavigator() {
         component={TitlesRecord}
         options={() => ({
           headerShown: false,
+          gestureEnabled: false,
         })}
       />
       <Stack.Screen
@@ -111,6 +143,7 @@ function RootNavigator() {
           headerTitleStyle: {
             fontWeight: "bold",
           },
+          gestureEnabled: false,
         })}
       />
       <Stack.Screen
@@ -126,6 +159,7 @@ function RootNavigator() {
           headerTitleStyle: {
             fontWeight: "bold",
           },
+          gestureEnabled: false,
         })}
       />
       <Stack.Screen
@@ -141,11 +175,12 @@ function RootNavigator() {
           headerTitleStyle: {
             fontWeight: "bold",
           },
+          gestureEnabled: false,
         })}
       />       
        
           
-        <Stack.Screen name="Home" component={HomeScreen} options={() => ({
+        {/* <Stack.Screen name="Home" component={HomeScreen} options={() => ({
           headerShown: false,
           headerTitle: "Home",
           headerStyle: {
@@ -187,7 +222,7 @@ function RootNavigator() {
           },
           
         })}
-      />
+      /> */}
          
             
       <Stack.Group screenOptions={{ presentation: "modal" }}>
@@ -201,110 +236,110 @@ function RootNavigator() {
  * A bottom tab navigator displays tab buttons on the bottom of the display to switch screens.
  * https://reactnavigation.org/docs/bottom-tab-navigator
  */
-const BottomTab = createBottomTabNavigator<RootTabParamList>();
+// const BottomTab = createBottomTabNavigator<RootTabParamList>();
 
-function BottomTabNavigator() {
-  const colorScheme = useColorScheme();
+// function BottomTabNavigator() {
+//   const colorScheme = useColorScheme();
 
-  return (
-    <BottomTab.Navigator
-      initialRouteName="Login"
-      screenOptions={{
-        tabBarActiveTintColor: Colors[colorScheme].tint,
-        headerShown: true,
-        
-      }}
-    >
-      <BottomTab.Screen
-        name="Login"
-        component={LoginScreen}
-        options={({ navigation }: RootTabScreenProps<"Login">) => ({
-          headerShown: false,
-          
-          
-          tabBarIcon: ({ color }) => (
-            <TabBarIcon name="sign-in" color={color} />
-            
-          ),
-        })}
-      />
 
-      <BottomTab.Screen
-        name="Home"
-        component={HomeScreen}
-        options={({ navigation }: RootTabScreenProps<"Home">) => ({
-          tabBarIcon: ({ color }) => <TabBarIcon name="home" color={color} />,
-          headerShown: false,
-          headerRight: () => (
-            <Pressable
-              //onPress={() => navigation.navigate("Activites")}
-              style={({ pressed }) => ({
-                opacity: pressed ? 0.5 : 1,
-              })}
-            >
-              <FontAwesome
-                name="info-circle"
-                size={25}
-                color={Colors[colorScheme].text}
-                style={{ marginRight: 15 }}
-              />
-            </Pressable>
-          ),
-        })}
-      /> 
+//   return (
+//     <BottomTab.Navigator
+//       initialRouteName="Login"
+//       screenOptions={{
+//         tabBarActiveTintColor: Colors[colorScheme].tint,
+//         headerShown: true,
+//       }}
+//     >
+//       <BottomTab.Screen
+//         name="Login"
+//         component={LoginScreen}
+//         options={({ navigation }: RootTabScreenProps<"Login">) => ({
+//           headerShown: false,
+//           tabBarIcon: ({ color }) => (
+//             <TabBarIcon name="sign-in" color={color} />
+//           ),
+//         })}
+//       />
 
-      {/*BottomTab.Screen
-        name="Activites"
-        component={Activites}
-        options={({ navigation }: RootTabScreenProps<"Activites">) => ({
-          title: "Ações Educacionais",
-          header: (props) => <Header />,
-          tabBarIcon: ({ color }) => <TabBarIcon name="book" color={color} />,
-        })}
-      />*/}
+//       <BottomTab.Screen
+//         name="Home"
+//         component={HomeScreen}
+//         options={({ navigation }: RootTabScreenProps<"Home">) => ({
+//           tabBarIcon: ({ color }) => <TabBarIcon name="home" color={color} />,
+//           headerShown: false,
+//           headerRight: () => (
+//             <Pressable
+//               //onPress={() => navigation.navigate("Activites")}
+//               style={({ pressed }) => ({
+//                 opacity: pressed ? 0.5 : 1,
+//               })}
+//             >
+//               <FontAwesome
+//                 name="info-circle"
+//                 size={25}
+//                 color={Colors[colorScheme].text}
+//                 style={{ marginRight: 15 }}
+//               />
+//             </Pressable>
+//           ),
+//         })}
+//       />
 
-      <BottomTab.Screen
-        name="User"
-        component={UserScreen}
-        options={({ navigation }: RootTabScreenProps<"User">) => ({
-          title: "Usuário",
-          tabBarIcon: ({ color }) => <TabBarIcon name="user" color={color} />,
-          headerRight: () => (
-            <Pressable
-              //onPress={() => navigation.navigate("Settings")}
-              style={({ pressed }) => ({
-                opacity: pressed ? 0.5 : 1,
-              })}
-            >
-              <FontAwesome
-                name="cog"
-                size={25}
-                color={Colors[colorScheme].text}
-                style={{ marginRight: 15 }}
-              />
-            </Pressable>
-          ),
-        })}
-      /> 
-    </BottomTab.Navigator>
-  );
-}
 
-/**
- * You can explore the built-in icon families and icons on the web at https://icons.expo.fyi/
- */
-function TabBarIcon(props: {
-  name: React.ComponentProps<typeof FontAwesome>["name"];
-  color: string;
-}) {
-  return <FontAwesome size={30} style={{ marginBottom: -3 }} {...props} />;
-}
+//       {/*BottomTab.Screen
+//         name="Activites"
+//         component={Activites}
+//         options={({ navigation }: RootTabScreenProps<"Activites">) => ({
+//           title: "Ações Educacionais",
+//           header: (props) => <Header />,
+//           tabBarIcon: ({ color }) => <TabBarIcon name="book" color={color} />,
+//         })}
+//       />*/}
 
-/*<BottomTab.Screen
-        name="Chat"
-        component={Chat}
-        options={({ navigation }: RootTabScreenProps<'Chat'>) => ({
-          title: 'Chat',
-          tabBarIcon: ({ color }) => <TabBarIcon name="anchor" color={color} />,
-        })}
-      />*/
+
+//       <BottomTab.Screen
+//         name="User"
+//         component={UserScreen}
+//         options={({ navigation }: RootTabScreenProps<"User">) => ({
+//           title: "Usuário",
+//           tabBarIcon: ({ color }) => <TabBarIcon name="user" color={color} />,
+//           headerRight: () => (
+//             <Pressable
+//               //onPress={() => navigation.navigate("Settings")}
+//               style={({ pressed }) => ({
+//                 opacity: pressed ? 0.5 : 1,
+//               })}
+//             >
+//               <FontAwesome
+//                 name="cog"
+//                 size={25}
+//                 color={Colors[colorScheme].text}
+//                 style={{ marginRight: 15 }}
+//               />
+//             </Pressable>
+//           ),
+//         })}
+//       />
+//     </BottomTab.Navigator>
+//   );
+// }
+
+
+// /**
+//  * You can explore the built-in icon families and icons on the web at https://icons.expo.fyi/
+//  */
+// function TabBarIcon(props: {
+//   name: React.ComponentProps<typeof FontAwesome>["name"];
+//   color: string;
+// }) {
+//   return <FontAwesome size={30} style={{ marginBottom: -3 }} {...props} />;
+// }
+
+// /*<BottomTab.Screen
+//         name="Chat"
+//         component={Chat}
+//         options={({ navigation }: RootTabScreenProps<'Chat'>) => ({
+//           title: 'Chat',
+//           tabBarIcon: ({ color }) => <TabBarIcon name="anchor" color={color} />,
+//         })}
+//       />*/

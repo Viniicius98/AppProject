@@ -28,8 +28,9 @@ export type RootStackParamList = {
   Publication: undefined;
   TitlesRecord: undefined;
   Home: undefined;
-  User: undefined;
+
   Login: undefined;
+  User: undefined;
 };
 
 export type RootStackScreenProps<Screen extends keyof RootStackParamList> =

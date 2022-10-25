@@ -1,6 +1,13 @@
 import React, { useState } from "react";
 import styled from "styled-components/native";
-import { FlatList, GestureResponderEvent, ImageProps, TouchableHighlight } from "react-native";
+import axios from "axios";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import {
+  FlatList,
+  GestureResponderEvent,
+  ImageProps,
+  TouchableHighlight,
+} from "react-native";
 import CardPerfilMagistrado from "../CardMagistrado";
 import CardConsultaEnfam from "../CardConsultaEnfam";
 import CardNotificacoes from "../../components/CardNotificacoes";
@@ -50,7 +57,7 @@ const IconsItems = styled.View`
 const ContainerApp = styled.View`
   width: 38%;
   margin-top: -450%;
-  margin-left:5%;
+  margin-left: 5%;
 `;
 const FlatLinks = [
   {
@@ -105,7 +112,6 @@ const TextFlat = styled.Text`
   text-align: center;
 `;
 
-
 interface IFlatItems {
   id: string;
   text: string;
@@ -121,17 +127,27 @@ const Item = ({
   item: IFlatItems;
   onPress: (event: GestureResponderEvent) => void;
 }) => (
-  
   <Link style={styles.container} to={{ screen: item.screen }}>
     <ImageFlat source={item.icon} />
     <TextFlat> {item.text}</TextFlat>
   </Link>
-  
 );
 
-export default function HomeItemsComponents() {
+export default function HomeItemsComponents({ props }: any) {
+  const [nome, setNome] = useState("");
   const [selectedId, setSelectedId] = useState<number | null>(null);
 
+  const getDados = async () => {
+    try {
+      const Dados = await AsyncStorage.getItem("Dados");
+      if (Dados) {
+        setNome(Dados);
+      }
+    } catch (error) {
+      console.log("sem dados");
+    }
+  };
+  getDados();
   const renderItem = ({ item }: { item: IFlatItems }) => {
     return <Item item={item} onPress={() => setSelectedId(Number(item.id))} />;
   };
@@ -153,7 +169,7 @@ export default function HomeItemsComponents() {
           </FlatListItems>
 
           <IconsItems>
-            <CardPerfilMagistrado />
+            <CardPerfilMagistrado props={nome} />
             <CardConsultaEnfam />
             <CardNotificacoes />
             <ContainerApp>

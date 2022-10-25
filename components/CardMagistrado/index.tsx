@@ -1,5 +1,13 @@
 import React from "react";
-import { Text } from "../Themed";
+import {
+  StyleSheet,
+  Text,
+  TouchableHighlight,
+  TouchableOpacity,
+  View,
+} from "react-native";
+import { useNavigation } from "@react-navigation/native";
+
 import styled from "styled-components/native";
 
 const Container = styled.View`
@@ -35,7 +43,11 @@ const AvatarContainer = styled.View`
   align-items: center;
   margin-bottom: 30px;
 `;
-export default function CardPerfilMagistrado({ route }: any) {
+
+export default function CardPerfilMagistrado(props: any) {
+  const nome = props.props;
+  console.log(nome);
+  // console.log(props.props2);
   return (
     <Container>
       <Title>
@@ -48,8 +60,7 @@ export default function CardPerfilMagistrado({ route }: any) {
       </AvatarContainer>
 
       <Text style={{ fontWeight: "bold", textAlign: "center" }}>
-        Dr.
-        {/* {route.params?.nome} */}
+        Dr(a) {nome}
       </Text>
       <Text style={{ fontSize: 9, textAlign: "center", marginBottom: 5 }}>
         Diretora do Departamento de Aperfeiçoamento de Magistrados
