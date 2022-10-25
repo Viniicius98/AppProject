@@ -16,7 +16,10 @@ const Container = styled.SafeAreaView`
   border-bottom-color: #b8977e;
 `;
 
-export default function HomeScreen({ navigation }: RootTabScreenProps<"Home">) {
+export default function HomeScreen(
+  { navigation }: RootTabScreenProps<"Home">,
+  { props }: any
+) {
   const { state, dispatch } = useContext(InputValueContext);
 
   /*const authLocal = async()=>{
@@ -27,7 +30,6 @@ export default function HomeScreen({ navigation }: RootTabScreenProps<"Home">) {
   return (
     <Container>
       <Header />
-
       <HomeItemsComponents />
     </Container>
   );

@@ -44,16 +44,14 @@ const AvatarContainer = styled.View`
   margin-bottom: 30px;
 `;
 
-export default function CardPerfilMagistrado({ user, route }: any) {
-  // console.log(user.nome);
-  // console.log(user.idade);
-  // const [nome, idade] = user;
-
-
+export default function CardPerfilMagistrado(props: any) {
+  const nome = props.props;
+  console.log(nome);
+  // console.log(props.props2);
   return (
     <Container>
       <Title>
-        <TitleText>PERFIL DO MAGISTRADO{user.idade}</TitleText>
+        <TitleText>PERFIL DO MAGISTRADO</TitleText>
       </Title>
 
       <CardBanner source={require("../../assets/images/background.png")} />
@@ -61,14 +59,12 @@ export default function CardPerfilMagistrado({ user, route }: any) {
         <Avatar source={require("../../assets/images/avatar.jpg")} />
       </AvatarContainer>
 
-
       <Text style={{ fontWeight: "bold", textAlign: "center" }}>
-        Dr
+        Dr(a) {nome}
       </Text>
       <Text style={{ fontSize: 9, textAlign: "center", marginBottom: 5 }}>
         Diretora do Departamento de Aperfeiçoamento de Magistrados
       </Text>
-
     </Container>
   );
 }

@@ -7,6 +7,8 @@ import AppLogo from "../components/Header/Applogo";
 import axios from "axios";
 import { useNavigation } from "@react-navigation/native";
 import CardPerfilMagistrado from "../components/CardMagistrado";
+import HomeScreen from "./HomeScreen";
+import HomeItemsComponents from "../components/HomeItemsComponents";
 const BackgroundContainer = styled.View`
   width: 100%;
   height: 84.5%;
@@ -124,25 +126,25 @@ const Loading = styled.View`
   top: 55%;
 `;
 
-interface ListMagistrados {
-  name: string;
-  items: Magistrado[];
-}
-interface Magistrado {
-  nome: String;
-  idade: Number;
-}
+// interface ListMagistrados {
+//   name: string;
+//   items: Magistrado[];
+// }
+// interface Magistrado {
+//   nome: string;
+//   idade: Number;
+// }
 
-interface DadosMagistrados {
-  item: Magistrado;
-}
+// interface DadosMagistrados {
+//   item: Magistrado;
+// }
 
-const Magistrados: ListMagistrados = {
-  name: "Ações Educacionais",
-  items: [{ nome: "Bolsonaro", idade: 25 }],
-};
+// const Magistrados: ListMagistrados = {
+//   name: "Ações Educacionais",
+//   items: [{ nome: "Bolsonaro", idade: 25 }],
+// };
 
-export default function LoginScreen({ item }: DadosMagistrados) {
+export default function LoginScreen(/*{ item }: DadosMagistrados*/) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
@@ -152,15 +154,12 @@ export default function LoginScreen({ item }: DadosMagistrados) {
   const [info, setInfo] = useState("");
   const navigation = useNavigation();
 
-   const user = {
-     nome: info,
-     idade: 20,
-   };
-   console.log(user.idade);
-   {
-     CardPerfilMagistrado(user);
-   }
-
+  // {
+  //   HomeItemsComponents(nome);
+  // }
+  // const idade: number = 24;
+  // const nome: string = info;
+  console.log(info + " login");
   const handleSignInPress = async () => {
     setError("");
     setSuccess("");
@@ -185,7 +184,7 @@ export default function LoginScreen({ item }: DadosMagistrados) {
 
           if (result) {
             setTimeout(() => {
-              setSuccess(info);
+              setSuccess("Autenticado");
             }, 4000);
 
             setTimeout(() => {
@@ -212,7 +211,9 @@ export default function LoginScreen({ item }: DadosMagistrados) {
     setError("");
     setSuccess("Autenticando...");
     setTimeout(() => {
-      navigation.navigate("Home");
+      {
+        navigation.navigate("Home");
+      }
       setIsLoading(false);
       setSuccess("");
     }, 3000);
@@ -227,8 +228,7 @@ export default function LoginScreen({ item }: DadosMagistrados) {
           headers: { Authorization: `Bearer ${result}` },
         }
       );
-      await AsyncStorage.setItem("Dados", JSON.stringify(dados.data));
-      const Dados = await AsyncStorage.getItem("Dados");
+      await AsyncStorage.setItem("Dados", JSON.stringify(dados.data.nome));
 
       setInfo(dados.data.nome);
     } catch {
