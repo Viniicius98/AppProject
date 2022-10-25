@@ -154,12 +154,15 @@ export default function LoginScreen(/*{ item }: DadosMagistrados*/) {
   const [info, setInfo] = useState("");
   const navigation = useNavigation();
 
-  // {
-  //   HomeItemsComponents(nome);
-  // }
-  // const idade: number = 24;
-  // const nome: string = info;
-  console.log(info + " login");
+  const user = {
+    nome: info,
+    idade: 20,
+  };
+  console.log(user.idade);
+  {
+    CardPerfilMagistrado(user);
+  }
+
   const handleSignInPress = async () => {
     setError("");
     setSuccess("");
@@ -211,9 +214,7 @@ export default function LoginScreen(/*{ item }: DadosMagistrados*/) {
     setError("");
     setSuccess("Autenticando...");
     setTimeout(() => {
-      {
-        navigation.navigate("Home");
-      }
+      navigation.navigate("Home");
       setIsLoading(false);
       setSuccess("");
     }, 3000);
