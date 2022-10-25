@@ -44,13 +44,16 @@ const AvatarContainer = styled.View`
   margin-bottom: 30px;
 `;
 
-export default function CardPerfilMagistrado({ user, route }: any) {
-  //console.log(user.nome);
+export default function CardPerfilMagistrado(props: any) {
+  const nome = props.props;
+  console.log(nome);
+   //console.log(user.nome);
   // console.log(user.idade);
   // const [nome, idade] = user;
 
 
   return (
+    <>
     <Container>
       <Title>
         <TitleText>PERFIL DO MAGISTRADO</TitleText>
@@ -63,12 +66,13 @@ export default function CardPerfilMagistrado({ user, route }: any) {
 
 
       <Text style={{ fontWeight: "bold", textAlign: "center" }}>
-        Dr
+        Dr{nome}
       </Text>
       <Text style={{ fontSize: 9, textAlign: "center", marginBottom: 5 }}>
-        Diretora do Departamento de Aperfeiçoamento de Magistrados
+       
       </Text>
 
     </Container>
+    </>
   );
 }

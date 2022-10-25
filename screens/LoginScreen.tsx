@@ -7,6 +7,7 @@ import AppLogo from "../components/Header/Applogo";
 import axios from "axios";
 import { useNavigation } from "@react-navigation/native";
 import CardPerfilMagistrado from "../components/CardMagistrado";
+import { string } from "yup/lib/locale";
 const BackgroundContainer = styled.View`
   width: 100%;
   height: 84.5%;
@@ -130,23 +131,7 @@ const Loading = styled.View`
   top: 55%;
 `;
 
-interface ListMagistrados {
-  name: string;
-  items: Magistrado[];
-}
-interface Magistrado {
-  nome: String;
-  idade: Number;
-}
 
-interface DadosMagistrados {
-  item: Magistrado;
-}
-
-const Magistrados: ListMagistrados = {
-  name: "Ações Educacionais",
-  items: [{ nome: "Bolsonaro", idade: 25 }],
-};
 
 export default function LoginScreen() {
   const [email, setEmail] = useState("");
@@ -157,17 +142,11 @@ export default function LoginScreen() {
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [info, setInfo] = useState("");
   const navigation = useNavigation();
+  
 
-   const user = {
-     nome: info,
-     lotação: info,
-     email: info,
-   };
-   console.log(user.nome);
+
    
-   {
-     CardPerfilMagistrado(user);
-   }
+   console.log(info + "login");
 
   const handleSignInPress = async () => {
     setError("");
@@ -220,7 +199,9 @@ export default function LoginScreen() {
     setError("");
     setSuccess("Autenticando...");
     setTimeout(() => {
-      navigation.navigate("Home");
+      {
+        navigation.navigate("Home");
+      }     
       setIsLoading(false);
       setSuccess("");
     }, 3000);
@@ -235,8 +216,8 @@ export default function LoginScreen() {
           headers: { Authorization: `Bearer ${result}` },
         }
       );
-      await AsyncStorage.setItem("Dados", JSON.stringify(dados.data));
-      const Dados = await AsyncStorage.getItem("Dados");
+      await AsyncStorage.setItem("Dados", JSON.stringify(dados.data.nome));
+      
 
       setInfo(dados.data.nome);
     } catch {

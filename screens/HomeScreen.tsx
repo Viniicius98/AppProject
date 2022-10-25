@@ -9,6 +9,8 @@ import { InputValueContext } from "../context/InputValueContext";
 import Header from "../components/Header";
 import BackButton from "../components/BackButton";
 
+import { useNavigation } from "@react-navigation/native";
+
 const Container = styled.SafeAreaView`
   flex: 1;
   margin-top: -8.4%;
@@ -16,17 +18,17 @@ const Container = styled.SafeAreaView`
   border-bottom-color: #b8977e;
 `;
 
-export default function HomeScreen({ navigation }: RootTabScreenProps<"Home">) {
+export default function HomeScreen(
+  { navigation }: RootTabScreenProps<"Home">,
+  { props }: any
+ ) {
   const { state, dispatch } = useContext(InputValueContext);
 
-  /*const authLocal = async()=>{
-    if(await biometricAuth()){
-      navigation.navigate('User');
-    }
-  }*/
+  
   return (
     <Container>
       <Header />
+      
 
       <HomeItemsComponents />
     </Container>
