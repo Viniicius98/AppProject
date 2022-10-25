@@ -45,7 +45,7 @@ const AvatarContainer = styled.View`
 `;
 
 export default function CardPerfilMagistrado({ user, route }: any) {
-  // console.log(user.nome);
+  //console.log(user.nome);
   // console.log(user.idade);
   // const [nome, idade] = user;
 

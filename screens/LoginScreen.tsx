@@ -1,7 +1,7 @@
 import styled from "styled-components/native";
 import React, { useEffect, useState } from "react";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import { ActivityIndicator, SafeAreaView, StyleSheet } from "react-native";
+import { ActivityIndicator, SafeAreaView, StyleSheet, KeyboardAvoidingView } from "react-native";
 import Header from "../components/Header";
 import AppLogo from "../components/Header/Applogo";
 import axios from "axios";
@@ -11,6 +11,7 @@ const BackgroundContainer = styled.View`
   width: 100%;
   height: 84.5%;
   background-color: #ffffff;
+  
 `;
 const LoginBackgroundContainer = styled.View`
   width: 92%;
@@ -18,6 +19,7 @@ const LoginBackgroundContainer = styled.View`
   margin-top: 10%;
   margin-left: 3.9%;
   background: #021831ed;
+  border-radius: 10px;
 `;
 
 const ImageBackground = styled.Image`
@@ -28,6 +30,7 @@ const ImageBackground = styled.Image`
   justify-content: center;
   margin-top: 12.5%;
   opacity: 0.2;
+  border-radius: 10px;
 `;
 
 const Container = styled.View`
@@ -39,8 +42,8 @@ const Container = styled.View`
 const AppContainer = styled.View`
   flex: 1;
 
-  margin-top: -38.9%;
-  margin-left: 25.5%;
+  margin-top: -110%;
+  margin-left: 75.5%;
 `;
 const ContainerTextt = styled.Text`
   font-size: 19px;
@@ -48,15 +51,18 @@ const ContainerTextt = styled.Text`
   color: #b8977e;
   padding: 1%;
   margin-left: 6%;
+  
 `;
 
 const ContainerTexttt = styled.View`
   height: 13%;
   background-color: #c0ccda;
-  border-top-width: 1px;
+  border-top-width: 0px;
   border-top-color: #8492a6;
   border-bottom-width: 10px;
   border-bottom-color: #b8977e;
+  border-radius: 10px;
+  margin-top: 0%;
 `;
 
 const ContainerTextSucess = styled.Text`
@@ -142,7 +148,7 @@ const Magistrados: ListMagistrados = {
   items: [{ nome: "Bolsonaro", idade: 25 }],
 };
 
-export default function LoginScreen({ item }: DadosMagistrados) {
+export default function LoginScreen() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
@@ -154,9 +160,11 @@ export default function LoginScreen({ item }: DadosMagistrados) {
 
    const user = {
      nome: info,
-     idade: 20,
+     lotação: info,
+     email: info,
    };
-   console.log(user.idade);
+   console.log(user.nome);
+   
    {
      CardPerfilMagistrado(user);
    }
@@ -237,7 +245,12 @@ export default function LoginScreen({ item }: DadosMagistrados) {
   };
 
   return (
+
+    
+   
     <Container>
+
+
       <Header />
 
       <BackgroundContainer>
