@@ -132,6 +132,8 @@ const Item = ({
 
 export default function HomeItemsComponents({ props }:any) {
   const [nome, setNome] = useState("")
+  const [lotacao, setLotacao] = useState("")
+  
   const [selectedId, setSelectedId] = useState<number | null>(null);
 
   const getDados = async () => {
@@ -144,7 +146,18 @@ export default function HomeItemsComponents({ props }:any) {
       console.log("sem dados");
      }
   };
+  const getLotacao = async () => {
+    try {
+      const lotacao = await AsyncStorage.getItem("Lotacao");
+      if (lotacao) {
+        setLotacao(lotacao);
+      } 
+    }catch (erros){
+      console.log("sem dados");
+     }
+  };
   getDados();
+  getLotacao();
 
   const renderItem = ({ item }: { item: IFlatItems }) => {
     return <Item item={item} onPress={() => setSelectedId(Number(item.id))} />;
@@ -167,7 +180,7 @@ export default function HomeItemsComponents({ props }:any) {
           </FlatListItems>
 
           <IconsItems>
-            <CardPerfilMagistrado props={nome}/>
+            <CardPerfilMagistrado nome={nome} lotacao={lotacao}/>
             <CardConsultaEnfam />
             <CardNotificacoes />
             <ContainerApp>

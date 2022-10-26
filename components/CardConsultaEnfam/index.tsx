@@ -1,6 +1,7 @@
 import React from "react";
 import { Text } from "../Themed";
 import styled from "styled-components/native";
+import { TouchableOpacity } from "react-native";
 
 const Containerr = styled.View`
   background: #fff;
@@ -34,6 +35,7 @@ const AvatarContainerr = styled.View`
 `;
 export default function CardConsultaEnfam() {
   return (
+    <TouchableOpacity>
     <Containerr>
       <Title>
         <TitleText>.</TitleText>
@@ -54,5 +56,6 @@ export default function CardConsultaEnfam() {
         CONSULTE AS REGRAS DA ENFAM
       </Text>
     </Containerr>
+    </TouchableOpacity>
   );
 }

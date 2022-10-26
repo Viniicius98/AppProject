@@ -3,7 +3,7 @@ import { StyleSheet, TouchableOpacity } from "react-native";
 import Colors from "../../constants/Colors";
 import { Text, View } from "../Themed";
 
-export default function UserInfo({ path }: { path: string }) {
+export default function UserInfo({ path }: { path: string } ) {
   return (
     <View>
       <View style={styles.getStartedContainer}>

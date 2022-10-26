@@ -146,7 +146,7 @@ export default function LoginScreen() {
 
 
    
-   console.log(info + "login");
+   //console.log(info );
 
   const handleSignInPress = async () => {
     setError("");
@@ -217,6 +217,8 @@ export default function LoginScreen() {
         }
       );
       await AsyncStorage.setItem("Dados", JSON.stringify(dados.data.nome));
+      await AsyncStorage.setItem("Lotacao", JSON.stringify(dados.data.lotacao));
+      
       
 
       setInfo(dados.data.nome);

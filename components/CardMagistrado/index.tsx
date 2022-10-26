@@ -9,6 +9,7 @@ import {
 import { useNavigation } from "@react-navigation/native";
 
 import styled from "styled-components/native";
+import { string } from "yup";
 
 const Container = styled.View`
   background: #fff;
@@ -45,34 +46,41 @@ const AvatarContainer = styled.View`
 `;
 
 export default function CardPerfilMagistrado(props: any) {
-  const nome = props.props;
-  console.log(nome);
+  const nome = props.nome.substring(1, props.nome.length - 1);
+  const lotacao = props.lotacao.substring(1, props.lotacao.length - 1);
+  
+  
+  //console.log(nome);
    //console.log(user.nome);
   // console.log(user.idade);
   // const [nome, idade] = user;
 
+  const navigation = useNavigation()
+  const navegacao =() => { navigation.navigate("User"); }
+
 
   return (
-    <>
+
+
+    
+    <TouchableOpacity onPress={()=> navegacao()}>
     <Container>
       <Title>
         <TitleText>PERFIL DO MAGISTRADO</TitleText>
       </Title>
 
       <CardBanner source={require("../../assets/images/background.png")} />
-      <AvatarContainer>
-        <Avatar source={require("../../assets/images/avatar.jpg")} />
-      </AvatarContainer>
+      
 
 
-      <Text style={{ fontWeight: "bold", textAlign: "center" }}>
-        Dr{nome}
+      <Text style={{ fontWeight: "bold", textAlign: "center", marginTop: 5}}>
+        Dr(a) {nome}
       </Text>
-      <Text style={{ fontSize: 9, textAlign: "center", marginBottom: 5 }}>
-       
+      <Text style={{ fontSize: 9, textAlign: "center", marginBottom: 10, marginTop: 6 }}>
+      {lotacao}
       </Text>
 
     </Container>
-    </>
+    </TouchableOpacity>
   );
 }
