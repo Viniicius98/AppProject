@@ -17,7 +17,6 @@ export default function UserScreen(props: any) {
       />
 
     
-      <Text></Text>
       
       {/*<UserInfo path="/screens/UserScreen.tsx" />*/}
     </View>
