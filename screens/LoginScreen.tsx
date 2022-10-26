@@ -154,15 +154,6 @@ export default function LoginScreen(/*{ item }: DadosMagistrados*/) {
   const [info, setInfo] = useState("");
   const navigation = useNavigation();
 
-  const user = {
-    nome: info,
-    idade: 20,
-  };
-  console.log(user.idade);
-  {
-    CardPerfilMagistrado(user);
-  }
-
   const handleSignInPress = async () => {
     setError("");
     setSuccess("");
@@ -230,6 +221,7 @@ export default function LoginScreen(/*{ item }: DadosMagistrados*/) {
         }
       );
       await AsyncStorage.setItem("Dados", JSON.stringify(dados.data.nome));
+      await AsyncStorage.setItem("Lotação", JSON.stringify(dados.data.lotacao));
 
       setInfo(dados.data.nome);
     } catch {

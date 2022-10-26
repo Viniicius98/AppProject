@@ -45,9 +45,12 @@ const AvatarContainer = styled.View`
 `;
 
 export default function CardPerfilMagistrado(props: any) {
-  const nome = props.props;
-  console.log(nome);
-  // console.log(props.props2);
+  const nome = props.nome.substring(1, props.nome.length - 1);
+  const lotacao = props.lotacao.substring(1, props.lotacao.length - 1);
+
+  // console.log(nome);
+  console.log(lotacao);
+
   return (
     <Container>
       <Title>
@@ -63,7 +66,7 @@ export default function CardPerfilMagistrado(props: any) {
         Dr(a) {nome}
       </Text>
       <Text style={{ fontSize: 9, textAlign: "center", marginBottom: 5 }}>
-        Diretora do Departamento de Aperfeiçoamento de Magistrados
+        {lotacao}
       </Text>
     </Container>
   );
