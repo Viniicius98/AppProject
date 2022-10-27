@@ -8,18 +8,19 @@ const HeaderContainer = styled.View`
   justify-content: space-between;
   align-items: center;
   flex-direction: row;
-  height: 100px;
+  height: 12%;
   background: #1e2d3e;
   border-top-width: 1px;
   border-bottom-width: 10px;
   border-bottom-color: #b8977e;
-  margin-top: 63px;
+  margin-top: 18%;
 `;
 
 export default function Header(props: any) {
   return (
     <HeaderContainer>
       <EmerjLogo />
+      
     </HeaderContainer>
   );
 }

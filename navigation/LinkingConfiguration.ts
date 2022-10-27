@@ -16,14 +16,14 @@ const linking: LinkingOptions<RootStackParamList> = {
         screens: {
           Login: {
             screens: {
-              LoginScreen: "login",
+              LoginScreen: "Login",
             },
           },
-          Home: {
-            screens: {
-              HomeScreen: "home",
-            },
-          },
+          // Home: {
+          //   screens: {
+          //     HomeScreen: "Home",
+          //   },
+          // },
           Activites: {
             screens: {
               ActivitesScreen: "Activites",
@@ -31,7 +31,7 @@ const linking: LinkingOptions<RootStackParamList> = {
           },
           Course: {
             screens: {
-             CourseScreen: "Course",
+              CourseScreen: "Course",
             },
           },
           ActionRecord: {
@@ -56,7 +56,7 @@ const linking: LinkingOptions<RootStackParamList> = {
           },
           User: {
             screens: {
-              UserScreen: "user",
+              UserScreen: "User",
             },
           },
         },
@@ -67,3 +67,5 @@ const linking: LinkingOptions<RootStackParamList> = {
     },
   },
 };
+
+export default linking;

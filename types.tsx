@@ -23,12 +23,13 @@ export type RootStackParamList = {
   NotFound: undefined;
   Activites: undefined;
   ActionRecord: undefined;
-  Course:undefined;
-  Home: undefined;
-  Login: undefined;
+  Course: undefined;
   PointsReport: undefined;
   Publication: undefined;
   TitlesRecord: undefined;
+  Home: undefined;
+
+  Login: undefined;
   User: undefined;
 };
 
@@ -36,17 +37,15 @@ export type RootStackScreenProps<Screen extends keyof RootStackParamList> =
   NativeStackScreenProps<RootStackParamList, Screen>;
 
 export type RootTabParamList = {
-  Activites: undefined;
-  ActionRecord: undefined;
-  Course:undefined;
   Home: undefined;
   Login: undefined;
-  PointsReport: undefined;
+  User: undefined;
+  Activites: undefined;
+  Course: undefined;
+  ActionRecord: undefined;
   Publication: undefined;
   TitlesRecord: undefined;
-  User: undefined;
-  
-  
+  PointsReport: undefined;
 };
 
 export type RootTabScreenProps<Screen extends keyof RootTabParamList> =

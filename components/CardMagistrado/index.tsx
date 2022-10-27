@@ -1,5 +1,13 @@
 import React from "react";
-import { Text } from "../Themed";
+import {
+  StyleSheet,
+  Text,
+  TouchableHighlight,
+  TouchableOpacity,
+  View,
+} from "react-native";
+import { useNavigation } from "@react-navigation/native";
+
 import styled from "styled-components/native";
 
 const Container = styled.View`
@@ -35,7 +43,14 @@ const AvatarContainer = styled.View`
   align-items: center;
   margin-bottom: 30px;
 `;
-export default function CardPerfilMagistrado() {
+
+export default function CardPerfilMagistrado(props: any) {
+  const nome = props.nome.substring(1, props.nome.length - 1);
+  const lotacao = props.lotacao.substring(1, props.lotacao.length - 1);
+
+  // console.log(nome);
+  console.log(lotacao);
+
   return (
     <Container>
       <Title>
@@ -48,10 +63,10 @@ export default function CardPerfilMagistrado() {
       </AvatarContainer>
 
       <Text style={{ fontWeight: "bold", textAlign: "center" }}>
-        Dra. Helena Herth
+        Dr(a) {nome}
       </Text>
       <Text style={{ fontSize: 9, textAlign: "center", marginBottom: 5 }}>
-        Diretora do Departamento de Aperfeiçoamento de Magistrados
+        {lotacao}
       </Text>
     </Container>
   );

@@ -1,6 +1,13 @@
 import React, { useState } from "react";
 import styled from "styled-components/native";
-import { FlatList, GestureResponderEvent, ImageProps, TouchableHighlight } from "react-native";
+import axios from "axios";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import {
+  FlatList,
+  GestureResponderEvent,
+  ImageProps,
+  TouchableHighlight,
+} from "react-native";
 import CardPerfilMagistrado from "../CardMagistrado";
 import CardConsultaEnfam from "../CardConsultaEnfam";
 import CardNotificacoes from "../../components/CardNotificacoes";
@@ -40,7 +47,9 @@ const FlatListItems = styled.View`
 
 const IconsItems = styled.View`
   width: 38%;
+
   height: 74.5%;
+
   background-color: rgba(255, 255, 255, 0.4);
   background: #1e2d3eee;
   margin-left: 2%;
@@ -48,7 +57,7 @@ const IconsItems = styled.View`
 const ContainerApp = styled.View`
   width: 38%;
   margin-top: -450%;
-  margin-left:5%;
+  margin-left: 5%;
 `;
 const FlatLinks = [
   {
@@ -103,7 +112,6 @@ const TextFlat = styled.Text`
   text-align: center;
 `;
 
-
 interface IFlatItems {
   id: string;
   text: string;
@@ -119,16 +127,40 @@ const Item = ({
   item: IFlatItems;
   onPress: (event: GestureResponderEvent) => void;
 }) => (
-  
   <Link style={styles.container} to={{ screen: item.screen }}>
     <ImageFlat source={item.icon} />
     <TextFlat> {item.text}</TextFlat>
   </Link>
-  
 );
 
-export default function HomeItemsComponents() {
+export default function HomeItemsComponents({ props }: any) {
+  const [nome, setNome] = useState("");
+  const [lotacao, setLotacao] = useState("");
   const [selectedId, setSelectedId] = useState<number | null>(null);
+
+  const getDados = async () => {
+    try {
+      const Dados = await AsyncStorage.getItem("Dados");
+      if (Dados) {
+        setNome(Dados);
+      }
+    } catch (error) {
+      console.log("sem dados");
+    }
+  };
+  const getLotacao = async () => {
+    try {
+      const lotacao = await AsyncStorage.getItem("Lotação");
+      if (lotacao) {
+        setLotacao(lotacao);
+      }
+    } catch (error) {
+      console.log("sem dados");
+    }
+  };
+
+  getDados();
+  getLotacao();
 
   const renderItem = ({ item }: { item: IFlatItems }) => {
     return <Item item={item} onPress={() => setSelectedId(Number(item.id))} />;
@@ -151,7 +183,7 @@ export default function HomeItemsComponents() {
           </FlatListItems>
 
           <IconsItems>
-            <CardPerfilMagistrado />
+            <CardPerfilMagistrado nome={nome} lotacao={lotacao} />
             <CardConsultaEnfam />
             <CardNotificacoes />
             <ContainerApp>

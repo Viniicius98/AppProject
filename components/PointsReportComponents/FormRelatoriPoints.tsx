@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import styled from "styled-components/native";
 import {
   Alert,
-  StyleSheet,
+  StyleSheet, View, ScrollView, Text, Image, Button,
 } from "react-native";
 
 import Icon from "react-native-vector-icons/Entypo";
@@ -194,13 +194,14 @@ const SubmitButton = styled.Button`
   width: 50x;
   height: 50px;
 `;
+
 type posts = {
   points_total_cur: Number;
   points_curso_ofi: Number;
   points_total_fre: Number;
-  points_atuacao_doc: Number;
   author: String;
 };
+
 
 export default function FormRelatoriPoints() {
   const [repositories, setRepositories] = useState<posts[]>([]);
@@ -242,7 +243,7 @@ export default function FormRelatoriPoints() {
             </ControllerBollAtua>
             <TextBoll>Atuação como</TextBoll>
             <TextBoll>Docente</TextBoll>
-            <TextPointatua>{repo.points_atuacao_doc}pts</TextPointatua>
+            <TextPointatua>pts</TextPointatua>
 
             <ControllerBollDip>
               <Icon name="controller-record" size={25} color="#C0CCDA" />
