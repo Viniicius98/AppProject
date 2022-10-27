@@ -20,7 +20,7 @@ const Container = styled.SafeAreaView`
 
 export default function HomeScreen(
   { navigation }: RootTabScreenProps<"Home">,
-  { props }: any 
+{ props }: any 
  ) {
   const { state, dispatch } = useContext(InputValueContext);
 

@@ -217,7 +217,7 @@ export default function LoginScreen() {
         }
       );
       await AsyncStorage.setItem("Dados", JSON.stringify(dados.data.nome));
-      await AsyncStorage.setItem("Lotacao", JSON.stringify(dados.data.lotacao));
+      await AsyncStorage.setItem("Lotação", JSON.stringify(dados.data.lotacao));
       
       
 

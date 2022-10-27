@@ -130,10 +130,9 @@ const Item = ({
   
 );
 
-export default function HomeItemsComponents({ props }:any) {
-  const [nome, setNome] = useState("")
-  const [lotacao, setLotacao] = useState("")
-  
+export default function HomeItemsComponents({ props }: any) {
+  const [nome, setNome] = useState("");
+  const [lotacao, setLotacao] = useState("");
   const [selectedId, setSelectedId] = useState<number | null>(null);
 
   const getDados = async () => {
@@ -141,21 +140,22 @@ export default function HomeItemsComponents({ props }:any) {
       const Dados = await AsyncStorage.getItem("Dados");
       if (Dados) {
         setNome(Dados);
-      } 
-    }catch (erros){
+      }
+    } catch (error) {
       console.log("sem dados");
-     }
+    }
   };
   const getLotacao = async () => {
     try {
-      const lotacao = await AsyncStorage.getItem("Lotacao");
+      const lotacao = await AsyncStorage.getItem("Lotação");
       if (lotacao) {
         setLotacao(lotacao);
-      } 
-    }catch (erros){
+      }
+    } catch (error) {
       console.log("sem dados");
-     }
+    }
   };
+
   getDados();
   getLotacao();
 

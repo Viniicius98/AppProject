@@ -1,12 +1,13 @@
 import React from "react";
 import {
   StyleSheet,
-  Text,
+  
   TouchableHighlight,
   TouchableOpacity,
-  View,
+ 
 } from "react-native";
 import { useNavigation } from "@react-navigation/native";
+import { Text, View } from "../Themed";
 
 import styled from "styled-components/native";
 import { string } from "yup";
@@ -41,7 +42,7 @@ const Avatar = styled.Image`
 const AvatarContainer = styled.View`
   position: relative;
   width: 100%;
-  align-items: center;
+  align-items: center;a
   margin-bottom: 30px;
 `;
 
@@ -53,7 +54,7 @@ export default function CardPerfilMagistrado(props: any) {
   //console.log(nome);
    //console.log(user.nome);
   // console.log(user.idade);
-  // const [nome, idade] = user;
+  
 
   const navigation = useNavigation()
   const navegacao =() => { navigation.navigate("User"); }

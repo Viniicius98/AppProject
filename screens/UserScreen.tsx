@@ -4,12 +4,14 @@ import { Text, View } from "../components/Themed";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
 
-export default function UserScreen(props: any) {
+
+export default function UserScreen({ props }: any ) {
   const nome = props.nome.substring(1, props.nome.length - 1);
   const lotacao = props.lotacao.substring(1, props.lotacao.length - 1);
+  
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>{nome}</Text>
+      <Text style={styles.title}></Text>
       <View
         style={styles.separator}
         lightColor="#eee"
@@ -18,7 +20,7 @@ export default function UserScreen(props: any) {
 
     
       
-      {/*<UserInfo path="/screens/UserScreen.tsx" />*/}
+      <UserInfo path="/screens/UserScreen.tsx" />
     </View>
   );
 }

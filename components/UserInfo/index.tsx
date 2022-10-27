@@ -13,7 +13,10 @@ export default function UserInfo({ path }: { path: string } ) {
           darkColor="rgba(255,255,255,0.8)"
         >
           Dra. Helena Hertha
+          
+         
         </Text>
+        
       </View>
 
       <View style={styles.helpContainer}>
