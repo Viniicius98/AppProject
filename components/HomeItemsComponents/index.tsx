@@ -59,6 +59,7 @@ const ContainerApp = styled.View`
   margin-top: -450%;
   margin-left: 5%;
 `;
+
 const FlatLinks = [
   {
     id: "0",
@@ -172,6 +173,7 @@ export default function HomeItemsComponents({ props }: any) {
         <ImageBackground
           source={require("../../assets/images/background.png")}
         />
+
         <ContentItems>
           <FlatListItems>
             <FlatList

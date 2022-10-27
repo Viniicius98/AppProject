@@ -1,15 +1,17 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components/native";
 import CardCourse from "../CardCourse";
-import {  ScrollView } from "react-native";
-import DropdownCourse from "../DropdownCourse/Dropdown";
+import axios from "axios";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 import AppLogo from "../Header/Applogo";
+import { Alert, Text } from "react-native";
+import DropdownCourse from "../DropdownCourse";
 
 const BackgroundContainer = styled.View`
   height: 100%;
   width: 100%;
   margin-top: -70.7%;
-  background: #343F4B;
+  background: #343f4b;
 `;
 
 const ImageBackground = styled.Image`
@@ -51,6 +53,57 @@ const IconsApp = styled.View`
 `;
 
 export default function CourseComponents() {
+  const [token, setToken] = useState("");
+  const [curso, setCurso] = useState("");
+
+  const getToken = async () => {
+    try {
+      const accessToken = await AsyncStorage.getItem("@accessToken");
+      if (accessToken) {
+        setToken(accessToken);
+        acessarCursos(token);
+      }
+    } catch (error) {
+      Alert.alert("Erro", "Não foi possível acessar o token");
+    }
+  };
+
+  // const acessarCursos = () => {
+  //   useEffect(() => {
+  //     fetch(
+  //       `https://wwwh3.tjrj.jus.br/HWEBAPIEVENTOS/api/evento/lista/28863720720`,
+  //       {
+  //         method: "GET",
+  //         headers: { Authorization: `Bearer ${token}` },
+  //       }
+  //     )
+  //       .then((response) => response.json())
+  //       .then((data) => {
+  //         setCurso(data);
+  //         console.log(curso);
+  //       })
+  //       .catch(() => {
+  //         Alert.alert("Erro", "Não foi possível carregar os dados");
+  //       });
+  //   });
+  // };
+
+  const acessarCursos = async (token: any) => {
+    try {
+      const lista = await axios.get(
+        `https://wwwh3.tjrj.jus.br/HWEBAPIEVENTOS/api/evento/lista/28863720720`,
+        {
+          method: "GET",
+          headers: { Authorization: `Bearer ${token}` },
+        }
+      );
+      setCurso(lista.data);
+    } catch (error) {
+      Alert.alert("Erro", "Não foi possível acessar os cursos");
+    }
+  };
+  getToken();
+
   return (
     <>
       <BackgroundContainer>
@@ -59,13 +112,10 @@ export default function CourseComponents() {
         />
 
         <ContentItems>
-        
           <DropdownItems>
-           
-            <DropdownCourse />
-         
+            <Text>{curso}</Text>
+            {/* <DropdownCourse /> */}
           </DropdownItems>
-          
 
           <IconsItems>
             <CardCourse />
