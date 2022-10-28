@@ -6,9 +6,7 @@ import Header from "../components/Header";
 import AppLogo from "../components/Header/Applogo";
 import axios from "axios";
 import { useNavigation } from "@react-navigation/native";
-import CardPerfilMagistrado from "../components/CardMagistrado";
-import HomeScreen from "./HomeScreen";
-import HomeItemsComponents from "../components/HomeItemsComponents";
+
 const BackgroundContainer = styled.View`
   width: 100%;
   height: 84.5%;
@@ -145,8 +143,10 @@ const Loading = styled.View`
 // };
 
 export default function LoginScreen(/*{ item }: DadosMagistrados*/) {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState("API_EMERJ");
+  const [password, setPassword] = useState("APIEMERJ");
+  const [user, setUser] = useState("Sdarlan");
+  const [cpf, setCPF] = useState("28863720720");
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
   const [auth, setAuth] = useState("");
@@ -154,52 +154,53 @@ export default function LoginScreen(/*{ item }: DadosMagistrados*/) {
   const navigation = useNavigation();
 
   const handleSignInPress = async () => {
-    Login();
     setError("");
     setSuccess("");
 
-    // if (email.length === 0 || password.length === 0) {
-    //   setError("Preencha usuário e senha para continuar!");
-    // } else {
-    //   //aqui virá a API
-    //   setIsLoading(true);
+    if (email.length === 0 || password.length === 0) {
+      setError("Preencha usuário e senha para continuar!");
+    } else {
+      //aqui virá a API
+      setIsLoading(true);
 
-    //   try {
-    //     const response = await axios.get(
-    //       `https://wwwh3.tjrj.jus.br/HWEBAPIEVENTOS/api/acesso/obtertoken/${email}/${password}`
-    //     );
+      Login();
 
-    //     if (response.data) {
-    //       setSuccess("");
-    //       await AsyncStorage.setItem("@accessToken", response.data);
-    //       const result = await AsyncStorage.getItem("@accessToken");
-    //       Dados(result);
+      // try {
+      //   const response = await axios.get(
+      //     `https://wwwh3.tjrj.jus.br/HWEBAPIEVENTOS/api/acesso/obtertoken/${user}/${cpf}`
+      //   );
 
-    //       // console.log(result);
+      //   if (response.data) {
+      //     setSuccess("");
+      //     await AsyncStorage.setItem("@accessToken", response.data);
+      //     const result = await AsyncStorage.getItem("@accessToken");
+      //     Dados(result);
 
-    //       if (result) {
-    //         setTimeout(() => {
-    //           setSuccess("Autenticado");
-    //         }, 1000);
+      //     // console.log(result);
 
-    //         setTimeout(() => {
-    //           authLocal();
-    //         }, 1000);
-    //       } else {
-    //         console.log("não foi possivel autenticar");
-    //       }
-    //     } else {
-    //       console.log("não foi possivel obter o token");
-    //     }
-    //   } catch (error) {
-    //     setTimeout(() => {
-    //       setIsLoading(false);
-    //       setSuccess("");
-    //       setError("Falha na autenticação");
-    //     }, 5000);
-    //     console.log(error);
-    //   }
-    // }
+      //     if (result) {
+      //       setTimeout(() => {
+      //         setSuccess("Autenticado");
+      //       }, 1000);
+
+      //       setTimeout(() => {
+      //         authLocal();
+      //       }, 1000);
+      //     } else {
+      //       console.log("não foi possivel autenticar");
+      //     }
+      //   } else {
+      //     console.log("não foi possivel obter o token");
+      //   }
+      // } catch (error) {
+      //   setTimeout(() => {
+      //     setIsLoading(false);
+      //     setSuccess("");
+      //     setError("Falha na autenticação");
+      //   }, 5000);
+      //   console.log(error);
+      // }
+    }
   };
 
   //Funções de Chamada a API
@@ -210,8 +211,8 @@ export default function LoginScreen(/*{ item }: DadosMagistrados*/) {
         `https://wwwh3.tjrj.jus.br/hidserverjus-api/login/api`,
 
         {
-          senha: "APIEMERJ",
-          usuario: "API_EMERJ",
+          senha: { password },
+          usuario: { email },
         }
       );
 
@@ -225,20 +226,25 @@ export default function LoginScreen(/*{ item }: DadosMagistrados*/) {
       console.log(err);
     }
   };
+
   const authUser = async (bearer: any) => {
     try {
       const loginUser = await axios.post(
         `https://wwwh3.tjrj.jus.br/hidserverjus-api/login/usuario`,
         {
-          senha: "APIEMERJ",
-          usuario: "API_EMERJ",
+          senha: { password },
+          usuario: { email },
         },
         { headers: { Authorization: `Bearer ${bearer}` } }
       );
+
       const auth2 = loginUser.data.mensagem;
       setAuth(auth2);
       setTimeout(() => {
-        updateToken(bearer);
+        authLocal();
+      }, 1000);
+      setTimeout(() => {
+        // updateToken(bearer);
       }, 5000);
     } catch {
       console.log("Não obteve Resposta2");
@@ -249,22 +255,22 @@ export default function LoginScreen(/*{ item }: DadosMagistrados*/) {
     console.log(auth);
   }, [auth]);
 
-  const updateToken = async (bearer: any) => {
-    try {
-      const upToken = await axios.post(
-        `https://wwwh3.tjrj.jus.br/hidserverjus-api/login/atualizarToken`,
-        {
-          senha: "APIEMERJ",
-          usuario: "API_EMERJ",
-        },
-        { headers: { Authorization: `Bearer ${bearer}` } }
-      );
-      const upT = upToken.data.mensagem;
-      console.log(upT);
-    } catch {
-      console.log("Não obteve Resposta");
-    }
-  };
+  // const updateToken = async (bearer: any) => {
+  //   try {
+  //     const upToken = await axios.post(
+  //       `https://wwwh3.tjrj.jus.br/hidserverjus-api/login/atualizarToken`,
+  //       {
+  //         senha: "APIEMERJ",
+  //         usuario: "API_EMERJ",
+  //       },
+  //       { headers: { Authorization: `Bearer ${bearer}` } }
+  //     );
+  //     const upT = upToken.data.mensagem;
+  //     console.log(upT);
+  //   } catch {
+  //     console.log("Não obteve Resposta");
+  //   }
+  // };
   const Dados = async (result: any) => {
     try {
       const dados = await axios.get(
@@ -283,7 +289,7 @@ export default function LoginScreen(/*{ item }: DadosMagistrados*/) {
 
   const authLocal = async () => {
     setError("");
-    setSuccess("Autenticando...");
+    setSuccess(auth);
     setTimeout(() => {
       navigation.navigate("Home");
       setIsLoading(false);

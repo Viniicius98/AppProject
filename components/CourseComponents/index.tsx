@@ -56,6 +56,11 @@ export default function CourseComponents() {
   const [token, setToken] = useState("");
   const [curso, setCurso] = useState("");
 
+  useEffect(() => {
+    getToken();
+    console.log(curso + "55");
+  }, []);
+
   const getToken = async () => {
     try {
       const accessToken = await AsyncStorage.getItem("@accessToken");
@@ -91,18 +96,18 @@ export default function CourseComponents() {
   const acessarCursos = async (token: any) => {
     try {
       const lista = await axios.get(
-        `https://wwwh3.tjrj.jus.br/HWEBAPIEVENTOS/api/evento/lista/28863720720`,
+        `https://wwwh3.tjrj.jus.br/HWEBAPIEVENTOS/api/evento/lista/77359194768`,
         {
           method: "GET",
           headers: { Authorization: `Bearer ${token}` },
         }
       );
+
       setCurso(lista.data);
     } catch (error) {
       Alert.alert("Erro", "Não foi possível acessar os cursos");
     }
   };
-  getToken();
 
   return (
     <>
@@ -113,7 +118,7 @@ export default function CourseComponents() {
 
         <ContentItems>
           <DropdownItems>
-            <Text>{curso}</Text>
+            <Text>oi{curso}</Text>
             {/* <DropdownCourse /> */}
           </DropdownItems>
 
