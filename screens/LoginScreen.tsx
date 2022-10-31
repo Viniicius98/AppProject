@@ -172,12 +172,12 @@ export default function LoginScreen() {
 
           if (result) {
             setTimeout(() => {
-              setSuccess(info);
-            }, 4000);
+              setSuccess('Autenticado');
+            }, 200);
 
             setTimeout(() => {
               authLocal();
-            }, 8000);
+            }, 200);
           } else {
             console.log("não foi possivel autenticar");
           }
@@ -197,14 +197,14 @@ export default function LoginScreen() {
 
   const authLocal = async () => {
     setError("");
-    setSuccess("Autenticando...");
+                
     setTimeout(() => {
       {
         navigation.navigate("Home");
       }     
       setIsLoading(false);
       setSuccess("");
-    }, 3000);
+    }, 500);
   };
 
   const Login = async (result: any) => {
@@ -221,7 +221,7 @@ export default function LoginScreen() {
       
       
 
-      setInfo(dados.data.nome);
+   
     } catch {
       console.log("Não obteve Resposta");
     }
