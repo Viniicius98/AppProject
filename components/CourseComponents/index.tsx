@@ -56,10 +56,8 @@ export default function CourseComponents() {
   const [token, setToken] = useState("");
   const [curso, setCurso] = useState("");
 
-  useEffect(() => {
-    getToken();
-    console.log(curso + "55");
-  }, []);
+ 
+
 
   const getToken = async () => {
     try {
@@ -72,6 +70,10 @@ export default function CourseComponents() {
       Alert.alert("Erro", "Não foi possível acessar o token");
     }
   };
+
+  
+  getToken();
+    
 
   // const acessarCursos = () => {
   //   useEffect(() => {
@@ -96,16 +98,20 @@ export default function CourseComponents() {
   const acessarCursos = async (token: any) => {
     try {
       const lista = await axios.get(
-        `https://wwwh3.tjrj.jus.br/HWEBAPIEVENTOS/api/evento/lista/77359194768`,
+        `https://wwwh3.tjrj.jus.br/HWEBAPIEVENTOS/api/evento/encontros/007397`,
         {
           method: "GET",
           headers: { Authorization: `Bearer ${token}` },
         }
       );
-
-      setCurso(lista.data);
+      console.log(token)
+      const list = lista.data
+      
+     
+      console.log(list)
     } catch (error) {
       Alert.alert("Erro", "Não foi possível acessar os cursos");
+      console.log(error)
     }
   };
 
@@ -118,7 +124,7 @@ export default function CourseComponents() {
 
         <ContentItems>
           <DropdownItems>
-            <Text>oi{curso}</Text>
+            <Text>oi</Text>
             {/* <DropdownCourse /> */}
           </DropdownItems>
 

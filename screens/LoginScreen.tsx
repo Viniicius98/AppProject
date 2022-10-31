@@ -124,28 +124,12 @@ const Loading = styled.View`
   top: 55%;
 `;
 
-// interface ListMagistrados {
-//   name: string;
-//   items: Magistrado[];
-// }
-// interface Magistrado {
-//   nome: string;
-//   idade: Number;
-// }
 
-// interface DadosMagistrados {
-//   item: Magistrado;
-// }
 
-// const Magistrados: ListMagistrados = {
-//   name: "Ações Educacionais",
-//   items: [{ nome: "Bolsonaro", idade: 25 }],
-// };
-
-export default function LoginScreen(/*{ item }: DadosMagistrados*/) {
+export default function LoginScreen() {
   const [email, setEmail] = useState("API_EMERJ");
   const [password, setPassword] = useState("APIEMERJ");
-  const [user, setUser] = useState("Sdarlan");
+  const [user, setUser] = useState("SDARLAN");
   const [cpf, setCPF] = useState("28863720720");
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
@@ -160,59 +144,61 @@ export default function LoginScreen(/*{ item }: DadosMagistrados*/) {
     if (email.length === 0 || password.length === 0) {
       setError("Preencha usuário e senha para continuar!");
     } else {
-      //aqui virá a API
+      
       setIsLoading(true);
-
+      //Chamando a Função de Login API
       Login();
 
-      // try {
-      //   const response = await axios.get(
-      //     `https://wwwh3.tjrj.jus.br/HWEBAPIEVENTOS/api/acesso/obtertoken/${user}/${cpf}`
-      //   );
+      // Chamada a API , pegar token para obter dados do usuario
+      try {
+        const response = await axios.get(
+          `https://wwwh3.tjrj.jus.br/HWEBAPIEVENTOS/api/acesso/obtertoken/${user}/${cpf}`
+        );
 
-      //   if (response.data) {
-      //     setSuccess("");
-      //     await AsyncStorage.setItem("@accessToken", response.data);
-      //     const result = await AsyncStorage.getItem("@accessToken");
-      //     Dados(result);
+        if (response.data) {
+          setSuccess("");
+          await AsyncStorage.setItem("@accessToken", response.data);
+          const result = await AsyncStorage.getItem("@accessToken");
+          Dados(result);
 
-      //     // console.log(result);
+          // console.log(result);
 
-      //     if (result) {
-      //       setTimeout(() => {
-      //         setSuccess("Autenticado");
-      //       }, 1000);
+          if (result) {
+            setTimeout(() => {
+              setSuccess("Autenticando...");
+            }, 1000);
 
-      //       setTimeout(() => {
-      //         authLocal();
-      //       }, 1000);
-      //     } else {
-      //       console.log("não foi possivel autenticar");
-      //     }
-      //   } else {
-      //     console.log("não foi possivel obter o token");
-      //   }
-      // } catch (error) {
-      //   setTimeout(() => {
-      //     setIsLoading(false);
-      //     setSuccess("");
-      //     setError("Falha na autenticação");
-      //   }, 5000);
-      //   console.log(error);
-      // }
+            // setTimeout(() => {
+            //   authLocal();
+            // }, 1000);
+          } else {
+            console.log("não foi possivel autenticar");
+          }
+        } else {
+          console.log("não foi possivel obter o token");
+        }
+      } catch (error) {
+        setTimeout(() => {
+          setIsLoading(false);
+          setSuccess("");
+          setError("Falha na autenticação");
+        }, 5000);
+        console.log(error);
+      }
     }
   };
 
-  //Funções de Chamada a API
+                                      //Funções de Chamada a API
 
+  // Função de Login com retorno do Token
   const Login = async () => {
     try {
       const loginApi = await axios.post(
         `https://wwwh3.tjrj.jus.br/hidserverjus-api/login/api`,
 
         {
-          senha: { password },
-          usuario: { email },
+          "senha": password,
+          "usuario": email
         }
       );
 
@@ -222,18 +208,24 @@ export default function LoginScreen(/*{ item }: DadosMagistrados*/) {
       const bearer = Dbearer?.substring(7);
       authUser(bearer);
       console.log(bearer);
-    } catch (err) {
-      console.log(err);
+    } catch (error) {
+      setTimeout(() => {
+        setIsLoading(false);
+        setSuccess("");
+        setError("Falha na autenticação");
+      }, 5000);
+      console.log(error);
     }
   };
 
+  // Função de autorização de usuário com envio de token
   const authUser = async (bearer: any) => {
     try {
       const loginUser = await axios.post(
         `https://wwwh3.tjrj.jus.br/hidserverjus-api/login/usuario`,
         {
-          senha: { password },
-          usuario: { email },
+          senha:  password ,
+          usuario:  email ,
         },
         { headers: { Authorization: `Bearer ${bearer}` } }
       );
@@ -242,22 +234,26 @@ export default function LoginScreen(/*{ item }: DadosMagistrados*/) {
       setAuth(auth2);
       setTimeout(() => {
         authLocal();
-      }, 1000);
+      }, 5000);
       setTimeout(() => {
         // updateToken(bearer);
       }, 5000);
-    } catch {
-      console.log("Não obteve Resposta2");
+    } catch (error) {
+      setTimeout(() => {
+        setIsLoading(false);
+        setSuccess("");
+        setError("Falha na autenticação");
+      }, 5000);
+      console.log(error);
     }
   };
 
-  useEffect(() => {
-    console.log(auth);
-  }, [auth]);
 
-  // const updateToken = async (bearer: any) => {
+  
+  // Função para Atualizar Token
+  // const refreshToken = async (bearer: any) => {
   //   try {
-  //     const upToken = await axios.post(
+  //     const refToken = await axios.post(
   //       `https://wwwh3.tjrj.jus.br/hidserverjus-api/login/atualizarToken`,
   //       {
   //         senha: "APIEMERJ",
@@ -265,16 +261,19 @@ export default function LoginScreen(/*{ item }: DadosMagistrados*/) {
   //       },
   //       { headers: { Authorization: `Bearer ${bearer}` } }
   //     );
-  //     const upT = upToken.data.mensagem;
-  //     console.log(upT);
+  //     const ref = refToken.data.mensagem;
+  //     console.log(ref);
   //   } catch {
   //     console.log("Não obteve Resposta");
   //   }
   // };
+
+
+  // Função para pegar os dados do usuário com envio do token
   const Dados = async (result: any) => {
     try {
       const dados = await axios.get(
-        `https://wwwh3.tjrj.jus.br/HWEBAPIEVENTOS/api/magistrado/obterdados/${password}`,
+        `https://wwwh3.tjrj.jus.br/HWEBAPIEVENTOS/api/magistrado/obterdados/${cpf}`,
         {
           method: "GET",
           headers: { Authorization: `Bearer ${result}` },
@@ -282,19 +281,33 @@ export default function LoginScreen(/*{ item }: DadosMagistrados*/) {
       );
       await AsyncStorage.setItem("Dados", JSON.stringify(dados.data.nome));
       await AsyncStorage.setItem("Lotação", JSON.stringify(dados.data.lotacao));
-    } catch {
-      console.log("Não obteve Resposta");
+    } catch (error) {
+      setTimeout(() => {
+        setIsLoading(false);
+        setSuccess("");
+        setError("Não foi Possivel Obter os Dados");
+      }, 5000);
+      console.log(error);
     }
   };
 
+  //UseEffect necessário para atualizar o useState Auth
+  useEffect(() => {
+    console.log(auth);
+    setTimeout(()=>{
+      setSuccess(auth);
+    },3000)
+   
+  }, [auth]);
+
+  // Funcão de Autenticação e Navegação para tela Home
   const authLocal = async () => {
     setError("");
-    setSuccess(auth);
     setTimeout(() => {
       navigation.navigate("Home");
       setIsLoading(false);
       setSuccess("");
-    }, 1000);
+    }, 3000);
   };
 
   return (
