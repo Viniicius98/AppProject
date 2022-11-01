@@ -124,8 +124,6 @@ const Loading = styled.View`
   top: 55%;
 `;
 
-
-
 export default function LoginScreen() {
   const [email, setEmail] = useState("API_EMERJ");
   const [password, setPassword] = useState("APIEMERJ");
@@ -144,7 +142,6 @@ export default function LoginScreen() {
     if (email.length === 0 || password.length === 0) {
       setError("Preencha usuário e senha para continuar!");
     } else {
-      
       setIsLoading(true);
       //Chamando a Função de Login API
       Login();
@@ -188,7 +185,7 @@ export default function LoginScreen() {
     }
   };
 
-                                      //Funções de Chamada a API
+  //Funções de Chamada a API
 
   // Função de Login com retorno do Token
   const Login = async () => {
@@ -197,8 +194,8 @@ export default function LoginScreen() {
         `https://wwwh3.tjrj.jus.br/hidserverjus-api/login/api`,
 
         {
-          "senha": password,
-          "usuario": email
+          senha: password,
+          usuario: email,
         }
       );
 
@@ -224,13 +221,14 @@ export default function LoginScreen() {
       const loginUser = await axios.post(
         `https://wwwh3.tjrj.jus.br/hidserverjus-api/login/usuario`,
         {
-          senha:  password ,
-          usuario:  email ,
+          senha: password,
+          usuario: email,
         },
         { headers: { Authorization: `Bearer ${bearer}` } }
       );
 
       const auth2 = loginUser.data.mensagem;
+
       setAuth(auth2);
       setTimeout(() => {
         authLocal();
@@ -248,8 +246,6 @@ export default function LoginScreen() {
     }
   };
 
-
-  
   // Função para Atualizar Token
   // const refreshToken = async (bearer: any) => {
   //   try {
@@ -267,7 +263,6 @@ export default function LoginScreen() {
   //     console.log("Não obteve Resposta");
   //   }
   // };
-
 
   // Função para pegar os dados do usuário com envio do token
   const Dados = async (result: any) => {
@@ -294,10 +289,9 @@ export default function LoginScreen() {
   //UseEffect necessário para atualizar o useState Auth
   useEffect(() => {
     console.log(auth);
-    setTimeout(()=>{
+    setTimeout(() => {
       setSuccess(auth);
-    },3000)
-   
+    }, 3000);
   }, [auth]);
 
   // Funcão de Autenticação e Navegação para tela Home

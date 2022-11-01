@@ -56,24 +56,20 @@ export default function CourseComponents() {
   const [token, setToken] = useState("");
   const [curso, setCurso] = useState("");
 
- 
-
-
   const getToken = async () => {
     try {
       const accessToken = await AsyncStorage.getItem("@accessToken");
       if (accessToken) {
         setToken(accessToken);
         acessarCursos(token);
+        console.log(token);
       }
     } catch (error) {
       Alert.alert("Erro", "Não foi possível acessar o token");
     }
   };
 
-  
   getToken();
-    
 
   // const acessarCursos = () => {
   //   useEffect(() => {
@@ -104,14 +100,13 @@ export default function CourseComponents() {
           headers: { Authorization: `Bearer ${token}` },
         }
       );
-      console.log(token)
-      const list = lista.data
-      
-     
-      console.log(list)
+      console.log(token);
+      const list = lista.data[0].descricao;
+
+      console.log(list);
     } catch (error) {
       Alert.alert("Erro", "Não foi possível acessar os cursos");
-      console.log(error)
+      console.log(error);
     }
   };
 
