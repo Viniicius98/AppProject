@@ -131,7 +131,9 @@ export default function LoginScreen() {
   const [cpf, setCPF] = useState("28863720720");
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
-  const [auth, setAuth] = useState("");
+  const [loginUser, setLoginUser] = useState("");
+  const [auth, setAuth] = useState<boolean>(false);
+  const [auth2, setAuth2] = useState<boolean>(false);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const navigation = useNavigation();
 
@@ -162,6 +164,7 @@ export default function LoginScreen() {
 
           if (result) {
             setTimeout(() => {
+              setAuth2(true);
               setSuccess("Autenticando...");
             }, 1000);
 
@@ -178,8 +181,8 @@ export default function LoginScreen() {
         setTimeout(() => {
           setIsLoading(false);
           setSuccess("");
-          setError("Falha na autenticação");
-        }, 5000);
+          setError("Falha ao obter token");
+        }, 1000);
         console.log(error);
       }
     }
@@ -203,13 +206,15 @@ export default function LoginScreen() {
 
       const Dbearer = await AsyncStorage.getItem("Bearer");
       const bearer = Dbearer?.substring(7);
-      authUser(bearer);
-      console.log(bearer);
+      if (bearer) {
+        authUser(bearer);
+        console.log(bearer);
+      }
     } catch (error) {
       setTimeout(() => {
         setIsLoading(false);
         setSuccess("");
-        setError("Falha na autenticação");
+        setError("Falha no login");
       }, 5000);
       console.log(error);
     }
@@ -227,15 +232,18 @@ export default function LoginScreen() {
         { headers: { Authorization: `Bearer ${bearer}` } }
       );
 
-      const auth2 = loginUser.data.mensagem;
+      const authUser = loginUser.data.mensagem;
 
-      setAuth(auth2);
-      setTimeout(() => {
-        authLocal();
-      }, 5000);
-      setTimeout(() => {
-        // updateToken(bearer);
-      }, 5000);
+      if (authUser) {
+        setAuth(true);
+        setLoginUser(authUser);
+        setTimeout(() => {
+          authLocal();
+        }, 5000);
+        setTimeout(() => {
+          // updateToken(bearer);
+        }, 5000);
+      }
     } catch (error) {
       setTimeout(() => {
         setIsLoading(false);
@@ -288,20 +296,29 @@ export default function LoginScreen() {
 
   //UseEffect necessário para atualizar o useState Auth
   useEffect(() => {
+    console.log(loginUser);
     console.log(auth);
+    console.log(auth2);
     setTimeout(() => {
-      setSuccess(auth);
+      setSuccess(loginUser);
     }, 3000);
-  }, [auth]);
+  }, [loginUser]);
 
   // Funcão de Autenticação e Navegação para tela Home
   const authLocal = async () => {
-    setError("");
-    setTimeout(() => {
-      navigation.navigate("Home");
-      setIsLoading(false);
-      setSuccess("");
-    }, 3000);
+    if (auth && auth2) {
+      setError("");
+      setTimeout(() => {
+        navigation.navigate("Home");
+        setIsLoading(false);
+        setSuccess("");
+      }, 3000);
+    } else {
+      setTimeout(() => {
+        setIsLoading(false);
+        setError("Erro ao Logar");
+      }, 8000);
+    }
   };
 
   return (
