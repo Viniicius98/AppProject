@@ -5,6 +5,10 @@ import { ActivityIndicator, SafeAreaView, StyleSheet } from "react-native";
 import Header from "../components/Header";
 import AppLogo from "../components/Header/Applogo";
 import axios from "axios";
+import apiLogin from "../services/apiLogin";
+import apiAuth from "../services/apiAuthUser";
+import apiGetToken from "../services/apiGetToken";
+import apiGetData from "../services/apiGetData";
 import { useNavigation } from "@react-navigation/native";
 
 const BackgroundContainer = styled.View`
@@ -150,32 +154,26 @@ export default function LoginScreen() {
 
       // Chamada a API , pegar token para obter dados do usuario
       try {
-        const response = await axios.get(
-          `https://wwwh3.tjrj.jus.br/HWEBAPIEVENTOS/api/acesso/obtertoken/${user}/${cpf}`
-        );
+        const response = await apiGetToken.get(`/${user}/${cpf}`);
 
         if (response.data) {
           setSuccess("");
           await AsyncStorage.setItem("@accessToken", response.data);
           const result = await AsyncStorage.getItem("@accessToken");
-          Dados(result);
+          dataUser(result);
 
           // console.log(result);
 
           if (result) {
+            setAuth2(true);
             setTimeout(() => {
-              setAuth2(true);
               setSuccess("Autenticando...");
             }, 1000);
 
             // setTimeout(() => {
             //   authLocal();
             // }, 1000);
-          } else {
-            console.log("não foi possivel autenticar");
           }
-        } else {
-          console.log("não foi possivel obter o token");
         }
       } catch (error) {
         setTimeout(() => {
@@ -191,10 +189,11 @@ export default function LoginScreen() {
   //Funções de Chamada a API
 
   // Função de Login com retorno do Token
+
   const Login = async () => {
     try {
-      const loginApi = await axios.post(
-        `https://wwwh3.tjrj.jus.br/hidserverjus-api/login/api`,
+      const loginApi = await apiLogin.post(
+        "/login/api",
 
         {
           senha: password,
@@ -223,8 +222,8 @@ export default function LoginScreen() {
   // Função de autorização de usuário com envio de token
   const authUser = async (bearer: any) => {
     try {
-      const loginUser = await axios.post(
-        `https://wwwh3.tjrj.jus.br/hidserverjus-api/login/usuario`,
+      const loginUser = await apiAuth.post(
+        "/login/usuario",
         {
           senha: password,
           usuario: email,
@@ -237,9 +236,9 @@ export default function LoginScreen() {
       if (authUser) {
         setAuth(true);
         setLoginUser(authUser);
-        setTimeout(() => {
-          authLocal();
-        }, 5000);
+        // setTimeout(() => {
+        //   authLocal();
+        // }, 5000);
         setTimeout(() => {
           // updateToken(bearer);
         }, 5000);
@@ -273,15 +272,12 @@ export default function LoginScreen() {
   // };
 
   // Função para pegar os dados do usuário com envio do token
-  const Dados = async (result: any) => {
+  const dataUser = async (result: any) => {
     try {
-      const dados = await axios.get(
-        `https://wwwh3.tjrj.jus.br/HWEBAPIEVENTOS/api/magistrado/obterdados/${cpf}`,
-        {
-          method: "GET",
-          headers: { Authorization: `Bearer ${result}` },
-        }
-      );
+      const dados = await apiGetData.get(`/${cpf}`, {
+        method: "GET",
+        headers: { Authorization: `Bearer ${result}` },
+      });
       await AsyncStorage.setItem("Dados", JSON.stringify(dados.data.nome));
       await AsyncStorage.setItem("Lotação", JSON.stringify(dados.data.lotacao));
     } catch (error) {
@@ -296,28 +292,24 @@ export default function LoginScreen() {
 
   //UseEffect necessário para atualizar o useState Auth
   useEffect(() => {
-    console.log(loginUser);
-    console.log(auth);
-    console.log(auth2);
-    setTimeout(() => {
-      setSuccess(loginUser);
-    }, 3000);
-  }, [loginUser]);
+    authLocal();
+  }, [handleSignInPress]);
 
   // Funcão de Autenticação e Navegação para tela Home
   const authLocal = async () => {
-    if (auth && auth2) {
+    if (auth) {
       setError("");
+      setSuccess(loginUser);
       setTimeout(() => {
         navigation.navigate("Home");
         setIsLoading(false);
         setSuccess("");
-      }, 3000);
+      }, 9000);
     } else {
       setTimeout(() => {
+        setSuccess("");
         setIsLoading(false);
-        setError("Erro ao Logar");
-      }, 8000);
+      }, 5000);
     }
   };
 

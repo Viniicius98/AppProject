@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import {
   StyleSheet,
   Text,
@@ -46,6 +46,7 @@ const AvatarContainer = styled.View`
 
 export default function CardPerfilMagistrado(props: any) {
   const nome = props.nome.substring(1, props.nome.length - 1);
+
   const lotacao = props.lotacao.substring(1, props.lotacao.length - 1);
 
   // console.log(nome);
@@ -62,10 +63,24 @@ export default function CardPerfilMagistrado(props: any) {
         <Avatar source={require("../../assets/images/avatar.jpg")} />
       </AvatarContainer>
 
-      <Text style={{ fontWeight: "bold", textAlign: "center" }}>
+      <Text
+        style={{
+          fontSize: 10,
+          fontWeight: "bold",
+          textAlign: "center",
+          textTransform: "capitalize",
+        }}
+      >
         Dr(a) {nome}
       </Text>
-      <Text style={{ fontSize: 9, textAlign: "center", marginBottom: 5 }}>
+      <Text
+        style={{
+          fontSize: 9,
+          textAlign: "center",
+          marginBottom: 5,
+          textTransform: "capitalize",
+        }}
+      >
         {lotacao}
       </Text>
     </Container>
