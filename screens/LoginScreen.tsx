@@ -8,6 +8,12 @@ import axios from "axios";
 import { useNavigation } from "@react-navigation/native";
 import CardPerfilMagistrado from "../components/CardMagistrado";
 import { string } from "yup/lib/locale";
+import apiAuth from "../services/apiAuthUser";
+import apiGetToken from "../services/apiGetToken";
+import apiLogin from "../services/apiLogin";
+import apiGetData from "../services/apiGetData";
+
+
 const BackgroundContainer = styled.View`
   width: 100%;
   height: 84.5%;
@@ -134,96 +140,183 @@ const Loading = styled.View`
 
 
 export default function LoginScreen() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState("API_EMERJ");
+  const [pass, setPass] = useState("APIEMERJ");
+  const [user, setUser] = useState("SDARLAN");
+  const [cpf, setCPF] = useState("28863720720");
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
+  const [loginUser, setLoginUser] = useState("");
   const [auth, setAuth] = useState<boolean>(false);
+  const [auth2, setAuth2] = useState<boolean>(false);
   const [isLoading, setIsLoading] = useState<boolean>(false);
-  const [info, setInfo] = useState("");
   const navigation = useNavigation();
-  
-
-
-   
-   //console.log(info );
 
   const handleSignInPress = async () => {
     setError("");
     setSuccess("");
 
-    if (email.length === 0 || password.length === 0) {
+    if (email.length === 0 || pass.length === 0) {
       setError("Preencha usuário e senha para continuar!");
     } else {
-      //aqui virá a API
       setIsLoading(true);
+      //Chamando a Função de Login API
+      Login();
+
+      // Chamada a API , pegar token para obter dados do usuario
       try {
-        const response = await axios.get(
-          `https://wwwh3.tjrj.jus.br/HWEBAPIEVENTOS/api/acesso/obtertoken/${email}/${password}`
-        );
+        const response = await apiGetToken.get(`/${user}/${cpf}`);
 
         if (response.data) {
           setSuccess("");
           await AsyncStorage.setItem("@accessToken", response.data);
           const result = await AsyncStorage.getItem("@accessToken");
-          Login(result);
+          dataUser(result);
 
           // console.log(result);
 
           if (result) {
+            setAuth2(true);
             setTimeout(() => {
-              setSuccess('Autenticado');
-            }, 200);
+              setSuccess("Autenticando...");
+            }, 1000);
 
-            setTimeout(() => {
-              authLocal();
-            }, 200);
-          } else {
-            console.log("não foi possivel autenticar");
           }
-        } else {
-          console.log("não foi possivel obter o token");
         }
       } catch (error) {
         setTimeout(() => {
           setIsLoading(false);
           setSuccess("");
-          setError("Falha na autenticação");
-        }, 5000);
+          setError("Falha ao obter token");
+        }, 1000);
         console.log(error);
       }
     }
   };
 
-  const authLocal = async () => {
-    setError("");
-                
-    setTimeout(() => {
-      {
-        navigation.navigate("Home");
-      }     
-      setIsLoading(false);
-      setSuccess("");
-    }, 500);
-  };
+  //Funções de Chamada a API
 
-  const Login = async (result: any) => {
+  // Função de Login com retorno do Token
+
+  const Login = async () => {
     try {
-      const dados = await axios.get(
-        `https://wwwh3.tjrj.jus.br/HWEBAPIEVENTOS/api/magistrado/obterdados/${password}`,
+      const loginApi = await apiLogin.post("/login/api",
+
         {
-          method: "GET",
-          headers: { Authorization: `Bearer ${result}` },
+          senha: pass,
+          usuario: email,
         }
       );
+
+      await AsyncStorage.setItem("Bearer", loginApi.headers.authorization);
+
+      const Dbearer = await AsyncStorage.getItem("Bearer");
+      const bearer = Dbearer?.substring(7);
+      if (bearer) {
+        authUser(bearer);
+        console.log(bearer);
+      }
+    } catch (error) {
+      setTimeout(() => {
+        setIsLoading(false);
+        setSuccess("");
+        setError("Falha no login");
+      }, 5000);
+      console.log(error);
+    }
+  };
+
+  // Função de autorização de usuário com envio de token
+  const authUser = async (bearer: any) => {
+    try {
+      const loginUser = await apiAuth.post(
+        "/login/usuario",
+        {
+          senha: pass,
+          usuario: email,
+        },
+        { headers: { Authorization: `Bearer ${bearer}` } }
+      );
+
+      const authUser = loginUser.data.mensagem;
+
+      if (authUser) {
+        setAuth(true);
+        setLoginUser(authUser);
+        // setTimeout(() => {
+        //   authLocal();
+        // }, 5000);
+        setTimeout(() => {
+          // updateToken(bearer);
+        }, 5000);
+      }
+    } catch (error) {
+      setTimeout(() => {
+        setIsLoading(false);
+        setSuccess("");
+        setError("Falha na autenticação");
+      }, 5000);
+      console.log(error);
+    }
+  };
+
+  // Função para Atualizar Token
+  // const refreshToken = async (bearer: any) => {
+  //   try {
+  //     const refToken = await axios.post(
+  //       `https://wwwh3.tjrj.jus.br/hidserverjus-api/login/atualizarToken`,
+  //       {
+  //         senha: "APIEMERJ",
+  //         usuario: "API_EMERJ",
+  //       },
+  //       { headers: { Authorization: `Bearer ${bearer}` } }
+  //     );
+  //     const ref = refToken.data.mensagem;
+  //     console.log(ref);
+  //   } catch {
+  //     console.log("Não obteve Resposta");
+  //   }
+  // };
+
+  // Função para pegar os dados do usuário com envio do token
+  const dataUser = async (result: any) => {
+    try {
+      const dados = await apiGetData.get(`/${cpf}`, {
+        method: "GET",
+        headers: { Authorization: `Bearer ${result}` },
+      });
       await AsyncStorage.setItem("Dados", JSON.stringify(dados.data.nome));
       await AsyncStorage.setItem("Lotação", JSON.stringify(dados.data.lotacao));
-      
-      
+    } catch (error) {
+      setTimeout(() => {
+        setIsLoading(false);
+        setSuccess("");
+        setError("Não foi Possivel Obter os Dados");
+      }, 5000);
+      console.log(error);
+    }
+  };
 
-   
-    } catch {
-      console.log("Não obteve Resposta");
+  //UseEffect necessário para atualizar o useState Auth
+  useEffect(() => {
+    authLocal();
+  }, [handleSignInPress]);
+
+  // Funcão de Autenticação e Navegação para tela Home
+  const authLocal = async () => {
+    if (auth) {
+      setError("");
+      setSuccess(loginUser);
+      setTimeout(() => {
+        navigation.navigate("Home");
+        setIsLoading(false);
+        setSuccess("");
+      }, 9000);
+    } else {
+      setTimeout(() => {
+        setSuccess("");
+        setIsLoading(false);
+      }, 5000);
     }
   };
 
@@ -256,8 +349,8 @@ export default function LoginScreen() {
 
           <Input
             placeholder="Senha"
-            defaultValue={password}
-            onChangeText={(newPassword) => setPassword(newPassword)}
+            defaultValue={pass}
+            onChangeText={(newPassword) => setPass(newPassword)}
             secureTextEntry
           />
           <ContainerButton>
