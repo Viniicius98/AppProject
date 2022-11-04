@@ -9,9 +9,8 @@ import { useState, useEffect } from "react";
 //Emulador para iOS
 //http://localhost:3000
 
-const apiGetData = axios.create({
-  baseURL:
-    "https://wwwh3.tjrj.jus.br/HWEBAPIEVENTOS/api/magistrado/obterdados/",
+const apiTokenQuery = axios.create({
+  baseURL: "https://wwwh3.tjrj.jus.br/HWEBAPIEVENTOS/api/",
 });
 
-export default apiGetData;
+export default apiTokenQuery;

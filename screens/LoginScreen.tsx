@@ -4,11 +4,8 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 import { ActivityIndicator, SafeAreaView, StyleSheet } from "react-native";
 import Header from "../components/Header";
 import AppLogo from "../components/Header/Applogo";
-import axios from "axios";
 import apiLogin from "../services/apiLogin";
-import apiAuth from "../services/apiAuthUser";
-import apiGetToken from "../services/apiGetToken";
-import apiGetData from "../services/apiGetData";
+import apiTokenQuery from "../services/apiTokenQuery";
 import { useNavigation } from "@react-navigation/native";
 
 const BackgroundContainer = styled.View`
@@ -131,8 +128,8 @@ const Loading = styled.View`
 export default function LoginScreen() {
   const [email, setEmail] = useState("API_EMERJ");
   const [password, setPassword] = useState("APIEMERJ");
-  const [user, setUser] = useState("SDARLAN");
-  const [cpf, setCPF] = useState("28863720720");
+  const [user, setUser] = useState("CLAUDIO");
+  const [cpf, setCPF] = useState("77359194768");
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
   const [loginUser, setLoginUser] = useState("");
@@ -144,35 +141,35 @@ export default function LoginScreen() {
   const handleSignInPress = async () => {
     setError("");
     setSuccess("");
+    setIsLoading(true);
 
     if (email.length === 0 || password.length === 0) {
-      setError("Preencha usuário e senha para continuar!");
+      setTimeout(() => {
+        setError("Preencha usuário e senha para continuar!");
+      }, 3000);
     } else {
-      setIsLoading(true);
       //Chamando a Função de Login API
       Login();
 
       // Chamada a API , pegar token para obter dados do usuario
       try {
-        const response = await apiGetToken.get(`/${user}/${cpf}`);
+        const response = await apiTokenQuery.get(
+          `/acesso/obtertoken/${user}/${cpf}`
+        );
 
         if (response.data) {
           setSuccess("");
           await AsyncStorage.setItem("@accessToken", response.data);
-          const result = await AsyncStorage.getItem("@accessToken");
-          dataUser(result);
+          const token = await AsyncStorage.getItem("@accessToken");
+          dataUser(token);
 
           // console.log(result);
-
-          if (result) {
+          // se result receber o token, o auth2 se tornara verdadeiro
+          if (token) {
             setAuth2(true);
             setTimeout(() => {
               setSuccess("Autenticando...");
-            }, 1000);
-
-            // setTimeout(() => {
-            //   authLocal();
-            // }, 1000);
+            }, 3000);
           }
         }
       } catch (error) {
@@ -180,7 +177,7 @@ export default function LoginScreen() {
           setIsLoading(false);
           setSuccess("");
           setError("Falha ao obter token");
-        }, 1000);
+        }, 3000);
         console.log(error);
       }
     }
@@ -207,14 +204,13 @@ export default function LoginScreen() {
       const bearer = Dbearer?.substring(7);
       if (bearer) {
         authUser(bearer);
-        console.log(bearer);
       }
     } catch (error) {
       setTimeout(() => {
         setIsLoading(false);
         setSuccess("");
         setError("Falha no login");
-      }, 5000);
+      }, 6000);
       console.log(error);
     }
   };
@@ -222,7 +218,7 @@ export default function LoginScreen() {
   // Função de autorização de usuário com envio de token
   const authUser = async (bearer: any) => {
     try {
-      const loginUser = await apiAuth.post(
+      const loginUser = await apiLogin.post(
         "/login/usuario",
         {
           senha: password,
@@ -236,12 +232,6 @@ export default function LoginScreen() {
       if (authUser) {
         setAuth(true);
         setLoginUser(authUser);
-        // setTimeout(() => {
-        //   authLocal();
-        // }, 5000);
-        setTimeout(() => {
-          // updateToken(bearer);
-        }, 5000);
       }
     } catch (error) {
       setTimeout(() => {
@@ -256,8 +246,8 @@ export default function LoginScreen() {
   // Função para Atualizar Token
   // const refreshToken = async (bearer: any) => {
   //   try {
-  //     const refToken = await axios.post(
-  //       `https://wwwh3.tjrj.jus.br/hidserverjus-api/login/atualizarToken`,
+  //     const refToken = await apiLogin.post(
+  //       `/login/atualizarToken`,
   //       {
   //         senha: "APIEMERJ",
   //         usuario: "API_EMERJ",
@@ -272,11 +262,11 @@ export default function LoginScreen() {
   // };
 
   // Função para pegar os dados do usuário com envio do token
-  const dataUser = async (result: any) => {
+  const dataUser = async (token: any) => {
     try {
-      const dados = await apiGetData.get(`/${cpf}`, {
+      const dados = await apiTokenQuery.get(`/magistrado/obterdados/${cpf}`, {
         method: "GET",
-        headers: { Authorization: `Bearer ${result}` },
+        headers: { Authorization: `Bearer ${token}` },
       });
       await AsyncStorage.setItem("Dados", JSON.stringify(dados.data.nome));
       await AsyncStorage.setItem("Lotação", JSON.stringify(dados.data.lotacao));
@@ -295,16 +285,16 @@ export default function LoginScreen() {
     authLocal();
   }, [handleSignInPress]);
 
-  // Funcão de Autenticação e Navegação para tela Home
+  // Funcão de Autenticação , se auth e auth2 estiverem verdadeiros irá navegar para tela Home
   const authLocal = async () => {
-    if (auth) {
+    if (auth /*{&& auth2}*/) {
       setError("");
       setSuccess(loginUser);
       setTimeout(() => {
         navigation.navigate("Home");
         setIsLoading(false);
         setSuccess("");
-      }, 9000);
+      }, 5000);
     } else {
       setTimeout(() => {
         setSuccess("");
