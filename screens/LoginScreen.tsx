@@ -287,9 +287,12 @@ export default function LoginScreen() {
 
   // Funcão de Autenticação , se auth e auth2 estiverem verdadeiros irá navegar para tela Home
   const authLocal = async () => {
-    if (auth /*{&& auth2}*/) {
-      setError("");
-      setSuccess(loginUser);
+    if (/*{await biometricAuth()}*/ auth /*{ && auth2}*/) {
+      setTimeout(() => {
+        setError("");
+        setSuccess(loginUser);
+      }, 3000);
+
       setTimeout(() => {
         navigation.navigate("Home");
         setIsLoading(false);
