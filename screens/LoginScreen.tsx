@@ -42,7 +42,7 @@ const ImageBackground = styled.Image`
 
 const Container = styled.View`
   flex: 1;
-  margin-top: -3%;
+  margin-top: -1%;
   align-items: center;
   justify-content: center;
 `;
@@ -73,7 +73,7 @@ const ContainerTexttt = styled.View`
 `;
 
 const ContainerTextSucess = styled.Text`
-  margin-top: 4%;
+  margin-top: -3%;
   margin-left: 21%;
   color: #228b22;
   font-size: 14px;
@@ -81,8 +81,8 @@ const ContainerTextSucess = styled.Text`
   padding-right: 10%;
 `;
 const ContainerTextError = styled.Text`
-  margin-top: 4%;
-  margin-left: 10%;
+  margin-top: -3%;
+  margin-left: 22%;
   font-size: 14px;
   font-weight: bold;
   color: #ff0000;
@@ -108,7 +108,7 @@ const Input = styled.TextInput`
   border-radius: 5px;
   padding-left: 20px;
   margin-top: 22%;
-  margin-bottom: -22%;
+  margin-bottom: -18%;
   margin-left: 10%;
   z-index: 1;
   opacity: 0.5;
@@ -122,7 +122,7 @@ const SubmitButton = styled.Button`
 const ContainerButton = styled.View`
   width: 65%;
   height: 50%;
-  margin-top: 52%;
+  margin-top: 42%;
   margin-left: 16.8%;
   z-index: 1;
 `;

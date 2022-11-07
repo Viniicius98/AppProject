@@ -9,7 +9,7 @@ const ImageContainer = styled.View`
   background: #1e2d3e;
 `;
 const EmerjImage = styled.Image`
-  width: 67%;
+  width: 72%;
   height: 135%;
   border-width: 2px;
 `;
