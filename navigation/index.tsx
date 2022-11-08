@@ -70,13 +70,17 @@ function RootNavigator() {
       initialRouteName="Login"
       screenOptions={{
         headerShown: true,
+        headerStyle: {
+          backgroundColor: "#1e2d3e",
+        },
       }}
     >
       <Stack.Screen
         name="Login"
         component={LoginScreen}
         options={() => ({
-          headerShown: false,
+          headerTitle: () => <Header />,
+
           gestureEnabled: false,
         })}
       />
@@ -177,10 +181,9 @@ function RootNavigator() {
           },
           gestureEnabled: false,
         })}
-      />       
-       
-          
-        {/* <Stack.Screen name="Home" component={HomeScreen} options={() => ({
+      />
+
+      {/* <Stack.Screen name="Home" component={HomeScreen} options={() => ({
           headerShown: false,
           headerTitle: "Home",
           headerStyle: {
@@ -223,8 +226,7 @@ function RootNavigator() {
           
         })}
       /> */}
-         
-            
+
       <Stack.Group screenOptions={{ presentation: "modal" }}>
         <Stack.Screen name="Settings" component={SettingsScreen} />
       </Stack.Group>
@@ -240,7 +242,6 @@ function RootNavigator() {
 
 // function BottomTabNavigator() {
 //   const colorScheme = useColorScheme();
-
 
 //   return (
 //     <BottomTab.Navigator
@@ -285,7 +286,6 @@ function RootNavigator() {
 //         })}
 //       />
 
-
 //       {/*BottomTab.Screen
 //         name="Activites"
 //         component={Activites}
@@ -295,7 +295,6 @@ function RootNavigator() {
 //           tabBarIcon: ({ color }) => <TabBarIcon name="book" color={color} />,
 //         })}
 //       />*/}
-
 
 //       <BottomTab.Screen
 //         name="User"
@@ -323,7 +322,6 @@ function RootNavigator() {
 //     </BottomTab.Navigator>
 //   );
 // }
-
 
 // /**
 //  * You can explore the built-in icon families and icons on the web at https://icons.expo.fyi/

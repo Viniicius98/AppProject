@@ -1,41 +1,42 @@
 import styled from "styled-components/native";
 import React, { useEffect, useState } from "react";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import { ActivityIndicator, SafeAreaView, StyleSheet } from "react-native";
+import {
+  ActivityIndicator,
+  KeyboardAvoidingView,
+  Platform,
+  SafeAreaView,
+  StyleSheet,
+} from "react-native";
 import Header from "../components/Header";
 import AppLogo from "../components/Header/Applogo";
 import apiLogin from "../services/apiLogin";
 import apiTokenQuery from "../services/apiTokenQuery";
 import { useNavigation } from "@react-navigation/native";
 
-const BackgroundContainer = styled.View`
-  width: 100%;
-  height: 84.5%;
+const BackgroundContainer = styled.SafeAreaView`
+  flex: 1;
   background-color: #ffffff;
+  z-index: 1;
 `;
 const LoginBackgroundContainer = styled.View`
-  width: 92%;
-  height: 51%;
+  width: 90%;
+  height: 70%;
   margin-top: 10%;
-  margin-left: 3.9%;
+  margin-left: 5%;
   background: #021831ed;
 `;
 
 const ImageBackground = styled.Image`
-  position: absolute;
-  height: 87%;
+  height: 100%;
   width: 100%;
-  align-items: center;
-  justify-content: center;
-  margin-top: 12.5%;
   opacity: 0.2;
 `;
 
-const Container = styled.View`
-  flex: 1;
-  margin-top: -3%;
+const Container = styled.SafeAreaView`
   align-items: center;
   justify-content: center;
+  background: white;
 `;
 const AppContainer = styled.View`
   flex: 1;
@@ -43,16 +44,17 @@ const AppContainer = styled.View`
   margin-top: -38.9%;
   margin-left: 25.5%;
 `;
-const ContainerTextt = styled.Text`
+const ContainerText = styled.Text`
   font-size: 19px;
   font-weight: bold;
   color: #b8977e;
-  padding: 1%;
-  margin-left: 6%;
+  padding-top: 1%;
+  padding-left: 5%;
 `;
 
-const ContainerTexttt = styled.View`
-  height: 13%;
+const ContainerTitle = styled.View`
+  height: 10%;
+  margin-top: -143%;
   background-color: #c0ccda;
   border-top-width: 1px;
   border-top-color: #8492a6;
@@ -61,42 +63,42 @@ const ContainerTexttt = styled.View`
 `;
 
 const ContainerTextSucess = styled.Text`
-  margin-top: 4%;
-  margin-left: 21%;
-  color: #228b22;
-  font-size: 14px;
+  margin-top: 8%;
+  margin-left: 30%;
+  font-size: 18px;
   font-weight: bold;
+  color: #228b22;
   padding-right: 10%;
 `;
 const ContainerTextError = styled.Text`
-  margin-top: 4%;
-  margin-left: 10%;
-  font-size: 14px;
+  margin-top: 8%;
+  margin-left: 30%;
+  font-size: 18px;
   font-weight: bold;
   color: #ff0000;
   padding-right: 10%;
 `;
 
-const ContainerTexte = styled.Text`
+const ContainerForget = styled.Text`
   color: #8492a6;
   padding-right: 35%;
   text-align: center;
-  margin-top: -15%;
-  margin-left: 20%;
+  margin-top: -55%;
+  margin-left: 18%;
 `;
 
 const Input = styled.TextInput`
   height: 45px;
   width: 260px;
-  align-items: center;
   font-size: 15px;
   font-weight: bold;
   color: black;
   background-color: #e0e6ed;
   border-radius: 5px;
   padding-left: 20px;
-  margin-top: 22%;
-  margin-bottom: -22%;
+  padding-horizontal: 12px;
+  margin-top: 30%;
+  margin-bottom: -30%;
   margin-left: 10%;
   z-index: 1;
   opacity: 0.5;
@@ -305,66 +307,51 @@ export default function LoginScreen() {
       }, 5000);
     }
   };
-
   return (
-    <Container>
-      <Header />
+    <BackgroundContainer>
+      {isLoading && (
+        <Loading>
+          <ActivityIndicator size="large" color="#8492A6" />
+        </Loading>
+      )}
+      <LoginBackgroundContainer>
+        <ImageBackground source={require("../assets/images/background.png")} />
+        <ContainerTitle>
+          <ContainerText>Login</ContainerText>
+        </ContainerTitle>
 
-      <BackgroundContainer>
-        {isLoading && (
-          <Loading>
-            <ActivityIndicator size="large" color="#8492A6" />
-          </Loading>
-        )}
+        <Input
+          placeholder="E-mail"
+          defaultValue={email}
+          onChangeText={(newEmail) => setEmail(newEmail)}
+        />
 
-        <LoginBackgroundContainer>
-          <ContainerTexttt>
-            <ContainerTextt>Login</ContainerTextt>
-          </ContainerTexttt>
-
-          <Input
-            placeholder="E-mail"
-            defaultValue={email}
-            onChangeText={(newEmail) => setEmail(newEmail)}
+        <Input
+          placeholder="Senha"
+          defaultValue={password}
+          onChangeText={(newPassword) => setPassword(newPassword)}
+          secureTextEntry
+        />
+        <ContainerButton>
+          <SubmitButton
+            title="Entrar"
+            color="#B8977E"
+            onPress={handleSignInPress}
           />
-
-          <Input
-            placeholder="Senha"
-            defaultValue={password}
-            onChangeText={(newPassword) => setPassword(newPassword)}
-            secureTextEntry
-          />
-          <ContainerButton>
-            <SubmitButton
-              title="Entrar"
-              color="#B8977E"
-              onPress={handleSignInPress}
-            />
-          </ContainerButton>
-
-          <ImageBackground
-            source={require("../assets/images/background.png")}
-          />
-
-          <ContainerTexte>Esqueceu sua senha ? </ContainerTexte>
-
-          <ContainerTextError>{error}</ContainerTextError>
-          <ContainerTextSucess>{success} </ContainerTextSucess>
-        </LoginBackgroundContainer>
-
-        <AppContainer>
-          <AppLogo />
-        </AppContainer>
-      </BackgroundContainer>
-    </Container>
+        </ContainerButton>
+        <ContainerForget>Esqueceu sua senha ? </ContainerForget>
+        <ContainerTextError>{error}</ContainerTextError>
+        <ContainerTextSucess>{success} </ContainerTextSucess>
+      </LoginBackgroundContainer>
+    </BackgroundContainer>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    marginTop: "-3",
+  keyboard: {
+    width: 323,
+    height: 415,
+    flexDirection: "column",
     alignItems: "center",
-    justifyContent: "center",
   },
 });
