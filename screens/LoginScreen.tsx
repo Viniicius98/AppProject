@@ -1,114 +1,98 @@
 import styled from "styled-components/native";
 import React, { useEffect, useState } from "react";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import { ActivityIndicator, SafeAreaView, StyleSheet, KeyboardAvoidingView } from "react-native";
+import { ActivityIndicator, KeyboardAvoidingView, Platform, SafeAreaView, StyleSheet,} from "react-native";
 import Header from "../components/Header";
 import AppLogo from "../components/Header/Applogo";
-import axios from "axios";
-import { useNavigation } from "@react-navigation/native";
-import CardPerfilMagistrado from "../components/CardMagistrado";
-import { string } from "yup/lib/locale";
-import apiAuth from "../services/apiAuthUser";
-import apiGetToken from "../services/apiGetToken";
 import apiLogin from "../services/apiLogin";
-import apiGetData from "../services/apiGetData";
+import apiTokenQuery from "../services/apiTokenQuery";
+import { useNavigation } from "@react-navigation/native";
 
-
-const BackgroundContainer = styled.View`
-  width: 100%;
-  height: 84.5%;
+const BackgroundContainer = styled.SafeAreaView`
+  flex: 1;
   background-color: #ffffff;
-  
+  z-index: 1;
 `;
 const LoginBackgroundContainer = styled.View`
-  width: 92%;
-  height: 51%;
+  width: 90%;
+  height: 70%;
   margin-top: 10%;
-  margin-left: 3.9%;
+  margin-left: 5%;
   background: #021831ed;
-  border-radius: 10px;
 `;
 
 const ImageBackground = styled.Image`
-  position: absolute;
-  height: 87%;
+  height: 100%;
   width: 100%;
-  align-items: center;
-  justify-content: center;
-  margin-top: 12.5%;
   opacity: 0.2;
-  border-radius: 10px;
 `;
 
-const Container = styled.View`
-  flex: 1;
-  margin-top: -1%;
+const Container = styled.SafeAreaView`
   align-items: center;
   justify-content: center;
+  background: white;
 `;
 const AppContainer = styled.View`
   flex: 1;
 
-  margin-top: -110%;
-  margin-left: 75.5%;
+  margin-top: -38.9%;
+  margin-left: 25.5%;
 `;
-const ContainerTextt = styled.Text`
+const ContainerText = styled.Text`
   font-size: 19px;
   font-weight: bold;
   color: #b8977e;
-  padding: 1%;
-  margin-left: 6%;
-  
+  padding-top: 1%;
+  padding-left: 5%;
 `;
 
-const ContainerTexttt = styled.View`
-  height: 13%;
+const ContainerTitle = styled.View`
+  height: 10%;
+  margin-top: -143%;
   background-color: #c0ccda;
-  border-top-width: 0px;
+  border-top-width: 1px;
   border-top-color: #8492a6;
   border-bottom-width: 10px;
   border-bottom-color: #b8977e;
-  border-radius: 10px;
-  margin-top: 0%;
 `;
 
 const ContainerTextSucess = styled.Text`
-  margin-top: -3%;
-  margin-left: 21%;
-  color: #228b22;
-  font-size: 14px;
+  margin-top: 8%;
+  margin-left: 30%;
+  font-size: 18px;
   font-weight: bold;
+  color: #228b22;
   padding-right: 10%;
 `;
 const ContainerTextError = styled.Text`
-  margin-top: -3%;
-  margin-left: 22%;
-  font-size: 14px;
+  margin-top: 8%;
+  margin-left: 30%;
+  font-size: 18px;
   font-weight: bold;
   color: #ff0000;
   padding-right: 10%;
 `;
 
-const ContainerTexte = styled.Text`
+const ContainerForget = styled.Text`
   color: #8492a6;
   padding-right: 35%;
   text-align: center;
-  margin-top: -15%;
-  margin-left: 20%;
+  margin-top: -55%;
+  margin-left: 18%;
 `;
 
 const Input = styled.TextInput`
   height: 45px;
   width: 260px;
-  align-items: center;
   font-size: 15px;
   font-weight: bold;
   color: black;
   background-color: #e0e6ed;
   border-radius: 5px;
   padding-left: 20px;
-  margin-top: 22%;
-  margin-bottom: -18%;
+  padding-horizontal: 12px;
+  margin-top: 30%;
+  margin-bottom: -30%;
   margin-left: 10%;
   z-index: 1;
   opacity: 0.5;
@@ -122,7 +106,7 @@ const SubmitButton = styled.Button`
 const ContainerButton = styled.View`
   width: 65%;
   height: 50%;
-  margin-top: 42%;
+  margin-top: 52%;
   margin-left: 16.8%;
   z-index: 1;
 `;
@@ -142,8 +126,8 @@ const Loading = styled.View`
 export default function LoginScreen() {
   const [email, setEmail] = useState("API_EMERJ");
   const [pass, setPass] = useState("APIEMERJ");
-  const [user, setUser] = useState("SDARLAN");
-  const [cpf, setCPF] = useState("28863720720");
+  const [user, setUser] = useState("CLAUDIO");
+  const [cpf, setCPF] = useState("77359194768");
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
   const [loginUser, setLoginUser] = useState("");
@@ -155,6 +139,7 @@ export default function LoginScreen() {
   const handleSignInPress = async () => {
     setError("");
     setSuccess("");
+    setIsLoading(true);
 
     if (email.length === 0 || pass.length === 0) {
       setError("Preencha usuário e senha para continuar!");
@@ -170,12 +155,12 @@ export default function LoginScreen() {
         if (response.data) {
           setSuccess("");
           await AsyncStorage.setItem("@accessToken", response.data);
-          const result = await AsyncStorage.getItem("@accessToken");
-          dataUser(result);
+          const token = await AsyncStorage.getItem("@accessToken");
+          dataUser(token);
 
           // console.log(result);
-
-          if (result) {
+          // se result receber o token, o auth2 se tornara verdadeiro
+          if (token) {
             setAuth2(true);
             setTimeout(() => {
               setSuccess("Autenticando...");
@@ -229,8 +214,7 @@ export default function LoginScreen() {
   // Função de autorização de usuário com envio de token
   const authUser = async (bearer: any) => {
     try {
-      const loginUser = await apiAuth.post(
-        "/login/usuario",
+      const loginUser = await apiAuth.post("/login/usuario",
         {
           senha: pass,
           usuario: email,
@@ -243,12 +227,6 @@ export default function LoginScreen() {
       if (authUser) {
         setAuth(true);
         setLoginUser(authUser);
-        // setTimeout(() => {
-        //   authLocal();
-        // }, 5000);
-        setTimeout(() => {
-          // updateToken(bearer);
-        }, 5000);
       }
     } catch (error) {
       setTimeout(() => {
@@ -261,6 +239,7 @@ export default function LoginScreen() {
   };
 
   // Função para Atualizar Token
+
   // const refreshToken = async (bearer: any) => {
   //   try {
   //     const refToken = await axios.post(
@@ -278,12 +257,12 @@ export default function LoginScreen() {
   //   }
   // };
 
-  // Função para pegar os dados do usuário com envio do token
-  const dataUser = async (result: any) => {
+  // Função para guarda os dados do usuário com envio do token
+  const dataUser = async (token: any) => {
     try {
-      const dados = await apiGetData.get(`/${cpf}`, {
+      const dados = await apiTokenQuery.get(`/${cpf}`, {
         method: "GET",
-        headers: { Authorization: `Bearer ${result}` },
+        headers: { Authorization: `Bearer ${token}` },
       });
       await AsyncStorage.setItem("Dados", JSON.stringify(dados.data.nome));
       await AsyncStorage.setItem("Lotação", JSON.stringify(dados.data.lotacao));
@@ -302,16 +281,19 @@ export default function LoginScreen() {
     authLocal();
   }, [handleSignInPress]);
 
-  // Funcão de Autenticação e Navegação para tela Home
+  // Funcão de Autenticação , se auth e auth2 estiverem verdadeiros irá navegar para tela Home
   const authLocal = async () => {
-    if (auth) {
-      setError("");
-      setSuccess(loginUser);
+    if (/*{await biometricAuth()}*/ auth /*{ && auth2}*/) {
+      setTimeout(() => {
+        setError("");
+        setSuccess(loginUser);
+      }, 3000);
+
       setTimeout(() => {
         navigation.navigate("Home");
         setIsLoading(false);
         setSuccess("");
-      }, 9000);
+      }, 5000);
     } else {
       setTimeout(() => {
         setSuccess("");
@@ -321,69 +303,50 @@ export default function LoginScreen() {
   };
 
   return (
+    <BackgroundContainer>
+      {isLoading && (
+        <Loading>
+          <ActivityIndicator size="large" color="#8492A6" />
+        </Loading>
+      )}
+      <LoginBackgroundContainer>
+        <ImageBackground source={require("../assets/images/background.png")} />
+        <ContainerTitle>
+          <ContainerText>Login</ContainerText>
+        </ContainerTitle>
 
-    
-   
-    <Container>
+        <Input
+          placeholder="E-mail"
+          defaultValue={email}
+          onChangeText={(newEmail) => setEmail(newEmail)}
+        />
 
-
-      <Header />
-
-      <BackgroundContainer>
-        {isLoading && (
-          <Loading>
-            <ActivityIndicator size="large" color="#8492A6" />
-          </Loading>
-        )}
-
-        <LoginBackgroundContainer>
-          <ContainerTexttt>
-            <ContainerTextt>Login</ContainerTextt>
-          </ContainerTexttt>
-
-          <Input
-            placeholder="E-mail"
-            defaultValue={email}
-            onChangeText={(newEmail) => setEmail(newEmail)}
+        <Input
+          placeholder="Senha"
+          defaultValue={password}
+          onChangeText={(newPassword) => setPass(newPassword)}
+          secureTextEntry
+        />
+        <ContainerButton>
+          <SubmitButton
+            title="Entrar"
+            color="#B8977E"
+            onPress={handleSignInPress}
           />
-
-          <Input
-            placeholder="Senha"
-            defaultValue={pass}
-            onChangeText={(newPassword) => setPass(newPassword)}
-            secureTextEntry
-          />
-          <ContainerButton>
-            <SubmitButton
-              title="Entrar"
-              color="#B8977E"
-              onPress={handleSignInPress}
-            />
-          </ContainerButton>
-
-          <ImageBackground
-            source={require("../assets/images/background.png")}
-          />
-
-          <ContainerTexte>Esqueceu sua senha ? </ContainerTexte>
-
-          <ContainerTextError>{error}</ContainerTextError>
-          <ContainerTextSucess>{success} </ContainerTextSucess>
-        </LoginBackgroundContainer>
-
-        <AppContainer>
-          <AppLogo />
-        </AppContainer>
-      </BackgroundContainer>
-    </Container>
+        </ContainerButton>
+        <ContainerForget>Esqueceu sua senha ? </ContainerForget>
+        <ContainerTextError>{error}</ContainerTextError>
+        <ContainerTextSucess>{success} </ContainerTextSucess>
+      </LoginBackgroundContainer>
+    </BackgroundContainer>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    marginTop: "-3",
+  keyboard: {
+    width: 323,
+    height: 415,
+    flexDirection: "column",
     alignItems: "center",
-    justifyContent: "center",
   },
 });

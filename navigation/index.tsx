@@ -76,7 +76,7 @@ function RootNavigator() {
         name="Login"
         component={LoginScreen}
         options={() => ({
-          headerShown: false,
+          headerTitle: () => <Header />,
           gestureEnabled: false,
         })}
       />
