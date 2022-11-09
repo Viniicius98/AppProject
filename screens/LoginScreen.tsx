@@ -150,7 +150,8 @@ export default function LoginScreen() {
 
       // Chamada a API , pegar token para obter dados do usuario
       try {
-        const response = await apiGetToken.get(`/${user}/${cpf}`);
+        const response = await apiTokenQuery.get(
+          `/acesso/obtertoken/${user}/${cpf}`
 
         if (response.data) {
           setSuccess("");
