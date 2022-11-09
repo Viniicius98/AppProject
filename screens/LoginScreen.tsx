@@ -1,18 +1,11 @@
 import styled from "styled-components/native";
 import React, { useEffect, useState } from "react";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import {
-  ActivityIndicator,
-  KeyboardAvoidingView,
-  Platform,
-  SafeAreaView,
-  StyleSheet,
-} from "react-native";
-import Header from "../components/Header";
-import AppLogo from "../components/Header/Applogo";
+import { ActivityIndicator, StyleSheet } from "react-native";
 import apiLogin from "../services/apiLogin";
 import apiTokenQuery from "../services/apiTokenQuery";
 import { useNavigation } from "@react-navigation/native";
+import biometricAuth from "../utils/local-authentication";
 
 const BackgroundContainer = styled.SafeAreaView`
   flex: 1;
@@ -289,7 +282,7 @@ export default function LoginScreen() {
 
   // Funcão de Autenticação , se auth e auth2 estiverem verdadeiros irá navegar para tela Home
   const authLocal = async () => {
-    if (/*{await biometricAuth()}*/ auth /*{ && auth2}*/) {
+    if (await biometricAuth() /*{auth  && auth2}*/) {
       setTimeout(() => {
         setError("");
         setSuccess(loginUser);

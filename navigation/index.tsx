@@ -69,7 +69,6 @@ function RootNavigator() {
     <Stack.Navigator
       initialRouteName="Login"
       screenOptions={{
-        headerShown: true,
         headerStyle: {
           backgroundColor: "#1e2d3e",
         },
@@ -80,16 +79,16 @@ function RootNavigator() {
         component={LoginScreen}
         options={() => ({
           headerTitle: () => <Header />,
-
+          headerBackVisible: false,
           gestureEnabled: false,
         })}
       />
       <Stack.Screen
         name="Home"
         component={HomeScreen}
-        options={({ navigation }: RootTabScreenProps<"Home">) => ({
-          headerShown: false,
-          gestureEnabled: false,
+        options={() => ({
+          headerTitle: () => <Header />,
+          headerBackVisible: false,
         })}
       />
       <Stack.Screen
