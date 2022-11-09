@@ -1,13 +1,10 @@
-import React, { useState, useEffect } from "react";
 import styled from "styled-components/native";
 import CardPoints from "../CardPoints";
 import AppLogo from "../Header/Applogo";
 import FormRelatoriPoints from "../../components/PointsReportComponents/FormRelatoriPoints";
 
-const BackgroundContainer = styled.View`
-  height: 125%;
-  width: 100%;
-  margin-top: -34.4%;
+const BackgroundContainer = styled.SafeAreaView`
+  flex: 1;
   background: #1e2d3eee;
 `;
 
@@ -30,10 +27,11 @@ const Imagerelatoriopoints = styled.View`
 `;
 
 const ContentItems = styled.View`
-  width: 100%;
-  height: 100%;
-  flex-direction: row;
-  align-items: flex-end;
+  flex: 1;
+  max-width: 100%;
+  max-height: 72%;
+  margin-top: 30%;
+  align-items: center;
 `;
 const DropdownItems = styled.View`
   width: 100%;
@@ -43,9 +41,11 @@ const DropdownItems = styled.View`
 
 const IconsItems = styled.View`
   width: 100%;
-  height: 475.6px;
+  height: 15%;
   margin-bottom: 23.9%;
-  margin-left: -68%;
+  margin-left: 0%;
+  background: black;
+  z-index: 4;
 `;
 const IconsApp = styled.View`
   width: 100%;
@@ -55,10 +55,9 @@ const IconsApp = styled.View`
 `;
 
 const ListItems = styled.View`
+  flex: 1;
   width: 90%;
-  height: 450px;
-  margin-left: 6%;
-  margin-top: -30%;
+
   background-color: #fff;
 `;
 const TextoCursos = styled.Text`
@@ -66,8 +65,15 @@ const TextoCursos = styled.Text`
   font-weight: bold;
   color: #333;
   padding-left: 5%;
-  margin-top: 6px;
+  padding-top: 1%;
   color: #343f4b;
+  background: #c0ccda;
+  border-bottom-width: 8px;
+  border-bottom-color: #b8977e;
+  flex-direction: row;
+  width: 100%;
+  height: 35px;
+  align-items: center;
 `;
 const TitleCustom = styled.View`
   background: #fff;
@@ -83,28 +89,14 @@ export default function PointsReport() {
   return (
     <>
       <BackgroundContainer>
+        <CardPoints />
         <ImageBackground
           source={require("../../assets/images/background.png")}
         />
-
         <ContentItems>
-          <DropdownItems>
-            <ListItems>
-              <TextoCursos>RELATÓRIO</TextoCursos>
-              <TitleCustom></TitleCustom>
-
-              <Imagerelatoriopoints>
-                <FormRelatoriPoints />
-              </Imagerelatoriopoints>
-            </ListItems>
-          </DropdownItems>
-
-          <IconsItems>
-            <CardPoints />
-            <IconsApp>
-              <AppLogo />
-            </IconsApp>
-          </IconsItems>
+          <ListItems>
+            <TextoCursos>RELATÓRIO</TextoCursos>
+          </ListItems>
         </ContentItems>
       </BackgroundContainer>
     </>

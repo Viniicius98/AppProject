@@ -137,16 +137,8 @@ function RootNavigator() {
         name="PointsReport"
         component={PointsReport}
         options={() => ({
-          headerShown: false,
-          headerTitle: "Home",
-          headerStyle: {
-            backgroundColor: "#1e2d3e",
-          },
-          headerTintColor: "#fff",
-          headerTitleStyle: {
-            fontWeight: "bold",
-          },
-          gestureEnabled: false,
+          headerTitle: () => <Header />,
+          headerBackVisible: false,
         })}
       />
       <Stack.Screen

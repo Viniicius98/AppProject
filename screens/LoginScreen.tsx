@@ -1,7 +1,7 @@
 import styled from "styled-components/native";
 import React, { useEffect, useState } from "react";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import { ActivityIndicator, StyleSheet } from "react-native";
+import { ActivityIndicator, Linking, StyleSheet, Text } from "react-native";
 import apiLogin from "../services/apiLogin";
 import apiTokenQuery from "../services/apiTokenQuery";
 import { useNavigation } from "@react-navigation/native";
@@ -11,6 +11,8 @@ const BackgroundContainer = styled.SafeAreaView`
   flex: 1;
   background-color: #ffffff;
   z-index: 1;
+  border-bottom-width: 10px;
+  border-bottom-color: #b8977e;
 `;
 const LoginBackgroundContainer = styled.View`
   width: 90%;
@@ -18,25 +20,16 @@ const LoginBackgroundContainer = styled.View`
   margin-top: 10%;
   margin-left: 5%;
   background: #021831ed;
+  border-radius: 10px;
 `;
 
 const ImageBackground = styled.Image`
   height: 100%;
   width: 100%;
   opacity: 0.2;
+  border-radius: 10px;
 `;
 
-const Container = styled.SafeAreaView`
-  align-items: center;
-  justify-content: center;
-  background: white;
-`;
-const AppContainer = styled.View`
-  flex: 1;
-
-  margin-top: -38.9%;
-  margin-left: 25.5%;
-`;
 const ContainerText = styled.Text`
   font-size: 19px;
   font-weight: bold;
@@ -53,33 +46,45 @@ const ContainerTitle = styled.View`
   border-top-color: #8492a6;
   border-bottom-width: 10px;
   border-bottom-color: #b8977e;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
 `;
 
 const ContainerTextSucess = styled.Text`
   margin-top: 8%;
-  margin-left: 30%;
+  margin-left: 5%;
   font-size: 18px;
   font-weight: bold;
   color: #228b22;
   padding-right: 10%;
+  text-align: center;
 `;
 const ContainerTextError = styled.Text`
   margin-top: 8%;
-  margin-left: 30%;
+  margin-left: 5%;
   font-size: 18px;
   font-weight: bold;
   color: #ff0000;
   padding-right: 10%;
+  text-align: center;
 `;
 
-const ContainerForget = styled.Text`
+const ContainerForget = styled.TouchableOpacity`
+  width: 100%;
+  height: 20%;
   color: #8492a6;
-  padding-right: 35%;
+  padding-top: 0%;
+  padding-right: 25%;
   text-align: center;
   margin-top: -55%;
-  margin-left: 18%;
+  z-index: 3;
 `;
-
+const TextForget = styled.Text`
+  width: 100%;
+  height: 20%;
+  color: #8492a6;
+  text-align: center;
+`;
 const Input = styled.TextInput`
   height: 45px;
   width: 260px;
@@ -282,7 +287,7 @@ export default function LoginScreen() {
 
   // Funcão de Autenticação , se auth e auth2 estiverem verdadeiros irá navegar para tela Home
   const authLocal = async () => {
-    if (await biometricAuth() /*{auth  && auth2}*/) {
+    if (await biometricAuth() /*{ auth && auth2}*/) {
       setTimeout(() => {
         setError("");
         setSuccess(loginUser);
@@ -332,19 +337,14 @@ export default function LoginScreen() {
             onPress={handleSignInPress}
           />
         </ContainerButton>
-        <ContainerForget>Esqueceu sua senha ? </ContainerForget>
+        <ContainerForget
+          onPress={() => Linking.openURL("https://emerj.com.br/site/")}
+        >
+          <TextForget>Esqueceu sua senha ?</TextForget>
+        </ContainerForget>
         <ContainerTextError>{error}</ContainerTextError>
         <ContainerTextSucess>{success} </ContainerTextSucess>
       </LoginBackgroundContainer>
     </BackgroundContainer>
   );
 }
-
-const styles = StyleSheet.create({
-  keyboard: {
-    width: 323,
-    height: 415,
-    flexDirection: "column",
-    alignItems: "center",
-  },
-});

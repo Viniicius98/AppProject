@@ -3,59 +3,44 @@ import styled from "styled-components/native";
 import BackButton from "../BackButton";
 
 const Container = styled.View`
-  position: absolute;
-  margin-left: -39%;
-  width: 180%;
-  height: 100%;
-  display: flex;
-  margin-top: -62%;
-  margin-bottom: 50%;
-`;
-const AvatarContainer = styled.View`
-  background: #c0ccda;
-  width: 100%;
+  flex: 1;
+  z-index: 4;
+  max-height: 11%;
   align-items: center;
-  margin-bottom: 58px;
-  height: 14%;
-  margin-left: 2.5%;
+  background: #c0ccda;
 `;
+
 const Avatar = styled.Image`
   width: 50px;
   height: 50px;
-  margin-right: 66%;
+  margin-top: 3%;
+  margin-right: 30%;
   max-width: 80%;
   max-height: 80%;
-  margin-top: 1%;
-  margin-bottom: 9px;
-  display: flex;
 `;
 
 const TextOne = styled.Text`
-  width: 10%;
+  flex: 1;
   font-size: 17px;
   text-align: center;
   font-weight: bold;
-  margin-left: 23%
-  margin-top: -14%;
-
+  margin-top: -8%;
+  margin-left: 10%;
+  padding-top: 0%;
 `;
 
 const HomeTop = styled.View`
-  position: relative;
+  position: absolute;
   height: 100%;
   width: 100%;
-
-  margin-top: -17%;
-
+  margin-top: -9%;
   margin-left: -1%;
 `;
 
 export default function CardPoints() {
   return (
     <Container>
-      <AvatarContainer>
-        <Avatar source={require("../../assets/images/meusPontos.png")} />
-      </AvatarContainer>
+      <Avatar source={require("../../assets/images/meusPontos.png")} />
       <TextOne>PONTOS</TextOne>
       <HomeTop>
         <BackButton />
