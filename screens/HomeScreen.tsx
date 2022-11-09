@@ -11,7 +11,7 @@ import BackButton from "../components/BackButton";
 
 import { useNavigation } from "@react-navigation/native";
 
-const Container = styled.SafeAreaView`
+const Container = styled.View`
   flex: 1;
   margin-top: -8.4%;
   border-bottom-width: 10px;
@@ -27,7 +27,7 @@ export default function HomeScreen(
   
   return (
     <Container>
-      <Header />
+      
       
 
       <HomeItemsComponents />

@@ -64,14 +64,13 @@ export default function CardPerfilMagistrado(props: any) {
 
 
     
-    <TouchableOpacity onPress={()=> navegacao()}>
+    // <TouchableOpacity onPress={()=> navegacao()}>
     <Container>
       <Title>
         <TitleText>PERFIL DO MAGISTRADO</TitleText>
       </Title>
 
-      <CardBanner source={require("../../assets/images/background.png")} />
-      
+      <CardBanner source={require("../../assets/images/background.png")} />   
 
 
       <Text style={{ fontWeight: "bold", textAlign: "center", marginTop: 5}}>
@@ -82,6 +81,6 @@ export default function CardPerfilMagistrado(props: any) {
       </Text>
 
     </Container>
-    </TouchableOpacity>
+    // </TouchableOpacity>
   );
 }

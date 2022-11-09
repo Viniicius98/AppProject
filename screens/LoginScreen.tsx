@@ -7,11 +7,16 @@ import AppLogo from "../components/Header/Applogo";
 import apiLogin from "../services/apiLogin";
 import apiTokenQuery from "../services/apiTokenQuery";
 import { useNavigation } from "@react-navigation/native";
+import apiGetToken from "../services/apiGetToken";
+import apiAuth from "../services/apiAuthUser";
+import biometricAuth from "../utils/local-authentication";
 
 const BackgroundContainer = styled.SafeAreaView`
   flex: 1;
-  background-color: #ffffff;
+  background-color: #ebf0f5;
   z-index: 1;
+  border-bottom-width: 10px;
+  border-bottom-color: #b8977e;
 `;
 const LoginBackgroundContainer = styled.View`
   width: 90%;
@@ -19,12 +24,14 @@ const LoginBackgroundContainer = styled.View`
   margin-top: 10%;
   margin-left: 5%;
   background: #021831ed;
+  border-radius: 10px;
 `;
 
 const ImageBackground = styled.Image`
   height: 100%;
   width: 100%;
   opacity: 0.2;
+  border-radius: 10px;
 `;
 
 const Container = styled.SafeAreaView`
@@ -50,10 +57,12 @@ const ContainerTitle = styled.View`
   height: 10%;
   margin-top: -143%;
   background-color: #c0ccda;
-  border-top-width: 1px;
+  border-top-width: -3px;
   border-top-color: #8492a6;
   border-bottom-width: 10px;
-  border-bottom-color: #b8977e;
+  border-bottom-color: #b8977e;  
+  border-top-Left-radius: 10px;
+  border-top-Right-radius: 10px;
 `;
 
 const ContainerTextSucess = styled.Text`
@@ -91,7 +100,7 @@ const Input = styled.TextInput`
   border-radius: 5px;
   padding-left: 20px;
   padding-horizontal: 12px;
-  margin-top: 30%;
+  margin-top: 33%;
   margin-bottom: -30%;
   margin-left: 10%;
   z-index: 1;
@@ -102,6 +111,7 @@ const SubmitButton = styled.Button`
   width: 50%;
   height: 50%;
   background-color: black;
+  
 `;
 const ContainerButton = styled.View`
   width: 65%;
@@ -119,6 +129,7 @@ const Loading = styled.View`
   justify-content: center;
   z-index: 30;
   top: 55%;
+  
 `;
 
 
@@ -152,7 +163,7 @@ export default function LoginScreen() {
       try {
         const response = await apiTokenQuery.get(
           `/acesso/obtertoken/${user}/${cpf}`
-
+        )
         if (response.data) {
           setSuccess("");
           await AsyncStorage.setItem("@accessToken", response.data);
@@ -284,7 +295,7 @@ export default function LoginScreen() {
 
   // Funcão de Autenticação , se auth e auth2 estiverem verdadeiros irá navegar para tela Home
   const authLocal = async () => {
-    if (/*{await biometricAuth()}*/ auth /*{ && auth2}*/) {
+    if (await biometricAuth() /*auth*/ /*&& auth2*/) {
       setTimeout(() => {
         setError("");
         setSuccess(loginUser);
@@ -324,7 +335,7 @@ export default function LoginScreen() {
 
         <Input
           placeholder="Senha"
-          defaultValue={password}
+          defaultValue={pass}
           onChangeText={(newPassword) => setPass(newPassword)}
           secureTextEntry
         />
