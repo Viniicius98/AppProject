@@ -96,6 +96,9 @@ export default function PointsReport() {
         <ContentItems>
           <ListItems>
             <TextoCursos>RELATÓRIO</TextoCursos>
+            <Imagerelatoriopoints>
+              <FormRelatoriPoints />
+            </Imagerelatoriopoints>
           </ListItems>
         </ContentItems>
       </BackgroundContainer>
