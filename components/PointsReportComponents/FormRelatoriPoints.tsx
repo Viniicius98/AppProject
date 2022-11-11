@@ -1,16 +1,14 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components/native";
-import {
-  Alert,
-  StyleSheet, View, ScrollView, Text, Image, Button,
-} from "react-native";
+import { Alert, StyleSheet } from "react-native";
 
 import Icon from "react-native-vector-icons/Entypo";
 
 const BackgroundContainer = styled.View`
-  height: 125%;
+  height: 100%;
   width: 100%;
-  margin-top: -34.4%;
+  margin-top: 0%;
+  background: black;
 `;
 const TextoCursosone = styled.Text`
   font-size: 13px;
@@ -202,7 +200,6 @@ type posts = {
   author: String;
 };
 
-
 export default function FormRelatoriPoints() {
   const [repositories, setRepositories] = useState<posts[]>([]);
   useEffect(() => {
@@ -211,7 +208,9 @@ export default function FormRelatoriPoints() {
       .then((data) => {
         setRepositories(data);
       })
-      .catch(() =>{Alert.alert('Erro',"Não foi possível carregar os dados")});
+      .catch(() => {
+        Alert.alert("Erro", "Não foi possível carregar os dados");
+      });
   }, []);
 
   return (

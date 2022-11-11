@@ -20,10 +20,8 @@ const ImageBackground = styled.Image`
 `;
 
 const Imagerelatoriopoints = styled.View`
-  height: 66%;
-  width: 98%;
-  margin-left: 1%;
-  margin-top: 35%;
+  flex: 1;
+  background: #ffff;
 `;
 
 const ContentItems = styled.View`
@@ -33,32 +31,11 @@ const ContentItems = styled.View`
   margin-top: 30%;
   align-items: center;
 `;
-const DropdownItems = styled.View`
-  width: 100%;
-  height: 460px;
-  margin-bottom: 70px;
-`;
-
-const IconsItems = styled.View`
-  width: 100%;
-  height: 15%;
-  margin-bottom: 23.9%;
-  margin-left: 0%;
-  background: black;
-  z-index: 4;
-`;
-const IconsApp = styled.View`
-  width: 100%;
-  height: 100px;
-  margin-top: -41%;
-  margin-left: 74%;
-`;
 
 const ListItems = styled.View`
-  flex: 1;
+  flex: 2;
   width: 90%;
-
-  background-color: #fff;
+  margin-top: -5%;
 `;
 const TextoCursos = styled.Text`
   font-size: 15px;

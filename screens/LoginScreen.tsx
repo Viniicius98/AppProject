@@ -1,7 +1,7 @@
 import styled from "styled-components/native";
 import React, { useEffect, useState } from "react";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import { ActivityIndicator, Linking, StyleSheet, Text } from "react-native";
+import { ActivityIndicator, Linking } from "react-native";
 import apiLogin from "../services/apiLogin";
 import apiTokenQuery from "../services/apiTokenQuery";
 import { useNavigation } from "@react-navigation/native";

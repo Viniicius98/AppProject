@@ -7,10 +7,9 @@ import AppLogo from "../Header/Applogo";
 import { Alert, Text } from "react-native";
 import DropdownCourse from "../DropdownCourse";
 
-const BackgroundContainer = styled.View`
-  height: 100%;
-  width: 100%;
-  margin-top: -70.7%;
+const BackgroundContainer = styled.SafeAreaView`
+  flex: 1;
+  margin-top: 0%;
   background: #343f4b;
 `;
 
@@ -114,25 +113,7 @@ export default function CourseComponents() {
 
   return (
     <>
-      <BackgroundContainer>
-        <ImageBackground
-          source={require("../../assets/images/background.png")}
-        />
-
-        <ContentItems>
-          <DropdownItems>
-            <Text>oi</Text>
-            {/* <DropdownCourse /> */}
-          </DropdownItems>
-
-          <IconsItems>
-            <CardCourse />
-            <IconsApp>
-              <AppLogo />
-            </IconsApp>
-          </IconsItems>
-        </ContentItems>
-      </BackgroundContainer>
+      <BackgroundContainer></BackgroundContainer>
     </>
   );
 }

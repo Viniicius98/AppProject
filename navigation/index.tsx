@@ -161,16 +161,8 @@ function RootNavigator() {
         name="Course"
         component={Course}
         options={() => ({
-          headerShown: false,
-          headerTitle: "Home",
-          headerStyle: {
-            backgroundColor: "#1e2d3e",
-          },
-          headerTintColor: "#fff",
-          headerTitleStyle: {
-            fontWeight: "bold",
-          },
-          gestureEnabled: false,
+          headerTitle: () => <Header />,
+          headerBackVisible: false,
         })}
       />
 
