@@ -3,68 +3,57 @@ import styled from "styled-components/native";
 import BackButton from "../BackButton";
 
 const Container = styled.View`
-  width: 180%;
-  height: 80%;
-  display: flex;
-  margin-top: -55.6%;
-  margin-left: -45.2%;
-`;
-const Container2 = styled.View`
-  position: absolute;
-  width: 55%;
-  height: 9%;
-  margin-top: 13%;
-  margin-left: 3%;
-  display: flex;
+  flex: 1;
+  z-index: 4;
+  max-height: 17%;
+  align-items: center;
+  justify-content: center;
   background: #c0ccda;
 `;
+
 const BackContainer = styled.View`
-  position: relative;
-  width: 100%;
-  height: 100%;
-  align-items: center;
-  margin-top: 4%;
-  margin-left: -41%;
- 
+  height: 60%;
+  width: 40%;
+  margin-top: -19%;
+  margin-right: 58%;
 `;
 const Avatar = styled.Image`
-  width: 60px;
-  height: 60px;
-  margin-left: 24%;
-  margin-top: 1%;
-  margin-bottom: 9px;
-  display: flex;
+  width: 50px;
+  height: 50px;
+  margin-top: 15%;
+  margin-right: 30%;
+  max-width: 80%;
+  max-height: 80%;
 `;
 
 const TextOne = styled.Text`
-  position: absolute;
+  font-size: 15px;
   text-align: center;
   font-weight: bold;
-  margin-top: 4%;
-  margin-left: 33%;
+  margin-top: -12%;
+  margin-left: 10%;
+  padding-top: 0%;
 `;
 const TextTwo = styled.Text`
-  position: absolute;
+  font-size: 15px;
   text-align: center;
   font-weight: bold;
-  margin-left: 33%;
-  margin-top: 10%;
+  margin-top: 0%;
+  margin-left: 10%;
+  padding-top: 0%;
 `;
 
 export default function CardCourse() {
   return (
     <Container>
-      <Container2>
-        <Avatar source={require("../../assets/images/cursos.png")} />
+      <Avatar source={require("../../assets/images/cursos.png")} />
 
-        <TextOne>CURSOS</TextOne>
-        <TextTwo>EMERJ</TextTwo>
-      
-      </Container2>
+      <TextOne>CURSOS</TextOne>
+      <TextTwo>EMERJ</TextTwo>
+
       <BackContainer>
-      <BackButton />
+        <BackButton />
       </BackContainer>
-      
     </Container>
   );
 }

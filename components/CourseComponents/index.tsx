@@ -3,19 +3,17 @@ import styled from "styled-components/native";
 import CardCourse from "../CardCourse";
 import axios from "axios";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import AppLogo from "../Header/Applogo";
 import { Alert, Text } from "react-native";
-import DropdownCourse from "../DropdownCourse";
 
 const BackgroundContainer = styled.SafeAreaView`
   flex: 1;
-  margin-top: 0%;
   background: #343f4b;
 `;
 
 const ImageBackground = styled.Image`
-  height: 24%;
+  height: 30%;
   width: 100%;
+  margin-top: -0%;
   align-items: center;
   justify-content: center;
   position: absolute;
@@ -24,31 +22,12 @@ const ImageBackground = styled.Image`
 `;
 
 const ContentItems = styled.View`
-  width: 100%;
-  height: 85%;
-  margin-top: 68%;
+  flex: 2;
+  max-width: 100%;
+  max-height: 72%;
+  margin-top: 21%;
   flex-direction: row;
   align-items: flex-end;
-`;
-const DropdownItems = styled.View`
-  width: 100%;
-  height: 350px;
-  margin-bottom: 70%;
-`;
-
-const IconsItems = styled.View`
-  width: 100%;
-  height: 100%;
-  margin-bottom: 49.9%;
-  margin-left: -60%;
-`;
-
-const IconsApp = styled.View`
-  width: 100%;
-  height: 575px;
-  margin-top: -90%;
-  margin-bottom: 20%;
-  margin-left: 80%;
 `;
 
 export default function CourseComponents() {
@@ -113,7 +92,13 @@ export default function CourseComponents() {
 
   return (
     <>
-      <BackgroundContainer></BackgroundContainer>
+      <BackgroundContainer>
+        <CardCourse />
+        <ImageBackground
+          source={require("../../assets/images/background.png")}
+        />
+        <ContentItems></ContentItems>
+      </BackgroundContainer>
     </>
   );
 }
