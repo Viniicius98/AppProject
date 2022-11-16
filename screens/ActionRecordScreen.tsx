@@ -1,4 +1,4 @@
-import { Text, StyleSheet } from "react-native";
+import { Text, StyleSheet, ScrollView } from "react-native";
 import styled from "styled-components/native";
 import CardAtividade from "../components/CardInserirAtividade";
 import { useForm, Controller } from "react-hook-form";
@@ -125,81 +125,83 @@ export default function ActionRecord({ route }: any) {
             <ContainerCourse>
               <TypeCourse>{route.params.nome}</TypeCourse>
             </ContainerCourse>
-            <InputContainer>
-              <Controller
-                control={control}
-                name="coursename"
-                render={({ field: { onChange, onBlur, value } }) => (
-                  <Input
-                    style={[
-                      styles.input,
-                      {
-                        borderWidth: errors.coursename && 1,
-                        borderColor: errors.coursename && "#ff375b",
-                      },
-                    ]}
-                    onChangeText={onChange}
-                    onBlur={onBlur} // chamado quando o Input é tocado
-                    value={value}
-                    placeholder="NOME DO CURSO"
-                  />
+            <ScrollView>
+              <InputContainer>
+                <Controller
+                  control={control}
+                  name="coursename"
+                  render={({ field: { onChange, onBlur, value } }) => (
+                    <Input
+                      style={[
+                        styles.input,
+                        {
+                          borderWidth: errors.coursename && 1,
+                          borderColor: errors.coursename && "#ff375b",
+                        },
+                      ]}
+                      onChangeText={onChange}
+                      onBlur={onBlur} // chamado quando o Input é tocado
+                      value={value}
+                      placeholder="NOME DO CURSO"
+                    />
+                  )}
+                />
+                {errors.coursename && (
+                  <Text style={styles.labelError}>
+                    {errors.coursename?.message}
+                  </Text>
                 )}
-              />
-              {errors.coursename && (
-                <Text style={styles.labelError}>
-                  {errors.coursename?.message}
-                </Text>
-              )}
 
-              <Controller
-                control={control}
-                name="institution"
-                render={({ field: { onChange, onBlur, value } }) => (
-                  <Input
-                    style={[
-                      styles.input,
-                      {
-                        borderWidth: errors.institution && 1,
-                        borderColor: errors.institution && "#ff375b",
-                      },
-                    ]}
-                    onChangeText={onChange}
-                    onBlur={onBlur}
-                    value={value}
-                    placeholder="INSTITUIÇÃO"
-                  />
+                <Controller
+                  control={control}
+                  name="institution"
+                  render={({ field: { onChange, onBlur, value } }) => (
+                    <Input
+                      style={[
+                        styles.input,
+                        {
+                          borderWidth: errors.institution && 1,
+                          borderColor: errors.institution && "#ff375b",
+                        },
+                      ]}
+                      onChangeText={onChange}
+                      onBlur={onBlur}
+                      value={value}
+                      placeholder="INSTITUIÇÃO"
+                    />
+                  )}
+                />
+                {errors.institution && (
+                  <Text style={styles.labelError}>
+                    {errors.institution?.message}
+                  </Text>
                 )}
-              />
-              {errors.institution && (
-                <Text style={styles.labelError}>
-                  {errors.institution?.message}
-                </Text>
-              )}
-              <Controller
-                control={control}
-                name="workload"
-                render={({ field: { onChange, onBlur, value } }) => (
-                  <Input
-                    style={[
-                      styles.input,
-                      {
-                        borderWidth: errors.workload && 1,
-                        borderColor: errors.workload && "#ff375b",
-                      },
-                    ]}
-                    onChangeText={onChange}
-                    onBlur={onBlur}
-                    value={value}
-                    placeholder="CARGA HORÁRIA"
-                  />
+                <Controller
+                  control={control}
+                  name="workload"
+                  render={({ field: { onChange, onBlur, value } }) => (
+                    <Input
+                      style={[
+                        styles.input,
+                        {
+                          borderWidth: errors.workload && 1,
+                          borderColor: errors.workload && "#ff375b",
+                        },
+                      ]}
+                      onChangeText={onChange}
+                      onBlur={onBlur}
+                      value={value}
+                      placeholder="CARGA HORÁRIA"
+                    />
+                  )}
+                />
+                {errors.workload && (
+                  <Text style={styles.labelError}>
+                    {errors.workload?.message}
+                  </Text>
                 )}
-              />
-              {errors.workload && (
-                <Text style={styles.labelError}>
-                  {errors.workload?.message}
-                </Text>
-              )}
-            </InputContainer>
+              </InputContainer>
+            </ScrollView>
             <ContainerSubmitButton>
               <SubmitButton
                 onPress={handleSubmit(handleSignIn)}

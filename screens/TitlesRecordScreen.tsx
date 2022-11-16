@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Text, StyleSheet } from "react-native";
+import { Text, StyleSheet, ScrollView } from "react-native";
 import styled from "styled-components/native";
 import CardAtividade from "../components/CardInserirAtividade";
 import { useForm, Controller } from "react-hook-form";
@@ -127,6 +127,7 @@ export default function TitlesRecord({ route }: any) {
             <ContainerCourse>
               <TypeCourse>{route.params.nome}</TypeCourse>
             </ContainerCourse>
+
             <InputContainer>
               <Controller
                 control={control}

@@ -26,7 +26,6 @@ import NotFoundScreen from "../screens/NotFoundScreen";
 import SettingsScreen from "../screens/SettingsScreen";
 import UserScreen from "../screens/UserScreen";
 
-
 //components
 import Header from "../components/Header";
 //constants
@@ -73,13 +72,14 @@ function RootNavigator() {
         headerStyle: {
           backgroundColor: "#1e2d3e",
         },
+        gestureEnabled: true,
+        gestureDirection: "horizontal",
       }}
     >
       <Stack.Screen
         name="Login"
         component={LoginScreen}
         options={() => ({
-
           headerTitle: () => <Header />,
           headerBackVisible: false,
 
@@ -89,11 +89,9 @@ function RootNavigator() {
       <Stack.Screen
         name="Home"
         component={HomeScreen}
-
         options={() => ({
           headerTitle: () => <Header />,
           headerBackVisible: false,
-
         })}
       />
       <Stack.Screen
