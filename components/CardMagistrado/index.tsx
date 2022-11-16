@@ -1,14 +1,16 @@
 import React, { useEffect } from "react";
 import {
   StyleSheet,
-  Text,
+  
   TouchableHighlight,
   TouchableOpacity,
-  View,
+ 
 } from "react-native";
 import { useNavigation } from "@react-navigation/native";
+import { Text, View } from "../Themed";
 
 import styled from "styled-components/native";
+import { string } from "yup";
 
 const Container = styled.View`
   background: #fff;
@@ -44,31 +46,42 @@ const NameText = styled.Text`
   text-transform: capitalize;
 `;
 
+
 const NameLot = styled.Text`
   font-size: 9px;
   text-align: center;
   margin-top: 8%;
   text-transform: capitalize;
+
 `;
 export default function CardPerfilMagistrado(props: any) {
   const nome = props.nome.substring(1, props.nome.length - 1);
 
+
   const lotacao = props.lotacao.substring(1, props.lotacao.length - 1);
+
 
   // console.log(nome);
   console.log(lotacao);
 
   return (
+
+
+    
+    // <TouchableOpacity onPress={()=> navegacao()}>
     <Container>
       <Title>
         <TitleText>PERFIL DO MAGISTRADO</TitleText>
       </Title>
 
+
       <CardBanner source={require("../../assets/images/background.png")} />
 
       <NameText>Dr(a) {nome}</NameText>
 
+
       <NameLot>{lotacao}</NameLot>
     </Container>
+    // </TouchableOpacity>
   );
 }

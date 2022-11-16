@@ -3,7 +3,7 @@ import { StyleSheet, TouchableOpacity } from "react-native";
 import Colors from "../../constants/Colors";
 import { Text, View } from "../Themed";
 
-export default function UserInfo({ path }: { path: string }) {
+export default function UserInfo({ path }: { path: string } ) {
   return (
     <View>
       <View style={styles.getStartedContainer}>
@@ -13,7 +13,10 @@ export default function UserInfo({ path }: { path: string }) {
           darkColor="rgba(255,255,255,0.8)"
         >
           Dra. Helena Hertha
+          
+         
         </Text>
+        
       </View>
 
       <View style={styles.helpContainer}>

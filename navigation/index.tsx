@@ -26,6 +26,7 @@ import NotFoundScreen from "../screens/NotFoundScreen";
 import SettingsScreen from "../screens/SettingsScreen";
 import UserScreen from "../screens/UserScreen";
 
+
 //components
 import Header from "../components/Header";
 //constants
@@ -78,17 +79,21 @@ function RootNavigator() {
         name="Login"
         component={LoginScreen}
         options={() => ({
+
           headerTitle: () => <Header />,
           headerBackVisible: false,
+
           gestureEnabled: false,
         })}
       />
       <Stack.Screen
         name="Home"
         component={HomeScreen}
+
         options={() => ({
           headerTitle: () => <Header />,
           headerBackVisible: false,
+
         })}
       />
       <Stack.Screen
