@@ -113,24 +113,24 @@ function RootNavigator() {
         name="ActionRecord"
         component={ActionRecord}
         options={() => ({
-          headerShown: false,
-          gestureEnabled: false,
+          headerTitle: () => <Header />,
+          headerBackVisible: false,
         })}
       />
       <Stack.Screen
         name="Publication"
         component={Publication}
         options={() => ({
-          headerShown: false,
-          gestureEnabled: false,
+          headerTitle: () => <Header />,
+          headerBackVisible: false,
         })}
       />
       <Stack.Screen
         name="TitlesRecord"
         component={TitlesRecord}
         options={() => ({
-          headerShown: false,
-          gestureEnabled: false,
+          headerTitle: () => <Header />,
+          headerBackVisible: false,
         })}
       />
       <Stack.Screen
