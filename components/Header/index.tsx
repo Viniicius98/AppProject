@@ -2,6 +2,8 @@ import React from "react";
 import styled from "styled-components/native";
 import AppLogo from "./Applogo";
 import EmerjLogo from "./EmerjLogo";
+import AppLogotwe from "./Applogotwe";
+
 
 const HeaderContainer = styled.View`
   width: 364px;
@@ -13,6 +15,7 @@ const HeaderContainer = styled.View`
   border-bottom-width: 10px;
   border-bottom-color: #b8977e;
   margin-right: 15%;
+
 `;
 
 export default function Header(props: any) {
@@ -20,6 +23,9 @@ export default function Header(props: any) {
     <HeaderContainer>
       <EmerjLogo />
       <AppLogo />
+
     </HeaderContainer>
+    
+    
   );
 }

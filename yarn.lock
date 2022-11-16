@@ -1580,6 +1580,11 @@
   resolved "https://registry.yarnpkg.com/@expo/ngrok-bin-win32-x64/-/ngrok-bin-win32-x64-2.3.40.tgz#d497c9cb5a235f5bc04d6b9df4474e2000cc0a61"
   integrity sha512-a8xtUxX/Ftp2ho+/+VR5GCg0ttP9MNzYj58TVjfiKMkl4mVrbFVIzEinRzmy7PhiOWxqGQSCOdzEfa6C2G4nEA==
 
+"@expo/ngrok-bin-win32-x64@2.3.40":
+  "integrity" "sha512-a8xtUxX/Ftp2ho+/+VR5GCg0ttP9MNzYj58TVjfiKMkl4mVrbFVIzEinRzmy7PhiOWxqGQSCOdzEfa6C2G4nEA=="
+  "resolved" "https://registry.npmjs.org/@expo/ngrok-bin-win32-x64/-/ngrok-bin-win32-x64-2.3.40.tgz"
+  "version" "2.3.40"
+
 "@expo/ngrok-bin@2.3.40":
   version "2.3.40"
   resolved "https://registry.yarnpkg.com/@expo/ngrok-bin/-/ngrok-bin-2.3.40.tgz#bfdbd4a32fd71275d5153f859cb4594eec665de7"

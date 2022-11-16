@@ -1,7 +1,10 @@
 import React, { useState } from "react";
 import styled from "styled-components/native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+
 import { FlatList, GestureResponderEvent, ImageProps } from "react-native";
+
+
 import CardPerfilMagistrado from "../CardMagistrado";
 import CardConsultaEnfam from "../CardConsultaEnfam";
 import CardNotificacoes from "../../components/CardNotificacoes";
@@ -168,7 +171,9 @@ export default function HomeItemsComponents({ props }: any) {
           </FlatListItems>
 
           <IconsItems>
+
             <CardPerfilMagistrado nome={nome} lotacao={lotacao} />
+
             <CardConsultaEnfam />
             <CardNotificacoes />
           </IconsItems>

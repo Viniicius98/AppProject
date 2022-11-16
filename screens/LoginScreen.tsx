@@ -1,15 +1,19 @@
 import styled from "styled-components/native";
 import React, { useEffect, useState } from "react";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+
 import { ActivityIndicator, Linking } from "react-native";
 import apiLogin from "../services/apiLogin";
 import apiTokenQuery from "../services/apiTokenQuery";
 import { useNavigation } from "@react-navigation/native";
+
 import biometricAuth from "../utils/local-authentication";
 
 const BackgroundContainer = styled.SafeAreaView`
   flex: 1;
+
   background-color: #ffffff;
+
   z-index: 1;
   border-bottom-width: 10px;
   border-bottom-color: #b8977e;
@@ -30,6 +34,7 @@ const ImageBackground = styled.Image`
   border-radius: 10px;
 `;
 
+
 const ContainerText = styled.Text`
   font-size: 19px;
   font-weight: bold;
@@ -42,17 +47,21 @@ const ContainerTitle = styled.View`
   height: 10%;
   margin-top: -143%;
   background-color: #c0ccda;
-  border-top-width: 1px;
+  border-top-width: -3px;
   border-top-color: #8492a6;
   border-bottom-width: 10px;
+
   border-bottom-color: #b8977e;
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
+
 `;
 
 const ContainerTextSucess = styled.Text`
   margin-top: 8%;
+
   margin-left: 5%;
+
   font-size: 18px;
   font-weight: bold;
   color: #228b22;
@@ -61,13 +70,16 @@ const ContainerTextSucess = styled.Text`
 `;
 const ContainerTextError = styled.Text`
   margin-top: 8%;
+
   margin-left: 5%;
+
   font-size: 18px;
   font-weight: bold;
   color: #ff0000;
   padding-right: 10%;
   text-align: center;
 `;
+
 
 const ContainerForget = styled.TouchableOpacity`
   width: 100%;
@@ -82,8 +94,10 @@ const ContainerForget = styled.TouchableOpacity`
 const TextForget = styled.Text`
   width: 100%;
   height: 20%;
+
   color: #8492a6;
   text-align: center;
+
 `;
 const Input = styled.TextInput`
   height: 45px;
@@ -95,7 +109,9 @@ const Input = styled.TextInput`
   border-radius: 5px;
   padding-left: 20px;
   padding-horizontal: 12px;
+
   margin-top: 30%;
+
   margin-bottom: -30%;
   margin-left: 10%;
   z-index: 1;
@@ -106,6 +122,7 @@ const SubmitButton = styled.Button`
   width: 50%;
   height: 50%;
   background-color: black;
+  
 `;
 const ContainerButton = styled.View`
   width: 65%;
@@ -123,11 +140,17 @@ const Loading = styled.View`
   justify-content: center;
   z-index: 30;
   top: 55%;
+  
 `;
+
 
 export default function LoginScreen() {
   const [email, setEmail] = useState("API_EMERJ");
   const [password, setPassword] = useState("APIEMERJ");
+
+
+
+
   const [user, setUser] = useState("CLAUDIO");
   const [cpf, setCPF] = useState("77359194768");
   const [error, setError] = useState("");
@@ -143,6 +166,7 @@ export default function LoginScreen() {
     setSuccess("");
     setIsLoading(true);
 
+
     if (email.length === 0 || password.length === 0) {
       setTimeout(() => {
         setError("Preencha usuário e senha para continuar!");
@@ -157,6 +181,12 @@ export default function LoginScreen() {
           `/acesso/obtertoken/${user}/${cpf}`
         );
 
+
+      // Chamada a API , pegar token para obter dados do usuario
+      try {
+        const response = await apiTokenQuery.get(
+          `/acesso/obtertoken/${user}/${cpf}`
+        )
         if (response.data) {
           setSuccess("");
           await AsyncStorage.setItem("@accessToken", response.data);
@@ -169,7 +199,9 @@ export default function LoginScreen() {
             setAuth2(true);
             setTimeout(() => {
               setSuccess("Autenticando...");
+
             }, 3000);
+
           }
         }
       } catch (error) {
@@ -177,7 +209,9 @@ export default function LoginScreen() {
           setIsLoading(false);
           setSuccess("");
           setError("Falha ao obter token");
+
         }, 3000);
+
         console.log(error);
       }
     }
@@ -189,11 +223,13 @@ export default function LoginScreen() {
 
   const Login = async () => {
     try {
+
       const loginApi = await apiLogin.post(
         "/login/api",
 
         {
           senha: password,
+
           usuario: email,
         }
       );
@@ -204,13 +240,17 @@ export default function LoginScreen() {
       const bearer = Dbearer?.substring(7);
       if (bearer) {
         authUser(bearer);
+
+
       }
     } catch (error) {
       setTimeout(() => {
         setIsLoading(false);
         setSuccess("");
         setError("Falha no login");
+
       }, 6000);
+
       console.log(error);
     }
   };
@@ -218,14 +258,17 @@ export default function LoginScreen() {
   // Função de autorização de usuário com envio de token
   const authUser = async (bearer: any) => {
     try {
+
       const loginUser = await apiLogin.post(
         "/login/usuario",
         {
           senha: password,
+
           usuario: email,
         },
         { headers: { Authorization: `Bearer ${bearer}` } }
       );
+
 
       const authUser = loginUser.data.mensagem;
 
@@ -280,6 +323,7 @@ export default function LoginScreen() {
     }
   };
 
+
   //UseEffect necessário para atualizar o useState Auth
   useEffect(() => {
     authLocal();
@@ -287,7 +331,9 @@ export default function LoginScreen() {
 
   // Funcão de Autenticação , se auth e auth2 estiverem verdadeiros irá navegar para tela Home
   const authLocal = async () => {
+
     if (await biometricAuth() /*{ auth && auth2}*/) {
+
       setTimeout(() => {
         setError("");
         setSuccess(loginUser);
@@ -305,6 +351,7 @@ export default function LoginScreen() {
       }, 5000);
     }
   };
+
   return (
     <BackgroundContainer>
       {isLoading && (
@@ -326,8 +373,10 @@ export default function LoginScreen() {
 
         <Input
           placeholder="Senha"
+
           defaultValue={password}
           onChangeText={(newPassword) => setPassword(newPassword)}
+
           secureTextEntry
         />
         <ContainerButton>
@@ -337,14 +386,17 @@ export default function LoginScreen() {
             onPress={handleSignInPress}
           />
         </ContainerButton>
+
         <ContainerForget
           onPress={() => Linking.openURL("https://emerj.com.br/site/")}
         >
           <TextForget>Esqueceu sua senha ?</TextForget>
         </ContainerForget>
+
         <ContainerTextError>{error}</ContainerTextError>
         <ContainerTextSucess>{success} </ContainerTextSucess>
       </LoginBackgroundContainer>
     </BackgroundContainer>
   );
 }
+
