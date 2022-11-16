@@ -1,24 +1,18 @@
-
-import { Text, StyleSheet } from "react-native";
+import { Text, StyleSheet, ScrollView } from "react-native";
 import styled from "styled-components/native";
 import CardAtividade from "../components/CardInserirAtividade";
-import Header from "../components/Header";
-import AppLogo from "../components/Header/Applogo";
 import { useForm, Controller } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 
 const BackgroundContainer = styled.View`
-  height: 100%;
-  width: 100%;
-  margin-top: 8%;
+  flex: 1;
   background: #1e2d3eee;
 `;
 
 const ImageBackground = styled.Image`
   height: 22%;
   width: 100%;
-  margin-top: 2%;
   align-items: center;
   justify-content: center;
   z-index: 0;
@@ -26,65 +20,44 @@ const ImageBackground = styled.Image`
 `;
 
 const ContentItems = styled.View`
-  width: 100%;
-  height: 100%;
-  flex-direction: row;
-  align-items: flex-end;
-`;
-const CursoItems = styled.View`
-  width: 100%;
-  height: 75%;
-  padding-right: -10%;
-`;
-
-const IconsItems = styled.View`
-  width: 100%;
-  height: 80%;
-  margin-left: -60%;
-  margin-bottom: 54.4%;
-`;
-const ListItems = styled.View`
-  width: 90%;
-  height: 450px;
-  margin-left: 6%;
-  margin-top: -70%;
-  background-color: #fff;
-`;
-
-const TitleCustom = styled.View`
-  background: #fff;
-  border-bottom-width: 10px;
-  border-bottom-color: #b8977e;
-  flex-direction: row;
-  width: 100%;
-  height: 20px;
+  flex: 2;
   align-items: center;
 `;
-const SubTitleCustom = styled.View`
+
+const BackForm = styled.View`
+  width: 90%;
+  height: 100%;
+  align-items: center;
+  margin-top: -15%;
+  background-color: #fff;
+`;
+const Title = styled.Text`
+  font-size: 15px;
+  font-weight: bold;
+  color: #333;
+  margin-top: 6px;
+  margin-right: 70%;
+  color: #343f4b;
+`;
+const ContainerCourse = styled.View`
   background: #c0ccda;
   border-bottom-width: 10px;
   border-bottom-color: #b8977e;
-  flex-direction: row;
+  border-top-width: 10px;
+  border-top-color: #b8977e;
   width: 100%;
-  height: 50px;
+  height: 55px;
   align-items: center;
-  margin-top: 24%;
+  margin-top: 2%;
 `;
-const TextoCursos = styled.Text`
-  font-size: 15px;
-  font-weight: bold;
-  color: #333;
-  padding-left: 5%;
-  margin-top: 6px;
-  color: #343f4b;
-`;
-const TextoCursos2 = styled.Text`
+
+const TypeCourse = styled.Text`
   width: 100%;
   height: 100%;
   font-size: 15px;
   font-weight: bold;
   color: #333;
-  padding-top: 3%;
+  padding-top: 2%;
   padding-left: 5%;
   margin-top: 0px;
   color: #343f4b;
@@ -108,7 +81,7 @@ const Input = styled.TextInput`
   border-bottom-color: #c0ccda;
 `;
 const ContainerSubmitButton = styled.View`
-  margin-top: 110%;
+  margin-top: 90%;
   padding-left: 60%;
   padding-right: 4%;
 `;
@@ -116,18 +89,7 @@ const ContainerSubmitButton = styled.View`
 const SubmitButton = styled.Button`
   width: 50x;
   height: 50px;
-`;
-const ConteinerHeader = styled.View`
-  width: 100%;
-  height: 20%;
-  margin-top: -17.5%;
-  margin-left: 0%;
-`;
-const ConteinerApp = styled.View`
-  width: 100%;
-  height: 20%;
-  margin-top: -105%;
-  margin-left: 67%;
+  color: #343f4b;
 `;
 
 const schema = yup.object({
@@ -155,21 +117,15 @@ export default function ActionRecord({ route }: any) {
   return (
     <>
       <BackgroundContainer>
-        <ConteinerHeader>
-          <Header />
-        </ConteinerHeader>
-
+        <CardAtividade />
         <ImageBackground source={require("../assets/images/background.png")} />
-
         <ContentItems>
-          <CursoItems>
-            <ListItems>
-              <TextoCursos>CURSOS</TextoCursos>
-              <TitleCustom>
-                <SubTitleCustom>
-                  <TextoCursos2>{route.params.nome}</TextoCursos2>
-                </SubTitleCustom>
-              </TitleCustom>
+          <BackForm>
+            <Title>CURSOS</Title>
+            <ContainerCourse>
+              <TypeCourse>{route.params.nome}</TypeCourse>
+            </ContainerCourse>
+            <ScrollView>
               <InputContainer>
                 <Controller
                   control={control}
@@ -245,23 +201,15 @@ export default function ActionRecord({ route }: any) {
                   </Text>
                 )}
               </InputContainer>
-
-              <ContainerSubmitButton>
-                <SubmitButton
-                  onPress={handleSubmit(handleSignIn)}
-                  title="Registrar"
-                  color="#B8977E"
-                />
-              </ContainerSubmitButton>
-            </ListItems>
-          </CursoItems>
-
-          <IconsItems>
-            <CardAtividade />
-            <ConteinerApp>
-              <AppLogo />
-            </ConteinerApp>
-          </IconsItems>
+            </ScrollView>
+            <ContainerSubmitButton>
+              <SubmitButton
+                onPress={handleSubmit(handleSignIn)}
+                title="Registrar"
+                color="#B8977E"
+              />
+            </ContainerSubmitButton>
+          </BackForm>
         </ContentItems>
       </BackgroundContainer>
     </>

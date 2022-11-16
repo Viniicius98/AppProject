@@ -69,23 +69,29 @@ function RootNavigator() {
     <Stack.Navigator
       initialRouteName="Login"
       screenOptions={{
-        headerShown: true,
+        headerStyle: {
+          backgroundColor: "#1e2d3e",
+        },
+        gestureEnabled: true,
+        gestureDirection: "horizontal",
       }}
     >
       <Stack.Screen
         name="Login"
         component={LoginScreen}
         options={() => ({
-          headerShown: false,
+          headerTitle: () => <Header />,
+          headerBackVisible: false,
+
           gestureEnabled: false,
         })}
       />
       <Stack.Screen
         name="Home"
         component={HomeScreen}
-        options={({ navigation }: RootTabScreenProps<"Home">) => ({
-          headerShown: false,
-          gestureEnabled: false,
+        options={() => ({
+          headerTitle: () => <Header />,
+          headerBackVisible: false,
         })}
       />
       <Stack.Screen
@@ -110,77 +116,52 @@ function RootNavigator() {
         name="ActionRecord"
         component={ActionRecord}
         options={() => ({
-          headerShown: false,
-          gestureEnabled: false,
+          headerTitle: () => <Header />,
+          headerBackVisible: false,
         })}
       />
       <Stack.Screen
         name="Publication"
         component={Publication}
         options={() => ({
-          headerShown: false,
-          gestureEnabled: false,
+          headerTitle: () => <Header />,
+          headerBackVisible: false,
         })}
       />
       <Stack.Screen
         name="TitlesRecord"
         component={TitlesRecord}
         options={() => ({
-          headerShown: false,
-          gestureEnabled: false,
+          headerTitle: () => <Header />,
+          headerBackVisible: false,
         })}
       />
       <Stack.Screen
         name="PointsReport"
         component={PointsReport}
         options={() => ({
-          headerShown: false,
-          headerTitle: "Home",
-          headerStyle: {
-            backgroundColor: "#1e2d3e",
-          },
-          headerTintColor: "#fff",
-          headerTitleStyle: {
-            fontWeight: "bold",
-          },
-          gestureEnabled: false,
+          headerTitle: () => <Header />,
+          headerBackVisible: false,
         })}
       />
       <Stack.Screen
         name="Activites"
         component={Activites}
         options={() => ({
-          headerShown: false,
-          headerTitle: "Home",
-          headerStyle: {
-            backgroundColor: "#1e2d3e",
-          },
-          headerTintColor: "#fff",
-          headerTitleStyle: {
-            fontWeight: "bold",
-          },
-          gestureEnabled: false,
+          headerTitle: () => <Header />,
+          headerBackVisible: false,
         })}
       />
       <Stack.Screen
         name="Course"
         component={Course}
         options={() => ({
-          headerShown: false,
-          headerTitle: "Home",
-          headerStyle: {
-            backgroundColor: "#1e2d3e",
-          },
-          headerTintColor: "#fff",
-          headerTitleStyle: {
-            fontWeight: "bold",
-          },
-          gestureEnabled: false,
+          headerTitle: () => <Header />,
+          headerBackVisible: false,
         })}
-      />       
-       
-          
-        {/* <Stack.Screen name="Home" component={HomeScreen} options={() => ({
+      />
+
+      {/* <Stack.Screen name="Home" component={HomeScreen} options={() => ({
           headerShown: false,
           headerTitle: "Home",
           headerStyle: {
@@ -223,8 +204,7 @@ function RootNavigator() {
           
         })}
       /> */}
-         
-            
+
       <Stack.Group screenOptions={{ presentation: "modal" }}>
         <Stack.Screen name="Settings" component={SettingsScreen} />
       </Stack.Group>
@@ -240,7 +220,6 @@ function RootNavigator() {
 
 // function BottomTabNavigator() {
 //   const colorScheme = useColorScheme();
-
 
 //   return (
 //     <BottomTab.Navigator
@@ -285,7 +264,6 @@ function RootNavigator() {
 //         })}
 //       />
 
-
 //       {/*BottomTab.Screen
 //         name="Activites"
 //         component={Activites}
@@ -295,7 +273,6 @@ function RootNavigator() {
 //           tabBarIcon: ({ color }) => <TabBarIcon name="book" color={color} />,
 //         })}
 //       />*/}
-
 
 //       <BottomTab.Screen
 //         name="User"
@@ -323,7 +300,6 @@ function RootNavigator() {
 //     </BottomTab.Navigator>
 //   );
 // }
-
 
 // /**
 //  * You can explore the built-in icon families and icons on the web at https://icons.expo.fyi/

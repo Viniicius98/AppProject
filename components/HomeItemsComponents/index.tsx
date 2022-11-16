@@ -1,64 +1,52 @@
 import React, { useState } from "react";
 import styled from "styled-components/native";
-import axios from "axios";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import {
-  FlatList,
-  GestureResponderEvent,
-  ImageProps,
-  TouchableHighlight,
-} from "react-native";
+
+import { FlatList, GestureResponderEvent, ImageProps } from "react-native";
+
+
 import CardPerfilMagistrado from "../CardMagistrado";
 import CardConsultaEnfam from "../CardConsultaEnfam";
 import CardNotificacoes from "../../components/CardNotificacoes";
 import { Link } from "@react-navigation/native";
 import { StyleSheet, View } from "react-native";
 import AppLogo from "../Header/Applogo";
-import BackButton from "../BackButton";
 
-const BackgroundContainer = styled.View`
-  height: 100%;
-  width: 100%;
+const BackgroundContainer = styled.SafeAreaView`
+  flex: 1;
   background: #1e2d3eee;
   position: relative;
 `;
 
 const ImageBackground = styled.Image`
-  height: 24%;
-  width: 100%;
-  align-items: center;
-  justify-content: center;
-  opacity: 0.3;
+  flex: 1;
   position: absolute;
-  z-index: 0;
+  height: 40%;
+  width: 100%;
+  opacity: 0.3;
 `;
 
 const ContentItems = styled.View`
-  position: absolute;
+  flex: 1;
   height: 81.9%;
+  margin-left: 1%;
+  margin-top: 18%;
   flex-direction: row;
   align-items: flex-end;
 `;
 const FlatListItems = styled.View`
-  width: 59%;
+  flex: 1;
   height: 74.6%;
-  background-color: rgba(255, 255, 255, 0.5);
+  margin-left: -1%;
 `;
 
 const IconsItems = styled.View`
   width: 38%;
-
   height: 74.5%;
 
-  background-color: rgba(255, 255, 255, 0.4);
-  background: #1e2d3eee;
   margin-left: 2%;
 `;
-const ContainerApp = styled.View`
-  width: 38%;
-  margin-top: -450%;
-  margin-left: 5%;
-`;
+
 const FlatLinks = [
   {
     id: "0",
@@ -179,16 +167,15 @@ export default function HomeItemsComponents({ props }: any) {
               renderItem={renderItem}
               keyExtractor={(item) => item.id}
               extraData={selectedId}
-            />
+            ></FlatList>
           </FlatListItems>
 
           <IconsItems>
+
             <CardPerfilMagistrado nome={nome} lotacao={lotacao} />
+
             <CardConsultaEnfam />
             <CardNotificacoes />
-            <ContainerApp>
-              <AppLogo />
-            </ContainerApp>
           </IconsItems>
         </ContentItems>
       </BackgroundContainer>
@@ -200,6 +187,7 @@ const styles = StyleSheet.create({
     width: 230,
     height: 90,
     marginLeft: 4,
+    paddingLeft: 8,
     backgroundColor: "#c0ccda",
     borderBottomColor: "#b8977e",
     borderBottomWidth: 10,

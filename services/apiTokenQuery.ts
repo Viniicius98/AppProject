@@ -1,3 +1,4 @@
+
 import axios from "axios";
 import { useState, useEffect } from "react";
 //axios para requisição HTTP.
@@ -9,10 +10,9 @@ import { useState, useEffect } from "react";
 //Emulador para iOS
 //http://localhost:3000
 
-const api = axios.create({
-
-  baseURL: "https://wwwh3.tjrj.jus.br/HWEBAPIEVENTOS/api/acesso/obtertoken/",
-
+const apiTokenQuery = axios.create({
+  baseURL: "https://wwwh3.tjrj.jus.br/HWEBAPIEVENTOS/api/",
 });
 
-export default api;
+export default apiTokenQuery;
+

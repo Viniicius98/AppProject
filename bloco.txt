@@ -1,4 +1,101 @@
 
+icone do app https://www.youtube.com/watch?v=KY-iAvi5G5Q
+
+
+import axios from 'axios' 
+      
+	  promise.all([
+		axios.get('https://api.github.com/users/maykbrito'),
+		axios.get('https://api.github.com/user/maykbrito')
+		])
+		.then( response =>{
+
+		})s
+
+
+----------------------------//----------------------------
+
+let aceitar = true //true ou false
+
+     console.log('pedir uber')
+	 const promessa = new Promise(( resolve, reject ) => {
+		
+		if (aceitar){
+			return resolve('pedido aceito )
+		}
+		    return reject ('pedido)
+	    })
+
+	  console.log('aguardando')
+
+      promessa
+	       .then(result => console.log(result))
+		   .catch(erro => console.log(erro))
+		   .finally(() => console.log('finalizado')) 
+
+-----------------------//-------------------------------		   
+
+https://api.github.com/users/maykbrito
+
+
+{
+  "login": "maykbrito",
+  "id": 6643122,
+  "node_id": "MDQ6VXNlcjY2NDMxMjI=",
+  "avatar_url": "https://avatars.githubusercontent.com/u/6643122?v=4",
+  "gravatar_id": "",
+  "url": "https://api.github.com/users/maykbrito",
+  "html_url": "https://github.com/maykbrito",
+  "followers_url": "https://api.github.com/users/maykbrito/followers",
+  "following_url": "https://api.github.com/users/maykbrito/following{/other_user}",
+  "gists_url": "https://api.github.com/users/maykbrito/gists{/gist_id}",
+  "starred_url": "https://api.github.com/users/maykbrito/starred{/owner}{/repo}",
+  "subscriptions_url": "https://api.github.com/users/maykbrito/subscriptions",
+  "organizations_url": "https://api.github.com/users/maykbrito/orgs",
+
+  "repos_url": "https://api.github.com/users/maykbrito/repos",  <= //esses dados
+
+  "events_url": "https://api.github.com/users/maykbrito/events{/privacy}",
+  "received_events_url": "https://api.github.com/users/maykbrito/received_events",
+  "type": "User",
+  "site_admin": false,
+  "name": "Mayk Brito",
+  "company": "@Rocketseat ",
+  "blog": "maykbrito.dev",
+  "location": "Brazil",
+  "email": null,
+  "hireable": null,
+  "bio": "Sênior Web Dev & Instructor focused on helping people start programming for web - #html #css #javascript #sql #react #nodejs #fullstack",
+  "twitter_username": "maykbrito",
+  "public_repos": 95,
+  "public_gists": 28,
+  "followers": 11663,
+  "following": 44,
+  "created_at": "2014-02-10T20:07:04Z",
+  "updated_at": "2022-10-10T19:23:50Z"
+}
+
+
+fetch("https://api.github.com/users/maykbrito")
+  .then((response) => response.json()) //promessa de todos os dados
+  .then((data) => fetch(data.repos_url)) //Uma nova promessa dos dados respos_url do json
+  .then((res) => res.json()) //resposta da nova promessa
+  .then((d) => console.log(d));
+
+	//"Encadeamento" quando eu preciso fazer uma chamada dentro de outra chamada
+
+----------------------//---------------------------
+
+
+
+
+
+
+-------------------//-------------------------
+
+
+=======
+
 "@expo/vector-icons": "^13.0.0",
     "@hookform/resolvers": "^2.9.10",
     "@ionic/react": "^6.3.6",
@@ -179,58 +276,3 @@ https://www.youtube.com/watch?v=3bBdj_tHkVk
 	}
 ]
 
-
-type Chamado = {
-  ativo_fl: string;
-  id_usuario: number;
-};
-
-
- const [repositories, setRepositories] = useState<Chamado[]>([]);
-  useEffect(() => {
-    fetch("http://localhost:3000/chamado")
-      .then((response) => response.json())
-      .then((data) => {
-        setRepositories(data);
-      });
-  }, []);
-
-
-
-
-
-
-
-
-
-
-<ul>
-          {repositories.map((repo) => {
-            return (
-              <li key={repo.ativo_fl}>
-                <strong>{repo.id_usuario}</strong>
-                <p>{repo.id_usuario}</p>
-              </li>
-            );
-          })}
-        </ul>
-
-
-
-type posts = {
-  title: String;
-  author: String;
-};
-
-
-
-
-
-		const [repositories, setRepositories] = useState<posts[]>([]);
-  useEffect(() => {
-    fetch("http://localhost:3000/posts")
-      .then((response) => response.json())
-      .then((data) => {
-        setRepositories(data);
-      });
-  }, []);
