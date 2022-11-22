@@ -1,7 +1,6 @@
 import { StyleSheet } from "react-native";
 import UserInfo from "../components/ScreenComponents/UserInfo";
 import { Text, View } from "../components/Themed";
-import AsyncStorage from "@react-native-async-storage/async-storage";
 
 export default function UserScreen({ props }: any) {
   const nome = props.nome.substring(1, props.nome.length - 1);

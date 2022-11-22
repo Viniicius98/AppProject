@@ -35,7 +35,6 @@ const BackForm = styled.View`
   width: 90%;
   height: 100%;
   align-items: center;
-
   background-color: #fff;
 `;
 const Title = styled.Text`
