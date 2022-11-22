@@ -1,2 +1,0 @@
-# emerj-react-native-app
-

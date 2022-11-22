@@ -281,13 +281,10 @@ export default function LoginScreen() {
   };
 
   //UseEffect necessário para atualizar o useState Auth
-  useEffect(() => {
-    authLocal();
-  }, [handleSignInPress]);
 
   // Funcão de Autenticação , se auth e auth2 estiverem verdadeiros irá navegar para tela Home
   const authLocal = async () => {
-    if (/*{ await biometricAuth() && auth2}*/ auth) {
+    if (/*{ await biometricAuth()}*/ auth2 && auth) {
       setTimeout(() => {
         setError("");
         setSuccess(loginUser);
@@ -305,6 +302,9 @@ export default function LoginScreen() {
       }, 5000);
     }
   };
+  useEffect(() => {
+    authLocal();
+  }, [auth && auth2]);
   return (
     <BackgroundContainer>
       {isLoading && (
