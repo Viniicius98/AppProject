@@ -47,9 +47,8 @@ const ContainerAvaibleCourses = styled.View`
   border-bottom-color: #b8977e;
 `;
 const TitleAvaibleCourses = styled.View`
-  width: 50%;
-  height: 50%;
   margin-top: auto;
+  background: black;
   border-bottom-width: 5px;
   border-bottom-color: #b8977e;
 `;
@@ -64,6 +63,7 @@ const ContainerRegisteredCourses = styled.View`
 const TitleRegisteredCourses = styled.View`
   width: 50%;
   height: 50%;
+  background: black;
   margin-top: auto;
   border-bottom-width: 5px;
   border-bottom-color: #b8977e;
@@ -145,12 +145,17 @@ export default function CourseComponents() {
         />
         <ContentItems>
           <ContainerList>
-            <TitleAvaibleCourses>Cursos Disponíveis</TitleAvaibleCourses>
             <ContainerAvaibleCourses>
+              <TitleAvaibleCourses>
+                <Text>Cursos Disponíveis</Text>
+              </TitleAvaibleCourses>
               {/* <Text>{cursos}Disponiveis</Text> */}
             </ContainerAvaibleCourses>
-            <TitleRegisteredCourses>Cursos Cadastrados</TitleRegisteredCourses>
+
             <ContainerRegisteredCourses>
+              <TitleRegisteredCourses>
+                <Text>Cursos Cadastrados</Text>
+              </TitleRegisteredCourses>
               {/* <Text>{cursosCad}Cadastrados</Text> */}
             </ContainerRegisteredCourses>
           </ContainerList>
