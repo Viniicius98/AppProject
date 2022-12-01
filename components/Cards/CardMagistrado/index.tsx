@@ -50,9 +50,6 @@ export default function CardPerfilMagistrado(props: any) {
 
   const lotacao = props.lotacao.substring(1, props.lotacao.length - 1);
 
-  // console.log(nome);
-  console.log(lotacao);
-
   return (
     // <TouchableOpacity onPress={()=> navegacao()}>
     <Container>

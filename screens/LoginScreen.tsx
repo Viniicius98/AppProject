@@ -128,8 +128,8 @@ const Loading = styled.View`
 export default function LoginScreen() {
   const [email, setEmail] = useState("API_EMERJ");
   const [password, setPassword] = useState("APIEMERJ");
-  const [user, setUser] = useState("CLAUDIO");
-  const [cpf, setCPF] = useState("77359194768");
+  const [user, setUser] = useState("SDARLAN");
+  const [cpf, setCPF] = useState("28863720720");
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
   const [loginUser, setLoginUser] = useState("");
@@ -153,9 +153,7 @@ export default function LoginScreen() {
 
       // Chamada a API , pegar token para obter dados do usuario
       try {
-        const response = await apiTokenQuery.get(
-          `/acesso/obtertoken/${user}/${cpf}`
-        );
+        const response = await apiTokenQuery.get(`/acesso/obtertoken/${cpf}`);
 
         if (response.data) {
           setSuccess("");
@@ -177,7 +175,7 @@ export default function LoginScreen() {
           setIsLoading(false);
           setSuccess("");
           setError("Falha ao obter token");
-        }, 3000);
+        }, 2000);
         console.log(error);
       }
     }
@@ -288,13 +286,13 @@ export default function LoginScreen() {
       setTimeout(() => {
         setError("");
         setSuccess(loginUser);
-      }, 3000);
+      }, 6000);
 
       setTimeout(() => {
         navigation.navigate("Home");
         setIsLoading(false);
         setSuccess("");
-      }, 5000);
+      }, 10000);
     } else {
       setTimeout(() => {
         setSuccess("");

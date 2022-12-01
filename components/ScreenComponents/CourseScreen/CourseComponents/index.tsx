@@ -3,8 +3,11 @@ import styled from "styled-components/native";
 import CardCourse from "../../../Cards/CardCourse";
 import axios from "axios";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import { Alert, Text } from "react-native";
+import { Alert, FlatList, GestureResponderEvent } from "react-native";
 import apiTokenQuery from "../../../../services/apiTokenQuery";
+import Modal from "./ModalProgramation";
+import { useNavigation } from "@react-navigation/native";
+import { Link } from "@react-navigation/native";
 
 const BackgroundContainer = styled.SafeAreaView`
   flex: 1;
@@ -38,41 +41,82 @@ const ContainerList = styled.View`
   margin-bottom: auto;
   margin-top: auto;
   background: #fff;
-`;
-const ContainerAvaibleCourses = styled.View`
-  width: 100%;
-  height: 50%;
-  margin-top: auto;
-  border-bottom-width: 10px;
-  border-bottom-color: #b8977e;
-`;
-const TitleAvaibleCourses = styled.View`
-  margin-top: auto;
-  background: black;
-  border-bottom-width: 5px;
-  border-bottom-color: #b8977e;
-`;
-const ContainerRegisteredCourses = styled.View`
-  width: 100%;
-  height: 50%;
-  margin-left: auto;
-  margin-right: auto;
-  margin-bottom: auto;
-  margin-top: auto;
-`;
-const TitleRegisteredCourses = styled.View`
-  width: 50%;
-  height: 50%;
-  background: black;
-  margin-top: auto;
-  border-bottom-width: 5px;
-  border-bottom-color: #b8977e;
+  align-items: center;
 `;
 
+const ContainerTitleCourse = styled.View`
+  background: #c0ccda;
+  border-bottom-width: 10px;
+  border-bottom-color: #b8977e;
+  width: 100%;
+  height: 40px;
+  margin-top: 0%;
+  align-items: flex-start;
+`;
+const TextCourse = styled.Text`
+  font-size: 17px;
+  font-weight: bold;
+  padding-top: 1%;
+  padding-left: 5%;
+  color: #343f4b;
+`;
+const ContainerCourse = styled.View`
+  width: 80%;
+  height: 80%;
+  margin-top: 2%;
+`;
+
+const Course = styled.Text`
+  font-size: 18px;
+  font-weight: bold;
+`;
+
+const ButtonCustom = styled.TouchableOpacity`
+  margin-top: 10px;
+  background: #d9d9d9;
+  flex-direction: column;
+  width: 90%;
+  height: 40%;
+  align-items: center;
+`;
+
+const cur = [
+  { id: "0", curso: "Compliance", screen: "CourseInfo" },
+  { id: "1", curso: "Humanidade e Análise", screen: "CourseInfo" },
+  { id: "2", curso: "Curso de Especialização", screen: "CourseInfo" },
+  { id: "3", curso: "Curso de Especialização", screen: "CourseInfo" },
+  { id: "4", curso: "Curso de Especialização", screen: "CourseInfo" },
+  { id: "5", curso: "Curso de Especialização", screen: "CourseInfo" },
+  { id: "6", curso: "Curso de Especialização", screen: "CourseInfo" },
+  { id: "7", curso: "Curso de Especialização", screen: "CourseInfo" },
+];
+interface IFlatCourse {
+  id: string;
+  curso: string;
+  screen: any;
+}
+
+const Item = ({
+  item,
+  onPress,
+}: {
+  item: IFlatCourse;
+  onPress: (event: GestureResponderEvent) => void;
+}) => (
+  <ButtonCustom>
+    <Course>{item.curso}</Course>
+  </ButtonCustom>
+
+  // <Link to={{ screen: item.screen }}>
+  //   <Course>{item.curso}</Course>
+  // </Link>
+);
+
 export default function CourseComponents() {
+  const navigation = useNavigation();
   const [token, setToken] = useState("");
   const [cursos, setCursos] = useState("");
-  const [cursosCad, setCursosCad] = useState("");
+  const [selectedId, setSelectedId] = useState<number | null>(null);
 
   const getToken = async () => {
     try {
@@ -86,55 +130,59 @@ export default function CourseComponents() {
     }
   };
 
+  const renderItem = ({ item }: { item: IFlatCourse }) => {
+    return <Item item={item} onPress={() => setSelectedId(Number(item.id))} />;
+  };
+
   useEffect(() => {
     getToken();
     if (token) {
-      avaibleCourses(token);
-      registeredCourse(token);
+      //avaibleCourses(token);
+      //registeredCourse(token);
     }
   }, [getToken]);
 
-  const registeredCourse = async (token: any) => {
-    try {
-      const courseCad = await apiTokenQuery.get(
-        `/magistrado/inscricoes/77359194768`,
-        {
-          method: "GET",
-          headers: { Authorization: `Bearer ${token}` },
-        }
-      );
+  // const registeredCourse = async (token: any) => {
+  //   try {
+  //     const courseCad = await apiTokenQuery.get(
+  //       `/magistrado/inscricoes/77359194768`,
+  //       {
+  //         method: "GET",
+  //         headers: { Authorization: `Bearer ${token}` },
+  //       }
+  //     );
 
-      // const list = lista.data[0].descricao;
-      const curso = courseCad.data;
-      setCursosCad(curso);
+  //     // const list = lista.data[0].descricao;
+  //     const curso = courseCad.data;
+  //     setCursosCad(curso);
 
-      // console.log(curso);
-    } catch (error) {
-      console.log("catch acessar cursos");
-      Alert.alert("Erro", "Não foi possível acessar os Cadastrados");
-    }
-  };
+  //     // console.log(curso);
+  //   } catch (error) {
+  //     console.log("catch acessar cursos");
+  //     Alert.alert("Erro", "Não foi possível acessar os Cadastrados");
+  //   }
+  // };
 
-  const avaibleCourses = async (token: any) => {
-    try {
-      const course = await apiTokenQuery.get(`/evento/lista/77359194768`, {
-        method: "GET",
-        headers: { Authorization: `Bearer ${token}` },
-      });
+  // const avaibleCourses = async (token: any) => {
+  //   try {
+  //     const course = await apiTokenQuery.get(`/evento/lista/77359194768`, {
+  //       method: "GET",
+  //       headers: { Authorization: `Bearer ${token}` },
+  //     });
 
-      // const list = lista.data[0].descricao;
-      const curso = course.data;
-      setCursos(curso);
+  //     // const list = lista.data[0].descricao;
+  //     const curso = course.data;
+  //     setCursos(curso);
 
-      // console.log(curso);
-    } catch (error) {
-      console.log("catch acessar cursos");
-      Alert.alert(
-        "Erro",
-        "Não foi possível acessar os cursos Cursos Disponivéis"
-      );
-    }
-  };
+  //     // console.log(curso);
+  //   } catch (error) {
+  //     console.log("catch acessar cursos");
+  //     Alert.alert(
+  //       "Erro",
+  //       "Não foi possível acessar os cursos Cursos Disponivéis"
+  //     );
+  //   }
+  // };
 
   return (
     <>
@@ -143,21 +191,21 @@ export default function CourseComponents() {
         <ImageBackground
           source={require("../../../../assets/images/background.png")}
         />
+
         <ContentItems>
           <ContainerList>
-            <ContainerAvaibleCourses>
-              <TitleAvaibleCourses>
-                <Text>Cursos Disponíveis</Text>
-              </TitleAvaibleCourses>
-              {/* <Text>{cursos}Disponiveis</Text> */}
-            </ContainerAvaibleCourses>
-
-            <ContainerRegisteredCourses>
-              <TitleRegisteredCourses>
-                <Text>Cursos Cadastrados</Text>
-              </TitleRegisteredCourses>
-              {/* <Text>{cursosCad}Cadastrados</Text> */}
-            </ContainerRegisteredCourses>
+            <ContainerTitleCourse>
+              <TextCourse>CURSOS</TextCourse>
+            </ContainerTitleCourse>
+            <ContainerCourse>
+              <FlatList
+                data={cur}
+                renderItem={renderItem}
+                keyExtractor={(item) => item.id}
+                extraData={selectedId}
+              />
+            </ContainerCourse>
+            {/* <Text>{cursos}Disponiveis</Text> */}
           </ContainerList>
         </ContentItems>
       </BackgroundContainer>

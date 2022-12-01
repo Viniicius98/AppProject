@@ -34,6 +34,11 @@ const linking: LinkingOptions<RootStackParamList> = {
               CourseScreen: "Course",
             },
           },
+          CourseInfo: {
+            screens: {
+              CourseScreenInfo: "CourseInfo",
+            },
+          },
           ActionRecord: {
             screens: {
               ActionRecordScreen: "ActionRecord",

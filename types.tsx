@@ -24,6 +24,7 @@ export type RootStackParamList = {
   Activites: undefined;
   ActionRecord: undefined;
   Course: undefined;
+  CourseInfo: undefined;
   PointsReport: undefined;
   Publication: undefined;
   TitlesRecord: undefined;
@@ -45,6 +46,7 @@ export type RootTabParamList = {
   Publication: undefined;
   TitlesRecord: undefined;
   PointsReport: undefined;
+  CourseInfo: undefined;
 };
 
 export type RootTabScreenProps<Screen extends keyof RootTabParamList> =

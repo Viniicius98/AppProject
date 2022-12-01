@@ -25,6 +25,7 @@ import TitlesRecord from "../screens/TitlesRecordScreen";
 import NotFoundScreen from "../screens/NotFoundScreen";
 import SettingsScreen from "../screens/SettingsScreen";
 import UserScreen from "../screens/UserScreen";
+import CourseInfo from "../screens/CourseScreenInfo";
 
 //components
 import Header from "../components/Header";
@@ -155,6 +156,14 @@ function RootNavigator() {
       <Stack.Screen
         name="Course"
         component={Course}
+        options={() => ({
+          headerTitle: () => <Header />,
+          headerBackVisible: false,
+        })}
+      />
+      <Stack.Screen
+        name="CourseInfo"
+        component={CourseInfo}
         options={() => ({
           headerTitle: () => <Header />,
           headerBackVisible: false,

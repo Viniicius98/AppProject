@@ -103,7 +103,6 @@ interface IFlatItems {
 }
 
 const Item = ({
-  //refatorar a const Item Link to modificando css da ImageFlat
   item,
   onPress,
 }: {
