@@ -3,11 +3,12 @@ import styled from "styled-components/native";
 import CardCourse from "../../../Cards/CardCourse";
 import axios from "axios";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import { Alert, FlatList, GestureResponderEvent } from "react-native";
+import { Alert, FlatList, ScrollView, StyleSheet } from "react-native";
 import apiTokenQuery from "../../../../services/apiTokenQuery";
 import Modal from "./ModalProgramation";
 import { useNavigation } from "@react-navigation/native";
 import { Link } from "@react-navigation/native";
+import { create } from "yup/lib/array";
 
 const BackgroundContainer = styled.SafeAreaView`
   flex: 1;
@@ -61,9 +62,11 @@ const TextCourse = styled.Text`
   color: #343f4b;
 `;
 const ContainerCourse = styled.View`
-  width: 80%;
-  height: 80%;
-  margin-top: 2%;
+  width: 100%;
+  height: 90%;
+  justify-content: center;
+  align-items: center;
+  margin-left: 0%;
 `;
 
 const Course = styled.Text`
@@ -72,23 +75,22 @@ const Course = styled.Text`
 `;
 
 const ButtonCustom = styled.TouchableOpacity`
-  margin-top: 10px;
   background: #d9d9d9;
-  flex-direction: column;
-  width: 90%;
-  height: 40%;
+  margin-top: 5%;
+  padding: 15px;
   align-items: center;
+  justify-content: center;
 `;
 
 const cur = [
   { id: "0", curso: "Compliance", screen: "CourseInfo" },
   { id: "1", curso: "Humanidade e Análise", screen: "CourseInfo" },
   { id: "2", curso: "Curso de Especialização", screen: "CourseInfo" },
-  { id: "3", curso: "Curso de Especialização", screen: "CourseInfo" },
-  { id: "4", curso: "Curso de Especialização", screen: "CourseInfo" },
-  { id: "5", curso: "Curso de Especialização", screen: "CourseInfo" },
-  { id: "6", curso: "Curso de Especialização", screen: "CourseInfo" },
-  { id: "7", curso: "Curso de Especialização", screen: "CourseInfo" },
+  { id: "3", curso: "Recursos Cíveis", screen: "CourseInfo" },
+  { id: "4", curso: "Direito Educacional", screen: "CourseInfo" },
+  { id: "5", curso: "Gênero e Direito", screen: "CourseInfo" },
+  { id: "6", curso: "Juiz Leigo", screen: "CourseInfo" },
+  { id: "7", curso: "Curso Emerj", screen: "CourseInfo" },
 ];
 interface IFlatCourse {
   id: string;
@@ -96,27 +98,27 @@ interface IFlatCourse {
   screen: any;
 }
 
-const Item = ({
-  item,
-  onPress,
-}: {
-  item: IFlatCourse;
-  onPress: (event: GestureResponderEvent) => void;
-}) => (
-  <ButtonCustom>
-    <Course>{item.curso}</Course>
-  </ButtonCustom>
-
-  // <Link to={{ screen: item.screen }}>
-  //   <Course>{item.curso}</Course>
-  // </Link>
-);
-
 export default function CourseComponents() {
   const navigation = useNavigation();
   const [token, setToken] = useState("");
   const [cursos, setCursos] = useState("");
   const [selectedId, setSelectedId] = useState<number | null>(null);
+
+  const Item = ({ item }: { item: IFlatCourse }) => (
+    <ScrollView style={styles.container}>
+      <ButtonCustom
+        onPress={() => {
+          navigation.navigate(item.screen, { nome: item.curso });
+        }}
+      >
+        <Course>{item.curso}</Course>
+      </ButtonCustom>
+    </ScrollView>
+
+    // <Link to={{ screen: item.screen }}>
+    //   <Course>{item.curso}</Course>
+    // </Link>
+  );
 
   const getToken = async () => {
     try {
@@ -131,7 +133,7 @@ export default function CourseComponents() {
   };
 
   const renderItem = ({ item }: { item: IFlatCourse }) => {
-    return <Item item={item} onPress={() => setSelectedId(Number(item.id))} />;
+    return <Item item={item} />;
   };
 
   useEffect(() => {
@@ -212,3 +214,9 @@ export default function CourseComponents() {
     </>
   );
 }
+
+const styles = StyleSheet.create({
+  container: {
+    width: "100%",
+  },
+});

@@ -17,7 +17,7 @@ const ContainerProgramation = styled.TouchableOpacity`
   height: 8%;
   background: #b9977e;
   margin-top: 98%;
-  margin-right: 9%;
+  margin-left: -5%;
   border-radius: 10px;
   border-radius-bottom: 10px;
   align-items: center;
