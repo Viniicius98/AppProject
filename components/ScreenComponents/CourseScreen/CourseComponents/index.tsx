@@ -3,12 +3,13 @@ import styled from "styled-components/native";
 import CardCourse from "../../../Cards/CardCourse";
 import axios from "axios";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import { Alert, FlatList, ScrollView, StyleSheet } from "react-native";
+import { Alert, FlatList, ScrollView, StyleSheet, Text } from "react-native";
 import apiTokenQuery from "../../../../services/apiTokenQuery";
 import Modal from "./ModalProgramation";
 import { useNavigation } from "@react-navigation/native";
 import { Link } from "@react-navigation/native";
 import { create } from "yup/lib/array";
+import TitlesRecord from "../../../../screens/TitlesRecordScreen";
 
 const BackgroundContainer = styled.SafeAreaView`
   flex: 1;
@@ -101,8 +102,31 @@ interface IFlatCourse {
 export default function CourseComponents() {
   const navigation = useNavigation();
   const [token, setToken] = useState("");
-  const [cursos, setCursos] = useState("");
+  const [cursos, setCursos] = useState([]);
   const [selectedId, setSelectedId] = useState<number | null>(null);
+
+  const avaibleCourses = async (token: any) => {
+    try {
+      const course = await apiTokenQuery.get(`/evento/lista/78749395734`, {
+        method: "GET",
+        headers: { Authorization: `Bearer ${token}` },
+      });
+
+      const list = course.data;
+      const listCourse = list.map((item: any) => {
+        return item.titEven;
+      });
+
+      setCursos(listCourse);
+      console.log(cursos);
+    } catch (error) {
+      console.log("catch acessar cursos");
+      Alert.alert(
+        "Erro",
+        "Não foi possível acessar os cursos Cursos Disponivéis"
+      );
+    }
+  };
 
   const Item = ({ item }: { item: IFlatCourse }) => (
     <ScrollView style={styles.container}>
@@ -114,10 +138,6 @@ export default function CourseComponents() {
         <Course>{item.curso}</Course>
       </ButtonCustom>
     </ScrollView>
-
-    // <Link to={{ screen: item.screen }}>
-    //   <Course>{item.curso}</Course>
-    // </Link>
   );
 
   const getToken = async () => {
@@ -125,6 +145,7 @@ export default function CourseComponents() {
       const accessToken = await AsyncStorage.getItem("@accessToken");
       if (accessToken) {
         setToken(accessToken);
+
         // console.log(token);
       }
     } catch (error) {
@@ -139,10 +160,11 @@ export default function CourseComponents() {
   useEffect(() => {
     getToken();
     if (token) {
-      //avaibleCourses(token);
+      avaibleCourses(token);
+
       //registeredCourse(token);
     }
-  }, [getToken]);
+  }, [cursos]);
 
   // const registeredCourse = async (token: any) => {
   //   try {
@@ -162,27 +184,6 @@ export default function CourseComponents() {
   //   } catch (error) {
   //     console.log("catch acessar cursos");
   //     Alert.alert("Erro", "Não foi possível acessar os Cadastrados");
-  //   }
-  // };
-
-  // const avaibleCourses = async (token: any) => {
-  //   try {
-  //     const course = await apiTokenQuery.get(`/evento/lista/77359194768`, {
-  //       method: "GET",
-  //       headers: { Authorization: `Bearer ${token}` },
-  //     });
-
-  //     // const list = lista.data[0].descricao;
-  //     const curso = course.data;
-  //     setCursos(curso);
-
-  //     // console.log(curso);
-  //   } catch (error) {
-  //     console.log("catch acessar cursos");
-  //     Alert.alert(
-  //       "Erro",
-  //       "Não foi possível acessar os cursos Cursos Disponivéis"
-  //     );
   //   }
   // };
 

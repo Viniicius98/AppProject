@@ -35,16 +35,24 @@ const NameText = styled.Text`
   font-weight: bold;
   text-align: center;
   padding-top: 9%;
-  margin-top: 5%;
+  margin-top: -7%;
   text-transform: capitalize;
+`;
+const Name2 = styled.Text`
+  font-size: 12px;
+  font-weight: bold;
+  text-align: center;
+  margin-top: 2%;
+  padding-top: 2%;
 `;
 
 const NameLot = styled.Text`
   font-size: 9px;
   text-align: center;
-  margin-top: 8%;
+  margin-top: 5%;
   text-transform: capitalize;
 `;
+
 export default function CardPerfilMagistrado(props: any) {
   const nome = props.nome.substring(1, props.nome.length - 1);
 
@@ -56,10 +64,10 @@ export default function CardPerfilMagistrado(props: any) {
       <Title>
         <TitleText>PERFIL DO MAGISTRADO</TitleText>
       </Title>
-
       <CardBanner source={require("../../../assets/images/background.png")} />
 
-      <NameText>Dr(a) {nome}</NameText>
+      <Name2>Dr(a)</Name2>
+      <NameText> {nome}</NameText>
 
       <NameLot>{lotacao}</NameLot>
     </Container>
