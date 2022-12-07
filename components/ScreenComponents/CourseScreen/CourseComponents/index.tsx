@@ -10,6 +10,7 @@ import { useNavigation } from "@react-navigation/native";
 import { Link } from "@react-navigation/native";
 import { create } from "yup/lib/array";
 import TitlesRecord from "../../../../screens/TitlesRecordScreen";
+import CourseInfo from "../CourseScreenInfoComponents";
 
 const BackgroundContainer = styled.SafeAreaView`
   flex: 1;
@@ -83,22 +84,6 @@ const ButtonCustom = styled.TouchableOpacity`
   justify-content: center;
 `;
 
-const cur = [
-  { id: "0", curso: "Compliance", screen: "CourseInfo" },
-  { id: "1", curso: "Humanidade e Análise", screen: "CourseInfo" },
-  { id: "2", curso: "Curso de Especialização", screen: "CourseInfo" },
-  { id: "3", curso: "Recursos Cíveis", screen: "CourseInfo" },
-  { id: "4", curso: "Direito Educacional", screen: "CourseInfo" },
-  { id: "5", curso: "Gênero e Direito", screen: "CourseInfo" },
-  { id: "6", curso: "Juiz Leigo", screen: "CourseInfo" },
-  { id: "7", curso: "Curso Emerj", screen: "CourseInfo" },
-];
-interface IFlatCourse {
-  id: string;
-  curso: string;
-  screen: any;
-}
-
 export default function CourseComponents() {
   const navigation = useNavigation();
   const [token, setToken] = useState("");
@@ -113,12 +98,8 @@ export default function CourseComponents() {
       });
 
       const list = course.data;
-      const listCourse = list.map((item: any) => {
-        return item.titEven;
-      });
 
-      setCursos(listCourse);
-      console.log(cursos);
+      setCursos(list);
     } catch (error) {
       console.log("catch acessar cursos");
       Alert.alert(
@@ -128,17 +109,9 @@ export default function CourseComponents() {
     }
   };
 
-  const Item = ({ item }: { item: IFlatCourse }) => (
-    <ScrollView style={styles.container}>
-      <ButtonCustom
-        onPress={() => {
-          navigation.navigate(item.screen, { nome: item.curso });
-        }}
-      >
-        <Course>{item.curso}</Course>
-      </ButtonCustom>
-    </ScrollView>
-  );
+  // const Item = ({ item }: any) => (
+
+  // );
 
   const getToken = async () => {
     try {
@@ -153,8 +126,20 @@ export default function CourseComponents() {
     }
   };
 
-  const renderItem = ({ item }: { item: IFlatCourse }) => {
-    return <Item item={item} />;
+  const renderItem = ({ item, index }: any) => {
+    return (
+      <ScrollView style={styles.container}>
+        <ButtonCustom
+          onPress={() => {
+            navigation.navigate("CourseInfo", {
+              nome: item,
+            });
+          }}
+        >
+          <Course>{item.titEven}</Course>
+        </ButtonCustom>
+      </ScrollView>
+    );
   };
 
   useEffect(() => {
@@ -164,7 +149,7 @@ export default function CourseComponents() {
 
       //registeredCourse(token);
     }
-  }, [cursos]);
+  }, [avaibleCourses]);
 
   // const registeredCourse = async (token: any) => {
   //   try {
@@ -198,13 +183,13 @@ export default function CourseComponents() {
         <ContentItems>
           <ContainerList>
             <ContainerTitleCourse>
-              <TextCourse>CURSOS</TextCourse>
+              <TextCourse>CURSOS DISPONÍVEIS</TextCourse>
             </ContainerTitleCourse>
             <ContainerCourse>
               <FlatList
-                data={cur}
+                data={cursos}
                 renderItem={renderItem}
-                keyExtractor={(item) => item.id}
+                keyExtractor={(item, index) => index.toString()}
                 extraData={selectedId}
               />
             </ContainerCourse>

@@ -74,9 +74,75 @@ const ButtonText = styled.Text`
   font-weight: bold;
   color: white;
 `;
+const ContainerDescription = styled.View`
+  position: absolute;
+  width: 98%;
+  height: 90%;
+  margin-top: 15%;
+  margin-left: 11%;
+  background: #d9d9d9;
+  align-items: center;
+`;
+const CargaHoraria = styled.Text`
+  margin-top: 3%;
+  font-size: 17px;
+  font-weight: bold;
+  allowfontscaling: false;
+`;
+const Data = styled.Text`
+  margin-top: 3%;
+  font-size: 17px;
+  font-weight: bold;
+  allowfontscaling: false;
+`;
 
-export default function CourseInfo(props: any) {
-  const curso = props.nome;
+const Modalidade = styled.Text`
+  margin-top: 3%;
+  font-size: 17px;
+  font-weight: bold;
+  allowfontscaling: false;
+`;
+const Vagas = styled.Text`
+  margin-top: 3%;
+  font-size: 17px;
+  font-weight: bold;
+  allowfontscaling: false;
+`;
+const Encontro = styled.Text`
+  margin-top: 3%;
+  font-size: 17px;
+  font-weight: bold;
+  allowfontscaling: false;
+`;
+const Magistrado = styled.Text`
+  margin-top: 3%;
+  font-size: 17px;
+  font-weight: bold;
+  allowfontscaling: false;
+`;
+const Nome = styled.Text`
+  margin-top: 3%;
+  font-size: 17px;
+  font-weight: bold;
+  allowfontscaling: false;
+`;
+const Lotação = styled.Text`
+  margin-top: 3%;
+  font-size: 17px;
+  font-weight: bold;
+  allowfontscaling: false;
+`;
+const Email = styled.Text`
+  margin-top: 3%;
+  font-size: 17px;
+  font-weight: bold;
+  allowfontscaling: false;
+`;
+
+export default function CourseInfoComponents(props: any) {
+  const curso = props.nome.titEven;
+  const codEvento = props.nome.codEven;
+
   const [codEve, setCodEven] = useState("007392");
   const [codLocProg, setcodLocProg] = useState("000035");
   const [dtIni, setdtIni] = useState("30/09/2022");
@@ -84,6 +150,7 @@ export default function CourseInfo(props: any) {
   const [cpf, setcpf] = useState("28863720720");
   const [descTpInscrEven] = useState("Presencial");
   const [token, setToken] = useState("");
+  const [encontro, setEncontro] = useState("");
 
   const getToken = async () => {
     try {
@@ -98,7 +165,11 @@ export default function CourseInfo(props: any) {
 
   useEffect(() => {
     getToken();
-  }, [getToken]);
+    if (token) {
+      encontros(token);
+      console.log(encontro);
+    }
+  }, [token]);
 
   const subscription = async () => {
     try {
@@ -120,6 +191,22 @@ export default function CourseInfo(props: any) {
       Alert.alert("Não foi Possivel se Inscrever no Curso");
     }
   };
+  const encontros = async (token: any) => {
+    try {
+      const encSincro = await apiTokenQuery.get(
+        `/evento/encontros/${codEvento}`,
+        {
+          method: "GET",
+          headers: { Authorization: `Bearer ${token}` },
+        }
+      );
+
+      const message = encSincro.data;
+    } catch (error) {
+      console.log("catch acessar cursos");
+      Alert.alert("Erro", "Não foi possível ");
+    }
+  };
 
   return (
     <>
@@ -134,11 +221,23 @@ export default function CourseInfo(props: any) {
             <ContainerTitleCourse>
               <TextCourse>{curso}</TextCourse>
             </ContainerTitleCourse>
+            <ContainerDescription>
+              <CargaHoraria>
+                Carga Horária: {props.nome.cargaHoraria} Horas
+              </CargaHoraria>
+              <Data>Inicio: {props.nome.dtIniEven}</Data>
+              <Data>Término : {props.nome.dtFimEven}</Data>
+              <Modalidade>
+                Modalidade: {props.nome.tipoModalidadeInscricao.descTpInscrEven}
+              </Modalidade>
+              <Vagas>Vagas: {props.nome.numVaga}</Vagas>
+              <Encontro>Encontros Síncronos: </Encontro>
+            </ContainerDescription>
             <ButtonSubscrition>
               <ButtonText onPress={subscription}>Inscreva-se</ButtonText>
             </ButtonSubscrition>
           </ContainerList>
-          <ModalProgramation />
+          <ModalProgramation event={codEvento} />
         </ContentItems>
       </BackgroundContainer>
     </>

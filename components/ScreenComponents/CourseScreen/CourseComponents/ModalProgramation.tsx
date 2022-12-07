@@ -92,7 +92,7 @@ const ContainerClose = styled.View`
   margin-top: 102%;
 `;
 
-export default function () {
+export default function (props: any) {
   const [visivel, setVisivel] = useState(false);
   const [token, setToken] = useState("");
   const [data, setData] = useState("");
@@ -100,6 +100,9 @@ export default function () {
   const [hrFim, setHrFim] = useState("");
   const [description, setDescription] = useState("");
   const navigation = useNavigation();
+
+  const codEvent = props.event;
+
   const getToken = async () => {
     try {
       const accessToken = await AsyncStorage.getItem("@accessToken");
@@ -113,7 +116,7 @@ export default function () {
 
   const programation = async (token: any) => {
     try {
-      const prog = await apiTokenQuery.get(`/evento/programacao/007392`, {
+      const prog = await apiTokenQuery.get(`/evento/programacao/${codEvent}`, {
         method: "GET",
         headers: { Authorization: `Bearer ${token}` },
       });
