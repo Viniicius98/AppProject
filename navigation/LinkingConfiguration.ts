@@ -29,6 +29,11 @@ const linking: LinkingOptions<RootStackParamList> = {
               ActivitesScreen: "Activites",
             },
           },
+          Virtual: {
+            screens: {
+              ActivitesScreen: "Virtual",
+            },
+          },
           Course: {
             screens: {
               CourseScreen: "Course",

@@ -11,6 +11,7 @@ const HeaderContainer = styled.View`
   flex-direction: row;
   background: #1e2d3e;
   border-bottom-width: 10px;
+  border-bottom-righ: 10px;
   border-bottom-color: #b8977e;
   margin-right: 15%;
 `;

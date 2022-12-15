@@ -22,6 +22,7 @@ export type RootStackParamList = {
   Settings: undefined;
   NotFound: undefined;
   Activites: undefined;
+  Virtual: undefined;
   ActionRecord: undefined;
   Course: undefined;
   CourseInfo: undefined;
@@ -41,6 +42,7 @@ export type RootTabParamList = {
   Login: undefined;
   User: undefined;
   Activites: undefined;
+  Virtual: undefined;
   Course: undefined;
   ActionRecord: undefined;
   Publication: undefined;

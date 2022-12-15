@@ -65,7 +65,7 @@ const FlatLinks = [
     id: "3",
     text: "Virtual EMERJ",
     icon: require("../../../../assets/images/virtualEmerj.png"),
-    screen: "NotFound",
+    screen: "Virtual",
   },
   {
     id: "4",

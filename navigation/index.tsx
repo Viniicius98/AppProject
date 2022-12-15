@@ -18,6 +18,7 @@ import { ColorSchemeName, Pressable } from "react-native";
 //screens
 import ActionRecord from "../screens/ActionRecordScreen";
 import Activites from "../screens/ActivitesScreen";
+import Virtual from "../screens/ActivitesVirtual";
 import Course from "../screens/CourseScreen";
 import HomeScreen from "../screens/HomeScreen";
 import LoginScreen from "../screens/LoginScreen";
@@ -148,6 +149,14 @@ function RootNavigator() {
       <Stack.Screen
         name="Activites"
         component={Activites}
+        options={() => ({
+          headerTitle: () => <Header />,
+          headerBackVisible: false,
+        })}
+      />
+      <Stack.Screen
+        name="Virtual"
+        component={Virtual}
         options={() => ({
           headerTitle: () => <Header />,
           headerBackVisible: false,
