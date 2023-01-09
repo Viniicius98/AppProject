@@ -105,21 +105,29 @@ const schema = yup.object({
   institution: yup.string().required("Informe o Nome da Instituição"),
   workload: yup
     .number()
-    .min(2, "Não pode haver Carga Horaria Menor que 1 Hora")
+    .min(1, "Não pode haver Carga Horaria Menor que 1 Hora")
+    .max(10, "Não pode haver Carga Horaria Maior que 10 Horas")
     .required("Informe a Quantidade de Horas "),
 });
 
 export default function ActionRecord({ route }: any) {
+  const types = route.params.nome;
   const {
     control,
     handleSubmit,
     formState: { errors },
   } = useForm({
+    defaultValues: {
+      coursename: "",
+      institution: "",
+      workload: "",
+      type: types,
+    },
     resolver: yupResolver(schema),
   });
 
   function handleSignIn(data: Object) {
-    console.log(data, "Tipo " + route.params.nome);
+    console.log(data);
     Alert.alert("Registrado com Sucesso");
   }
 
@@ -141,6 +149,23 @@ export default function ActionRecord({ route }: any) {
                 </ContainerCourse>
 
                 <InputContainer>
+                  <Controller
+                    control={control}
+                    name="type"
+                    render={({ field: { onChange, onBlur, value } }) => (
+                      <Input
+                        style={[
+                          styles.input,
+                          {
+                            display: "none",
+                          },
+                        ]}
+                        onChangeText={onChange}
+                        onBlur={onBlur} // chamado quando o Input é tocado
+                        value={value}
+                      />
+                    )}
+                  />
                   <Controller
                     control={control}
                     name="coursename"

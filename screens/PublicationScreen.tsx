@@ -10,10 +10,9 @@ import {
 import styled from "styled-components/native";
 import CardAtividade from "../components/Cards/CardInserirAtividade";
 import { useForm, Controller } from "react-hook-form";
+import { Radio, FormControlLabel, RadioGroup } from "@material-ui/core";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
-import { NativeBaseProvider } from "native-base";
-import { Radio } from "native-base";
 
 const BackgroundContainer = styled.View`
   flex: 1;
@@ -108,19 +107,23 @@ const schema = yup.object({
 });
 
 export default function Publication({ route }: any) {
-  const [email, setEmail] = useState("API_EMERJ");
-  const [value, setValue] = React.useState("A1");
+  const types = route.params.nome;
   const {
     control,
     handleSubmit,
-
     formState: { errors },
   } = useForm({
+    defaultValues: {
+      scientificwork: "",
+      magazinename: "",
+      radio: "A1",
+      type: types,
+    },
     resolver: yupResolver(schema),
   });
 
   function handleSignIn(data: Object) {
-    console.log(data, "Tipo " + route.params.nome);
+    console.log(data);
     Alert.alert("Registrado com Sucesso");
   }
 
@@ -141,6 +144,18 @@ export default function Publication({ route }: any) {
                   <TypeCourse>{route.params.nome}</TypeCourse>
                 </ContainerCourse>
                 <InputContainer>
+                  <Controller
+                    control={control}
+                    name="type"
+                    render={({ field: { onChange, onBlur, value } }) => (
+                      <Input
+                        style={[styles.input, { display: "none" }]}
+                        onChangeText={onChange}
+                        onBlur={onBlur} // chamado quando o Input é tocado
+                        value={value}
+                      />
+                    )}
+                  />
                   <Controller
                     control={control}
                     name="scientificwork"
@@ -203,43 +218,6 @@ export default function Publication({ route }: any) {
                     {" "}
                     QUALIFICAÇÃO DA REVISTA
                   </Text>
-
-                  <NativeBaseProvider>
-                    <Controller
-                      control={control}
-                      name="radio"
-                      render={({}) => (
-                        <Radio.Group
-                          style={[
-                            styles.input,
-                            {
-                              display: "flex",
-                              marginTop: 11,
-                              marginLeft: 22,
-                            },
-                          ]}
-                          name="radio"
-                          value={value}
-                          onChange={(nextValue) => {
-                            setValue(nextValue);
-                          }}
-                        >
-                          <Radio value="A1" my={1}>
-                            A1
-                          </Radio>
-                          <Radio value="A2" my={1}>
-                            A2
-                          </Radio>
-                          <Radio value="B1" my={1}>
-                            B1
-                          </Radio>
-                          <Radio value="B2" my={1}>
-                            B2
-                          </Radio>
-                        </Radio.Group>
-                      )}
-                    />
-                  </NativeBaseProvider>
                 </InputContainer>
 
                 <ContainerSubmitButton>

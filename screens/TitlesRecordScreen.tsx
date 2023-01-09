@@ -110,17 +110,25 @@ const schema = yup.object({
 });
 
 export default function TitlesRecord({ route }: any) {
+  const types = route.params.nome;
   const [type, setType] = useState(route.params.nome);
   const {
     control,
+
     handleSubmit,
     formState: { errors },
   } = useForm({
+    defaultValues: {
+      type: types,
+      titlename: "",
+      institution: "",
+      resume: "",
+    },
     resolver: yupResolver(schema),
   });
 
   function handleSignIn(data: Object) {
-    console.log(data, "Tipo " + route.params.nome);
+    console.log(data);
     Alert.alert("Registrado com Sucesso");
   }
 
@@ -151,8 +159,6 @@ export default function TitlesRecord({ route }: any) {
                           styles.input,
                           {
                             display: "none",
-                            borderWidth: errors.coursename && 1,
-                            borderColor: errors.coursename && "#ff375b",
                           },
                         ]}
                         onBlur={onBlur}
@@ -170,8 +176,8 @@ export default function TitlesRecord({ route }: any) {
                         style={[
                           styles.input,
                           {
-                            borderWidth: errors.coursename && 1,
-                            borderColor: errors.coursename && "#ff375b",
+                            borderWidth: errors.titlename && 1,
+                            borderColor: errors.titlename && "#ff375b",
                           },
                         ]}
                         onChangeText={onChange}
@@ -219,8 +225,8 @@ export default function TitlesRecord({ route }: any) {
                         style={[
                           styles.input,
                           {
-                            borderWidth: errors.workload && 1,
-                            borderColor: errors.workload && "#ff375b",
+                            borderWidth: errors.resume && 1,
+                            borderColor: errors.resume && "#ff375b",
                           },
                         ]}
                         onChangeText={onChange}
