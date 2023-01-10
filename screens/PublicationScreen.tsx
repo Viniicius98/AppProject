@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   Text,
   StyleSheet,
@@ -10,10 +10,11 @@ import {
 import styled from "styled-components/native";
 import CardAtividade from "../components/Cards/CardInserirAtividade";
 import { useForm, Controller } from "react-hook-form";
-import { Radio, FormControlLabel, RadioGroup } from "@material-ui/core";
+import { FormControlLabel, RadioGroup } from "@material-ui/core";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
-
+import { NativeBaseProvider } from "native-base";
+import { Radio } from "native-base";
 const BackgroundContainer = styled.View`
   flex: 1;
   background: #1e2d3eee;
@@ -107,6 +108,9 @@ const schema = yup.object({
 });
 
 export default function Publication({ route }: any) {
+  const [values, setValue] = useState("A1");
+  const [info, setInfo] = useState({});
+
   const types = route.params.nome;
   const {
     control,
@@ -116,17 +120,17 @@ export default function Publication({ route }: any) {
     defaultValues: {
       scientificwork: "",
       magazinename: "",
-      radio: "A1",
+      radio: values,
       type: types,
     },
     resolver: yupResolver(schema),
   });
 
   function handleSignIn(data: Object) {
-    console.log(data);
+    setInfo(data);
     Alert.alert("Registrado com Sucesso");
   }
-
+  console.log(info);
   return (
     <>
       <BackgroundContainer>
@@ -218,6 +222,41 @@ export default function Publication({ route }: any) {
                     {" "}
                     QUALIFICAÇÃO DA REVISTA
                   </Text>
+
+                  <NativeBaseProvider>
+                    <Controller
+                      control={control}
+                      name="radio"
+                      render={({ field: { onChange, value } }) => (
+                        <Radio.Group
+                          style={[
+                            styles.input,
+                            {
+                              display: "flex",
+                              marginTop: 11,
+                              marginLeft: 22,
+                            },
+                          ]}
+                          name="radio"
+                          value={value}
+                          onChange={onChange}
+                        >
+                          <Radio value="A1" my={1}>
+                            A1
+                          </Radio>
+                          <Radio value="A2" my={1}>
+                            A2
+                          </Radio>
+                          <Radio value="B1" my={1}>
+                            B1
+                          </Radio>
+                          <Radio value="B2" my={1}>
+                            B2
+                          </Radio>
+                        </Radio.Group>
+                      )}
+                    />
+                  </NativeBaseProvider>
                 </InputContainer>
 
                 <ContainerSubmitButton>
