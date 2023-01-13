@@ -1,13 +1,18 @@
 import React from "react";
-import { StyleSheet, Text, TouchableHighlight, TouchableOpacity, View } from "react-native"; // TouchableWithoutFeedback não funciona no ios
-
+import {
+  StyleSheet,
+  Text,
+  TouchableHighlight,
+  TouchableOpacity,
+  View,
+} from "react-native"; // TouchableWithoutFeedback não funciona no ios
 
 import { useNavigation } from "@react-navigation/native";
 
 export const LIST_ITEM_HEIGHT = 54;
 const styles = StyleSheet.create({
   container: {
-    backgroundColor:"#E0E6ED",
+    backgroundColor: "#E0E6ED",
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
@@ -19,16 +24,17 @@ const styles = StyleSheet.create({
   },
   name: {
     fontSize: 16,
-    fontFamily:"Roboto",
+    fontFamily: "Roboto",
     fontWeight: "bold",
-    color:"#3C4858",
-    
+    color: "#3C4858",
   },
 });
 
 export interface ListItem {
   name: string;
   screen: any;
+  category: any;
+  activities: any;
 }
 
 interface ListItemProps {
@@ -43,16 +49,17 @@ export default ({ item, isLast }: ListItemProps) => {
   const bottomRadius = isLast ? 8 : 0;
   const navigation = useNavigation();
   const tela = () => {
-
-    navigation.navigate(item.screen, { nome: item.name });
-
+    navigation.navigate(item.screen, {
+      nome: item.name,
+      categoria: item.category,
+      atividades: item.activities,
+    });
   };
   return (
     <TouchableHighlight onPress={() => tela()}>
-         <View style={[styles.container, {}]}>      
-           <Text style={styles.name}>{item.name}</Text>
-        </View>
-      </TouchableHighlight>
-    
+      <View style={[styles.container, {}]}>
+        <Text style={styles.name}>{item.name}</Text>
+      </View>
+    </TouchableHighlight>
   );
 };

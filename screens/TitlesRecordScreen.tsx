@@ -111,6 +111,10 @@ const schema = yup.object({
 
 export default function TitlesRecord({ route }: any) {
   const types = route.params.nome;
+
+  const categoria = route.params.categoria;
+  console.log("categoria " + categoria);
+
   const [type, setType] = useState(route.params.nome);
   const {
     control,

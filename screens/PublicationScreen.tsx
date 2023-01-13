@@ -112,6 +112,9 @@ export default function Publication({ route }: any) {
   const [info, setInfo] = useState({});
 
   const types = route.params.nome;
+
+  const categoria = route.params.categoria;
+  console.log("categoria " + categoria);
   const {
     control,
     handleSubmit,

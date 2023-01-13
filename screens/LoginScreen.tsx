@@ -6,6 +6,7 @@ import apiLogin from "../services/apiLogin";
 import apiTokenQuery from "../services/apiTokenQuery";
 import { useNavigation } from "@react-navigation/native";
 import biometricAuth from "../utils/local-authentication";
+import apiCreateUser from "../services/apiCreateUser";
 
 const BackgroundContainer = styled.SafeAreaView`
   flex: 1;
@@ -127,9 +128,10 @@ const Loading = styled.View`
 
 export default function LoginScreen() {
   const [email, setEmail] = useState("API_EMERJ");
+  const [emailUser, setEmailUser] = useState("");
   const [password, setPassword] = useState("APIEMERJ");
-  const [user, setUser] = useState("SDARLAN");
-  const [cpf, setCPF] = useState("28863720720");
+  const [name, setName] = useState("");
+  const [cpf, setCPF] = useState("07820057726");
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
   const [loginUser, setLoginUser] = useState("");
@@ -227,6 +229,14 @@ export default function LoginScreen() {
 
       const authUser = loginUser.data.mensagem;
 
+      await AsyncStorage.setItem("Bearer2", loginUser.headers.authorization);
+
+      const Dbearer2 = await AsyncStorage.getItem("Bearer2");
+      const bearer2 = Dbearer2?.substring(7);
+      if (bearer2) {
+        cpfFind(bearer2);
+      }
+
       if (authUser) {
         setAuth(true);
         setLoginUser(authUser);
@@ -238,6 +248,33 @@ export default function LoginScreen() {
         setError("Falha na autenticação");
       }, 5000);
       console.log(error);
+    }
+  };
+
+  const loginBanco = async () => {
+    try {
+      const lBanco = await apiCreateUser.post("/auth/login", {
+        email: emailUser,
+        password: "123456",
+      });
+      await AsyncStorage.setItem("@BToken", lBanco.data);
+      console.log("login realizado");
+    } catch (error) {
+      console.log("nao foi possivel realizar o login");
+    }
+  };
+
+  // Função para Buscar o CPF
+
+  const cpfFind = async (bearer2: any) => {
+    try {
+      const find = await apiLogin.get("/login/buscarCpf", {
+        headers: { Authorization: `Bearer ${bearer2}` },
+      });
+      const c = find.data;
+      console.log("o CPF é " + c);
+    } catch (error) {
+      console.error("cpf nao encontrado");
     }
   };
 
@@ -268,6 +305,14 @@ export default function LoginScreen() {
       });
       await AsyncStorage.setItem("Dados", JSON.stringify(dados.data.nome));
       await AsyncStorage.setItem("Lotação", JSON.stringify(dados.data.lotacao));
+      await AsyncStorage.setItem("email", JSON.stringify(dados.data.email));
+
+      const e = await AsyncStorage.getItem("email");
+      const nome = await AsyncStorage.getItem("Dados");
+      if (e && nome) {
+        setEmailUser(e);
+        setName(nome);
+      }
     } catch (error) {
       setTimeout(() => {
         setIsLoading(false);
@@ -278,7 +323,26 @@ export default function LoginScreen() {
     }
   };
 
-  //UseEffect necessário para atualizar o useState Auth
+  //Função para registrar usuario ao Banco de Dados
+  const createUser = async () => {
+    try {
+      const create = await apiCreateUser.post("/user", {
+        name: name,
+        cpf: cpf,
+        email: emailUser,
+      });
+      console.log("Usuario Cadastrado");
+      console.log(name);
+      console.log(emailUser);
+    } catch (error: any) {
+      switch (error.response.status) {
+        case 500:
+          console.log("Usuário ja cadastrado no Banco");
+          console.log(name);
+          console.log(emailUser);
+      }
+    }
+  };
 
   // Funcão de Autenticação , se auth e auth2 estiverem verdadeiros irá navegar para tela Home
   const authLocal = async () => {
@@ -300,9 +364,16 @@ export default function LoginScreen() {
       }, 5000);
     }
   };
+
+  //UseEffect necessário para atualizar o useState Auth
   useEffect(() => {
     authLocal();
   }, [auth && auth2]);
+
+  useEffect(() => {
+    createUser();
+    loginBanco();
+  }, [name && email]);
   return (
     <BackgroundContainer>
       {isLoading && (

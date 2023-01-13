@@ -112,6 +112,10 @@ const schema = yup.object({
 
 export default function ActionRecord({ route }: any) {
   const types = route.params.nome;
+  const categoria = route.params.categoria;
+  const atividade = route.params.atividades;
+  console.log("categoria " + categoria);
+  console.log("atividade " + atividade);
   const {
     control,
     handleSubmit,
