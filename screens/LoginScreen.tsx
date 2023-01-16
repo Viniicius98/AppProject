@@ -131,7 +131,7 @@ export default function LoginScreen() {
   const [emailUser, setEmailUser] = useState("");
   const [password, setPassword] = useState("APIEMERJ");
   const [name, setName] = useState("");
-  const [cpf, setCPF] = useState("07820057726");
+  const [cpf, setCPF] = useState("28863720720");
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
   const [loginUser, setLoginUser] = useState("");
@@ -257,10 +257,13 @@ export default function LoginScreen() {
         email: emailUser,
         password: "123456",
       });
-      await AsyncStorage.setItem("@BToken", lBanco.data);
-      console.log("login realizado");
-    } catch (error) {
+      await AsyncStorage.setItem("@BToken", JSON.stringify(lBanco.data));
+      if (lBanco.data) {
+        console.log("login realizado");
+      }
+    } catch (error: any) {
       console.log("nao foi possivel realizar o login");
+      console.error(error.response.status);
     }
   };
 
@@ -308,9 +311,12 @@ export default function LoginScreen() {
       await AsyncStorage.setItem("email", JSON.stringify(dados.data.email));
 
       const e = await AsyncStorage.getItem("email");
-      const nome = await AsyncStorage.getItem("Dados");
-      if (e && nome) {
-        setEmailUser(e);
+      const n = await AsyncStorage.getItem("Dados");
+      //Retirando as aspas
+      const mail = e?.substring(1, e.length - 1);
+      const nome = n?.substring(1, n.length - 1);
+      if (mail && nome) {
+        setEmailUser(mail);
         setName(nome);
       }
     } catch (error) {
@@ -331,12 +337,14 @@ export default function LoginScreen() {
         cpf: cpf,
         email: emailUser,
       });
+      if (create) {
+        loginBanco();
+      }
       console.log("Usuario Cadastrado");
-      console.log(name);
-      console.log(emailUser);
     } catch (error: any) {
       switch (error.response.status) {
         case 500:
+          loginBanco();
           console.log("Usuário ja cadastrado no Banco");
           console.log(name);
           console.log(emailUser);
@@ -372,8 +380,8 @@ export default function LoginScreen() {
 
   useEffect(() => {
     createUser();
-    loginBanco();
-  }, [name && email]);
+  }, [name && emailUser]);
+
   return (
     <BackgroundContainer>
       {isLoading && (

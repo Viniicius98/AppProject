@@ -12,6 +12,8 @@ import CardAtividade from "../components/Cards/CardInserirAtividade";
 import { useForm, Controller } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import { useState, useEffect } from "react";
 
 const BackgroundContainer = styled.View`
   flex: 1;
@@ -111,11 +113,28 @@ const schema = yup.object({
 });
 
 export default function ActionRecord({ route }: any) {
+  const [token, setToken] = useState("");
+
+  const getToken = async () => {
+    try {
+      const BToken = await AsyncStorage.getItem("@BToken");
+      const BToken2 = BToken?.substring(16, BToken.length - 2);
+      if (BToken2) {
+        setToken(BToken2);
+      }
+    } catch (error) {
+      Alert.alert("Erro", "Não foi possível pegar o token");
+    }
+  };
+
+  useEffect(() => {
+    getToken();
+  }, [token]);
+
   const types = route.params.nome;
   const categoria = route.params.categoria;
   const atividade = route.params.atividades;
-  console.log("categoria " + categoria);
-  console.log("atividade " + atividade);
+
   const {
     control,
     handleSubmit,
@@ -126,13 +145,20 @@ export default function ActionRecord({ route }: any) {
       institution: "",
       workload: "",
       type: types,
+      category: categoria,
+      activities: atividade,
     },
     resolver: yupResolver(schema),
   });
 
   function handleSignIn(data: Object) {
-    console.log(data);
-    Alert.alert("Registrado com Sucesso");
+    try {
+      console.log(data);
+      Alert.alert("Registrado com Sucesso");
+    } catch (error) {
+      console.error(error);
+      Alert.alert("Não foi possivel enviar os dados");
+    }
   }
 
   return (
@@ -153,6 +179,40 @@ export default function ActionRecord({ route }: any) {
                 </ContainerCourse>
 
                 <InputContainer>
+                  <Controller
+                    control={control}
+                    name="category"
+                    render={({ field: { onChange, onBlur, value } }) => (
+                      <Input
+                        style={[
+                          styles.input,
+                          {
+                            display: "none",
+                          },
+                        ]}
+                        onChangeText={onChange}
+                        onBlur={onBlur} // chamado quando o Input é tocado
+                        value={value}
+                      />
+                    )}
+                  />
+                  <Controller
+                    control={control}
+                    name="activities"
+                    render={({ field: { onChange, onBlur, value } }) => (
+                      <Input
+                        style={[
+                          styles.input,
+                          {
+                            display: "none",
+                          },
+                        ]}
+                        onChangeText={onChange}
+                        onBlur={onBlur} // chamado quando o Input é tocado
+                        value={value}
+                      />
+                    )}
+                  />
                   <Controller
                     control={control}
                     name="type"
