@@ -1,16 +1,12 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components/native";
 import CardCourse from "../../../Cards/CardCourse";
-import axios from "axios";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { Alert, FlatList, ScrollView, StyleSheet, Text } from "react-native";
 import apiTokenQuery from "../../../../services/apiTokenQuery";
-import Modal from "./ModalProgramation";
+
 import { useNavigation } from "@react-navigation/native";
-import { Link } from "@react-navigation/native";
-import { create } from "yup/lib/array";
-import TitlesRecord from "../../../../screens/TitlesRecordScreen";
-import CourseInfo from "../CourseScreenInfoComponents";
+
 
 const BackgroundContainer = styled.SafeAreaView`
   flex: 1;

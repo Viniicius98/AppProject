@@ -10,7 +10,6 @@ import {
 import styled from "styled-components/native";
 import CardAtividade from "../components/Cards/CardInserirAtividade";
 import { useForm, Controller } from "react-hook-form";
-import { FormControlLabel, RadioGroup } from "@material-ui/core";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { NativeBaseProvider } from "native-base";

@@ -25,7 +25,7 @@ export type RootStackParamList = {
   Virtual: undefined;
   ActionRecord: undefined;
   Course: undefined;
-  CourseInfo: undefined;
+  CourseInfo: {nome:any};
   PointsReport: undefined;
   Publication: undefined;
   TitlesRecord: undefined;
